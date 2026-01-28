@@ -1,0 +1,42 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "yang",
+      "camelcase": "Yang",
+      "title": "Yang",
+      "scope": "source.yang",
+      "file-types": [
+        "yang"
+      ],
+      "injection-regex": "^yang$",
+      "class-name": "TreeSitterYang"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Yang grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "trislu",
+        "email": "lukai@mail.ustc.edu.cn",
+        "url": ""
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/trislu/tree-sitter-yang",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
