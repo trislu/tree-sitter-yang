@@ -60,7 +60,12 @@ export default grammar({
 
     /** yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
                          optsep stmtend */
-    yang_version: $ => NonBlockStmt('yang-version', '1.1'),
+    yang_version: $ => NonBlockStmt('yang-version', $._yang_version_arg_str),
+    _yang_versions: _ => choice(
+      '1',
+      '1.1'
+    ),
+    _yang_version_arg_str: $ => ArgStr($._yang_versions),
 
     /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
     namespace: $ => NonBlockStmt('namespace', $.string),
@@ -132,13 +137,27 @@ export default grammar({
   }
 });
 
+
+
+/**
+ * Creates a YANG argument string rule
+ *
+ * @param {Rule} rule YANG rule
+ * @returns {Rule} 
+ */
+function ArgStr(rule) {
+  return choice(
+    seq('"', rule, '"'),
+    seq("'", rule, "'"),
+    rule,
+  );
+}
+
 /**
  * Creates a YANG statement with 0 arguments. E.g., "input" | "output"
  *
  * @param {Rule} rule YANG rule
  * @returns {Rule} 
- * 
- * @note For now we don't check the existence of block, as 
  */
 function Block(rule) {
   return seq('{', rule, '}');
@@ -150,8 +169,6 @@ function Block(rule) {
  * @param {string} keyword YANG keyword
  * @param {Rule} block substatement block of the statement
  * @returns {Rule} YANG statement
- * 
- * @note For now we don't check the existence of block, as 
  */
 function NonArgStmt(keyword, block) {
   return seq(keyword, block);
@@ -163,8 +180,6 @@ function NonArgStmt(keyword, block) {
  * @param {string} keyword YANG keyword
  * @param {Rule | string} argument argument of the keyword
  * @returns {Rule} YANG statement
- * 
- * @note For now we don't check the existence of block, as 
  */
 function NonBlockStmt(keyword, argument) {
   return seq(
@@ -181,8 +196,6 @@ function NonBlockStmt(keyword, argument) {
  * @param {Rule} argument argument of the keyword
  * @param {Rule} block substatement block of the statement
  * @returns {Rule} YANG statement
- * 
- * @note For now we don't check the existence of block, as 
  */
 function Statement(keyword, argument, block) {
   if (!argument) {

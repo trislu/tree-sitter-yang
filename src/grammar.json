@@ -172,13 +172,69 @@
           "type": "FIELD",
           "name": "arg",
           "content": {
-            "type": "STRING",
-            "value": "1.1"
+            "type": "SYMBOL",
+            "name": "_yang_version_arg_str"
           }
         },
         {
           "type": "STRING",
           "value": ";"
+        }
+      ]
+    },
+    "_yang_versions": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "1"
+        },
+        {
+          "type": "STRING",
+          "value": "1.1"
+        }
+      ]
+    },
+    "_yang_version_arg_str": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_yang_versions"
+            },
+            {
+              "type": "STRING",
+              "value": "\""
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "'"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_yang_versions"
+            },
+            {
+              "type": "STRING",
+              "value": "'"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_yang_versions"
         }
       ]
     },
