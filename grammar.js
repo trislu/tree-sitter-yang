@@ -23,16 +23,46 @@ export default grammar({
     */
     yang: $ => choice($.module, $.submodule),
 
-    module: $ => Statement('module', $.identifier, $._module_block),
-    _module_block: $ => Block(
-      repeat(choice($.yang_version, $.prefix, $.namespace))),
-    prefix: $ => NonBlockStmt('prefix', $.string),
+    /** module-stmt         = optsep module-keyword sep identifier-arg-str
+                             optsep
+                             "{" stmtsep
+                                 module-header-stmts
+                                 linkage-stmts
+                                 meta-stmts
+                                 revision-stmts
+                                 body-stmts
+                             "}" optsep */
+    module: $ => Statement('module', $._identifier_arg_str, $._module_block),
+    _module_block: $ => Block(repeat(choice($.yang_version, $.prefix, $.namespace))),
 
-    submodule: $ => Statement('submodule', $.identifier, $._submodule_block),
+    /** prefix-stmt         = prefix-keyword sep prefix-arg-str
+                         optsep stmtend */
+    prefix: $ => NonBlockStmt('prefix', $._prefix_arg_str),
+
+    /** submodule-stmt      = optsep submodule-keyword sep identifier-arg-str
+                         optsep
+                         "{" stmtsep
+                             submodule-header-stmts
+                             linkage-stmts
+                             meta-stmts
+                             revision-stmts
+                             body-stmts
+                         "}" optsep*/
+    submodule: $ => Statement('submodule', $._identifier_arg_str, $._submodule_block),
     _submodule_block: $ => Block(repeat(choice($.yang_version, $.belongs_to))),
-    belongs_to: $ => NonBlockStmt('belongs-to', $.identifier),
 
+    /** belongs-to-stmt     = belongs-to-keyword sep identifier-arg-str
+                         optsep
+                         "{" stmtsep
+                             prefix-stmt stmtsep
+                         "}" */
+    belongs_to: $ => NonBlockStmt('belongs-to', $._identifier_arg_str),
+
+    /** yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
+                         optsep stmtend */
     yang_version: $ => NonBlockStmt('yang-version', '1.1'),
+
+    /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
     namespace: $ => NonBlockStmt('namespace', $.string),
 
     // Copied from "tree-sitter-javascript":
@@ -44,6 +74,13 @@ export default grammar({
         /[^*]*\*+([^/*][^*]*\*+)*/,
         '/')
     )),
+
+    _prefix_arg_str: $ => $._identifier_arg_str,
+
+    _identifier_arg_str: $ => choice(
+      seq('"', $.identifier, '"'),
+      $.identifier
+    ),
 
     identifier: _ => {
       const alpha_underscore = /[a-zA-Z_]/;

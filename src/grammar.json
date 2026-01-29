@@ -27,7 +27,7 @@
           "name": "arg",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_identifier_arg_str"
           }
         },
         {
@@ -81,7 +81,7 @@
           "name": "arg",
           "content": {
             "type": "SYMBOL",
-            "name": "string"
+            "name": "_prefix_arg_str"
           }
         },
         {
@@ -102,7 +102,7 @@
           "name": "arg",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_identifier_arg_str"
           }
         },
         {
@@ -152,7 +152,7 @@
           "name": "arg",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_identifier_arg_str"
           }
         },
         {
@@ -240,6 +240,36 @@
           }
         ]
       }
+    },
+    "_prefix_arg_str": {
+      "type": "SYMBOL",
+      "name": "_identifier_arg_str"
+    },
+    "_identifier_arg_str": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "STRING",
+              "value": "\""
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
     },
     "identifier": {
       "type": "TOKEN",

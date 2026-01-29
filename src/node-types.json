@@ -4,9 +4,13 @@
     "named": true,
     "fields": {
       "arg": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
           {
             "type": "identifier",
             "named": true
@@ -20,9 +24,13 @@
     "named": true,
     "fields": {
       "arg": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
           {
             "type": "identifier",
             "named": true
@@ -70,11 +78,15 @@
     "named": true,
     "fields": {
       "arg": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "string",
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -101,9 +113,13 @@
     "named": true,
     "fields": {
       "arg": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
           {
             "type": "identifier",
             "named": true

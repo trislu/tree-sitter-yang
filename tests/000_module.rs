@@ -14,6 +14,7 @@ fn test_empty_module() {
   (module
     arg: (identifier)))
 "#;
+    println!("parsed sexp=\n{}", parsed_sexp);
     assert_eq!(parsed_sexp, expected_sexp.to_string().trim());
 }
 
@@ -39,8 +40,7 @@ fn test_module() {
     arg: (identifier)
     (yang_version)
     (prefix
-      arg: (string
-        (identifier)))
+      arg: (identifier))
     (namespace
       arg: (string))))
 "#;
