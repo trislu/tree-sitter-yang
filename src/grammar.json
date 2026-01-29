@@ -69,6 +69,27 @@
         }
       ]
     },
+    "prefix": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "prefix"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
     "submodule": {
       "type": "SEQ",
       "members": [
@@ -119,6 +140,27 @@
         }
       ]
     },
+    "belongs_to": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "belongs-to"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
     "yang_version": {
       "type": "SEQ",
       "members": [
@@ -132,27 +174,6 @@
           "content": {
             "type": "STRING",
             "value": "1.1"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
-    },
-    "prefix": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "prefix"
-        },
-        {
-          "type": "FIELD",
-          "name": "arg",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string"
           }
         },
         {
@@ -182,26 +203,43 @@
         }
       ]
     },
-    "belongs_to": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "belongs-to"
-        },
-        {
-          "type": "FIELD",
-          "name": "arg",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "//"
+              },
+              {
+                "type": "PATTERN",
+                "value": "(\\\\(.|\\r?\\n)|[^\\\\\\n])*"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "/*"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
+              },
+              {
+                "type": "STRING",
+                "value": "/"
+              }
+            ]
           }
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
+        ]
+      }
     },
     "identifier": {
       "type": "TOKEN",
@@ -383,6 +421,10 @@
     {
       "type": "PATTERN",
       "value": "\\s+"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [],

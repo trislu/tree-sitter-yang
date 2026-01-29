@@ -12,6 +12,7 @@ export default grammar({
 
   extras: $ => [
     /\s+/,
+    $.comment,
   ],
 
   rules: {
@@ -33,6 +34,16 @@ export default grammar({
 
     yang_version: $ => NonBlockStmt('yang-version', '1.1'),
     namespace: $ => NonBlockStmt('namespace', $.string),
+
+    // Copied from "tree-sitter-javascript":
+    // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
+    comment: $ => token(choice(
+      seq('//', /(\\(.|\r?\n)|[^\\\n])*/),
+      seq(
+        '/*',
+        /[^*]*\*+([^/*][^*]*\*+)*/,
+        '/')
+    )),
 
     identifier: _ => {
       const alpha_underscore = /[a-zA-Z_]/;
