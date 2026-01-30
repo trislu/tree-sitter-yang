@@ -27,7 +27,7 @@ export default grammar({
      * @see {@link https://www.rfc-editor.org/rfc/rfc6020#section-12 RFC 6020, Section 12, "YANG ABNF Grammar"}
      * @see {@link https://www.rfc-editor.org/rfc/rfc7950#section-14 RFC 7950, Section 14, "YANG ABNF Grammar"} 
     */
-    yang: $ => choice($.module, $.submodule),
+    yang: $ => choice($.module_stmt, $.submodule_stmt),
 
     /** module-stmt         = optsep module-keyword sep identifier-arg-str
                              optsep
@@ -38,21 +38,21 @@ export default grammar({
                                  revision-stmts
                                  body-stmts
                              "}" optsep */
-    module: $ => Statement('module', $._identifier_arg_str, $._module_block),
+    module_stmt: $ => Statement('module', $._identifier_arg_str, $._module_block),
     _module_block: $ => Block(repeat(choice(
       $._module_header,
       $._meta_stmt,
-      $.revision))),
+      $.revision_stmt))),
 
     /** module-header-stmts = ;; these stmts can appear in any order
                          [yang-version-stmt stmtsep]
                           namespace-stmt stmtsep
                           prefix-stmt stmtsep */
-    _module_header: $ => choice($.yang_version, $.namespace, $.prefix),
+    _module_header: $ => choice($.yang_version, $.namespace_stmt, $.prefix_stmt),
 
     /** prefix-stmt         = prefix-keyword sep prefix-arg-str
                          optsep stmtend */
-    prefix: $ => NonBlockStmt('prefix', $._prefix_arg_str),
+    prefix_stmt: $ => NonBlockStmt('prefix', $._prefix_arg_str),
 
     /** submodule-stmt      = optsep submodule-keyword sep identifier-arg-str
                          optsep
@@ -63,12 +63,12 @@ export default grammar({
                              revision-stmts
                              body-stmts
                          "}" optsep*/
-    submodule: $ => Statement('submodule', $._identifier_arg_str, $._submodule_block),
+    submodule_stmt: $ => Statement('submodule', $._identifier_arg_str, $._submodule_block),
     _submodule_block: $ => Block(repeat(
       choice(
         $._submodule_header,
         $._meta_stmt,
-        $.revision))),
+        $.revision_stmt))),
 
     /** submodule-header-stmts =
                          ;; these stmts can appear in any order
@@ -96,7 +96,44 @@ export default grammar({
     },
 
     /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
-    namespace: $ => NonBlockStmt('namespace', alias(choice($._rfc3986_uri, $.identifier), $.uri_str)),
+    namespace_stmt: $ => NonBlockStmt('namespace', alias(choice($._rfc3986_uri, $.identifier), $.uri_str)),
+
+    /** linkage-stmts       = ;; these stmts can appear in any order
+                         *import-stmt
+                         *include-stmt */
+    _linkage_stmt: $ => choice($.import_stmt, $.include_stmt),
+
+    /** import-stmt         = import-keyword sep identifier-arg-str optsep
+                         "{" stmtsep
+                             ;; these stmts can appear in any order
+                             prefix-stmt
+                             [revision-date-stmt]
+                             [description-stmt]
+                             [reference-stmt]
+                         "}" stmtsep */
+    import_stmt: $ => Statement('import', $._identifier_arg_str, Block(repeat(
+      choice(
+        $.prefix_stmt,
+        $.revision_date,
+        $.description,
+        $.reference)))),
+
+    /** revision-date-stmt  = revision-date-keyword sep revision-date stmtend */
+    revision_date: $ => NonBlockStmt('revision-date', $._date_arg_str),
+
+    /** include-stmt        = include-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [revision-date-stmt]
+                              [description-stmt]
+                              [reference-stmt]
+                          "}") stmtsep */
+    include_stmt: $ => Statement('include', $._identifier_arg_str, Block(repeat(
+      choice(
+        $.revision_date,
+        $.description,
+        $.reference)))),
 
     /** meta-stmts          = ;; these stmts can appear in any order
                          [organization-stmt stmtsep]
@@ -126,12 +163,11 @@ export default grammar({
                               [description-stmt stmtsep]
                               [reference-stmt stmtsep]
                           "}")*/
-    revision: $ => Statement('revision', $.revision_date_str, Block(repeat(choice($.description, $.reference)))),
+    revision_stmt: $ => Statement('revision', $._date_arg_str, Block(repeat(choice($.description, $.reference)))),
 
     /** revision-date       =  date-arg-str*/
-    revision_date_str: $ => $._date_arg_str,
-    _date_arg_str: $ => ArgStr($._date_str),
-    _date_str: _ => {
+    _date_arg_str: $ => ArgStr($.date_str),
+    date_str: _ => {
       const date_regex = /[1-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/;
       return token(date_regex);
     },

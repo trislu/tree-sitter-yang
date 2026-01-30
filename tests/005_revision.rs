@@ -10,10 +10,10 @@ module rev-test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
-    (revision
-      arg: (revision_date_str))))
+    (revision_stmt
+      arg: (date_str))))
 "#
     );
 }
@@ -30,14 +30,14 @@ module rev-test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
-    (revision
-      arg: (revision_date_str))
-    (revision
-      arg: (revision_date_str))
-    (revision
-      arg: (revision_date_str))))
+    (revision_stmt
+      arg: (date_str))
+    (revision_stmt
+      arg: (date_str))
+    (revision_stmt
+      arg: (date_str))))
 "#
     );
 }
@@ -54,7 +54,7 @@ module rev-test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (ERROR
       (ERROR
@@ -82,17 +82,17 @@ module rev-test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
-    (revision
-      arg: (revision_date_str)
+    (revision_stmt
+      arg: (date_str)
       (description
         arg: (string))
       (reference
         arg: (string
           (identifier))))
-    (revision
-      arg: (revision_date_str)
+    (revision_stmt
+      arg: (date_str)
       (description
         arg: (string))
       (reference

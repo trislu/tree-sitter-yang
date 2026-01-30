@@ -5,7 +5,7 @@ fn test_line_comment() {
     parse_success_as!(
         r#"
 // line comment 1
-module empty {
+module test {
     // line comment 2
 }
 // line comment 3
@@ -13,7 +13,7 @@ module empty {
         r#"
 (yang
   (comment)
-  (module
+  (module_stmt
     arg: (identifier)
     (comment))
   (comment))
@@ -26,7 +26,7 @@ fn test_block_comment() {
     parse_success_as!(
         r#"        
 /*1*/ 
-module /*2*/  empty /*3*/ {
+module /*2*/  test /*3*/ {
     /*4*/ 
 }
 /*5*/
@@ -34,7 +34,7 @@ module /*2*/  empty /*3*/ {
         r#"
 (yang
   (comment)
-  (module
+  (module_stmt
     (comment)
     arg: (identifier)
     (comment)

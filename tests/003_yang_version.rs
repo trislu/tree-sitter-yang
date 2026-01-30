@@ -10,7 +10,7 @@ module test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (yang_version)))
 "#
@@ -23,7 +23,7 @@ module test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (yang_version)))
 "#
@@ -40,7 +40,7 @@ module test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (yang_version)))
 "#
@@ -53,7 +53,7 @@ module test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (yang_version)))
 "#
@@ -71,7 +71,7 @@ module test {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (ERROR
       (UNEXPECTED '0'))))
@@ -84,7 +84,7 @@ module test {
             &code,
             r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (ERROR
       (UNEXPECTED ';'))))
@@ -101,7 +101,7 @@ fn test_range_a_to_z_upper() {
         let expected_error_sexp = format!(
             r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (ERROR
       (UNEXPECTED '{}'))))
@@ -120,7 +120,7 @@ fn test_range_a_to_z_lower() {
         let expected_error_sexp = format!(
             r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (ERROR
       (UNEXPECTED '{}'))))

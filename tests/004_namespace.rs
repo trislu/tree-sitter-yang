@@ -4,15 +4,15 @@ mod test_utils;
 fn test_namespace_unquoted() {
     parse_success_as!(
         r#"
-module empty {
+module test {
     namespace _123;
 }
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
-    (namespace
+    (namespace_stmt
       arg: (uri_str))))
 "#
     );
@@ -22,15 +22,15 @@ module empty {
 fn test_namespace_quoted() {
     parse_success_as!(
         r#"
-module empty {
+module test {
     namespace "foo@bar.com:5070:/hello-world";
 }
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
-    (namespace
+    (namespace_stmt
       arg: (uri_str))))
 "#
     );

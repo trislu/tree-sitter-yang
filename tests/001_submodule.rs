@@ -4,11 +4,11 @@ mod test_utils;
 fn test_empty_submodule() {
     parse_success_as!(
         r#"
-submodule empty {}
+submodule test {}
 "#,
         r#"
 (yang
-  (submodule
+  (submodule_stmt
     arg: (identifier)))
 "#
     );
@@ -22,7 +22,7 @@ submodule "name-can-be-string" {}
 "#,
         r#"
 (yang
-  (submodule
+  (submodule_stmt
     arg: (identifier)))
 "#
     );
@@ -39,7 +39,7 @@ submodule "sub-me-do" {
     "#,
         r#"
 (yang
-  (submodule
+  (submodule_stmt
     arg: (identifier)
     (yang_version)
     (belongs_to

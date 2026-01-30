@@ -4,11 +4,11 @@ mod test_utils;
 fn test_empty_module() {
     parse_success_as!(
         r#"
-module empty {}
+module test {}
 "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)))
 "#
     );
@@ -22,7 +22,7 @@ module "name-can-be-string" {}
 "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)))
 "#
     );
@@ -40,12 +40,12 @@ module foo-me-once {
     "#,
         r#"
 (yang
-  (module
+  (module_stmt
     arg: (identifier)
     (yang_version)
-    (prefix
+    (prefix_stmt
       arg: (identifier))
-    (namespace
+    (namespace_stmt
       arg: (uri_str))))
 "#
     );

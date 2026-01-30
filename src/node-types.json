@@ -52,7 +52,7 @@
     }
   },
   {
-    "type": "module",
+    "type": "module_stmt",
     "named": true,
     "fields": {
       "arg": {
@@ -83,7 +83,7 @@
           "named": true
         },
         {
-          "type": "namespace",
+          "type": "namespace_stmt",
           "named": true
         },
         {
@@ -91,7 +91,7 @@
           "named": true
         },
         {
-          "type": "prefix",
+          "type": "prefix_stmt",
           "named": true
         },
         {
@@ -99,7 +99,7 @@
           "named": true
         },
         {
-          "type": "revision",
+          "type": "revision_stmt",
           "named": true
         },
         {
@@ -110,7 +110,7 @@
     }
   },
   {
-    "type": "namespace",
+    "type": "namespace_stmt",
     "named": true,
     "fields": {
       "arg": {
@@ -142,7 +142,7 @@
     }
   },
   {
-    "type": "prefix",
+    "type": "prefix_stmt",
     "named": true,
     "fields": {
       "arg": {
@@ -178,15 +178,23 @@
     }
   },
   {
-    "type": "revision",
+    "type": "revision_stmt",
     "named": true,
     "fields": {
       "arg": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "revision_date_str",
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "date_str",
             "named": true
           }
         ]
@@ -208,11 +216,6 @@
     }
   },
   {
-    "type": "revision_date_str",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "string",
     "named": true,
     "fields": {},
@@ -228,7 +231,7 @@
     }
   },
   {
-    "type": "submodule",
+    "type": "submodule_stmt",
     "named": true,
     "fields": {
       "arg": {
@@ -271,7 +274,7 @@
           "named": true
         },
         {
-          "type": "revision",
+          "type": "revision_stmt",
           "named": true
         },
         {
@@ -291,11 +294,11 @@
       "required": true,
       "types": [
         {
-          "type": "module",
+          "type": "module_stmt",
           "named": true
         },
         {
-          "type": "submodule",
+          "type": "submodule_stmt",
           "named": true
         }
       ]
@@ -353,6 +356,10 @@
   {
     "type": "contact",
     "named": false
+  },
+  {
+    "type": "date_str",
+    "named": true
   },
   {
     "type": "description",
