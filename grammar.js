@@ -39,7 +39,10 @@ export default grammar({
                                  body-stmts
                              "}" optsep */
     module: $ => Statement('module', $._identifier_arg_str, $._module_block),
-    _module_block: $ => Block(repeat(choice($._module_header, $._meta_stmt))),
+    _module_block: $ => Block(repeat(choice(
+      $._module_header,
+      $._meta_stmt,
+      $.revision))),
 
     /** module-header-stmts = ;; these stmts can appear in any order
                          [yang-version-stmt stmtsep]
@@ -64,7 +67,8 @@ export default grammar({
     _submodule_block: $ => Block(repeat(
       choice(
         $._submodule_header,
-        $._meta_stmt))),
+        $._meta_stmt,
+        $.revision))),
 
     /** submodule-header-stmts =
                          ;; these stmts can appear in any order
@@ -82,11 +86,11 @@ export default grammar({
     /** yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
                          optsep stmtend */
     yang_version: $ => NonBlockStmt('yang-version', $._yang_version_arg_str),
-    _yang_versions: _ => choice(
-      '1',
-      '1.1'
-    ),
     _yang_version_arg_str: $ => ArgStr($._yang_versions),
+    _yang_versions: _ => {
+      const versions = /[1]|[1][\.][1]/;
+      return token(versions);
+    },
 
     /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
     namespace: $ => NonBlockStmt('namespace', alias(choice($._rfc3986_uri, $.identifier), $.uri_str)),
@@ -111,6 +115,23 @@ export default grammar({
 
     /** reference-stmt      = reference-keyword sep string optsep stmtend*/
     reference: $ => NonBlockStmt('reference', $.string),
+
+    /** revision-stmts      = *(revision-stmt stmtsep)*/
+    /** revision-stmt       = revision-keyword sep revision-date optsep
+                         (";" /
+                          "{" stmtsep
+                              [description-stmt stmtsep]
+                              [reference-stmt stmtsep]
+                          "}")*/
+    revision: $ => Statement('revision', $.revision_date_str, Block(repeat(choice($.description, $.reference)))),
+
+    /** revision-date       =  date-arg-str*/
+    revision_date_str: $ => $._date_arg_str,
+    _date_arg_str: $ => ArgStr($._date_str),
+    _date_str: _ => {
+      const date_regex = /[1-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/;
+      return token(date_regex);
+    },
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907

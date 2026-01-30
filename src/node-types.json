@@ -99,6 +99,10 @@
           "named": true
         },
         {
+          "type": "revision",
+          "named": true
+        },
+        {
           "type": "yang_version",
           "named": true
         }
@@ -174,6 +178,41 @@
     }
   },
   {
+    "type": "revision",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "revision_date_str",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "revision_date_str",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "string",
     "named": true,
     "fields": {},
@@ -232,6 +271,10 @@
           "named": true
         },
         {
+          "type": "revision",
+          "named": true
+        },
+        {
           "type": "yang_version",
           "named": true
         }
@@ -264,7 +307,7 @@
     "fields": {
       "arg": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "\"",
@@ -272,14 +315,6 @@
           },
           {
             "type": "'",
-            "named": false
-          },
-          {
-            "type": "1",
-            "named": false
-          },
-          {
-            "type": "1.1",
             "named": false
           }
         ]
@@ -300,14 +335,6 @@
   },
   {
     "type": "''",
-    "named": false
-  },
-  {
-    "type": "1",
-    "named": false
-  },
-  {
-    "type": "1.1",
     "named": false
   },
   {
@@ -353,6 +380,10 @@
   },
   {
     "type": "reference",
+    "named": false
+  },
+  {
+    "type": "revision",
     "named": false
   },
   {
