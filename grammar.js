@@ -88,6 +88,9 @@ export default grammar({
     yang_version: $ => NonBlockStmt('yang-version', $._yang_version_arg_str),
     _yang_version_arg_str: $ => ArgStr($._yang_versions),
     _yang_versions: _ => {
+      /**
+       * @todo find a rule to report better error message for invalid versions
+       * @file 003_yang_version.rs */
       const versions = /[1]|[1][\.][1]/;
       return token(versions);
     },

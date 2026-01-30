@@ -4,7 +4,7 @@ mod test_utils;
 fn test_yang_version_number() {
     parse_success_as!(
         r#"
-module empty {
+module test {
     yang-version 1;
 }
     "#,
@@ -15,10 +15,9 @@ module empty {
     (yang_version)))
 "#
     );
-
     parse_success_as!(
         r#"
-module empty {
+module test {
     yang-version 1.1;
 }
     "#,
@@ -35,7 +34,7 @@ module empty {
 fn test_yang_version_string() {
     parse_success_as!(
         r#"
-module empty {
+module test {
     yang-version "1";
 }
     "#,
@@ -46,10 +45,9 @@ module empty {
     (yang_version)))
 "#
     );
-
     parse_success_as!(
         r#"
-module empty {
+module test {
     yang-version '1.1';
 }
     "#,
@@ -63,10 +61,11 @@ module empty {
 }
 
 #[test]
-fn test_yang_version_0() {
+fn test_invalid_yang_version() {
+    // okay, 0 is unexpected
     parse_error_as!(
-        r#"    
-module empty {
+        r#"
+module test {
     yang-version 0;
 }
     "#,
@@ -78,22 +77,69 @@ module empty {
       (UNEXPECTED '0'))))
         "#
     );
-}
-
-#[test]
-fn test_yang_version_2() {
-    parse_error_as!(
-        r#"    
-module empty {
-    yang-version 2;
-}
-    "#,
-        r#"
+    // bigger numbers seems to be "consumed"
+    for i in 2..9 {
+        let code = format!(r#"module test {{ yang-version {}; }}"#, i);
+        parse_error_as!(
+            &code,
+            r#"
 (yang
   (module
     arg: (identifier)
     (ERROR
-      (UNEXPECTED '2'))))
+      (UNEXPECTED ';'))))
         "#
-    );
+        );
+    }
+}
+
+#[test]
+fn test_range_a_to_z_upper() {
+    // upper [A-Z] are reasonable as 0
+    for c in 'A'..'Z' {
+        let code = format!(r#"module test {{ yang-version {}; }}"#, c);
+        let expected_error_sexp = format!(
+            r#"
+(yang
+  (module
+    arg: (identifier)
+    (ERROR
+      (UNEXPECTED '{}'))))
+        "#,
+            c
+        );
+        parse_error_as!(&code, expected_error_sexp);
+    }
+}
+
+#[test]
+fn test_range_a_to_z_lower() {
+    // consume again, so bizarre
+    for c in 'a'..'z' {
+        let code = format!(r#"module test {{ yang-version {}; }}"#, c);
+        let expected_error_sexp = format!(
+            r#"
+(yang
+  (module
+    arg: (identifier)
+    (ERROR
+      (UNEXPECTED '{}'))))
+        "#,
+            match c {// seem to be the first character of all the define rules
+                'b'| // b'elongs-to
+                'c'| // c'ontact
+                'd'| // d'escription
+                'm'| // m'odule
+                'n'| // n'amespace
+                'o'| // o'rganization
+                'p'| // p'refix
+                'r'| // r'evision
+                's'| // s'ubmodule
+                'y'  // y'ang-version
+                    => ';',
+                _ => c,
+            }
+        );
+        parse_error_as!(&code, expected_error_sexp);
+    }
 }
