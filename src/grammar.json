@@ -50,15 +50,11 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "yang_version"
+                "name": "_module_header"
               },
               {
                 "type": "SYMBOL",
-                "name": "prefix"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "namespace"
+                "name": "_meta_stmt"
               }
             ]
           }
@@ -66,6 +62,23 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "_module_header": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "yang_version"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "namespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "prefix"
         }
       ]
     },
@@ -125,11 +138,11 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "yang_version"
+                "name": "_submodule_header"
               },
               {
                 "type": "SYMBOL",
-                "name": "belongs_to"
+                "name": "_meta_stmt"
               }
             ]
           }
@@ -137,6 +150,19 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "_submodule_header": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "yang_version"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "belongs_to"
         }
       ]
     },
@@ -265,6 +291,111 @@
             },
             "named": true,
             "value": "uri_str"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "_meta_stmt": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "organization"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "contact"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "description"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "reference"
+        }
+      ]
+    },
+    "organization": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "organization"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "contact": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "contact"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "description": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "description"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "reference": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "reference"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
           }
         },
         {

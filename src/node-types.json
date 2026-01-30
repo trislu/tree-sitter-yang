@@ -20,6 +20,38 @@
     }
   },
   {
+    "type": "contact",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "description",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "module",
     "named": true,
     "fields": {
@@ -43,11 +75,27 @@
       "required": false,
       "types": [
         {
+          "type": "contact",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        },
+        {
           "type": "namespace",
           "named": true
         },
         {
+          "type": "organization",
+          "named": true
+        },
+        {
           "type": "prefix",
+          "named": true
+        },
+        {
+          "type": "reference",
           "named": true
         },
         {
@@ -67,6 +115,22 @@
         "types": [
           {
             "type": "uri_str",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "organization",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
             "named": true
           }
         ]
@@ -94,6 +158,37 @@
     }
   },
   {
+    "type": "reference",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "submodule",
     "named": true,
     "fields": {
@@ -118,6 +213,22 @@
       "types": [
         {
           "type": "belongs_to",
+          "named": true
+        },
+        {
+          "type": "contact",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "organization",
+          "named": true
+        },
+        {
+          "type": "reference",
           "named": true
         },
         {
@@ -180,7 +291,15 @@
     "named": false
   },
   {
+    "type": "\"\"",
+    "named": false
+  },
+  {
     "type": "'",
+    "named": false
+  },
+  {
+    "type": "''",
     "named": false
   },
   {
@@ -205,6 +324,14 @@
     "extra": true
   },
   {
+    "type": "contact",
+    "named": false
+  },
+  {
+    "type": "description",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -217,7 +344,15 @@
     "named": false
   },
   {
+    "type": "organization",
+    "named": false
+  },
+  {
     "type": "prefix",
+    "named": false
+  },
+  {
+    "type": "reference",
     "named": false
   },
   {

@@ -39,7 +39,13 @@ export default grammar({
                                  body-stmts
                              "}" optsep */
     module: $ => Statement('module', $._identifier_arg_str, $._module_block),
-    _module_block: $ => Block(repeat(choice($.yang_version, $.prefix, $.namespace))),
+    _module_block: $ => Block(repeat(choice($._module_header, $._meta_stmt))),
+
+    /** module-header-stmts = ;; these stmts can appear in any order
+                         [yang-version-stmt stmtsep]
+                          namespace-stmt stmtsep
+                          prefix-stmt stmtsep */
+    _module_header: $ => choice($.yang_version, $.namespace, $.prefix),
 
     /** prefix-stmt         = prefix-keyword sep prefix-arg-str
                          optsep stmtend */
@@ -55,7 +61,16 @@ export default grammar({
                              body-stmts
                          "}" optsep*/
     submodule: $ => Statement('submodule', $._identifier_arg_str, $._submodule_block),
-    _submodule_block: $ => Block(repeat(choice($.yang_version, $.belongs_to))),
+    _submodule_block: $ => Block(repeat(
+      choice(
+        $._submodule_header,
+        $._meta_stmt))),
+
+    /** submodule-header-stmts =
+                         ;; these stmts can appear in any order
+                         [yang-version-stmt stmtsep]
+                          belongs-to-stmt stmtsep */
+    _submodule_header: $ => choice($.yang_version, $.belongs_to),
 
     /** belongs-to-stmt     = belongs-to-keyword sep identifier-arg-str
                          optsep
@@ -75,6 +90,27 @@ export default grammar({
 
     /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
     namespace: $ => NonBlockStmt('namespace', alias(choice($._rfc3986_uri, $.identifier), $.uri_str)),
+
+    /** meta-stmts          = ;; these stmts can appear in any order
+                         [organization-stmt stmtsep]
+                         [contact-stmt stmtsep]
+                         [description-stmt stmtsep]
+                         [reference-stmt stmtsep]*/
+    _meta_stmt: $ => choice($.organization, $.contact, $.description, $.reference),
+
+    /** organization-stmt   = organization-keyword sep string
+                         optsep stmtend*/
+    organization: $ => NonBlockStmt('organization', $.string),
+
+    /** contact-stmt        = contact-keyword sep string optsep stmtend*/
+    contact: $ => NonBlockStmt('contact', $.string),
+
+    /** description-stmt    = description-keyword sep string optsep
+                         stmtend*/
+    description: $ => NonBlockStmt('description', $.string),
+
+    /** reference-stmt      = reference-keyword sep string optsep stmtend*/
+    reference: $ => NonBlockStmt('reference', $.string),
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
@@ -112,26 +148,20 @@ export default grammar({
       choice('n', 't', '"', '\\')
     )),
 
-    _single_quoted_string: $ => seq(
-      '\'',
+    _single_quoted_string: $ => SingleQuoted(
       repeat1(choice(
         $._unescaped_string1,
         $._escape_sequence,
-      ))
-      ,
-      '\'',
-    ),
+      )))
+    ,
 
-    _double_quoted_string: $ => seq(
-      '"',
+    _double_quoted_string: $ => DoubleQuoted(
       repeat1(choice(
         $._unescaped_string2,
         $._escape_sequence,
-      )),
-      '"',
-    ),
+      ))),
 
-    _empty_string: $ => choice('""', "''"),
+    _empty_string: _ => choice('""', "''"),
 
     _quoted_string: $ => choice(
       $._single_quoted_string,
