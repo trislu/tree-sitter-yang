@@ -1,5 +1,39 @@
 [
   {
+    "type": "argument_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "yin_element",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "belongs_to",
     "named": true,
     "fields": {
@@ -9,6 +43,10 @@
         "types": [
           {
             "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
             "named": false
           },
           {
@@ -52,6 +90,52 @@
     }
   },
   {
+    "type": "extension_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "argument_stmt",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "import_stmt",
     "named": true,
     "fields": {
@@ -61,6 +145,10 @@
         "types": [
           {
             "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
             "named": false
           },
           {
@@ -106,6 +194,10 @@
             "named": false
           },
           {
+            "type": "'",
+            "named": false
+          },
+          {
             "type": "identifier",
             "named": true
           }
@@ -144,6 +236,10 @@
             "named": false
           },
           {
+            "type": "'",
+            "named": false
+          },
+          {
             "type": "identifier",
             "named": true
           }
@@ -160,6 +256,10 @@
         },
         {
           "type": "description",
+          "named": true
+        },
+        {
+          "type": "extension_stmt",
           "named": true
         },
         {
@@ -239,6 +339,10 @@
         "types": [
           {
             "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
             "named": false
           },
           {
@@ -328,6 +432,38 @@
     }
   },
   {
+    "type": "status_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "current",
+            "named": false
+          },
+          {
+            "type": "deprecated",
+            "named": false
+          },
+          {
+            "type": "obsolete",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "string",
     "named": true,
     "fields": {},
@@ -352,6 +488,10 @@
         "types": [
           {
             "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
             "named": false
           },
           {
@@ -445,6 +585,34 @@
     }
   },
   {
+    "type": "yin_element",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "false",
+            "named": false
+          },
+          {
+            "type": "true",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -465,6 +633,10 @@
     "named": false
   },
   {
+    "type": "argument",
+    "named": false
+  },
+  {
     "type": "belongs-to",
     "named": false
   },
@@ -478,11 +650,27 @@
     "named": false
   },
   {
+    "type": "current",
+    "named": false
+  },
+  {
     "type": "date_str",
     "named": true
   },
   {
+    "type": "deprecated",
+    "named": false
+  },
+  {
     "type": "description",
+    "named": false
+  },
+  {
+    "type": "extension",
+    "named": false
+  },
+  {
+    "type": "false",
     "named": false
   },
   {
@@ -506,6 +694,10 @@
     "named": false
   },
   {
+    "type": "obsolete",
+    "named": false
+  },
+  {
     "type": "organization",
     "named": false
   },
@@ -526,7 +718,15 @@
     "named": false
   },
   {
+    "type": "status",
+    "named": false
+  },
+  {
     "type": "submodule",
+    "named": false
+  },
+  {
+    "type": "true",
     "named": false
   },
   {
@@ -535,6 +735,10 @@
   },
   {
     "type": "yang-version",
+    "named": false
+  },
+  {
+    "type": "yin-element",
     "named": false
   },
   {

@@ -43,7 +43,8 @@ export default grammar({
       $._module_header,
       $._linkage_stmt,
       $._meta_stmt,
-      $.revision_stmt))),
+      $.revision_stmt,
+      $._body_stmt))),
 
     /** module-header-stmts = ;; these stmts can appear in any order
                          [yang-version-stmt stmtsep]
@@ -166,13 +167,65 @@ export default grammar({
                               [reference-stmt stmtsep]
                           "}")*/
     revision_stmt: $ => Statement('revision', $._date_arg_str, OptionalBlock(repeat(choice($.description, $.reference)))),
-
     /** revision-date       =  date-arg-str*/
     _date_arg_str: $ => ArgStr($.date_str),
     date_str: _ => {
       const date_regex = /[1-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/;
       return token(date_regex);
     },
+
+    /** body-stmts          = *(extension-stmt /
+                           feature-stmt /
+                           identity-stmt /
+                           typedef-stmt /
+                           grouping-stmt /
+                           data-def-stmt /
+                           augment-stmt /
+                           rpc-stmt /
+                           notification-stmt /
+                           deviation-stmt)*/
+    _body_stmt: $ => choice($.extension_stmt),
+
+    /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [argument-stmt]
+                              [status-stmt]
+                              [description-stmt]
+                              [reference-stmt]
+                          "}") stmtsep*/
+    extension_stmt: $ => Statement(
+      'extension',
+      $._identifier_arg_str,
+      OptionalBlock(repeat(choice($.argument_stmt, $.status_stmt, $.description, $.reference)))),
+
+    /** argument-stmt       = argument-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              [yin-element-stmt stmtsep]
+                          "}")*/
+    argument_stmt: $ => Statement('argument', $._identifier_arg_str, OptionalBlock(optional($.yin_element))),
+
+    /** yin-element-stmt    = yin-element-keyword sep yin-element-arg-str
+                         stmtend*/
+    yin_element: $ => NonBlockStmt('yin-element', $._yin_element_arg_str),
+    /** yin-element-arg-str = < a string that matches the rule
+                           yin-element-arg >
+        yin-element-arg     = true-keyword / false-keyword*/
+    _yin_element_arg_str: $ => ArgStr($._boolean),
+
+    /** status-stmt         = status-keyword sep status-arg-str stmtend 
+        status-arg-str      = < a string that matches the rule
+                           status-arg >
+        status-arg          = current-keyword /
+                              obsolete-keyword /
+                              deprecated-keyword
+    */
+    status_stmt: $ => NonBlockStmt('status', $._status_arg_str),
+    _status_arg_str: $ => ArgStr(choice(
+      'current', 'obsolete', 'deprecated'
+    )),
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
@@ -187,7 +240,8 @@ export default grammar({
     _prefix_arg_str: $ => $._identifier_arg_str,
 
     _identifier_arg_str: $ => choice(
-      seq('"', $.identifier, '"'),
+      SingleQuoted($.identifier),
+      DoubleQuoted($.identifier),
       $.identifier
     ),
 
@@ -232,6 +286,8 @@ export default grammar({
     ),
 
     string: $ => choice($._quoted_string, $.identifier),
+
+    _boolean: _ => choice('true', 'false'),
   }
 });
 
