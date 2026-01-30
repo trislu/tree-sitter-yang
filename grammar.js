@@ -25,7 +25,7 @@ export default grammar({
     /**
      * @description Try best to follow the YANG grammar definition
      * @see {@link https://www.rfc-editor.org/rfc/rfc6020#section-12 RFC 6020, Section 12, "YANG ABNF Grammar"}
-     * @see {@link https://www.rfc-editor.org/rfc/rfc7950#section-14 RFC 7950, Section 14, "YANG ABNF Grammar"} 
+     * @see {@link https://www.rfc-editor.org/rfc/rfc7950#section-14 RFC 7950, Section 14, "YANG ABNF Grammar"}
     */
     yang: $ => choice($.module_stmt, $.submodule_stmt),
 
@@ -131,7 +131,7 @@ export default grammar({
                               [description-stmt]
                               [reference-stmt]
                           "}") stmtsep */
-    include_stmt: $ => Statement('include', $._identifier_arg_str, Block(repeat(
+    include_stmt: $ => Statement('include', $._identifier_arg_str, OptionalBlock(repeat(
       choice(
         $.revision_date,
         $.description,
@@ -165,7 +165,7 @@ export default grammar({
                               [description-stmt stmtsep]
                               [reference-stmt stmtsep]
                           "}")*/
-    revision_stmt: $ => Statement('revision', $._date_arg_str, Block(repeat(choice($.description, $.reference)))),
+    revision_stmt: $ => Statement('revision', $._date_arg_str, OptionalBlock(repeat(choice($.description, $.reference)))),
 
     /** revision-date       =  date-arg-str*/
     _date_arg_str: $ => ArgStr($.date_str),
@@ -239,7 +239,7 @@ export default grammar({
  * Creates a single-quoted rule
  *
  * @param {Rule} rule YANG rule
- * @returns {Rule} 
+ * @returns {Rule}
  */
 function SingleQuoted(rule) {
   return seq("'", rule, "'");
@@ -249,7 +249,7 @@ function SingleQuoted(rule) {
  * Creates a double-quoted rule
  *
  * @param {Rule} rule YANG rule
- * @returns {Rule} 
+ * @returns {Rule}
  */
 function DoubleQuoted(rule) {
   return seq('"', rule, '"');
@@ -259,7 +259,7 @@ function DoubleQuoted(rule) {
  * Creates a YANG argument string rule
  *
  * @param {Rule} rule YANG rule
- * @returns {Rule} 
+ * @returns {Rule}
  */
 function ArgStr(rule) {
   return choice(
@@ -270,13 +270,23 @@ function ArgStr(rule) {
 }
 
 /**
- * Creates a YANG statement with 0 arguments. E.g., "input" | "output"
+ * Creates a YANG statement with a block of sub-statements.
  *
  * @param {Rule} rule YANG rule
- * @returns {Rule} 
+ * @returns {Rule}
  */
 function Block(rule) {
   return seq('{', rule, '}');
+}
+
+/**
+ * Creates a YANG statement with 0-1 block of sub-statements.
+ *
+ * @param {Rule} rule YANG rule
+ * @returns {Rule}
+ */
+function OptionalBlock(rule) {
+  return choice(';', Block(rule));
 }
 
 /**

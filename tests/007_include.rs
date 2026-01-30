@@ -2,11 +2,27 @@ mod test_utils;
 
 #[test]
 fn test_include() {
+    // the block can be presence
     parse_success_as!(
         r#"
 module test {
     include alice {
     }
+}
+    "#,
+        r#"
+(yang
+  (module_stmt
+    arg: (identifier)
+    (include_stmt
+      arg: (identifier))))
+"#
+    );
+    // the block can also be omitted
+    parse_success_as!(
+        r#"
+module test {
+    include alice ;
 }
     "#,
         r#"

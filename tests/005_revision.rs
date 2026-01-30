@@ -2,10 +2,26 @@ mod test_utils;
 
 #[test]
 fn test_single_revision() {
+    // the block can be presence
     parse_success_as!(
         r#"
 module rev-test {
     revision 2026-01-30 {}
+}
+    "#,
+        r#"
+(yang
+  (module_stmt
+    arg: (identifier)
+    (revision_stmt
+      arg: (date_str))))
+"#
+    );
+    // the block can be omitted
+    parse_success_as!(
+        r#"
+module rev-test {
+    revision 2026-01-30;
 }
     "#,
         r#"
