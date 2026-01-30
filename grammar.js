@@ -184,7 +184,9 @@ export default grammar({
                            rpc-stmt /
                            notification-stmt /
                            deviation-stmt)*/
-    _body_stmt: $ => choice($.extension_stmt),
+    _body_stmt: $ => choice(
+      $.extension_stmt,
+      $.feature_stmt),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
                          (";" /
@@ -215,7 +217,7 @@ export default grammar({
         yin-element-arg     = true-keyword / false-keyword*/
     _yin_element_arg_str: $ => ArgStr($._boolean),
 
-    /** status-stmt         = status-keyword sep status-arg-str stmtend 
+    /** status-stmt         = status-keyword sep status-arg-str stmtend
         status-arg-str      = < a string that matches the rule
                            status-arg >
         status-arg          = current-keyword /
@@ -226,6 +228,25 @@ export default grammar({
     _status_arg_str: $ => ArgStr(choice(
       'current', 'obsolete', 'deprecated'
     )),
+
+    /** feature-stmt        = feature-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              *(if-feature-stmt stmtsep)
+                              [status-stmt stmtsep]
+                              [description-stmt stmtsep]
+                              [reference-stmt stmtsep]
+                          "}")
+        if-feature-stmt     = if-feature-keyword sep identifier-ref-arg-str
+                         optsep stmtend*/
+    feature_stmt: $ => Statement('feature', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.if_feature_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference)))),
+    if_feature_stmt: $ => NonBlockStmt('if-feature', $._identifier_arg_str),
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907

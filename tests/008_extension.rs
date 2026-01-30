@@ -57,6 +57,7 @@ module test {
         argument "name" {
             yin-element "true";
         }
+        reference "http://c-define.joke";
         status obsolete;
     }
 }
@@ -72,6 +73,8 @@ module test {
       (argument_stmt
         arg: (identifier)
         (yin_element))
+      (reference
+        arg: (string))
       (status_stmt))))
 "#
     );
