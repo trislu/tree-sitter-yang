@@ -11,7 +11,7 @@ pub fn str_to_ast(code: &str) -> Tree {
 
 pub fn ast_to_sexp(tree: &Tree) -> String {
     let sexp = tree_sitter::format_sexp(&tree.root_node().to_sexp(), 0);
-    println!("sexp=\n{}", sexp);
+    println!("--- The formatted s-expreesion ---\n{}", sexp);
     sexp
 }
 
