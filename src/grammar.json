@@ -203,7 +203,7 @@
           "members": [
             {
               "type": "STRING",
-              "value": "\""
+              "value": "'"
             },
             {
               "type": "SYMBOL",
@@ -211,7 +211,7 @@
             },
             {
               "type": "STRING",
-              "value": "\""
+              "value": "'"
             }
           ]
         },
@@ -220,7 +220,7 @@
           "members": [
             {
               "type": "STRING",
-              "value": "'"
+              "value": "\""
             },
             {
               "type": "SYMBOL",
@@ -228,7 +228,7 @@
             },
             {
               "type": "STRING",
-              "value": "'"
+              "value": "\""
             }
           ]
         },
@@ -249,8 +249,22 @@
           "type": "FIELD",
           "name": "arg",
           "content": {
-            "type": "SYMBOL",
-            "name": "string"
+            "type": "ALIAS",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_rfc3986_uri"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                }
+              ]
+            },
+            "named": true,
+            "value": "uri_str"
           }
         },
         {
@@ -515,7 +529,12 @@
   ],
   "conflicts": [],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_rfc3986_uri"
+    }
+  ],
   "inline": [],
   "supertypes": [],
   "reserved": {}

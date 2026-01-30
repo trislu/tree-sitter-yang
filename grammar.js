@@ -15,6 +15,12 @@ export default grammar({
     $.comment,
   ],
 
+  // Define tokens that the external scanner will handle
+  // The order here must match the enum in scanner.c
+  externals: $ => [
+    $._rfc3986_uri,    // 0: for namespace-stmt
+  ],
+
   rules: {
     /**
      * @description Try best to follow the YANG grammar definition
@@ -68,7 +74,7 @@ export default grammar({
     _yang_version_arg_str: $ => ArgStr($._yang_versions),
 
     /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
-    namespace: $ => NonBlockStmt('namespace', $.string),
+    namespace: $ => NonBlockStmt('namespace', alias(choice($._rfc3986_uri, $.identifier), $.uri_str)),
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
@@ -137,7 +143,25 @@ export default grammar({
   }
 });
 
+/**
+ * Creates a single-quoted rule
+ *
+ * @param {Rule} rule YANG rule
+ * @returns {Rule} 
+ */
+function SingleQuoted(rule) {
+  return seq("'", rule, "'");
+}
 
+/**
+ * Creates a double-quoted rule
+ *
+ * @param {Rule} rule YANG rule
+ * @returns {Rule} 
+ */
+function DoubleQuoted(rule) {
+  return seq('"', rule, '"');
+}
 
 /**
  * Creates a YANG argument string rule
@@ -147,8 +171,8 @@ export default grammar({
  */
 function ArgStr(rule) {
   return choice(
-    seq('"', rule, '"'),
-    seq("'", rule, "'"),
+    SingleQuoted(rule),
+    DoubleQuoted(rule),
     rule,
   );
 }

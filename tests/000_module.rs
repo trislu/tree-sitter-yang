@@ -15,6 +15,20 @@ module empty {}
 }
 
 #[test]
+fn test_module_name() {
+    parse_success_as!(
+        r#"
+module "name-can-be-string" {}
+"#,
+        r#"
+(yang
+  (module
+    arg: (identifier)))
+"#
+    );
+}
+
+#[test]
 fn test_module() {
     parse_success_as!(
         r#"
@@ -32,7 +46,7 @@ module foo-me-once {
     (prefix
       arg: (identifier))
     (namespace
-      arg: (string))))
+      arg: (uri_str))))
 "#
     );
 }
