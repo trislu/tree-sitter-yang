@@ -41,6 +41,7 @@ export default grammar({
     module_stmt: $ => Statement('module', $._identifier_arg_str, $._module_block),
     _module_block: $ => Block(repeat(choice(
       $._module_header,
+      $._linkage_stmt,
       $._meta_stmt,
       $.revision_stmt))),
 
@@ -67,6 +68,7 @@ export default grammar({
     _submodule_block: $ => Block(repeat(
       choice(
         $._submodule_header,
+        $._linkage_stmt,
         $._meta_stmt,
         $.revision_stmt))),
 
@@ -86,10 +88,10 @@ export default grammar({
     /** yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
                          optsep stmtend */
     yang_version: $ => NonBlockStmt('yang-version', $._yang_version_arg_str),
-    _yang_version_arg_str: $ => ArgStr($._yang_versions),
-    _yang_versions: _ => {
+    _yang_version_arg_str: $ => ArgStr($._yang_version_val),
+    _yang_version_val: _ => {
       /**
-       * @todo find a rule to report better error message for invalid versions
+       * @todo find a rule to report better error message for invalid version values
        * @file 003_yang_version.rs */
       const versions = /[1]|[1][\.][1]/;
       return token(versions);
@@ -289,7 +291,7 @@ function NonArgStmt(keyword, block) {
 }
 
 /**
- * Creates a YANG statement with no block field. E.g., "namespace" | "prefix"
+ * Creates a YANG statement with empty block field. E.g., "namespace" | "prefix"
  *
  * @param {string} keyword YANG keyword
  * @param {Rule | string} argument argument of the keyword
@@ -299,7 +301,7 @@ function NonBlockStmt(keyword, argument) {
   return seq(
     keyword,
     field('arg', argument),
-    ';'
+    choice(';', seq('{', '}')),
   );
 }
 

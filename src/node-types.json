@@ -52,6 +52,86 @@
     }
   },
   {
+    "type": "import_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "prefix_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "revision_date",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "include_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "revision_date",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "module_stmt",
     "named": true,
     "fields": {
@@ -80,6 +160,14 @@
         },
         {
           "type": "description",
+          "named": true
+        },
+        {
+          "type": "import_stmt",
+          "named": true
+        },
+        {
+          "type": "include_stmt",
           "named": true
         },
         {
@@ -178,6 +266,30 @@
     }
   },
   {
+    "type": "revision_date",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "date_str",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "revision_stmt",
     "named": true,
     "fields": {
@@ -263,6 +375,14 @@
         },
         {
           "type": "description",
+          "named": true
+        },
+        {
+          "type": "import_stmt",
+          "named": true
+        },
+        {
+          "type": "include_stmt",
           "named": true
         },
         {
@@ -370,6 +490,14 @@
     "named": true
   },
   {
+    "type": "import",
+    "named": false
+  },
+  {
+    "type": "include",
+    "named": false
+  },
+  {
     "type": "module",
     "named": false
   },
@@ -391,6 +519,10 @@
   },
   {
     "type": "revision",
+    "named": false
+  },
+  {
+    "type": "revision-date",
     "named": false
   },
   {
