@@ -664,6 +664,7 @@ export default grammar({
       $.leaf_stmt,
       $.leaflist_stmt,
       $.list_stmt,
+      $.choice_stmt,
     ),
 
     /** container-stmt      = container-keyword sep identifier-arg-str optsep
@@ -834,6 +835,73 @@ export default grammar({
       '\t',
       ' ',
     )),
+
+    /** choice-stmt         = choice-keyword sep identifier-arg-str optsep
+                             (";" /
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  [when-stmt]
+                                  *if-feature-stmt
+                                  [default-stmt]
+                                  [config-stmt]
+                                  [mandatory-stmt]
+                                  [status-stmt]
+                                  [description-stmt]
+                                  [reference-stmt]
+                                  *(short-case-stmt / case-stmt)
+                              "}") stmtsep */
+    choice_stmt: $ => Statement('choice', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.default_stmt,
+        $.config_stmt,
+        $.mandatory_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $._short_case_stmt,
+        $.case_stmt,
+      )))
+    ),
+
+    /** short-case-stmt     = choice-stmt /
+                              container-stmt /
+                              leaf-stmt /
+                              leaf-list-stmt /
+                              list-stmt /
+                              anydata-stmt /
+                              anyxml-stmt
+    */
+    _short_case_stmt: $ => choice(
+      $.choice_stmt,
+      $.container_stmt,
+      $.leaf_stmt,
+      $.leaflist_stmt,
+      $.list_stmt,
+    ),
+
+    /** case-stmt           = case-keyword sep identifier-arg-str optsep
+                             (";" /
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  [when-stmt]
+                                  *if-feature-stmt
+                                  [status-stmt]
+                                  [description-stmt]
+                                  [reference-stmt]
+                                  *data-def-stmt
+                              "}") stmtsep */
+    case_stmt: $ => Statement('case', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $._data_def_stmt,
+      )))
+    ),
 
     /** absolute-schema-nodeid = 1*("/" node-identifier)
         descendant-schema-nodeid =
