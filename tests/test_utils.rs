@@ -5,8 +5,7 @@ pub fn str_to_ast(code: &str) -> Tree {
     parser
         .set_language(&tree_sitter_yang::LANGUAGE.into())
         .expect("Error loading Yang parser");
-    let tree = parser.parse(code, None).unwrap();
-    tree
+    parser.parse(code, None).unwrap()
 }
 
 pub fn ast_to_sexp(tree: &Tree) -> String {

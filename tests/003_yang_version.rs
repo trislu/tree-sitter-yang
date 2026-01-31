@@ -98,7 +98,7 @@ module test {
 #[ignore = "this test case is very unstable, so bizarre."]
 fn test_range_a_to_z_upper() {
     // upper [A-Z] are reasonable as 0
-    for c in 'A'..'Z' {
+    for c in 'A'..='Z' {
         let code = format!(r#"module test {{ yang-version {}; }}"#, c);
         let expected_error_sexp = format!(
             r#"
@@ -117,7 +117,7 @@ fn test_range_a_to_z_upper() {
 #[test]
 #[ignore = "this test case is very unstable, so bizarre."]
 fn test_range_a_to_z_lower() {
-    for c in 'a'..'z' {
+    for c in 'a'..='z' {
         let code = format!(r#"module test {{ yang-version {}; }}"#, c);
         let expected_error_sexp = format!(
             r#"
