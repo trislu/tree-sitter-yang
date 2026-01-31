@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-yang
 HOMEPAGE_URL := https://github.com/trislu/tree-sitter-yang
-VERSION := 0.1.0
+VERSION := 0.1.1-beta.1
 
 # repository
 SRC_DIR := src
