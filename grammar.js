@@ -198,6 +198,7 @@ export default grammar({
       $.typedef_stmt,
       $.grouping_stmt,
       $._data_def_stmt,
+      $.augment_stmt,
     ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
@@ -410,7 +411,7 @@ export default grammar({
                               [error-app-tag-stmt stmtsep]
                               [description-stmt stmtsep]
                               [reference-stmt stmtsep]
-                           "}") 
+                           "}")
         ;; Lengths
         length-arg-str      = < a string that matches the rule
                                 length-arg >
@@ -998,7 +999,7 @@ export default grammar({
                                   [max-elements-stmt]
                                   [description-stmt]
                                   [reference-stmt]
-                                "}" stmtsep 
+                                "}" stmtsep
         refine-arg-str      = < a string that matches the rule >
                          < refine-arg >
         refine-arg          = descendant-schema-nodeid
@@ -1048,6 +1049,37 @@ export default grammar({
     ),
     _uses_augment_arg_str: $ => ArgStr($._uses_augment_arg),
     _uses_augment_arg: $ => $._descendant_schema_nodeid,
+
+    /** augment-stmt        = augment-keyword sep augment-arg-str optsep
+                             "{" stmtsep
+                                ;; these stmts can appear in any order
+                                [when-stmt]
+                                *if-feature-stmt
+                                [status-stmt]
+                                [description-stmt]
+                                [reference-stmt]
+                                1*(data-def-stmt / case-stmt /
+                                    action-stmt / notification-stmt)
+                              "}" stmtsep
+
+                              augment-arg-str     = < a string that matches the rule >
+                                                    < augment-arg >
+
+                              augment-arg         = absolute-schema-nodeid
+    */
+    augment_stmt: $ => Statement('augment', $._augment_arg_str,
+      Block(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $._data_def_stmt,
+        $.case_stmt,
+      )))
+    ),
+    _augment_arg_str: $ => ArgStr($._augment_arg),
+    _augment_arg: $ => $._absolute_schema_nodeid,
 
     /** absolute-schema-nodeid = 1*("/" node-identifier)
         descendant-schema-nodeid =
