@@ -1579,6 +1579,14 @@
         {
           "type": "SYMBOL",
           "name": "_leafref_specification"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_identityref_specification"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_instance_identifier_specification"
         }
       ]
     },
@@ -2871,6 +2879,10 @@
         }
       ]
     },
+    "_instance_identifier_specification": {
+      "type": "SYMBOL",
+      "name": "require_instance_stmt"
+    },
     "require_instance_stmt": {
       "type": "SEQ",
       "members": [
@@ -2956,6 +2968,13 @@
     "_require_instance_arg": {
       "type": "SYMBOL",
       "name": "_boolean"
+    },
+    "_identityref_specification": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "base_stmt"
+      }
     },
     "integer_value": {
       "type": "SEQ",

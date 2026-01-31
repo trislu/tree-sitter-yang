@@ -327,6 +327,8 @@ export default grammar({
       $._string_restrictions,
       $._enum_specification,
       $._leafref_specification,
+      $._identityref_specification,
+      $._instance_identifier_specification,
     ),
 
     /** numerical-restrictions = range-stmt stmtsep*/
@@ -487,7 +489,7 @@ export default grammar({
                          ;; these stmts can appear in any order
                          path-stmt
                          [require-instance-stmt]
-                         
+
         path-stmt           = path-keyword sep path-arg-str stmtend
         path-arg-str        = < a string that matches the rule >
                          < path-arg >
@@ -575,9 +577,16 @@ export default grammar({
       repeat($._path_predicate)
     ),
 
+    /** instance-identifier-specification =
+                         [require-instance-stmt] */
+    _instance_identifier_specification: $ =>
+      $.require_instance_stmt, //tree-sitter limitation: optional($.require_instance_stmt) match empty string
     require_instance_stmt: $ => NonBlockStmt('require-instance', $._require_instance_arg_str),
     _require_instance_arg_str: $ => ArgStr($._require_instance_arg),
     _require_instance_arg: $ => $._boolean,
+
+    /** identityref-specification = 1*base-stmt */
+    _identityref_specification: $ => repeat1($.base_stmt),
 
     /** integer-value       = ("-" non-negative-integer-value)  /
                           non-negative-integer-value

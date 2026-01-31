@@ -1151,6 +1151,10 @@
       "required": false,
       "types": [
         {
+          "type": "base_stmt",
+          "named": true
+        },
+        {
           "type": "enum_stmt",
           "named": true
         },
