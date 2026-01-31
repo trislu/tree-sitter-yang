@@ -25,16 +25,16 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Check code formatting
-        run: cargo fmt --check
+        run: cargo fmt --no-default-features --check
 
       - name: Run clippy linter
-        run: cargo clippy --all-targets --all-features -- -D warnings
+        run: cargo clippy --no-default-features --all-targets --all-features -- -D warnings
 
       - name: Build project
         run: cargo build --no-default-features --verbose
 
       - name: Run tests
-        run: cargo test --verbose
+        run: cargo test --no-default-features --verbose
 
   cross-platform-test:
     name: Test on ${{ matrix.os }}
@@ -55,4 +55,4 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Run tests
-        run: cargo test --verbose
+        run: cargo test --no-default-features --verbose
