@@ -186,7 +186,9 @@ export default grammar({
                            deviation-stmt)*/
     _body_stmt: $ => choice(
       $.extension_stmt,
-      $.feature_stmt),
+      $.feature_stmt,
+      $.identity_stmt,
+    ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
                          (";" /
@@ -248,6 +250,26 @@ export default grammar({
         $.reference)))),
     if_feature_stmt: $ => NonBlockStmt('if-feature', $._identifier_arg_str),
 
+    /** identity-stmt       = identity-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [base-stmt stmtsep]
+                              [status-stmt stmtsep]
+                              [description-stmt stmtsep]
+                              [reference-stmt stmtsep]
+                          "}")
+        base-stmt           = base-keyword sep identifier-ref-arg-str
+                         optsep stmtend */
+    identity_stmt: $ => Statement('identity', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.base_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference)))
+    ),
+    base_stmt: $ => NonBlockStmt('base', $._identifier_ref_arg_str),
+
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
     comment: $ => token(choice(
@@ -258,14 +280,18 @@ export default grammar({
         '/')
     )),
 
-    _prefix_arg_str: $ => $._identifier_arg_str,
+    _prefix_arg_str: $ => ArgStr($._prefix_arg),
+    _prefix_arg: $ => $.identifier,
 
-    _identifier_arg_str: $ => choice(
-      SingleQuoted($.identifier),
-      DoubleQuoted($.identifier),
-      $.identifier
-    ),
+    _identifier_ref_arg_str: $ => ArgStr($._identifier_ref_arg),
+    _identifier_ref_arg: $ => seq(
+      optional(seq(
+        alias($._prefix_arg, $.prefix),
+        ':')),
+      $.identifier),
 
+    _identifier_arg_str: $ => ArgStr($._identifier_arg),
+    _identifier_arg: $ => $.identifier,
     identifier: _ => {
       const alpha_underscore = /[a-zA-Z_]/;
       const alphanumeric = /[a-zA-Z0-9-_.]/;

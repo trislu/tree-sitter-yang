@@ -34,6 +34,38 @@
     }
   },
   {
+    "type": "base_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "prefix",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "belongs_to",
     "named": true,
     "fields": {
@@ -168,6 +200,52 @@
         },
         {
           "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "identity_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "base_stmt",
+          "named": true
+        },
+        {
+          "type": "description",
           "named": true
         },
         {
@@ -337,6 +415,10 @@
           "named": true
         },
         {
+          "type": "identity_stmt",
+          "named": true
+        },
+        {
           "type": "import_stmt",
           "named": true
         },
@@ -401,6 +483,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "prefix",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -703,11 +800,19 @@
     "named": false
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
   {
     "type": "argument",
+    "named": false
+  },
+  {
+    "type": "base",
     "named": false
   },
   {
@@ -754,6 +859,10 @@
   {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "identity",
+    "named": false
   },
   {
     "type": "if-feature",
