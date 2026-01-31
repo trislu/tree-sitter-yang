@@ -650,6 +650,7 @@ export default grammar({
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt,
+        $.action_stmt,
       )))
     ),
 
@@ -702,7 +703,8 @@ export default grammar({
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt,
-        // TODO: action-stmt & notification-stmt
+        $.action_stmt,
+        // TODO: notification-stmt
       )))
     ),
 
@@ -811,7 +813,8 @@ export default grammar({
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt, // repeat1?
-        // TODO: action-stmt & notification-stmt
+        $.action_stmt,
+        // TODO: notification-stmt
       )))
     ),
 
@@ -1046,6 +1049,7 @@ export default grammar({
         $.reference,
         $._data_def_stmt,
         $.case_stmt,
+        $.action_stmt,
       )))
     ),
     _uses_augment_arg_str: $ => ArgStr($._uses_augment_arg),
@@ -1077,6 +1081,7 @@ export default grammar({
         $.reference,
         $._data_def_stmt,
         $.case_stmt,
+        $.action_stmt,
       )))
     ),
     _augment_arg_str: $ => ArgStr($._augment_arg),
@@ -1108,6 +1113,32 @@ export default grammar({
       )))
     ),
 
+    /** action-stmt         = action-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              *if-feature-stmt
+                              [status-stmt]
+                              [description-stmt]
+                              [reference-stmt]
+                              *(typedef-stmt / grouping-stmt)
+                              [input-stmt]
+                              [output-stmt]
+                          "}") stmtsep
+    */
+    action_stmt: $ => Statement('action', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.if_feature_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $.typedef_stmt,
+        $.grouping_stmt,
+        $.input_stmt,
+        $.output_stmt,
+      )))
+    ),
+
     /** input-stmt          = input-keyword optsep
                             "{" stmtsep
                                 ;; these stmts can appear in any order
@@ -1115,7 +1146,6 @@ export default grammar({
                                 *(typedef-stmt / grouping-stmt)
                                 1*data-def-stmt
                             "}" stmtsep
-
         output-stmt         = output-keyword optsep
                             "{" stmtsep
                                 ;; these stmts can appear in any order
@@ -1131,7 +1161,6 @@ export default grammar({
         $._data_def_stmt, // repeat1?
       )))
     ),
-
     output_stmt: $ => NonArgStmt('output',
       Block(repeat(choice(
         $.must_stmt,
