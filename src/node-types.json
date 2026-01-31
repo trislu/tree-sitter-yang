@@ -262,6 +262,26 @@
     }
   },
   {
+    "type": "fraction_digits_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "identity_stmt",
     "named": true,
     "fields": {
@@ -425,6 +445,92 @@
     "fields": {}
   },
   {
+    "type": "length_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "..",
+            "named": false
+          },
+          {
+            "type": "0",
+            "named": false
+          },
+          {
+            "type": "max",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          },
+          {
+            "type": "|",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "error_app_tag_stmt",
+          "named": true
+        },
+        {
+          "type": "error_message_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "modifier_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "invert-match",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "module_stmt",
     "named": true,
     "fields": {
@@ -540,6 +646,48 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "pattern_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "error_app_tag_stmt",
+          "named": true
+        },
+        {
+          "type": "error_message_stmt",
+          "named": true
+        },
+        {
+          "type": "modifier_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -866,9 +1014,21 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "fraction_digits_stmt",
+          "named": true
+        },
+        {
+          "type": "length_stmt",
+          "named": true
+        },
+        {
+          "type": "pattern_stmt",
+          "named": true
+        },
         {
           "type": "range_stmt",
           "named": true
@@ -1112,6 +1272,10 @@
     "named": false
   },
   {
+    "type": "fraction-digits",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -1132,11 +1296,23 @@
     "named": false
   },
   {
+    "type": "invert-match",
+    "named": false
+  },
+  {
+    "type": "length",
+    "named": false
+  },
+  {
     "type": "max",
     "named": false
   },
   {
     "type": "min",
+    "named": false
+  },
+  {
+    "type": "modifier",
     "named": false
   },
   {
@@ -1153,6 +1329,10 @@
   },
   {
     "type": "organization",
+    "named": false
+  },
+  {
+    "type": "pattern",
     "named": false
   },
   {

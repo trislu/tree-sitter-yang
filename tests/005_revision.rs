@@ -59,7 +59,7 @@ module rev-test {
 }
 
 #[test]
-#[ignore] // as numeric rules introduced, the "UNEXPECTED" behavior is changed.
+#[ignore = r#"as numeric rules introduced, the "UNEXPECTED" behavior is hard to predict."#]
 fn test_bad_revisions() {
     parse_error_as!(
         r#"

@@ -61,7 +61,7 @@ module test {
 }
 
 #[test]
-#[ignore] // this test case is very unstable, so bizarre.
+#[ignore = "this test case is very unstable, so bizarre."]
 fn test_invalid_yang_version() {
     // okay, 0 is unexpected
     parse_error_as!(
@@ -95,7 +95,7 @@ module test {
 }
 
 #[test]
-#[ignore] // this test case is very unstable, so bizarre.
+#[ignore = "this test case is very unstable, so bizarre."]
 fn test_range_a_to_z_upper() {
     // upper [A-Z] are reasonable as 0
     for c in 'A'..'Z' {
@@ -115,7 +115,7 @@ fn test_range_a_to_z_upper() {
 }
 
 #[test]
-#[ignore] // this test case is very unstable, so bizarre.
+#[ignore = "this test case is very unstable, so bizarre."]
 fn test_range_a_to_z_lower() {
     for c in 'a'..'z' {
         let code = format!(r#"module test {{ yang-version {}; }}"#, c);

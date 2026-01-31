@@ -24,6 +24,10 @@ export default grammar({
     $._rfc3986_uri,    // 0: for namespace-stmt
   ],
 
+  conflicts: $ => [
+    [$._numerical_restrictions, $._decimal64_specification],
+  ],
+
   rules: {
     /**
      * @description Try best to follow the YANG grammar definition
@@ -315,8 +319,13 @@ export default grammar({
                          identityref-specification /
                          instance-identifier-specification /
                          bits-specification /
-                         union-specification*/
-    _type_body_stmts: $ => choice($._numerical_restrictions),
+                         union-specification
+    */
+    _type_body_stmts: $ => choice(
+      $._numerical_restrictions,
+      $._decimal64_specification,
+      $._string_restrictions,
+    ),
 
     /** numerical-restrictions = range-stmt stmtsep*/
     _numerical_restrictions: $ => $.range_stmt,
@@ -337,7 +346,7 @@ export default grammar({
         $.reference
       )))),
 
-    /** error-message-stmt  = error-message-keyword sep string stmtend 
+    /** error-message-stmt  = error-message-keyword sep string stmtend
         error-app-tag-stmt  = error-app-tag-keyword sep string stmtend */
     error_message_stmt: $ => NonBlockStmt('error-message', $.string),
     error_app_tag_stmt: $ => NonBlockStmt('error-app-tag', $.string),
@@ -346,12 +355,103 @@ export default grammar({
         range-part          = range-boundary
                               [optsep ".." optsep range-boundary]
         range-boundary      = min-keyword / max-keyword /
-                              integer-value / decimal-value 
+                              integer-value / decimal-value
     */
     _range_arg_str: $ => ArgStr($._range_arg),
     _range_arg: $ => BarSep1($._range_part),
     _range_part: $ => seq($._range_boundary, optional(seq('..', $._range_boundary))),
     _range_boundary: $ => choice(min_keyword, max_keyword, $.integer_value),
+
+    /** @todo rfc7950
+     * decimal64-specification = ;; these stmts can appear in any order
+                             fraction-digits-stmt
+                             [range-stmt] */
+    _decimal64_specification: $ => choice(
+      seq($.range_stmt, $.fraction_digits_stmt),
+      seq($.fraction_digits_stmt, optional($.range_stmt))
+    ),
+
+    /** fraction-digits-stmt = fraction-digits-keyword sep
+                          fraction-digits-arg-str stmtend */
+    fraction_digits_stmt: $ => NonBlockStmt('fraction-digits', $._fraction_digits_arg_str),
+    _fraction_digits_arg_str: $ => ArgStr($._fraction_digits_arg),
+    _fraction_digits_arg: _ => {
+      const fraction_digits = choice(
+        /[0-9]/,        // 0-9
+        /1[0-8]/        // 10-18
+      );
+      // or just let parser users handle the semantic value check?
+      // const fraction_digits = /[0-9]{1,2}/;
+      return token(fraction_digits);
+    },
+
+    /** string-restrictions = ;; these stmts can appear in any order
+                         [length-stmt stmtsep]
+                         *(pattern-stmt stmtsep) */
+    _string_restrictions: $ => choice(
+      seq($.length_stmt, repeat($.pattern_stmt)),
+      seq(repeat1($.pattern_stmt), $.length_stmt),
+      repeat1($.pattern_stmt)
+    ),
+
+    /** length-stmt         = length-keyword sep length-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [error-message-stmt stmtsep]
+                              [error-app-tag-stmt stmtsep]
+                              [description-stmt stmtsep]
+                              [reference-stmt stmtsep]
+                           "}") 
+        ;; Lengths
+        length-arg-str      = < a string that matches the rule
+                                length-arg >
+        length-arg          = length-part *(optsep "|" optsep length-part)
+        length-part         = length-boundary
+                              [optsep ".." optsep length-boundary]
+        length-boundary     = min-keyword / max-keyword /
+                              non-negative-integer-value */
+    length_stmt: $ => Statement('length', $._length_arg_str,
+      OptionalBlock(repeat(choice(
+        $.error_message_stmt,
+        $.error_app_tag_stmt,
+        $.description,
+        $.reference
+      )))),
+
+    _length_arg_str: $ => ArgStr($._length_arg),
+    _length_arg: $ => BarSep1($._length_part),
+    _length_part: $ => seq($._length_boundary, optional(seq('..', $._length_boundary))),
+    _length_boundary: $ => choice(min_keyword, max_keyword, $._non_negative_integer_value),
+
+    /** pattern-stmt        = pattern-keyword sep string optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [modifier-stmt]
+                              [error-message-stmt stmtsep]
+                              [error-app-tag-stmt stmtsep]
+                              [description-stmt stmtsep]
+                              [reference-stmt stmtsep]
+                           "}")
+    */
+    pattern_stmt: $ => Statement('pattern', $.string,
+      OptionalBlock(repeat(choice(
+        $.modifier_stmt, // rfc7950 only
+        $.error_message_stmt,
+        $.error_app_tag_stmt,
+        $.description,
+        $.reference
+      )))),
+
+    /** @note this is rfc7950 only
+        modifier-stmt       = modifier-keyword sep modifier-arg-str stmtend
+        modifier-arg-str    = < a string that matches the rule >
+                              < modifier-arg >
+        modifier-arg        = invert-match-keyword*/
+    modifier_stmt: $ => NonBlockStmt('modifier', $._modifier_arg_str),
+    _modifier_arg_str: $ => ArgStr($._invert_match_keyword),
+    _invert_match_keyword: _ => 'invert-match',
 
     /** integer-value       = ("-" non-negative-integer-value)  /
                           non-negative-integer-value
