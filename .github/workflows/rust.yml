@@ -65,11 +65,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            any:
+              - 'grammar.js'
+              - 'Cargo.toml'
+              - 'bindings/rust/**'
+              - 'src/**'
+              - 'tests/**'
+
       - name: Set up Rust
+        if: steps.changes.outputs.any == 'true'
         uses: dtolnay/rust-toolchain@stable
 
       - name: Cache cargo dependencies
+        if: steps.changes.outputs.any == 'true'
         uses: Swatinem/rust-cache@v2
 
       - name: Run tests
+        if: steps.changes.outputs.any == 'true'
         run: cargo test --no-default-features --verbose
