@@ -196,6 +196,7 @@ export default grammar({
       $.feature_stmt,
       $.identity_stmt,
       $.typedef_stmt,
+      $.grouping_stmt,
     ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
@@ -625,6 +626,28 @@ export default grammar({
 
     /** union-specification = 1*type-stmt */
     _union_specification: $ => repeat1($.type_stmt),
+
+    /** grouping-stmt       = grouping-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [status-stmt]
+                              [description-stmt]
+                              [reference-stmt]
+                              *(typedef-stmt / grouping-stmt)
+                              *data-def-stmt
+                              *action-stmt
+                              *notification-stmt
+                          "}") stmtsep */
+    grouping_stmt: $ => Statement('grouping', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $.typedef_stmt,
+        $.grouping_stmt,
+      )))
+    ),
 
     /** config-stmt         = config-keyword sep
                          config-arg-str stmtend
