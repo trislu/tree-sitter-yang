@@ -1,18 +1,13 @@
-use std::env;
-
 fn main() {
-    let is_dev_mode = env::var("CARGO_FEATURE_DEV").is_ok();
-    if is_dev_mode {
-        let output = std::process::Command::new("tree-sitter")
-            .arg("generate")
-            .arg("--abi=14")
-            .output()
-            .expect("Failed to execute tree-sitter build command");
+    let output = std::process::Command::new("tree-sitter")
+        .arg("generate")
+        .arg("--abi=14")
+        .output()
+        .expect("Failed to execute tree-sitter build command");
 
-        if !output.status.success() {
-            let error_message = String::from_utf8_lossy(&output.stderr);
-            panic!("Tree-sitter build failed: {error_message}");
-        }
+    if !output.status.success() {
+        let error_message = String::from_utf8_lossy(&output.stderr);
+        panic!("Tree-sitter build failed: {error_message}");
     }
 
     let src_dir = std::path::Path::new("src");

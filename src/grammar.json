@@ -854,6 +854,10 @@
         {
           "type": "SYMBOL",
           "name": "grouping_stmt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_data_def_stmt"
         }
       ]
     },
@@ -1451,8 +1455,56 @@
           "type": "FIELD",
           "name": "arg",
           "content": {
-            "type": "SYMBOL",
-            "name": "string"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "string"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "'"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "integer_value"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "'"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "\""
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "integer_value"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "\""
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "integer_value"
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -3208,6 +3260,156 @@
                       {
                         "type": "SYMBOL",
                         "name": "grouping_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_data_def_stmt"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_data_def_stmt": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "leaf_stmt"
+        }
+      ]
+    },
+    "leaf_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "leaf"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier_arg_str"
+          }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "{"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "when_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "if_feature_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "type_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "units_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "must_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "default_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "config_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "mandatory_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "status_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "description"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "reference"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "}"
+            }
+          ]
+        }
+      ]
+    },
+    "when_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "when"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "{"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "description"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "reference"
                       }
                     ]
                   }

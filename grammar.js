@@ -197,6 +197,7 @@ export default grammar({
       $.identity_stmt,
       $.typedef_stmt,
       $.grouping_stmt,
+      $._data_def_stmt,
     ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
@@ -300,7 +301,7 @@ export default grammar({
       )))),
 
     /** default-stmt        = default-keyword sep string stmtend*/
-    default_stmt: $ => NonBlockStmt('default', $.string),
+    default_stmt: $ => NonBlockStmt('default', choice($.string, ArgStr($.integer_value))),
 
     /** units-stmt          = units-keyword sep string optsep stmtend*/
     units_stmt: $ => NonBlockStmt('units', $.string),
@@ -646,6 +647,64 @@ export default grammar({
         $.reference,
         $.typedef_stmt,
         $.grouping_stmt,
+        $._data_def_stmt,
+      )))
+    ),
+
+    /** data-def-stmt       = container-stmt /
+                              leaf-stmt /
+                              leaf-list-stmt /
+                              list-stmt /
+                              choice-stmt /
+                              anydata-stmt /
+                              anyxml-stmt /
+                              uses-stmt */
+    _data_def_stmt: $ => choice(
+      $.leaf_stmt
+    ),
+
+    /** leaf-stmt           = leaf-keyword sep identifier-arg-str optsep
+                             "{" stmtsep
+                                ;; these stmts can appear in any order
+                                [when-stmt]
+                                *if-feature-stmt
+                                type-stmt
+                                [units-stmt]
+                                *must-stmt
+                                [default-stmt]
+                                [config-stmt]
+                                [mandatory-stmt]
+                                [status-stmt]
+                                [description-stmt]
+                                [reference-stmt]
+                              "}" stmtsep */
+    leaf_stmt: $ => Statement('leaf', $._identifier_arg_str,
+      Block(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.type_stmt,
+        $.units_stmt,
+        $.must_stmt,
+        $.default_stmt,
+        $.config_stmt,
+        $.mandatory_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference
+      )))
+    ),
+
+    /** when-stmt           = when-keyword sep string optsep
+                             (";" /
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  [description-stmt]
+                                  [reference-stmt]
+                              "}") stmtsep */
+    when_stmt: $ => Statement('when', $.string,
+      OptionalBlock(repeat(choice(
+        $.description,
+        $.reference,
       )))
     ),
 
