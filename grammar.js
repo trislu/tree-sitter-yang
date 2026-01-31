@@ -660,8 +660,43 @@ export default grammar({
                               anyxml-stmt /
                               uses-stmt */
     _data_def_stmt: $ => choice(
+      $.container_stmt,
       $.leaf_stmt,
       $.leaflist_stmt,
+    ),
+
+    /** container-stmt      = container-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [when-stmt]
+                              *if-feature-stmt
+                              *must-stmt
+                              [presence-stmt]
+                              [config-stmt]
+                              [status-stmt]
+                              [description-stmt]
+                              [reference-stmt]
+                              *(typedef-stmt / grouping-stmt)
+                              *data-def-stmt
+                              *action-stmt
+                              *notification-stmt
+                          "}") stmtsep */
+    container_stmt: $ => Statement('container', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.must_stmt,
+        $.presence_stmt,
+        $.config_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $.typedef_stmt,
+        $.grouping_stmt,
+        $._data_def_stmt,
+        // TODO: action-stmt & notification-stmt
+      )))
     ),
 
     /** leaf-stmt           = leaf-keyword sep identifier-arg-str optsep
