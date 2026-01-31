@@ -626,6 +626,75 @@ export default grammar({
     /** union-specification = 1*type-stmt */
     _union_specification: $ => repeat1($.type_stmt),
 
+    /** config-stmt         = config-keyword sep
+                         config-arg-str stmtend
+        config-arg-str      = < a string that matches the rule >
+                              < config-arg >
+        config-arg          = true-keyword / false-keyword
+    */
+    config_stmt: $ => NonBlockStmt('config', $._config_arg_str),
+    _config_arg_str: $ => ArgStr($._boolean),
+
+    /** mandatory-stmt      = mandatory-keyword sep
+                         mandatory-arg-str stmtend
+        mandatory-arg-str   = < a string that matches the rule >
+                              < mandatory-arg >
+        mandatory-arg       = true-keyword / false-keyword
+   */
+    mandatory_stmt: $ => NonBlockStmt('mandatory', $._mandatory_arg_str),
+    _mandatory_arg_str: $ => ArgStr($._boolean),
+
+    // presence-stmt       = presence-keyword sep string stmtend
+    presence_stmt: $ => NonBlockStmt('presence', $.string),
+
+    /** ordered-by-stmt     = ordered-by-keyword sep
+                         ordered-by-arg-str stmtend
+        ordered-by-arg-str  = < a string that matches the rule >
+                              < ordered-by-arg >
+        ordered-by-arg      = user-keyword / system-keyword
+    */
+    ordered_by_stmt: $ => NonBlockStmt('ordered-by', $._ordered_by_arg_str),
+    _ordered_by_arg_str: $ => ArgStr($._ordered_by_arg),
+    _ordered_by_arg: _ => choice('user', 'system'),
+
+    /** must-stmt           = must-keyword sep string optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [error-message-stmt]
+                              [error-app-tag-stmt]
+                              [description-stmt]
+                              [reference-stmt]
+                           "}") stmtsep
+    */
+    must_stmt: $ => Statement('must', alias($.string, $.must_expression),
+      OptionalBlock(repeat(choice(
+        $.error_message_stmt,
+        $.error_app_tag_stmt,
+        $.description,
+        $.reference
+      ))),
+    ),
+
+    /** min-elements-stmt   = min-elements-keyword sep
+                               min-value-arg-str stmtend
+        min-value-arg-str   = < a string that matches the rule >
+                              < min-value-arg >
+        min-value-arg       = non-negative-integer-value
+        max-elements-stmt   = max-elements-keyword sep
+                              max-value-arg-str stmtend
+        max-value-arg-str   = < a string that matches the rule >
+                              < max-value-arg >
+        max-value-arg       = unbounded-keyword /
+                              positive-integer-value
+    */
+    min_elements_stmt: $ => NonBlockStmt('min-elements', $._min_value_arg_str),
+    _min_value_arg_str: $ => ArgStr($._min_value_arg),
+    _min_value_arg: $ => $._non_negative_integer_value,
+    max_elements_stmt: $ => NonBlockStmt('max-elements', $._max_value_arg_str),
+    _max_value_arg_str: $ => ArgStr($._max_value_arg),
+    _max_value_arg: $ => $._positive_integer_value,
+
     /** integer-value       = ("-" non-negative-integer-value)  /
                           non-negative-integer-value
         non-negative-integer-value = "0" / positive-integer-value
