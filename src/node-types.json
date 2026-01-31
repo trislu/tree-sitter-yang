@@ -1146,6 +1146,61 @@
     }
   },
   {
+    "type": "input_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "choice_stmt",
+          "named": true
+        },
+        {
+          "type": "container_stmt",
+          "named": true
+        },
+        {
+          "type": "grouping_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "leaflist_stmt",
+          "named": true
+        },
+        {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "typedef_stmt",
+          "named": true
+        },
+        {
+          "type": "uses_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "integer_value",
     "named": true,
     "fields": {}
@@ -1734,6 +1789,10 @@
           "named": true
         },
         {
+          "type": "rpc_stmt",
+          "named": true
+        },
+        {
           "type": "typedef_stmt",
           "named": true
         },
@@ -1874,6 +1933,61 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "output_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "choice_stmt",
+          "named": true
+        },
+        {
+          "type": "container_stmt",
+          "named": true
+        },
+        {
+          "type": "grouping_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "leaflist_stmt",
+          "named": true
+        },
+        {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "typedef_stmt",
+          "named": true
+        },
+        {
+          "type": "uses_stmt",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2282,6 +2396,68 @@
         },
         {
           "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "rpc_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "grouping_stmt",
+          "named": true
+        },
+        {
+          "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "input_stmt",
+          "named": true
+        },
+        {
+          "type": "output_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        },
+        {
+          "type": "typedef_stmt",
           "named": true
         }
       ]
@@ -3072,6 +3248,10 @@
     "named": false
   },
   {
+    "type": "input",
+    "named": false
+  },
+  {
     "type": "invert-match",
     "named": false
   },
@@ -3144,6 +3324,10 @@
     "named": false
   },
   {
+    "type": "output",
+    "named": false
+  },
+  {
     "type": "path",
     "named": false
   },
@@ -3185,6 +3369,10 @@
   },
   {
     "type": "revision-date",
+    "named": false
+  },
+  {
+    "type": "rpc",
     "named": false
   },
   {

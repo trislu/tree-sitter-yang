@@ -199,6 +199,7 @@ export default grammar({
       $.grouping_stmt,
       $._data_def_stmt,
       $.augment_stmt,
+      $.rpc_stmt,
     ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
@@ -1080,6 +1081,65 @@ export default grammar({
     ),
     _augment_arg_str: $ => ArgStr($._augment_arg),
     _augment_arg: $ => $._absolute_schema_nodeid,
+
+    /** rpc-stmt            = rpc-keyword sep identifier-arg-str optsep
+                             (";" /
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  *if-feature-stmt
+                                  [status-stmt]
+                                  [description-stmt]
+                                  [reference-stmt]
+                                  *(typedef-stmt / grouping-stmt)
+                                  [input-stmt]
+                                  [output-stmt]
+                              "}") stmtsep */
+
+    rpc_stmt: $ => Statement('rpc', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.if_feature_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $.typedef_stmt,
+        $.grouping_stmt,
+        $.input_stmt,
+        $.output_stmt,
+      )))
+    ),
+
+    /** input-stmt          = input-keyword optsep
+                            "{" stmtsep
+                                ;; these stmts can appear in any order
+                                *must-stmt
+                                *(typedef-stmt / grouping-stmt)
+                                1*data-def-stmt
+                            "}" stmtsep
+
+        output-stmt         = output-keyword optsep
+                            "{" stmtsep
+                                ;; these stmts can appear in any order
+                                *must-stmt
+                                *(typedef-stmt / grouping-stmt)
+                                1*data-def-stmt
+                            "}" stmtsep */
+    input_stmt: $ => NonArgStmt('input',
+      Block(repeat(choice(
+        $.must_stmt,
+        $.typedef_stmt,
+        $.grouping_stmt,
+        $._data_def_stmt, // repeat1?
+      )))
+    ),
+
+    output_stmt: $ => NonArgStmt('output',
+      Block(repeat(choice(
+        $.must_stmt,
+        $.typedef_stmt,
+        $.grouping_stmt,
+        $._data_def_stmt, // repeat1?
+      )))
+    ),
 
     /** absolute-schema-nodeid = 1*("/" node-identifier)
         descendant-schema-nodeid =

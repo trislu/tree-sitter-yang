@@ -862,6 +862,10 @@
         {
           "type": "SYMBOL",
           "name": "augment_stmt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rpc_stmt"
         }
       ]
     },
@@ -4692,6 +4696,177 @@
     "_augment_arg": {
       "type": "SYMBOL",
       "name": "_absolute_schema_nodeid"
+    },
+    "rpc_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "rpc"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier_arg_str"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "{"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "if_feature_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "status_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "description"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "reference"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "typedef_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "grouping_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "input_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "output_stmt"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "input_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "input"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "{"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "must_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "typedef_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "grouping_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_data_def_stmt"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "}"
+            }
+          ]
+        }
+      ]
+    },
+    "output_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "output"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "{"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "must_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "typedef_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "grouping_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_data_def_stmt"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "}"
+            }
+          ]
+        }
+      ]
     },
     "_absolute_schema_nodeid": {
       "type": "REPEAT1",
