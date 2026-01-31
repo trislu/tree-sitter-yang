@@ -7,6 +7,9 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const min_keyword = 'min';
+const max_keyword = 'max';
+
 export default grammar({
   name: "yang",
 
@@ -283,10 +286,85 @@ export default grammar({
                           "}" stmtsep */
     typedef_stmt: $ => Statement('typedef', $._identifier_arg_str,
       Block(repeat(choice(
+        $.type_stmt,
+        $.units_stmt,
+        $.default_stmt,
         $.status_stmt,
         $.description,
         $.reference
       )))),
+
+    /** default-stmt        = default-keyword sep string stmtend*/
+    default_stmt: $ => NonBlockStmt('default', $.string),
+
+    /** units-stmt          = units-keyword sep string optsep stmtend*/
+    units_stmt: $ => NonBlockStmt('units', $.string),
+
+    /** type-stmt           = type-keyword sep identifier-ref-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              type-body-stmts
+                          "}")*/
+    type_stmt: $ => Statement('type', $._identifier_ref_arg_str, OptionalBlock($._type_body_stmts)),
+
+    /** type-body-stmts     = numerical-restrictions /
+                         decimal64-specification /
+                         string-restrictions /
+                         enum-specification /
+                         leafref-specification /
+                         identityref-specification /
+                         instance-identifier-specification /
+                         bits-specification /
+                         union-specification*/
+    _type_body_stmts: $ => choice($._numerical_restrictions),
+
+    /** numerical-restrictions = range-stmt stmtsep*/
+    _numerical_restrictions: $ => $.range_stmt,
+    /** range-stmt          = range-keyword sep range-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [error-message-stmt stmtsep]
+                              [error-app-tag-stmt stmtsep]
+                              [description-stmt stmtsep]
+                              [reference-stmt stmtsep]
+                           "}")*/
+    range_stmt: $ => Statement('range', $._range_arg_str,
+      OptionalBlock(repeat(choice(
+        $.error_message_stmt,
+        $.error_app_tag_stmt,
+        $.description,
+        $.reference
+      )))),
+
+    /** error-message-stmt  = error-message-keyword sep string stmtend 
+        error-app-tag-stmt  = error-app-tag-keyword sep string stmtend */
+    error_message_stmt: $ => NonBlockStmt('error-message', $.string),
+    error_app_tag_stmt: $ => NonBlockStmt('error-app-tag', $.string),
+
+    /** range-arg           = range-part *(optsep "|" optsep range-part)
+        range-part          = range-boundary
+                              [optsep ".." optsep range-boundary]
+        range-boundary      = min-keyword / max-keyword /
+                              integer-value / decimal-value 
+    */
+    _range_arg_str: $ => ArgStr($._range_arg),
+    _range_arg: $ => BarSep1($._range_part),
+    _range_part: $ => seq($._range_boundary, optional(seq('..', $._range_boundary))),
+    _range_boundary: $ => choice(min_keyword, max_keyword, $.integer_value),
+
+    /** integer-value       = ("-" non-negative-integer-value)  /
+                          non-negative-integer-value
+        non-negative-integer-value = "0" / positive-integer-value
+        positive-integer-value = (non-zero-digit *DIGIT)
+        non-zero-digit      = %x31-39
+        DIGIT               = %x30-39 ; 0-9
+    */
+    integer_value: $ => seq(optional('-'), $._non_negative_integer_value),
+    _non_negative_integer_value: $ => choice('0', $._positive_integer_value),
+    _positive_integer_value: $ => seq($._non_zero_digit, repeat($._DIGIT)),
+    _non_zero_digit: _ => /[1-9]/,
+    _DIGIT: _ => /[0-9]/,
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
@@ -355,6 +433,17 @@ export default grammar({
     _boolean: _ => choice('true', 'false'),
   }
 });
+
+/**
+ * Creates a rule to match one or more of the rules separated by a bar
+ *
+ * @param {Rule} rule
+ *
+ * @returns {SeqRule}
+ */
+function BarSep1(rule) {
+  return seq(rule, repeat(seq('|', rule)));
+}
 
 /**
  * Creates a single-quoted rule

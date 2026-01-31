@@ -106,7 +106,55 @@
     }
   },
   {
+    "type": "default_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "description",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "error_app_tag_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "error_message_stmt",
     "named": true,
     "fields": {
       "arg": {
@@ -372,6 +420,11 @@
     }
   },
   {
+    "type": "integer_value",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "module_stmt",
     "named": true,
     "fields": {
@@ -526,6 +579,68 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "range_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "..",
+            "named": false
+          },
+          {
+            "type": "integer_value",
+            "named": true
+          },
+          {
+            "type": "max",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          },
+          {
+            "type": "|",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "error_app_tag_stmt",
+          "named": true
+        },
+        {
+          "type": "error_message_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -720,6 +835,48 @@
     }
   },
   {
+    "type": "type_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "prefix",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "range_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "typedef_stmt",
     "named": true,
     "fields": {
@@ -747,6 +904,10 @@
       "required": false,
       "types": [
         {
+          "type": "default_stmt",
+          "named": true
+        },
+        {
           "type": "description",
           "named": true
         },
@@ -757,8 +918,32 @@
         {
           "type": "status_stmt",
           "named": true
+        },
+        {
+          "type": "type_stmt",
+          "named": true
+        },
+        {
+          "type": "units_stmt",
+          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "units_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -846,6 +1031,18 @@
     "named": false
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "..",
+    "named": false
+  },
+  {
+    "type": "0",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -883,11 +1080,23 @@
     "named": true
   },
   {
+    "type": "default",
+    "named": false
+  },
+  {
     "type": "deprecated",
     "named": false
   },
   {
     "type": "description",
+    "named": false
+  },
+  {
+    "type": "error-app-tag",
+    "named": false
+  },
+  {
+    "type": "error-message",
     "named": false
   },
   {
@@ -923,6 +1132,14 @@
     "named": false
   },
   {
+    "type": "max",
+    "named": false
+  },
+  {
+    "type": "min",
+    "named": false
+  },
+  {
     "type": "module",
     "named": false
   },
@@ -940,6 +1157,10 @@
   },
   {
     "type": "prefix",
+    "named": false
+  },
+  {
+    "type": "range",
     "named": false
   },
   {
@@ -967,7 +1188,15 @@
     "named": false
   },
   {
+    "type": "type",
+    "named": false
+  },
+  {
     "type": "typedef",
+    "named": false
+  },
+  {
+    "type": "units",
     "named": false
   },
   {
@@ -984,6 +1213,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {
