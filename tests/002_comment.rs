@@ -24,10 +24,10 @@ module test {
 #[test]
 fn test_block_comment() {
     parse_success_as!(
-        r#"        
-/*1*/ 
+        r#"
+/*1*/
 module /*2*/  test /*3*/ {
-    /*4*/ 
+    /*4*/
 }
 /*5*/
 "#,
