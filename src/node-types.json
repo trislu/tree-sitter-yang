@@ -453,6 +453,10 @@
           "named": true
         },
         {
+          "type": "leaflist_stmt",
+          "named": true
+        },
+        {
           "type": "reference",
           "named": true
         },
@@ -705,6 +709,88 @@
     }
   },
   {
+    "type": "leaflist_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "config_stmt",
+          "named": true
+        },
+        {
+          "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "max_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "min_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "ordered_by_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        },
+        {
+          "type": "type_stmt",
+          "named": true
+        },
+        {
+          "type": "units_stmt",
+          "named": true
+        },
+        {
+          "type": "when_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "length_stmt",
     "named": true,
     "fields": {
@@ -788,6 +874,50 @@
           },
           {
             "type": "true",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "max_elements_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "min_elements_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "0",
             "named": false
           }
         ]
@@ -879,6 +1009,10 @@
         },
         {
           "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "leaflist_stmt",
           "named": true
         },
         {
@@ -994,6 +1128,34 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "ordered_by_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "system",
+            "named": false
+          },
+          {
+            "type": "user",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -1886,6 +2048,10 @@
     "named": false
   },
   {
+    "type": "leaf-list",
+    "named": false
+  },
+  {
     "type": "length",
     "named": false
   },
@@ -1898,7 +2064,15 @@
     "named": false
   },
   {
+    "type": "max-elements",
+    "named": false
+  },
+  {
     "type": "min",
+    "named": false
+  },
+  {
+    "type": "min-elements",
     "named": false
   },
   {
@@ -1919,6 +2093,10 @@
   },
   {
     "type": "obsolete",
+    "named": false
+  },
+  {
+    "type": "ordered-by",
     "named": false
   },
   {
@@ -1970,6 +2148,10 @@
     "named": false
   },
   {
+    "type": "system",
+    "named": false
+  },
+  {
     "type": "true",
     "named": false
   },
@@ -1988,6 +2170,10 @@
   {
     "type": "uri_str",
     "named": true
+  },
+  {
+    "type": "user",
+    "named": false
   },
   {
     "type": "value",

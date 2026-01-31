@@ -660,7 +660,8 @@ export default grammar({
                               anyxml-stmt /
                               uses-stmt */
     _data_def_stmt: $ => choice(
-      $.leaf_stmt
+      $.leaf_stmt,
+      $.leaflist_stmt,
     ),
 
     /** leaf-stmt           = leaf-keyword sep identifier-arg-str optsep
@@ -688,6 +689,42 @@ export default grammar({
         $.default_stmt,
         $.config_stmt,
         $.mandatory_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference
+      )))
+    ),
+
+    /** leaf-list-stmt      = leaf-list-keyword sep identifier-arg-str optsep
+                         "{" stmtsep
+                             ;; these stmts can appear in any order
+                             [when-stmt]
+                             *if-feature-stmt
+                             type-stmt stmtsep
+                             [units-stmt]
+                             *must-stmt
+                             *default-stmt
+                             [config-stmt]
+                             [min-elements-stmt]
+                             [max-elements-stmt]
+                             [ordered-by-stmt]
+                             [status-stmt]
+                             [description-stmt]
+                             [reference-stmt]
+                          "}" stmtsep
+    */
+    leaflist_stmt: $ => Statement('leaf-list', $._identifier_arg_str,
+      Block(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.type_stmt,
+        $.units_stmt,
+        $.must_stmt,
+        $.default_stmt,
+        $.config_stmt,
+        $.min_elements_stmt,
+        $.max_elements_stmt,
+        $.ordered_by_stmt,
         $.status_stmt,
         $.description,
         $.reference
