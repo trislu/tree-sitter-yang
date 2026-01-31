@@ -447,6 +447,10 @@
           "named": true
         },
         {
+          "type": "typedef_stmt",
+          "named": true
+        },
+        {
           "type": "yang_version",
           "named": true
         }
@@ -716,6 +720,48 @@
     }
   },
   {
+    "type": "typedef_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "yang",
     "named": true,
     "root": true,
@@ -918,6 +964,10 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "typedef",
     "named": false
   },
   {

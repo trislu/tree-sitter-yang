@@ -170,7 +170,7 @@ export default grammar({
     /** revision-date       =  date-arg-str*/
     _date_arg_str: $ => ArgStr($.date_str),
     date_str: _ => {
-      const date_regex = /[1-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/;
+      const date_regex = /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/;
       return token(date_regex);
     },
 
@@ -188,6 +188,7 @@ export default grammar({
       $.extension_stmt,
       $.feature_stmt,
       $.identity_stmt,
+      $.typedef_stmt,
     ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
@@ -269,6 +270,23 @@ export default grammar({
         $.reference)))
     ),
     base_stmt: $ => NonBlockStmt('base', $._identifier_ref_arg_str),
+
+    /** typedef-stmt        = typedef-keyword sep identifier-arg-str optsep
+                         "{" stmtsep
+                             ;; these stmts can appear in any order
+                             type-stmt
+                             [units-stmt]
+                             [default-stmt]
+                             [status-stmt]
+                             [description-stmt]
+                             [reference-stmt]
+                          "}" stmtsep */
+    typedef_stmt: $ => Statement('typedef', $._identifier_arg_str,
+      Block(repeat(choice(
+        $.status_stmt,
+        $.description,
+        $.reference
+      )))),
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
