@@ -325,6 +325,7 @@ export default grammar({
       $._numerical_restrictions,
       $._decimal64_specification,
       $._string_restrictions,
+      $._enum_specification,
     ),
 
     /** numerical-restrictions = range-stmt stmtsep*/
@@ -452,6 +453,34 @@ export default grammar({
     modifier_stmt: $ => NonBlockStmt('modifier', $._modifier_arg_str),
     _modifier_arg_str: $ => ArgStr($._invert_match_keyword),
     _invert_match_keyword: _ => 'invert-match',
+
+    /** enum-specification  = 1*enum-stmt
+        enum-stmt           = enum-keyword sep string optsep
+                              (";" /
+                                "{" stmtsep
+                                    ;; these stmts can appear in any order
+                                    *if-feature-stmt
+                                    [value-stmt]
+                                    [status-stmt]
+                                    [description-stmt]
+                                    [reference-stmt]
+                                "}") stmtsep */
+    _enum_specification: $ => repeat1($.enum_stmt),
+    enum_stmt: $ => Statement('enum', $._enum_arg_str,
+      OptionalBlock(repeat(choice(
+        $.if_feature_stmt,
+        $.value_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference
+      )))
+    ),
+    _enum_arg_str: $ => $.string,
+    /** value-stmt          = value-keyword sep integer-value-str stmtend
+        integer-value-str   = < a string that matches the rule >
+                              < integer-value >*/
+    value_stmt: $ => NonBlockStmt('value', $._value_arg_str),
+    _value_arg_str: $ => ArgStr($.integer_value),
 
     /** integer-value       = ("-" non-negative-integer-value)  /
                           non-negative-integer-value
