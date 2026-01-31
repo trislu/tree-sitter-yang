@@ -62,6 +62,68 @@
     }
   },
   {
+    "type": "anyxml_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "config_stmt",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "mandatory_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        },
+        {
+          "type": "when_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "argument_stmt",
     "named": true,
     "fields": {
@@ -233,6 +295,10 @@
           "named": true
         },
         {
+          "type": "anyxml_stmt",
+          "named": true
+        },
+        {
           "type": "choice_stmt",
           "named": true
         },
@@ -304,6 +370,10 @@
       "types": [
         {
           "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
           "named": true
         },
         {
@@ -438,6 +508,10 @@
       "types": [
         {
           "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
           "named": true
         },
         {
@@ -762,6 +836,10 @@
       "types": [
         {
           "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
           "named": true
         },
         {
@@ -1260,6 +1338,10 @@
           "named": true
         },
         {
+          "type": "anyxml_stmt",
+          "named": true
+        },
+        {
           "type": "choice_stmt",
           "named": true
         },
@@ -1463,6 +1545,10 @@
       "types": [
         {
           "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
           "named": true
         },
         {
@@ -2514,6 +2600,10 @@
   },
   {
     "type": "anydata",
+    "named": false
+  },
+  {
+    "type": "anyxml",
     "named": false
   },
   {

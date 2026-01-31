@@ -1,29 +1,29 @@
 mod test_utils;
 
 #[test]
-fn test_anydata() {
+fn test_anyxml() {
     parse_success_as!(
         r#"
 module test{
-    anydata data;
+    anyxml data;
 }
     "#,
         r#"
 (yang
   (module_stmt
     arg: (identifier)
-    (anydata_stmt
+    (anyxml_stmt
       arg: (identifier))))
         "#
     );
 }
 
 #[test]
-fn test_anydata_full() {
+fn test_anyxml_full() {
     parse_success_as!(
         r#"
 module test{
-    anydata foo {
+    anyxml foo {
         when "what";
         if-feature xyz;
         must "be";
@@ -31,7 +31,7 @@ module test{
         mandatory true;
         status current;
         description "test full leaf";
-        reference "tests/023_anydata.rs";
+        reference "tests/024_anyxml.rs";
     }
 }
     "#,
@@ -39,7 +39,7 @@ module test{
 (yang
   (module_stmt
     arg: (identifier)
-    (anydata_stmt
+    (anyxml_stmt
       arg: (identifier)
       (when_stmt
         arg: (string))

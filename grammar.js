@@ -666,6 +666,7 @@ export default grammar({
       $.list_stmt,
       $.choice_stmt,
       $.anydata_stmt,
+      $.anyxml_stmt,
     ),
 
     /** container-stmt      = container-keyword sep identifier-arg-str optsep
@@ -881,6 +882,7 @@ export default grammar({
       $.leaflist_stmt,
       $.list_stmt,
       $.anydata_stmt,
+      $.anyxml_stmt,
     ),
 
     /** case-stmt           = case-keyword sep identifier-arg-str optsep
@@ -906,19 +908,45 @@ export default grammar({
     ),
 
     /** anydata-stmt        = anydata-keyword sep identifier-arg-str optsep
-                         (";" /
-                          "{" stmtsep
-                              ;; these stmts can appear in any order
-                              [when-stmt]
-                              *if-feature-stmt
-                              *must-stmt
-                              [config-stmt]
-                              [mandatory-stmt]
-                              [status-stmt]
-                              [description-stmt]
-                              [reference-stmt]
-                           "}") stmtsep */
+                             (";" /
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  [when-stmt]
+                                  *if-feature-stmt
+                                  *must-stmt
+                                  [config-stmt]
+                                  [mandatory-stmt]
+                                  [status-stmt]
+                                  [description-stmt]
+                                  [reference-stmt]
+                              "}") stmtsep */
     anydata_stmt: $ => Statement('anydata', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.must_stmt,
+        $.config_stmt,
+        $.mandatory_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+      )))
+    ),
+
+    /** anyxml-stmt        = anyxml-keyword sep identifier-arg-str optsep
+                           (";" /
+                            "{" stmtsep
+                                ;; these stmts can appear in any order
+                                [when-stmt]
+                                *if-feature-stmt
+                                *must-stmt
+                                [config-stmt]
+                                [mandatory-stmt]
+                                [status-stmt]
+                                [description-stmt]
+                                [reference-stmt]
+                            "}") stmtsep */
+    anyxml_stmt: $ => Statement('anyxml', $._identifier_arg_str,
       OptionalBlock(repeat(choice(
         $.when_stmt,
         $.if_feature_stmt,
