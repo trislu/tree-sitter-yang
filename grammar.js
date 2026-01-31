@@ -667,6 +667,7 @@ export default grammar({
       $.choice_stmt,
       $.anydata_stmt,
       $.anyxml_stmt,
+      $.uses_stmt,
     ),
 
     /** container-stmt      = container-keyword sep identifier-arg-str optsep
@@ -958,6 +959,95 @@ export default grammar({
         $.reference,
       )))
     ),
+
+    /** uses-stmt           = uses-keyword sep identifier-ref-arg-str optsep
+                             (";" /
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  [when-stmt]
+                                  *if-feature-stmt
+                                  [status-stmt]
+                                  [description-stmt]
+                                  [reference-stmt]
+                                  *refine-stmt
+                                  *uses-augment-stmt
+                              "}") stmtsep
+    */
+    uses_stmt: $ => Statement('uses', $._identifier_ref_arg_str,
+      OptionalBlock(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $.refine_stmt,
+        $.uses_augment_stmt,
+      )))
+    ),
+
+    /** refine-stmt         = refine-keyword sep refine-arg-str optsep
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  *if-feature-stmt
+                                  *must-stmt
+                                  [presence-stmt]
+                                  *default-stmt
+                                  [config-stmt]
+                                  [mandatory-stmt]
+                                  [min-elements-stmt]
+                                  [max-elements-stmt]
+                                  [description-stmt]
+                                  [reference-stmt]
+                                "}" stmtsep 
+        refine-arg-str      = < a string that matches the rule >
+                         < refine-arg >
+        refine-arg          = descendant-schema-nodeid
+    */
+    refine_stmt: $ => Statement('refine', $._refine_arg_str,
+      Block(repeat(choice(
+        $.if_feature_stmt,
+        $.must_stmt,
+        $.presence_stmt,
+        $.default_stmt,
+        $.config_stmt,
+        $.mandatory_stmt,
+        $.min_elements_stmt,
+        $.max_elements_stmt,
+        $.description,
+        $.reference,
+      )))
+    ),
+    _refine_arg_str: $ => ArgStr($._refine_arg),
+    _refine_arg: $ => $._descendant_schema_nodeid,
+
+    /** uses-augment-stmt   = augment-keyword sep uses-augment-arg-str optsep
+                             "{" stmtsep
+                                ;; these stmts can appear in any order
+                                [when-stmt]
+                                *if-feature-stmt
+                                [status-stmt]
+                                [description-stmt]
+                                [reference-stmt]
+                                1*(data-def-stmt / case-stmt /
+                                    action-stmt / notification-stmt)
+                              "}" stmtsep
+        uses-augment-arg-str = < a string that matches the rule >
+                                < uses-augment-arg >
+        uses-augment-arg     = descendant-schema-nodeid
+   */
+    uses_augment_stmt: $ => Statement('augment', $._uses_augment_arg_str,
+      Block(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $._data_def_stmt,
+        $.case_stmt,
+      )))
+    ),
+    _uses_augment_arg_str: $ => ArgStr($._uses_augment_arg),
+    _uses_augment_arg: $ => $._descendant_schema_nodeid,
 
     /** absolute-schema-nodeid = 1*("/" node-identifier)
         descendant-schema-nodeid =
