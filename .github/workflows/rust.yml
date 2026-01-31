@@ -20,7 +20,17 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
-
+          
+      - name: Tree-sitter setup
+        # You may pin to the exact commit or the version.
+        # uses: tree-sitter/setup-action@82b255ba7408ae2a2ec3f3a697ec211bff912f2a
+        uses: tree-sitter/setup-action@v1
+        with:
+          # Install the CLI
+          install-cli: # optional, default is true
+          # Install the library
+          install-lib: # optional, default is true
+          
       - name: Cache cargo dependencies
         uses: Swatinem/rust-cache@v2
 
