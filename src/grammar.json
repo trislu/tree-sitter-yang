@@ -1587,6 +1587,14 @@
         {
           "type": "SYMBOL",
           "name": "_instance_identifier_specification"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_bits_specification"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_union_specification"
         }
       ]
     },
@@ -2974,6 +2982,173 @@
       "content": {
         "type": "SYMBOL",
         "name": "base_stmt"
+      }
+    },
+    "_bits_specification": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "bit_stmt"
+      }
+    },
+    "bit_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "bit"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier_arg_str"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "{"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "if_feature_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "position_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "status_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "description"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "reference"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "position_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "position"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_position_value_arg_str"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "{"
+                },
+                {
+                  "type": "STRING",
+                  "value": "}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "_position_value_arg_str": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "'"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_position_value_arg"
+            },
+            {
+              "type": "STRING",
+              "value": "'"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_position_value_arg"
+            },
+            {
+              "type": "STRING",
+              "value": "\""
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_position_value_arg"
+        }
+      ]
+    },
+    "_position_value_arg": {
+      "type": "SYMBOL",
+      "name": "_non_negative_integer_value"
+    },
+    "_union_specification": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "type_stmt"
       }
     },
     "integer_value": {

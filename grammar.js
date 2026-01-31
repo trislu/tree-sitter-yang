@@ -329,6 +329,8 @@ export default grammar({
       $._leafref_specification,
       $._identityref_specification,
       $._instance_identifier_specification,
+      $._bits_specification,
+      $._union_specification,
     ),
 
     /** numerical-restrictions = range-stmt stmtsep*/
@@ -587,6 +589,42 @@ export default grammar({
 
     /** identityref-specification = 1*base-stmt */
     _identityref_specification: $ => repeat1($.base_stmt),
+
+    /** bits-specification  = 1*bit-stmt
+        bit-stmt            = bit-keyword sep identifier-arg-str optsep
+                              (";" /
+                                "{" stmtsep
+                                    ;; these stmts can appear in any order
+                                    *if-feature-stmt
+                                    [position-stmt]
+                                    [status-stmt]
+                                    [description-stmt]
+                                    [reference-stmt]
+                                "}") stmtsep
+        position-stmt       = position-keyword sep
+                              position-value-arg-str stmtend
+        position-value-arg-str = < a string that matches the rule >
+                                  < position-value-arg >
+        position-value-arg  = non-negative-integer-value
+    */
+    _bits_specification: $ => repeat1($.bit_stmt),
+    bit_stmt: $ => Statement(
+      'bit',
+      $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.if_feature_stmt,
+        $.position_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference
+      )))
+    ),
+    position_stmt: $ => NonBlockStmt('position', $._position_value_arg_str),
+    _position_value_arg_str: $ => ArgStr($._position_value_arg),
+    _position_value_arg: $ => $._non_negative_integer_value,
+
+    /** union-specification = 1*type-stmt */
+    _union_specification: $ => repeat1($.type_stmt),
 
     /** integer-value       = ("-" non-negative-integer-value)  /
                           non-negative-integer-value

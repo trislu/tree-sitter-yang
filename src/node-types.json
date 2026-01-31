@@ -90,6 +90,56 @@
     }
   },
   {
+    "type": "bit_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "position_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "contact",
     "named": true,
     "fields": {
@@ -796,6 +846,30 @@
     }
   },
   {
+    "type": "position_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "0",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "prefix",
     "named": true,
     "fields": {},
@@ -1155,6 +1229,10 @@
           "named": true
         },
         {
+          "type": "bit_stmt",
+          "named": true
+        },
+        {
           "type": "enum_stmt",
           "named": true
         },
@@ -1180,6 +1258,10 @@
         },
         {
           "type": "require_instance_stmt",
+          "named": true
+        },
+        {
+          "type": "type_stmt",
           "named": true
         }
       ]
@@ -1416,6 +1498,10 @@
     "named": false
   },
   {
+    "type": "bit",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
@@ -1538,6 +1624,10 @@
   },
   {
     "type": "pattern",
+    "named": false
+  },
+  {
+    "type": "position",
     "named": false
   },
   {
