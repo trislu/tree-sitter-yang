@@ -16,24 +16,41 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            any:
+              - 'grammar.js'
+              - 'Cargo.toml'
+              - 'bindings/rust/**'
+              - 'src/**'
+              - 'tests/**'
+
       - name: Set up Rust
+        if: steps.changes.outputs.any == 'true'
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
-          
+
       - name: Cache cargo dependencies
+        if: steps.changes.outputs.any == 'true'
         uses: Swatinem/rust-cache@v2
 
       - name: Check code formatting
+        if: steps.changes.outputs.any == 'true'
         run: cargo fmt --check
 
       - name: Run clippy linter
+        if: steps.changes.outputs.any == 'true'
         run: cargo clippy --no-default-features --all-targets --all-features -- -D warnings
 
       - name: Build project
+        if: steps.changes.outputs.any == 'true'
         run: cargo build --no-default-features --verbose
 
       - name: Run tests
+        if: steps.changes.outputs.any == 'true'
         run: cargo test --no-default-features --verbose
 
   cross-platform-test:
