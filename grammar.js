@@ -665,6 +665,7 @@ export default grammar({
       $.leaflist_stmt,
       $.list_stmt,
       $.choice_stmt,
+      $.anydata_stmt,
     ),
 
     /** container-stmt      = container-keyword sep identifier-arg-str optsep
@@ -879,6 +880,7 @@ export default grammar({
       $.leaf_stmt,
       $.leaflist_stmt,
       $.list_stmt,
+      $.anydata_stmt,
     ),
 
     /** case-stmt           = case-keyword sep identifier-arg-str optsep
@@ -900,6 +902,32 @@ export default grammar({
         $.description,
         $.reference,
         $._data_def_stmt,
+      )))
+    ),
+
+    /** anydata-stmt        = anydata-keyword sep identifier-arg-str optsep
+                         (";" /
+                          "{" stmtsep
+                              ;; these stmts can appear in any order
+                              [when-stmt]
+                              *if-feature-stmt
+                              *must-stmt
+                              [config-stmt]
+                              [mandatory-stmt]
+                              [status-stmt]
+                              [description-stmt]
+                              [reference-stmt]
+                           "}") stmtsep */
+    anydata_stmt: $ => Statement('anydata', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.must_stmt,
+        $.config_stmt,
+        $.mandatory_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
       )))
     ),
 
