@@ -37,9 +37,10 @@ module test{
         config true;
         min-elements 2;
         max-elements 100;
+        ordered-by system;
         status current;
-        description "test full leaf";
-        reference "tests/018_leaf.rs";
+        description "test full leaf-list";
+        reference "tests/019_leaf_list.rs";
     }
 }
     "#,
@@ -64,6 +65,7 @@ module test{
       (config_stmt)
       (min_elements_stmt)
       (max_elements_stmt)
+      (ordered_by_stmt)
       (status_stmt)
       (description
         arg: (string))

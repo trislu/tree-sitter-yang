@@ -663,6 +663,7 @@ export default grammar({
       $.container_stmt,
       $.leaf_stmt,
       $.leaflist_stmt,
+      $.list_stmt,
     ),
 
     /** container-stmt      = container-keyword sep identifier-arg-str optsep
@@ -765,6 +766,82 @@ export default grammar({
         $.reference
       )))
     ),
+
+    /** list-stmt           = list-keyword sep identifier-arg-str optsep
+                             "{" stmtsep
+                                ;; these stmts can appear in any order
+                                [when-stmt]
+                                *if-feature-stmt
+                                *must-stmt
+                                [key-stmt]
+                                *unique-stmt
+                                [config-stmt]
+                                [min-elements-stmt]
+                                [max-elements-stmt]
+                                [ordered-by-stmt]
+                                [status-stmt]
+                                [description-stmt]
+                                [reference-stmt]
+                                *(typedef-stmt / grouping-stmt)
+                                1*data-def-stmt
+                                *action-stmt
+                                *notification-stmt
+                              "}" stmtsep
+    */
+    list_stmt: $ => Statement('list', $._identifier_arg_str,
+      Block(repeat(choice(
+        $.when_stmt,
+        $.if_feature_stmt,
+        $.must_stmt,
+        $.key_stmt,
+        $.unique_stmt,
+        $.config_stmt,
+        $.min_elements_stmt,
+        $.max_elements_stmt,
+        $.ordered_by_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $.typedef_stmt,
+        $.grouping_stmt,
+        $._data_def_stmt, // repeat1?
+        // TODO: action-stmt & notification-stmt
+      )))
+    ),
+
+    /** key-stmt            = key-keyword sep key-arg-str stmtend
+        key-arg-str         = < a string that matches the rule >
+                              < key-arg >
+        key-arg             = node-identifier *(sep node-identifier)
+    */
+    key_stmt: $ => NonBlockStmt('key', $._key_arg_str),
+    _key_arg_str: $ => ArgStr($._key_arg),
+    _key_arg: $ => seq($.node_identifier, repeat(seq($._sep, $.node_identifier))),
+
+    /** unique-stmt         = unique-keyword sep unique-arg-str stmtend
+        unique-arg-str      = < a string that matches the rule >
+                              < unique-arg >
+        unique-arg          = descendant-schema-nodeid
+                              *(sep descendant-schema-nodeid)
+    */
+    unique_stmt: $ => NonBlockStmt('unique', $._unique_arg_str),
+    _unique_arg_str: $ => ArgStr($._unique_arg),
+    _unique_arg: $ => seq($._descendant_schema_nodeid, repeat(seq($._sep, $._descendant_schema_nodeid))),
+
+    _sep: _ => repeat1(choice(
+      '\r\n',
+      '\n',
+      '\t',
+      ' ',
+    )),
+
+    /** absolute-schema-nodeid = 1*("/" node-identifier)
+        descendant-schema-nodeid =
+                         node-identifier
+                         [absolute-schema-nodeid]
+    */
+    _absolute_schema_nodeid: $ => repeat1(seq("/", $.node_identifier)),
+    _descendant_schema_nodeid: $ => seq($.node_identifier, $._absolute_schema_nodeid),
 
     /** when-stmt           = when-keyword sep string optsep
                              (";" /

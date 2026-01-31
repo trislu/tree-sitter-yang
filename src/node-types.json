@@ -239,6 +239,10 @@
           "named": true
         },
         {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
           "type": "must_stmt",
           "named": true
         },
@@ -543,6 +547,10 @@
           "named": true
         },
         {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
           "type": "reference",
           "named": true
         },
@@ -719,6 +727,46 @@
     "type": "integer_value",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "key_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\t",
+            "named": false
+          },
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": "\r\n",
+            "named": false
+          },
+          {
+            "type": " ",
+            "named": false
+          },
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "node_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "leaf_stmt",
@@ -939,6 +987,108 @@
     }
   },
   {
+    "type": "list_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "config_stmt",
+          "named": true
+        },
+        {
+          "type": "container_stmt",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "grouping_stmt",
+          "named": true
+        },
+        {
+          "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "key_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "leaflist_stmt",
+          "named": true
+        },
+        {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "max_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "min_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "ordered_by_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        },
+        {
+          "type": "typedef_stmt",
+          "named": true
+        },
+        {
+          "type": "unique_stmt",
+          "named": true
+        },
+        {
+          "type": "when_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "mandatory_stmt",
     "named": true,
     "fields": {
@@ -1103,6 +1253,10 @@
         },
         {
           "type": "leaflist_stmt",
+          "named": true
+        },
+        {
+          "type": "list_stmt",
           "named": true
         },
         {
@@ -1847,6 +2001,50 @@
     }
   },
   {
+    "type": "unique_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\t",
+            "named": false
+          },
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": "\r\n",
+            "named": false
+          },
+          {
+            "type": " ",
+            "named": false
+          },
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "/",
+            "named": false
+          },
+          {
+            "type": "node_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "units_stmt",
     "named": true,
     "fields": {
@@ -1983,6 +2181,22 @@
         ]
       }
     }
+  },
+  {
+    "type": "\t",
+    "named": false
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "\r\n",
+    "named": false
+  },
+  {
+    "type": " ",
+    "named": false
   },
   {
     "type": "\"",
@@ -2154,6 +2368,10 @@
     "named": false
   },
   {
+    "type": "key",
+    "named": false
+  },
+  {
     "type": "leaf",
     "named": false
   },
@@ -2163,6 +2381,10 @@
   },
   {
     "type": "length",
+    "named": false
+  },
+  {
+    "type": "list",
     "named": false
   },
   {
@@ -2275,6 +2497,10 @@
   },
   {
     "type": "typedef",
+    "named": false
+  },
+  {
+    "type": "unique",
     "named": false
   },
   {
