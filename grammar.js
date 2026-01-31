@@ -326,6 +326,7 @@ export default grammar({
       $._decimal64_specification,
       $._string_restrictions,
       $._enum_specification,
+      $._leafref_specification,
     ),
 
     /** numerical-restrictions = range-stmt stmtsep*/
@@ -481,6 +482,102 @@ export default grammar({
                               < integer-value >*/
     value_stmt: $ => NonBlockStmt('value', $._value_arg_str),
     _value_arg_str: $ => ArgStr($.integer_value),
+
+    /** leafref-specification =
+                         ;; these stmts can appear in any order
+                         path-stmt
+                         [require-instance-stmt]
+                         
+        path-stmt           = path-keyword sep path-arg-str stmtend
+        path-arg-str        = < a string that matches the rule >
+                         < path-arg >
+
+        path-arg            = absolute-path / relative-path
+
+        absolute-path       = 1*("/" (node-identifier *path-predicate))
+
+        relative-path       = 1*("../") descendant-path
+
+        descendant-path     = node-identifier
+                              [*path-predicate absolute-path]
+
+        path-predicate      = "[" *WSP path-equality-expr *WSP "]"
+
+        path-equality-expr  = node-identifier *WSP "=" *WSP path-key-expr
+
+        path-key-expr       = current-function-invocation *WSP "/" *WSP
+                              rel-path-keyexpr
+        require-instance-stmt = require-instance-keyword sep
+                                  require-instance-arg-str stmtend
+
+        require-instance-arg-str = < a string that matches the rule >
+                                    < require-instance-arg >
+
+        require-instance-arg = true-keyword / false-keyword */
+    _leafref_specification: $ => choice(
+      seq($.path_stmt, optional($.require_instance_stmt)),
+      seq($.require_instance_stmt, $.path_stmt)
+    ),
+
+    path_stmt: $ => NonBlockStmt('path', $._path_arg_str),
+    _path_arg_str: $ => ArgStr($._path_arg),
+    _path_arg: $ => choice($._absolute_path, $._relative_path),
+
+    _absolute_path: $ => repeat1(seq(
+      '/',
+      seq($.node_identifier, repeat($._path_predicate))
+    )),
+
+    node_identifier: $ => seq(
+      $.identifier,
+      optional(seq(':', $.identifier))
+    ),
+
+    _relative_path: $ => seq(
+      repeat1('../'),
+      $._descendant_path
+    ),
+    _descendant_path: $ => seq(
+      $.node_identifier,
+      optional(seq(
+        repeat($._path_predicate),
+        $._absolute_path
+      ))
+    ),
+
+    _path_predicate: $ => seq(
+      '[',
+      repeat(/\s+/),
+      $._path_equality_expr,
+      repeat(/\s+/),
+      ']'
+    ),
+
+    _path_equality_expr: $ => seq(
+      $.node_identifier,
+      repeat(/\s+/),
+      '=',
+      repeat(/\s+/),
+      $._path_key_expr
+    ),
+
+    _path_key_expr: $ => seq(
+      $._current_function_invocation,
+      repeat(/\s+/),
+      '/',
+      repeat(/\s+/),
+      $._rel_path_keyexpr
+    ),
+
+    _current_function_invocation: _ => token('current()'),
+    _rel_path_keyexpr: $ => seq(
+      $.node_identifier,
+      repeat($._path_predicate)
+    ),
+
+    require_instance_stmt: $ => NonBlockStmt('require-instance', $._require_instance_arg_str),
+    _require_instance_arg_str: $ => ArgStr($._require_instance_arg),
+    _require_instance_arg: $ => $._boolean,
 
     /** integer-value       = ("-" non-negative-integer-value)  /
                           non-negative-integer-value

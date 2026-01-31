@@ -675,6 +675,21 @@
     }
   },
   {
+    "type": "node_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "organization",
     "named": true,
     "fields": {
@@ -684,6 +699,54 @@
         "types": [
           {
             "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "path_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "../",
+            "named": false
+          },
+          {
+            "type": "/",
+            "named": false
+          },
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "current()",
+            "named": false
+          },
+          {
+            "type": "node_identifier",
             "named": true
           }
         ]
@@ -844,6 +907,34 @@
           {
             "type": "string",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "require_instance_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "false",
+            "named": false
+          },
+          {
+            "type": "true",
+            "named": false
           }
         ]
       }
@@ -1072,11 +1163,19 @@
           "named": true
         },
         {
+          "type": "path_stmt",
+          "named": true
+        },
+        {
           "type": "pattern_stmt",
           "named": true
         },
         {
           "type": "range_stmt",
+          "named": true
+        },
+        {
+          "type": "require_instance_stmt",
           "named": true
         }
       ]
@@ -1269,6 +1368,14 @@
     "named": false
   },
   {
+    "type": "../",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": "0",
     "named": false
   },
@@ -1278,6 +1385,18 @@
   },
   {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
@@ -1303,6 +1422,10 @@
   },
   {
     "type": "current",
+    "named": false
+  },
+  {
+    "type": "current()",
     "named": false
   },
   {
@@ -1406,6 +1529,10 @@
     "named": false
   },
   {
+    "type": "path",
+    "named": false
+  },
+  {
     "type": "pattern",
     "named": false
   },
@@ -1419,6 +1546,10 @@
   },
   {
     "type": "reference",
+    "named": false
+  },
+  {
+    "type": "require-instance",
     "named": false
   },
   {
