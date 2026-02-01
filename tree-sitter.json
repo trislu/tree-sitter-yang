@@ -14,7 +14,7 @@
     }
   ],
   "metadata": {
-    "version": "0.1.1-beta.1",
+    "version": "0.1.1-beta.2",
     "license": "MIT",
     "description": "Yang grammar for tree-sitter",
     "authors": [
