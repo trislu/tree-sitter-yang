@@ -5,12 +5,14 @@ on:
     tags:
       - "*"
 
+permissions:
+  contents: write
+  pull-requests: read
+
 jobs:
   publish:
     name: Publish to crates.io
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: ryohidaka/action-cargo-publish@v0.1.0
         with:
