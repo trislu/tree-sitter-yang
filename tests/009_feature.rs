@@ -37,6 +37,7 @@ module test {
     feature foo {
         if-feature x;
         if-feature y{}
+        if-feature xy:z{}
         description
             "just a simple foo feature";
         status current;
@@ -58,6 +59,10 @@ module test {
       (if_feature_stmt
         arg: (identifier))
       (if_feature_stmt
+        arg: (identifier))
+      (if_feature_stmt
+        arg: (prefix
+          (identifier))
         arg: (identifier))
       (description
         arg: (string))

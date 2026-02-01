@@ -267,7 +267,7 @@ export default grammar({
         $.status_stmt,
         $.description,
         $.reference)))),
-    if_feature_stmt: $ => NonBlockStmt('if-feature', $._identifier_arg_str),
+    if_feature_stmt: $ => NonBlockStmt('if-feature', $._identifier_ref_arg_str),
 
     /** identity-stmt       = identity-keyword sep identifier-arg-str optsep
                          (";" /

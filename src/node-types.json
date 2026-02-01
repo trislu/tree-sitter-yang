@@ -1384,7 +1384,15 @@
             "named": false
           },
           {
+            "type": ":",
+            "named": false
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "prefix",
             "named": true
           }
         ]

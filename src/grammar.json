@@ -1269,7 +1269,7 @@
           "name": "arg",
           "content": {
             "type": "SYMBOL",
-            "name": "_identifier_arg_str"
+            "name": "_identifier_ref_arg_str"
           }
         },
         {
