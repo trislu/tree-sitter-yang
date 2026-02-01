@@ -104,14 +104,14 @@ module rev-test {
     (revision_stmt
       arg: (date_str)
       (description
-        arg: (string))
+        arg: (qstring))
       (reference
         arg: (string
           (identifier))))
     (revision_stmt
       arg: (date_str)
       (description
-        arg: (string))
+        arg: (qstring))
       (reference
         arg: (string)))))
 "#

@@ -30,7 +30,7 @@ module test{
           arg: (identifier))
         (status_stmt)
         (description
-          arg: (string))
+          arg: (qstring))
         (reference
           arg: (string))))))
         "#
@@ -86,7 +86,7 @@ module test{
           (min_elements_stmt)
           (max_elements_stmt)
           (description
-            arg: (string))
+            arg: (qstring))
           (reference
             arg: (string)))))))
         "#
@@ -141,7 +141,7 @@ module test{
             arg: (identifier))
           (status_stmt)
           (description
-            arg: (string))
+            arg: (qstring))
           (reference
             arg: (string))
           (container_stmt

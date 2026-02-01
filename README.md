@@ -1,6 +1,6 @@
 # `tree-sitter-yang`
 
-![Rust CI](https://github.com/trislu/tree-sitter-yang/actions/workflows/rust.yml/badge.svg)
+![Rust CI](https://github.com/trislu/tree-sitter-yang/actions/workflows/rust.yml/badge.svg) [![Cargo Publish](https://github.com/trislu/tree-sitter-yang/actions/workflows/publish.yml/badge.svg)](https://github.com/trislu/tree-sitter-yang/actions/workflows/publish.yml)
 
 ## Introduction
 

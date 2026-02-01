@@ -79,13 +79,13 @@ module tree-sitter {
       (revision_date
         arg: (date_str))
       (description
-        arg: (string))
+        arg: (qstring))
       (reference
         arg: (string)))
     (extension_stmt
       arg: (identifier)
       (description
-        arg: (string))
+        arg: (qstring))
       (argument_stmt
         arg: (identifier)
         (yin_element))

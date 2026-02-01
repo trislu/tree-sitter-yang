@@ -49,7 +49,7 @@ module test {
       (revision_date
         arg: (date_str))
       (description
-        arg: (string))
+        arg: (qstring))
       (reference
         arg: (string)))))
 "#

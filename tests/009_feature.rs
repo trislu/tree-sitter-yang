@@ -65,7 +65,7 @@ module test {
           (identifier))
         arg: (identifier))
       (description
-        arg: (string))
+        arg: (qstring))
       (status_stmt)
       (reference
         arg: (string)))))

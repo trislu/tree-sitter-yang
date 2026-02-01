@@ -31,6 +31,9 @@ export default grammar({
 
   conflicts: $ => [
     [$._numerical_restrictions, $._decimal64_specification],
+    [$.unknown_stmt],
+    [$._key_arg],     // maybe we should force key-arg-str to be quoted
+    [$._unique_arg],  // maybe we should force unique-arg-str to be quoted
   ],
 
   rules: {
@@ -50,19 +53,26 @@ export default grammar({
                                  revision-stmts
                                  body-stmts
                              "}" optsep */
-    module_stmt: $ => Statement('module', $._identifier_arg_str, $._module_block),
-    _module_block: $ => Block(repeat(choice(
-      $._module_header,
-      $._linkage_stmt,
-      $._meta_stmt,
-      $.revision_stmt,
-      $._body_stmt))),
+    module_stmt: $ => Statement('module', $._identifier_arg_str,
+      Block(
+        repeat(choice(
+          $._module_header,
+          $._linkage_stmt,
+          $._meta_stmt,
+          $.revision_stmt,
+          $._body_stmt))),
+      false,
+    ),
 
     /** module-header-stmts = ;; these stmts can appear in any order
                          [yang-version-stmt stmtsep]
                           namespace-stmt stmtsep
                           prefix-stmt stmtsep */
-    _module_header: $ => choice($.yang_version, $.namespace_stmt, $.prefix_stmt),
+    _module_header: $ => choice(
+      $.yang_version,
+      $.namespace_stmt,
+      $.prefix_stmt
+    ),
 
     /** prefix-stmt         = prefix-keyword sep prefix-arg-str
                          optsep stmtend */
@@ -77,13 +87,17 @@ export default grammar({
                              revision-stmts
                              body-stmts
                          "}" optsep*/
-    submodule_stmt: $ => Statement('submodule', $._identifier_arg_str, $._submodule_block),
-    _submodule_block: $ => Block(repeat(
-      choice(
-        $._submodule_header,
-        $._linkage_stmt,
-        $._meta_stmt,
-        $.revision_stmt))),
+    submodule_stmt: $ => Statement('submodule', $._identifier_arg_str,
+      Block(
+        repeat(
+          choice(
+            $._submodule_header,
+            $._linkage_stmt,
+            $._meta_stmt,
+            $.revision_stmt)),
+      ),
+      false,
+    ),
 
     /** submodule-header-stmts =
                          ;; these stmts can appear in any order
@@ -166,7 +180,11 @@ export default grammar({
 
     /** description-stmt    = description-keyword sep string optsep
                          stmtend*/
-    description: $ => NonBlockStmt('description', $.string),
+    /**
+     * @note forcing the argument of description statement to be a quoted-string
+     * @todo let external scanners handle this specific case.
+     */
+    description: $ => NonBlockStmt('description', alias($._quoted_string, $.qstring)),
 
     /** reference-stmt      = reference-keyword sep string optsep stmtend*/
     reference: $ => NonBlockStmt('reference', $.string),
@@ -1216,7 +1234,7 @@ export default grammar({
                                     1*(deviate-add-stmt /
                                         deviate-replace-stmt /
                                         deviate-delete-stmt))
-                              "}" stmtsep 
+                              "}" stmtsep
         deviation-arg-str   = < a string that matches the rule >
                               < deviation-arg >
         deviation-arg       = absolute-schema-nodeid */
@@ -1311,6 +1329,26 @@ export default grammar({
       )))
     ),
     _replace_keyword_str: _ => ArgStr(token(replace_keyword)),
+
+    /**
+      ;; represents the usage of an extension
+      unknown-statement   = prefix ":" identifier [sep string] optsep
+                            (";" /
+                              "{" optsep
+                                  *((yang-stmt / unknown-statement) optsep)
+                              "}") stmtsep
+     */
+    unknown_stmt: $ => seq(
+      alias($._prefix_arg, $.prefix), ':', $.identifier,
+      optional(seq(sep(), $.string)),
+      choice(';',
+        seq('{',
+          repeat(seq(choice($.unknown_stmt)))),
+        '}'),
+      stmtsep(),
+    ),
+
+    //_stmtsep: $ => repeat(choice(optsep(), $.unknown_stmt)),
 
     /** absolute-schema-nodeid = 1*("/" node-identifier)
         descendant-schema-nodeid =
@@ -1447,6 +1485,7 @@ export default grammar({
 
     /**
      * @see {@link https://www.rfc-editor.org/rfc/rfc7950#section-6.1.3 Quoting}
+     * @todo let external scanner handle all the quoting scenarios
      */
     // unescaped string that can be single quoted
     _unescaped_string1: _ => token.immediate(prec(1, /[^'\\]+/)),
@@ -1462,8 +1501,7 @@ export default grammar({
       repeat1(choice(
         $._unescaped_string1,
         $._escape_sequence,
-      )))
-    ,
+      ))),
 
     _double_quoted_string: $ => DoubleQuoted(
       repeat1(choice(
@@ -1484,6 +1522,43 @@ export default grammar({
     _boolean: _ => choice('true', 'false'),
   }
 });
+
+function LF() {
+  return token('\n');
+}
+
+function CRLF() {
+  return token('\r\n');
+}
+
+function SP() {
+  return token(' ');
+}
+
+function HTAP() {
+  return token('\t');
+}
+
+function WSP() {
+  return choice(SP(), HTAP());
+}
+
+function line_break() {
+  return choice(CRLF(), LF());
+}
+
+function sep() {
+  return repeat1(choice(line_break(), WSP()));
+}
+
+/**
+ * Creates a rule for
+ * stmtsep             = *(WSP / line-break / unknown-statement)
+ * @returns {RepeatRule}
+ */
+function stmtsep() {
+  return repeat(choice(WSP(), line_break(), sym('unknown_stmt')));
+}
 
 /**
  * Creates a rule to match one or more of the rules separated by a bar
@@ -1537,7 +1612,9 @@ function ArgStr(rule) {
  * @returns {Rule}
  */
 function Block(rule) {
-  return seq('{', rule, '}');
+  return seq(
+    '{', stmtsep(), rule,
+    '}');
 }
 
 /**
@@ -1547,7 +1624,10 @@ function Block(rule) {
  * @returns {Rule}
  */
 function OptionalBlock(rule) {
-  return choice(';', Block(rule));
+  return choice(
+    ';',
+    Block(rule)
+  );
 }
 
 /**
@@ -1558,7 +1638,7 @@ function OptionalBlock(rule) {
  * @returns {Rule} YANG statement
  */
 function NonArgStmt(keyword, block) {
-  return seq(keyword, block);
+  return seq(keyword, block, stmtsep());
 }
 
 /**
@@ -1572,7 +1652,10 @@ function NonBlockStmt(keyword, argument) {
   return seq(
     keyword,
     field('arg', argument),
-    choice(';', seq('{', '}')),
+    choice(
+      seq(';', stmtsep()),
+      seq('{', stmtsep(), '}', stmtsep())
+    ),
   );
 }
 
@@ -1582,14 +1665,20 @@ function NonBlockStmt(keyword, argument) {
  * @param {string} keyword YANG keyword
  * @param {Rule} argument argument of the keyword
  * @param {Rule} block substatement block of the statement
+ * @param {boolean} tail_stmtsep if the statement allows a tail stmtsep
  * @returns {Rule} YANG statement
  */
-function Statement(keyword, argument, block) {
+function Statement(keyword, argument, block, tail_stmtsep = true) {
   if (!argument) {
     return NonArgStmt(keyword, block);
   }
   if (!block) {
     return NonBlockStmt(keyword, argument);
   }
-  return seq(keyword, field('arg', argument), block);
+  if (tail_stmtsep) {
+    return seq(keyword, field('arg', argument), block, stmtsep());
+  }
+  else {
+    return seq(keyword, field('arg', argument), block);
+  }
 }

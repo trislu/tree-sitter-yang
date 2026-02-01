@@ -105,21 +105,21 @@ module test{
           arg: (string
             (identifier))
           (description
-            arg: (string))
+            arg: (qstring))
           (value_stmt
             arg: (integer_value)))
         (enum_stmt
           arg: (string
             (identifier))
           (description
-            arg: (string))
+            arg: (qstring))
           (value_stmt
             arg: (integer_value)))
         (enum_stmt
           arg: (string
             (identifier))
           (description
-            arg: (string))
+            arg: (qstring))
           (value_stmt
             arg: (integer_value)))))))
 "#

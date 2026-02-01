@@ -68,7 +68,7 @@ module test{
       (ordered_by_stmt)
       (status_stmt)
       (description
-        arg: (string))
+        arg: (qstring))
       (reference
         arg: (string)))))
         "#

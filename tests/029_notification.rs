@@ -74,7 +74,7 @@ module test{
           arg: (must_expression))
         (status_stmt)
         (description
-          arg: (string))
+          arg: (qstring))
         (reference
           arg: (string))
         (typedef_stmt
@@ -85,7 +85,7 @@ module test{
           arg: (identifier)
           (status_stmt)
           (description
-            arg: (string))
+            arg: (qstring))
           (reference
             arg: (string))
           (typedef_stmt
