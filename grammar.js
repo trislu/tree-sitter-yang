@@ -7,8 +7,13 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const add_keyword = 'add';
+const delete_keyword = 'delete';
+const deviate_keyword = 'deviate'
 const min_keyword = 'min';
 const max_keyword = 'max';
+const not_supported_keyword = 'not-supported';
+const replace_keyword = 'replace';
 
 export default grammar({
   name: "yang",
@@ -182,15 +187,15 @@ export default grammar({
     },
 
     /** body-stmts          = *(extension-stmt /
-                           feature-stmt /
-                           identity-stmt /
-                           typedef-stmt /
-                           grouping-stmt /
-                           data-def-stmt /
-                           augment-stmt /
-                           rpc-stmt /
-                           notification-stmt /
-                           deviation-stmt)*/
+                              feature-stmt /
+                              identity-stmt /
+                              typedef-stmt /
+                              grouping-stmt /
+                              data-def-stmt /
+                              augment-stmt /
+                              rpc-stmt /
+                              notification-stmt /
+                              deviation-stmt)*/
     _body_stmt: $ => choice(
       $.extension_stmt,
       $.feature_stmt,
@@ -201,6 +206,7 @@ export default grammar({
       $.augment_stmt,
       $.rpc_stmt,
       $.notification_stmt,
+      $.deviation_stmt,
     ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
@@ -1199,6 +1205,112 @@ export default grammar({
         $._data_def_stmt,
       )))
     ),
+
+    /** deviation-stmt      = deviation-keyword sep
+                              deviation-arg-str optsep
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  [description-stmt]
+                                  [reference-stmt]
+                                  (deviate-not-supported-stmt /
+                                    1*(deviate-add-stmt /
+                                        deviate-replace-stmt /
+                                        deviate-delete-stmt))
+                              "}" stmtsep 
+        deviation-arg-str   = < a string that matches the rule >
+                              < deviation-arg >
+        deviation-arg       = absolute-schema-nodeid */
+    deviation_stmt: $ => Statement('deviation', $._deviation_arg_str,
+      Block(repeat(choice(
+        $.description,
+        $.reference,
+        $.deviate_not_supported_stmt,
+        $.deviate_add_stmt,
+        $.deviate_replace_stmt,
+        $.deviate_delete_stmt,
+      )))
+    ),
+    _deviation_arg_str: $ => ArgStr($._deviation_arg),
+    _deviation_arg: $ => $._absolute_schema_nodeid,
+
+    /** deviate-not-supported-stmt =
+                              deviate-keyword sep
+                              not-supported-keyword-str stmtend
+                              */
+    deviate_not_supported_stmt: $ => NonBlockStmt(deviate_keyword, $._not_supported_keyword_str),
+    _not_supported_keyword_str: _ => ArgStr(token(not_supported_keyword)),
+
+    /** deviate-add-stmt    = deviate-keyword sep add-keyword-str optsep
+                              (";" /
+                                "{" stmtsep
+                                    ;; these stmts can appear in any order
+                                    [units-stmt]
+                                    *must-stmt
+                                    *unique-stmt
+                                    *default-stmt
+                                    [config-stmt]
+                                    [mandatory-stmt]
+                                    [min-elements-stmt]
+                                    [max-elements-stmt]
+                                "}") stmtsep */
+    deviate_add_stmt: $ => Statement(deviate_keyword, $._add_keyword_str,
+      OptionalBlock(repeat(choice(
+        $.units_stmt,
+        $.must_stmt,
+        $.unique_stmt,
+        $.default_stmt,
+        $.config_stmt,
+        $.mandatory_stmt,
+        $.min_elements_stmt,
+        $.max_elements_stmt,
+      )))
+    ),
+    _add_keyword_str: _ => ArgStr(token(add_keyword)),
+
+    /** deviate-delete-stmt = deviate-keyword sep delete-keyword-str optsep
+                             (";" /
+                               "{" stmtsep
+                                   ;; these stmts can appear in any order
+                                   [units-stmt]
+                                   *must-stmt
+                                   *unique-stmt
+                                   *default-stmt
+                               "}") stmtsep
+   */
+    deviate_delete_stmt: $ => Statement(deviate_keyword, $._delete_keyword_str,
+      OptionalBlock(repeat(choice(
+        $.units_stmt,
+        $.must_stmt,
+        $.unique_stmt,
+        $.default_stmt,
+      )))
+    ),
+    _delete_keyword_str: _ => ArgStr(token(delete_keyword)),
+
+    /** deviate-replace-stmt = deviate-keyword sep replace-keyword-str optsep
+                               (";" /
+                                "{" stmtsep
+                                    ;; these stmts can appear in any order
+                                    [type-stmt]
+                                    [units-stmt]
+                                    [default-stmt]
+                                    [config-stmt]
+                                    [mandatory-stmt]
+                                    [min-elements-stmt]
+                                    [max-elements-stmt]
+                                "}") stmtsep */
+    deviate_replace_stmt: $ => Statement(deviate_keyword, $._replace_keyword_str,
+      OptionalBlock(repeat(choice(
+        $.type_stmt,
+        $.units_stmt,
+        $.default_stmt,
+        $.config_stmt,
+        $.mandatory_stmt,
+        $.min_elements_stmt,
+        $.max_elements_stmt,
+      )))
+    ),
+    _replace_keyword_str: _ => ArgStr(token(replace_keyword)),
 
     /** absolute-schema-nodeid = 1*("/" node-identifier)
         descendant-schema-nodeid =

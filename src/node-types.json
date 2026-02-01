@@ -798,6 +798,254 @@
     }
   },
   {
+    "type": "deviate_add_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "add",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "config_stmt",
+          "named": true
+        },
+        {
+          "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "mandatory_stmt",
+          "named": true
+        },
+        {
+          "type": "max_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "min_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "unique_stmt",
+          "named": true
+        },
+        {
+          "type": "units_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "deviate_delete_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "delete",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "unique_stmt",
+          "named": true
+        },
+        {
+          "type": "units_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "deviate_not_supported_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "not-supported",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "deviate_replace_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "replace",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "config_stmt",
+          "named": true
+        },
+        {
+          "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "mandatory_stmt",
+          "named": true
+        },
+        {
+          "type": "max_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "min_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "type_stmt",
+          "named": true
+        },
+        {
+          "type": "units_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "deviation_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "/",
+            "named": false
+          },
+          {
+            "type": "node_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "deviate_add_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_delete_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_not_supported_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_replace_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "enum_stmt",
     "named": true,
     "fields": {
@@ -1824,6 +2072,10 @@
         },
         {
           "type": "description",
+          "named": true
+        },
+        {
+          "type": "deviation_stmt",
           "named": true
         },
         {
@@ -3319,6 +3571,10 @@
     "named": false
   },
   {
+    "type": "add",
+    "named": false
+  },
+  {
     "type": "anydata",
     "named": false
   },
@@ -3388,11 +3644,23 @@
     "named": false
   },
   {
+    "type": "delete",
+    "named": false
+  },
+  {
     "type": "deprecated",
     "named": false
   },
   {
     "type": "description",
+    "named": false
+  },
+  {
+    "type": "deviate",
+    "named": false
+  },
+  {
+    "type": "deviation",
     "named": false
   },
   {
@@ -3512,6 +3780,10 @@
     "named": false
   },
   {
+    "type": "not-supported",
+    "named": false
+  },
+  {
     "type": "notification",
     "named": false
   },
@@ -3561,6 +3833,10 @@
   },
   {
     "type": "refine",
+    "named": false
+  },
+  {
+    "type": "replace",
     "named": false
   },
   {
