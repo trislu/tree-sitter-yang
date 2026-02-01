@@ -262,7 +262,7 @@ export default grammar({
      * @note forcing the argument of description statement to be a quoted-string
      * @todo let external scanners handle this specific case.
      */
-    description_stmt: $ => NonBlockStmt('description', alias($._quoted_string, $.qstring)),
+    description_stmt: $ => NonBlockStmt('description', alias($._concatenated_string, $.qstring)),
 
     /** reference-stmt      = reference-keyword sep string optsep stmtend*/
     reference_stmt: $ => NonBlockStmt('reference', $.string),
@@ -1675,7 +1675,9 @@ export default grammar({
       $._empty_string
     ),
 
-    string: $ => choice($._quoted_string, $.identifier),
+    _concatenated_string: $ => PlusSep1($._quoted_string),
+
+    string: $ => choice($._concatenated_string, $.identifier),
 
     _boolean: _ => choice('true', 'false'),
   }
@@ -1727,6 +1729,17 @@ function stmtsep() {
  */
 function BarSep1(rule) {
   return seq(rule, repeat(seq('|', rule)));
+}
+
+/**
+ * Creates a rule to match one or more of the rules separated by a plus
+ *
+ * @param {Rule} rule
+ *
+ * @returns {SeqRule}
+ */
+function PlusSep1(rule) {
+  return seq(rule, repeat(seq('+', rule)));
 }
 
 /**

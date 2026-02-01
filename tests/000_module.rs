@@ -45,7 +45,10 @@ module tree-sitter {
         "Please see below YANG RFCs:
         https://www.rfc-editor.org/rfc/rfc6020
         https://www.rfc-editor.org/rfc/rfc7950 (version 1.1)
-        https://www.rfc-editor.org/rfc/rfc9890";
+        https://www.rfc-editor.org/rfc/rfc9890"
+          + '('
+          + "maybe more"
+          + ')';
         reference "https://github.com/trislu/tree-sitter-yang";
     }
 

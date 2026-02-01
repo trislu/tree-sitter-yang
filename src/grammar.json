@@ -2040,7 +2040,7 @@
             "type": "ALIAS",
             "content": {
               "type": "SYMBOL",
-              "name": "_quoted_string"
+              "name": "_concatenated_string"
             },
             "named": true,
             "value": "qstring"
@@ -16027,12 +16027,37 @@
         }
       ]
     },
+    "_concatenated_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_quoted_string"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "+"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_quoted_string"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "string": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_quoted_string"
+          "name": "_concatenated_string"
         },
         {
           "type": "SYMBOL",
