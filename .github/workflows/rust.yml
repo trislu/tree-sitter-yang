@@ -27,14 +27,6 @@ jobs:
               - 'src/**'
               - 'tests/**'
 
-      - name: Tree-sitter setup
-        uses: tree-sitter/setup-action@v1
-        with:
-          # Install the CLI
-          install-cli: true # optional, default is true
-          # Install the library
-          install-lib: false # optional, default is true
-
       - name: Set up Rust
         if: steps.changes.outputs.any == 'true'
         uses: dtolnay/rust-toolchain@stable
@@ -44,6 +36,10 @@ jobs:
       - name: Cache cargo dependencies
         if: steps.changes.outputs.any == 'true'
         uses: Swatinem/rust-cache@v2
+
+      - name: Install Tree-sitter CLI
+        if: steps.changes.outputs.any == 'true'
+        run: cargo install tree-sitter-cli --version 0.26.3
 
       - name: Run clippy linter
         if: steps.changes.outputs.any == 'true'
