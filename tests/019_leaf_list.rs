@@ -14,7 +14,7 @@ module test{
 (yang
   (module_stmt
     arg: (identifier)
-    (leaflist_stmt
+    (leaf_list_stmt
       arg: (identifier)
       (type_stmt
         arg: (identifier)))))
@@ -48,7 +48,7 @@ module test{
 (yang
   (module_stmt
     arg: (identifier)
-    (leaflist_stmt
+    (leaf_list_stmt
       arg: (identifier)
       (when_stmt
         arg: (string))
@@ -67,9 +67,9 @@ module test{
       (max_elements_stmt)
       (ordered_by_stmt)
       (status_stmt)
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string)))))
         "#
     );

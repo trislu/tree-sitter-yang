@@ -15,7 +15,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt
@@ -49,7 +49,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt
@@ -64,10 +64,10 @@ module test {
         arg: (prefix
           (identifier))
         arg: (identifier))
-      (description
+      (description_stmt
         arg: (qstring))
       (status_stmt)
-      (reference
+      (reference_stmt
         arg: (string)))))
 "#
     );

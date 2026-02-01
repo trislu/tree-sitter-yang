@@ -50,9 +50,9 @@ module test{
       (config_stmt)
       (mandatory_stmt)
       (status_stmt)
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string)))))
         "#
     );

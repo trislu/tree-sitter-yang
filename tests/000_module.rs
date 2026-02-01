@@ -65,7 +65,7 @@ module tree-sitter {
   (comment)
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt
@@ -76,20 +76,20 @@ module tree-sitter {
       arg: (identifier)
       (prefix_stmt
         arg: (identifier))
-      (revision_date
+      (revision_date_stmt
         arg: (date_str))
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string)))
     (extension_stmt
       arg: (identifier)
-      (description
+      (description_stmt
         arg: (qstring))
       (argument_stmt
         arg: (identifier)
-        (yin_element))
-      (reference
+        (yin_element_stmt))
+      (reference_stmt
         arg: (string))
       (status_stmt))))
 "#

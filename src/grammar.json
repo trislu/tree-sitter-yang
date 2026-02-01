@@ -128,7 +128,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "yang_version"
+          "name": "yang_version_stmt"
         },
         {
           "type": "SYMBOL",
@@ -443,15 +443,15 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "yang_version"
+          "name": "yang_version_stmt"
         },
         {
           "type": "SYMBOL",
-          "name": "belongs_to"
+          "name": "belongs_to_stmt"
         }
       ]
     },
-    "belongs_to": {
+    "belongs_to_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -645,7 +645,7 @@
         }
       ]
     },
-    "yang_version": {
+    "yang_version_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -1193,15 +1193,15 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "revision_date"
+                    "name": "revision_date_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   }
                 ]
               }
@@ -1264,7 +1264,7 @@
         }
       ]
     },
-    "revision_date": {
+    "revision_date_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -1544,15 +1544,15 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "revision_date"
+                        "name": "revision_date_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -1622,23 +1622,23 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "organization"
+          "name": "organization_stmt"
         },
         {
           "type": "SYMBOL",
-          "name": "contact"
+          "name": "contact_stmt"
         },
         {
           "type": "SYMBOL",
-          "name": "description"
+          "name": "description_stmt"
         },
         {
           "type": "SYMBOL",
-          "name": "reference"
+          "name": "reference_stmt"
         }
       ]
     },
-    "organization": {
+    "organization_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -1832,7 +1832,7 @@
         }
       ]
     },
-    "contact": {
+    "contact_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -2026,7 +2026,7 @@
         }
       ]
     },
-    "description": {
+    "description_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -2225,7 +2225,7 @@
         }
       ]
     },
-    "reference": {
+    "reference_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -2505,11 +2505,11 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -2763,11 +2763,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -2916,7 +2916,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "yin_element"
+                      "name": "yin_element_stmt"
                     },
                     {
                       "type": "BLANK"
@@ -2983,7 +2983,7 @@
         }
       ]
     },
-    "yin_element": {
+    "yin_element_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -3590,11 +3590,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -3947,11 +3947,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -4305,11 +4305,11 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   }
                 ]
               }
@@ -5090,11 +5090,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -6092,11 +6092,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -6374,11 +6374,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -6789,11 +6789,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -7968,11 +7968,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -8375,11 +8375,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -8477,7 +8477,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "leaflist_stmt"
+          "name": "leaf_list_stmt"
         },
         {
           "type": "SYMBOL",
@@ -8611,11 +8611,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -8815,11 +8815,11 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   }
                 ]
               }
@@ -8882,7 +8882,7 @@
         }
       ]
     },
-    "leaflist_stmt": {
+    "leaf_list_stmt": {
       "type": "SEQ",
       "members": [
         {
@@ -9005,11 +9005,11 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   }
                 ]
               }
@@ -9191,11 +9191,11 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   },
                   {
                     "type": "SYMBOL",
@@ -9936,11 +9936,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -10030,7 +10030,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "leaflist_stmt"
+          "name": "leaf_list_stmt"
         },
         {
           "type": "SYMBOL",
@@ -10144,11 +10144,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -10327,11 +10327,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -10506,11 +10506,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -10673,11 +10673,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -10861,11 +10861,11 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   }
                 ]
               }
@@ -11066,11 +11066,11 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   },
                   {
                     "type": "SYMBOL",
@@ -11287,11 +11287,11 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   },
                   {
                     "type": "SYMBOL",
@@ -11511,11 +11511,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -11690,11 +11690,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -12165,11 +12165,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       },
                       {
                         "type": "SYMBOL",
@@ -12325,11 +12325,11 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "description"
+                    "name": "description_stmt"
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "reference"
+                    "name": "reference_stmt"
                   },
                   {
                     "type": "SYMBOL",
@@ -13663,11 +13663,11 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }
@@ -14749,11 +14749,11 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "description"
+                        "name": "description_stmt"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "reference"
+                        "name": "reference_stmt"
                       }
                     ]
                   }

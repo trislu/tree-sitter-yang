@@ -103,16 +103,16 @@ module rev-test {
     arg: (identifier)
     (revision_stmt
       arg: (date_str)
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string
           (identifier))))
     (revision_stmt
       arg: (date_str)
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string)))))
 "#
     );

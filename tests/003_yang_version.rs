@@ -12,7 +12,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)))
+    (yang_version_stmt)))
 "#
     );
     parse_success_as!(
@@ -25,7 +25,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)))
+    (yang_version_stmt)))
 "#
     );
 }
@@ -42,7 +42,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)))
+    (yang_version_stmt)))
 "#
     );
     parse_success_as!(
@@ -55,7 +55,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)))
+    (yang_version_stmt)))
 "#
     );
 }

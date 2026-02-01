@@ -21,7 +21,7 @@ module test {
     arg: (identifier)
     (extension_stmt
       arg: (identifier)
-      (description
+      (description_stmt
         arg: (qstring))
       (argument_stmt
         arg: (identifier)))))
@@ -68,12 +68,12 @@ module test {
     arg: (identifier)
     (extension_stmt
       arg: (identifier)
-      (description
+      (description_stmt
         arg: (qstring))
       (argument_stmt
         arg: (identifier)
-        (yin_element))
-      (reference
+        (yin_element_stmt))
+      (reference_stmt
         arg: (string))
       (status_stmt))))
 "#

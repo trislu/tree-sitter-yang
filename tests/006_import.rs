@@ -46,11 +46,11 @@ module test {
       arg: (identifier)
       (prefix_stmt
         arg: (identifier))
-      (revision_date
+      (revision_date_stmt
         arg: (date_str))
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string)))))
 "#
     );

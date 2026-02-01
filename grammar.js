@@ -69,7 +69,7 @@ export default grammar({
                           namespace-stmt stmtsep
                           prefix-stmt stmtsep */
     _module_header: $ => choice(
-      $.yang_version,
+      $.yang_version_stmt,
       $.namespace_stmt,
       $.prefix_stmt
     ),
@@ -103,18 +103,18 @@ export default grammar({
                          ;; these stmts can appear in any order
                          [yang-version-stmt stmtsep]
                           belongs-to-stmt stmtsep */
-    _submodule_header: $ => choice($.yang_version, $.belongs_to),
+    _submodule_header: $ => choice($.yang_version_stmt, $.belongs_to_stmt),
 
     /** belongs-to-stmt     = belongs-to-keyword sep identifier-arg-str
                          optsep
                          "{" stmtsep
                              prefix-stmt stmtsep
                          "}" */
-    belongs_to: $ => NonBlockStmt('belongs-to', $._identifier_arg_str),
+    belongs_to_stmt: $ => NonBlockStmt('belongs-to', $._identifier_arg_str),
 
     /** yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
                          optsep stmtend */
-    yang_version: $ => NonBlockStmt('yang-version', $._yang_version_arg_str),
+    yang_version_stmt: $ => NonBlockStmt('yang-version', $._yang_version_arg_str),
     _yang_version_arg_str: $ => ArgStr($._yang_version_val),
     _yang_version_val: _ => {
       /**
@@ -143,12 +143,12 @@ export default grammar({
     import_stmt: $ => Statement('import', $._identifier_arg_str, Block(repeat(
       choice(
         $.prefix_stmt,
-        $.revision_date,
-        $.description,
-        $.reference)))),
+        $.revision_date_stmt,
+        $.description_stmt,
+        $.reference_stmt)))),
 
     /** revision-date-stmt  = revision-date-keyword sep revision-date stmtend */
-    revision_date: $ => NonBlockStmt('revision-date', $._date_arg_str),
+    revision_date_stmt: $ => NonBlockStmt('revision-date', $._date_arg_str),
 
     /** include-stmt        = include-keyword sep identifier-arg-str optsep
                          (";" /
@@ -160,23 +160,28 @@ export default grammar({
                           "}") stmtsep */
     include_stmt: $ => Statement('include', $._identifier_arg_str, OptionalBlock(repeat(
       choice(
-        $.revision_date,
-        $.description,
-        $.reference)))),
+        $.revision_date_stmt,
+        $.description_stmt,
+        $.reference_stmt)))),
 
     /** meta-stmts          = ;; these stmts can appear in any order
                          [organization-stmt stmtsep]
                          [contact-stmt stmtsep]
                          [description-stmt stmtsep]
                          [reference-stmt stmtsep]*/
-    _meta_stmt: $ => choice($.organization, $.contact, $.description, $.reference),
+    _meta_stmt: $ => choice(
+      $.organization_stmt,
+      $.contact_stmt,
+      $.description_stmt,
+      $.reference_stmt
+    ),
 
     /** organization-stmt   = organization-keyword sep string
                          optsep stmtend*/
-    organization: $ => NonBlockStmt('organization', $.string),
+    organization_stmt: $ => NonBlockStmt('organization', $.string),
 
     /** contact-stmt        = contact-keyword sep string optsep stmtend*/
-    contact: $ => NonBlockStmt('contact', $.string),
+    contact_stmt: $ => NonBlockStmt('contact', $.string),
 
     /** description-stmt    = description-keyword sep string optsep
                          stmtend*/
@@ -184,10 +189,10 @@ export default grammar({
      * @note forcing the argument of description statement to be a quoted-string
      * @todo let external scanners handle this specific case.
      */
-    description: $ => NonBlockStmt('description', alias($._quoted_string, $.qstring)),
+    description_stmt: $ => NonBlockStmt('description', alias($._quoted_string, $.qstring)),
 
     /** reference-stmt      = reference-keyword sep string optsep stmtend*/
-    reference: $ => NonBlockStmt('reference', $.string),
+    reference_stmt: $ => NonBlockStmt('reference', $.string),
 
     /** revision-stmts      = *(revision-stmt stmtsep)*/
     /** revision-stmt       = revision-keyword sep revision-date optsep
@@ -196,7 +201,11 @@ export default grammar({
                               [description-stmt stmtsep]
                               [reference-stmt stmtsep]
                           "}")*/
-    revision_stmt: $ => Statement('revision', $._date_arg_str, OptionalBlock(repeat(choice($.description, $.reference)))),
+    revision_stmt: $ => Statement('revision', $._date_arg_str,
+      OptionalBlock(repeat(choice(
+        $.description_stmt,
+        $.reference_stmt)))
+    ),
     /** revision-date       =  date-arg-str*/
     _date_arg_str: $ => ArgStr($.date_str),
     date_str: _ => {
@@ -236,21 +245,24 @@ export default grammar({
                               [description-stmt]
                               [reference-stmt]
                           "}") stmtsep*/
-    extension_stmt: $ => Statement(
-      'extension',
-      $._identifier_arg_str,
-      OptionalBlock(repeat(choice($.argument_stmt, $.status_stmt, $.description, $.reference)))),
+    extension_stmt: $ => Statement('extension', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.argument_stmt,
+        $.status_stmt,
+        $.description_stmt,
+        $.reference_stmt)))
+    ),
 
     /** argument-stmt       = argument-keyword sep identifier-arg-str optsep
                          (";" /
                           "{" stmtsep
                               [yin-element-stmt stmtsep]
                           "}")*/
-    argument_stmt: $ => Statement('argument', $._identifier_arg_str, OptionalBlock(optional($.yin_element))),
+    argument_stmt: $ => Statement('argument', $._identifier_arg_str, OptionalBlock(optional($.yin_element_stmt))),
 
     /** yin-element-stmt    = yin-element-keyword sep yin-element-arg-str
                          stmtend*/
-    yin_element: $ => NonBlockStmt('yin-element', $._yin_element_arg_str),
+    yin_element_stmt: $ => NonBlockStmt('yin-element', $._yin_element_arg_str),
     /** yin-element-arg-str = < a string that matches the rule
                            yin-element-arg >
         yin-element-arg     = true-keyword / false-keyword*/
@@ -283,8 +295,8 @@ export default grammar({
       OptionalBlock(repeat(choice(
         $.if_feature_stmt,
         $.status_stmt,
-        $.description,
-        $.reference)))),
+        $.description_stmt,
+        $.reference_stmt)))),
     if_feature_stmt: $ => NonBlockStmt('if-feature', $._identifier_ref_arg_str),
 
     /** identity-stmt       = identity-keyword sep identifier-arg-str optsep
@@ -302,8 +314,8 @@ export default grammar({
       OptionalBlock(repeat(choice(
         $.base_stmt,
         $.status_stmt,
-        $.description,
-        $.reference)))
+        $.description_stmt,
+        $.reference_stmt)))
     ),
     base_stmt: $ => NonBlockStmt('base', $._identifier_ref_arg_str),
 
@@ -323,8 +335,8 @@ export default grammar({
         $.units_stmt,
         $.default_stmt,
         $.status_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))),
 
     /** default-stmt        = default-keyword sep string stmtend*/
@@ -377,8 +389,8 @@ export default grammar({
       OptionalBlock(repeat(choice(
         $.error_message_stmt,
         $.error_app_tag_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))),
 
     /** error-message-stmt  = error-message-keyword sep string stmtend
@@ -450,8 +462,8 @@ export default grammar({
       OptionalBlock(repeat(choice(
         $.error_message_stmt,
         $.error_app_tag_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))),
 
     _length_arg_str: $ => ArgStr($._length_arg),
@@ -475,8 +487,8 @@ export default grammar({
         $.modifier_stmt, // rfc7950 only
         $.error_message_stmt,
         $.error_app_tag_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))),
 
     /** @note this is rfc7950 only
@@ -505,8 +517,8 @@ export default grammar({
         $.if_feature_stmt,
         $.value_stmt,
         $.status_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))
     ),
     _enum_arg_str: $ => $.string,
@@ -644,8 +656,8 @@ export default grammar({
         $.if_feature_stmt,
         $.position_stmt,
         $.status_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))
     ),
     position_stmt: $ => NonBlockStmt('position', $._position_value_arg_str),
@@ -670,8 +682,8 @@ export default grammar({
     grouping_stmt: $ => Statement('grouping', $._identifier_arg_str,
       OptionalBlock(repeat(choice(
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt,
@@ -691,7 +703,7 @@ export default grammar({
     _data_def_stmt: $ => choice(
       $.container_stmt,
       $.leaf_stmt,
-      $.leaflist_stmt,
+      $.leaf_list_stmt,
       $.list_stmt,
       $.choice_stmt,
       $.anydata_stmt,
@@ -724,8 +736,8 @@ export default grammar({
         $.presence_stmt,
         $.config_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt,
@@ -760,8 +772,8 @@ export default grammar({
         $.config_stmt,
         $.mandatory_stmt,
         $.status_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))
     ),
 
@@ -783,7 +795,7 @@ export default grammar({
                              [reference-stmt]
                           "}" stmtsep
     */
-    leaflist_stmt: $ => Statement('leaf-list', $._identifier_arg_str,
+    leaf_list_stmt: $ => Statement('leaf-list', $._identifier_arg_str,
       Block(repeat(choice(
         $.when_stmt,
         $.if_feature_stmt,
@@ -796,8 +808,8 @@ export default grammar({
         $.max_elements_stmt,
         $.ordered_by_stmt,
         $.status_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       )))
     ),
 
@@ -834,8 +846,8 @@ export default grammar({
         $.max_elements_stmt,
         $.ordered_by_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt, // repeat1?
@@ -892,8 +904,8 @@ export default grammar({
         $.config_stmt,
         $.mandatory_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $._short_case_stmt,
         $.case_stmt,
       )))
@@ -911,7 +923,7 @@ export default grammar({
       $.choice_stmt,
       $.container_stmt,
       $.leaf_stmt,
-      $.leaflist_stmt,
+      $.leaf_list_stmt,
       $.list_stmt,
       $.anydata_stmt,
       $.anyxml_stmt,
@@ -933,8 +945,8 @@ export default grammar({
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $._data_def_stmt,
       )))
     ),
@@ -960,8 +972,8 @@ export default grammar({
         $.config_stmt,
         $.mandatory_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
       )))
     ),
 
@@ -986,8 +998,8 @@ export default grammar({
         $.config_stmt,
         $.mandatory_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
       )))
     ),
 
@@ -1009,8 +1021,8 @@ export default grammar({
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.refine_stmt,
         $.uses_augment_stmt,
       )))
@@ -1044,8 +1056,8 @@ export default grammar({
         $.mandatory_stmt,
         $.min_elements_stmt,
         $.max_elements_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
       )))
     ),
     _refine_arg_str: $ => ArgStr($._refine_arg),
@@ -1071,8 +1083,8 @@ export default grammar({
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $._data_def_stmt,
         $.case_stmt,
         $.action_stmt,
@@ -1104,8 +1116,8 @@ export default grammar({
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $._data_def_stmt,
         $.case_stmt,
         $.action_stmt,
@@ -1132,8 +1144,8 @@ export default grammar({
       OptionalBlock(repeat(choice(
         $.if_feature_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
         $.input_stmt,
@@ -1158,8 +1170,8 @@ export default grammar({
       OptionalBlock(repeat(choice(
         $.if_feature_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
         $.input_stmt,
@@ -1216,8 +1228,8 @@ export default grammar({
         $.if_feature_stmt,
         $.must_stmt,
         $.status_stmt,
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt,
@@ -1240,8 +1252,8 @@ export default grammar({
         deviation-arg       = absolute-schema-nodeid */
     deviation_stmt: $ => Statement('deviation', $._deviation_arg_str,
       Block(repeat(choice(
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
         $.deviate_not_supported_stmt,
         $.deviate_add_stmt,
         $.deviate_replace_stmt,
@@ -1367,8 +1379,8 @@ export default grammar({
                               "}") stmtsep */
     when_stmt: $ => Statement('when', $.string,
       OptionalBlock(repeat(choice(
-        $.description,
-        $.reference,
+        $.description_stmt,
+        $.reference_stmt,
       )))
     ),
 
@@ -1417,8 +1429,8 @@ export default grammar({
       OptionalBlock(repeat(choice(
         $.error_message_stmt,
         $.error_app_tag_stmt,
-        $.description,
-        $.reference
+        $.description_stmt,
+        $.reference_stmt
       ))),
     ),
 

@@ -19,7 +19,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt
@@ -54,7 +54,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt
@@ -97,7 +97,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt
@@ -148,7 +148,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt
@@ -196,7 +196,7 @@ module test {
 (yang
   (module_stmt
     arg: (identifier)
-    (yang_version)
+    (yang_version_stmt)
     (prefix_stmt
       arg: (identifier))
     (namespace_stmt

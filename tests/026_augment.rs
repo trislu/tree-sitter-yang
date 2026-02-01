@@ -62,9 +62,9 @@ module test{
       (if_feature_stmt
         arg: (identifier))
       (status_stmt)
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string))
       (leaf_stmt
         arg: (identifier)

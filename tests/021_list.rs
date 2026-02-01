@@ -149,9 +149,9 @@ module test{
       (max_elements_stmt)
       (ordered_by_stmt)
       (status_stmt)
-      (description
+      (description_stmt
         arg: (qstring))
-      (reference
+      (reference_stmt
         arg: (string))
       (leaf_stmt
         arg: (identifier)
@@ -174,9 +174,9 @@ module test{
       (grouping_stmt
         arg: (identifier)
         (status_stmt)
-        (description
+        (description_stmt
           arg: (qstring))
-        (reference
+        (reference_stmt
           arg: (string))
         (typedef_stmt
           arg: (identifier)

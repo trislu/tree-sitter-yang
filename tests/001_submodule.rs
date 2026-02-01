@@ -41,8 +41,8 @@ submodule "sub-me-do" {
 (yang
   (submodule_stmt
     arg: (identifier)
-    (yang_version)
-    (belongs_to
+    (yang_version_stmt)
+    (belongs_to_stmt
       arg: (identifier))))
 "#
     );

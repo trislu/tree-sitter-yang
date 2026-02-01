@@ -56,7 +56,7 @@ module test{
     arg: (identifier)
     (typedef_stmt
       arg: (identifier)
-      (description
+      (description_stmt
         arg: (qstring))
       (type_stmt
         arg: (identifier)
