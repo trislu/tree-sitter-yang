@@ -866,6 +866,10 @@
         {
           "type": "SYMBOL",
           "name": "rpc_stmt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "notification_stmt"
         }
       ]
     },
@@ -3276,6 +3280,10 @@
                       {
                         "type": "SYMBOL",
                         "name": "action_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "notification_stmt"
                       }
                     ]
                   }
@@ -3408,6 +3416,10 @@
                       {
                         "type": "SYMBOL",
                         "name": "action_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "notification_stmt"
                       }
                     ]
                   }
@@ -3684,6 +3696,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "action_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "notification_stmt"
                   }
                 ]
               }
@@ -4541,6 +4557,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "action_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "notification_stmt"
                   }
                 ]
               }
@@ -4658,6 +4678,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "action_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "notification_stmt"
                   }
                 ]
               }
@@ -4962,6 +4986,85 @@
             {
               "type": "STRING",
               "value": "}"
+            }
+          ]
+        }
+      ]
+    },
+    "notification_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "notification"
+        },
+        {
+          "type": "FIELD",
+          "name": "arg",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_identifier_arg_str"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "{"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "if_feature_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "must_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "status_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "description"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "reference"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "typedef_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "grouping_stmt"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_data_def_stmt"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "}"
+                }
+              ]
             }
           ]
         }

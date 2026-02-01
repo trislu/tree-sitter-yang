@@ -295,6 +295,10 @@
           "named": true
         },
         {
+          "type": "notification_stmt",
+          "named": true
+        },
+        {
           "type": "reference",
           "named": true
         },
@@ -719,6 +723,10 @@
           "named": true
         },
         {
+          "type": "notification_stmt",
+          "named": true
+        },
+        {
           "type": "presence_stmt",
           "named": true
         },
@@ -1040,6 +1048,10 @@
         },
         {
           "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "notification_stmt",
           "named": true
         },
         {
@@ -1629,6 +1641,10 @@
           "named": true
         },
         {
+          "type": "notification_stmt",
+          "named": true
+        },
+        {
           "type": "ordered_by_stmt",
           "named": true
         },
@@ -1851,6 +1867,10 @@
           "named": true
         },
         {
+          "type": "notification_stmt",
+          "named": true
+        },
+        {
           "type": "organization",
           "named": true
         },
@@ -1964,6 +1984,96 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "notification_stmt",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\"",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "choice_stmt",
+          "named": true
+        },
+        {
+          "type": "container_stmt",
+          "named": true
+        },
+        {
+          "type": "description",
+          "named": true
+        },
+        {
+          "type": "grouping_stmt",
+          "named": true
+        },
+        {
+          "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "leaflist_stmt",
+          "named": true
+        },
+        {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "reference",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        },
+        {
+          "type": "typedef_stmt",
+          "named": true
+        },
+        {
+          "type": "uses_stmt",
           "named": true
         }
       ]
@@ -2922,6 +3032,10 @@
           "named": true
         },
         {
+          "type": "notification_stmt",
+          "named": true
+        },
+        {
           "type": "reference",
           "named": true
         },
@@ -3395,6 +3509,10 @@
   },
   {
     "type": "namespace",
+    "named": false
+  },
+  {
+    "type": "notification",
     "named": false
   },
   {

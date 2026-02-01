@@ -1,22 +1,13 @@
 mod test_utils;
 
 #[test]
-fn test_action() {
+fn test_notification() {
     parse_success_as!(
         r#"
 module test{
     container software {
-        action activate-software-image {
-            input {
-                leaf image-name {
-                    type string;
-                }
-            }
-            output {
-                leaf status {
-                    type string;
-                }
-            }
+        notification activate-software {
+            
         }
     }
 }
@@ -27,33 +18,24 @@ module test{
     arg: (identifier)
     (container_stmt
       arg: (identifier)
-      (action_stmt
-        arg: (identifier)
-        (input_stmt
-          (leaf_stmt
-            arg: (identifier)
-            (type_stmt
-              arg: (identifier))))
-        (output_stmt
-          (leaf_stmt
-            arg: (identifier)
-            (type_stmt
-              arg: (identifier))))))))
+      (notification_stmt
+        arg: (identifier)))))
         "#
     );
 }
 
 #[test]
-fn test_action_full() {
+fn test_notifiation_full() {
     parse_success_as!(
         r#"
 module test{
     container software {
-        action activate-software-image {
+        notification activate-software {
             if-feature xyz;
-            status deprecated;
-            description "test";
-            reference "test_action_full.com";
+            must "what";
+            status obsolete;
+            description "test notification";
+            reference "tests/029_notification.rs";
             typedef my-type {
                 type uint32;
             }
@@ -66,16 +48,14 @@ module test{
                     type uint32;
                 }
             }
-            input {
-                leaf image-name {
-                    type string;
-                }
-            }
-            output {
-                leaf status {
-                    type string;
-                }
-            }
+            container foo{}
+            list bar {}
+            leaf baz {type string;}
+            leaf-list qux {type string;}
+            choice what {}
+            anydata data;
+            anyxml xml;
+            uses bar;
         }
     }
 }
@@ -86,10 +66,12 @@ module test{
     arg: (identifier)
     (container_stmt
       arg: (identifier)
-      (action_stmt
+      (notification_stmt
         arg: (identifier)
         (if_feature_stmt
           arg: (identifier))
+        (must_stmt
+          arg: (must_expression))
         (status_stmt)
         (description
           arg: (string))
@@ -110,16 +92,26 @@ module test{
             arg: (identifier)
             (type_stmt
               arg: (identifier))))
-        (input_stmt
-          (leaf_stmt
-            arg: (identifier)
-            (type_stmt
-              arg: (identifier))))
-        (output_stmt
-          (leaf_stmt
-            arg: (identifier)
-            (type_stmt
-              arg: (identifier))))))))
+        (container_stmt
+          arg: (identifier))
+        (list_stmt
+          arg: (identifier))
+        (leaf_stmt
+          arg: (identifier)
+          (type_stmt
+            arg: (identifier)))
+        (leaflist_stmt
+          arg: (identifier)
+          (type_stmt
+            arg: (identifier)))
+        (choice_stmt
+          arg: (identifier))
+        (anydata_stmt
+          arg: (identifier))
+        (anyxml_stmt
+          arg: (identifier))
+        (uses_stmt
+          arg: (identifier))))))
         "#
     );
 }

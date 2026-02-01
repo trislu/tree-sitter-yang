@@ -200,6 +200,7 @@ export default grammar({
       $._data_def_stmt,
       $.augment_stmt,
       $.rpc_stmt,
+      $.notification_stmt,
     ),
 
     /** extension-stmt      = extension-keyword sep identifier-arg-str optsep
@@ -651,6 +652,7 @@ export default grammar({
         $.grouping_stmt,
         $._data_def_stmt,
         $.action_stmt,
+        $.notification_stmt,
       )))
     ),
 
@@ -704,7 +706,7 @@ export default grammar({
         $.grouping_stmt,
         $._data_def_stmt,
         $.action_stmt,
-        // TODO: notification-stmt
+        $.notification_stmt,
       )))
     ),
 
@@ -814,7 +816,7 @@ export default grammar({
         $.grouping_stmt,
         $._data_def_stmt, // repeat1?
         $.action_stmt,
-        // TODO: notification-stmt
+        $.notification_stmt,
       )))
     ),
 
@@ -1050,6 +1052,7 @@ export default grammar({
         $._data_def_stmt,
         $.case_stmt,
         $.action_stmt,
+        $.notification_stmt,
       )))
     ),
     _uses_augment_arg_str: $ => ArgStr($._uses_augment_arg),
@@ -1082,6 +1085,7 @@ export default grammar({
         $._data_def_stmt,
         $.case_stmt,
         $.action_stmt,
+        $.notification_stmt,
       )))
     ),
     _augment_arg_str: $ => ArgStr($._augment_arg),
@@ -1167,6 +1171,32 @@ export default grammar({
         $.typedef_stmt,
         $.grouping_stmt,
         $._data_def_stmt, // repeat1?
+      )))
+    ),
+
+    /** notification-stmt   = notification-keyword sep
+                              identifier-arg-str optsep
+                              (";" /
+                              "{" stmtsep
+                                  ;; these stmts can appear in any order
+                                  *if-feature-stmt
+                                  *must-stmt
+                                  [status-stmt]
+                                  [description-stmt]
+                                  [reference-stmt]
+                                  *(typedef-stmt / grouping-stmt)
+                                  *data-def-stmt
+                              "}") stmtsep */
+    notification_stmt: $ => Statement('notification', $._identifier_arg_str,
+      OptionalBlock(repeat(choice(
+        $.if_feature_stmt,
+        $.must_stmt,
+        $.status_stmt,
+        $.description,
+        $.reference,
+        $.typedef_stmt,
+        $.grouping_stmt,
+        $._data_def_stmt,
       )))
     ),
 
