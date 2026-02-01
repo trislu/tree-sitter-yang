@@ -1419,11 +1419,12 @@ export default grammar({
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907
     comment: $ => token(choice(
-      seq('//', /(\\(.|\r?\n)|[^\\\n])*/),
+      seq('//', /.*/),
       seq(
         '/*',
         /[^*]*\*+([^/*][^*]*\*+)*/,
-        '/')
+        '/'
+      )
     )),
 
     _prefix_arg_str: $ => ArgStr($._prefix_arg),
