@@ -3668,7 +3668,211 @@
       "required": true,
       "types": [
         {
+          "type": "action_stmt",
+          "named": true
+        },
+        {
+          "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "argument_stmt",
+          "named": true
+        },
+        {
+          "type": "augment_stmt",
+          "named": true
+        },
+        {
+          "type": "base_stmt",
+          "named": true
+        },
+        {
+          "type": "belongs_to_stmt",
+          "named": true
+        },
+        {
+          "type": "bit_stmt",
+          "named": true
+        },
+        {
+          "type": "case_stmt",
+          "named": true
+        },
+        {
+          "type": "choice_stmt",
+          "named": true
+        },
+        {
+          "type": "config_stmt",
+          "named": true
+        },
+        {
+          "type": "contact_stmt",
+          "named": true
+        },
+        {
+          "type": "container_stmt",
+          "named": true
+        },
+        {
+          "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_add_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_delete_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_not_supported_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_replace_stmt",
+          "named": true
+        },
+        {
+          "type": "deviation_stmt",
+          "named": true
+        },
+        {
+          "type": "enum_stmt",
+          "named": true
+        },
+        {
+          "type": "error_app_tag_stmt",
+          "named": true
+        },
+        {
+          "type": "error_message_stmt",
+          "named": true
+        },
+        {
+          "type": "extension_stmt",
+          "named": true
+        },
+        {
+          "type": "feature_stmt",
+          "named": true
+        },
+        {
+          "type": "fraction_digits_stmt",
+          "named": true
+        },
+        {
+          "type": "grouping_stmt",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "identity_stmt",
+          "named": true
+        },
+        {
+          "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "import_stmt",
+          "named": true
+        },
+        {
+          "type": "include_stmt",
+          "named": true
+        },
+        {
+          "type": "input_stmt",
+          "named": true
+        },
+        {
+          "type": "key_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_list_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "length_stmt",
+          "named": true
+        },
+        {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "mandatory_stmt",
+          "named": true
+        },
+        {
+          "type": "max_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "min_elements_stmt",
+          "named": true
+        },
+        {
+          "type": "modifier_stmt",
+          "named": true
+        },
+        {
+          "type": "module_stmt",
+          "named": true
+        },
+        {
+          "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "namespace_stmt",
+          "named": true
+        },
+        {
+          "type": "notification_stmt",
+          "named": true
+        },
+        {
+          "type": "ordered_by_stmt",
+          "named": true
+        },
+        {
+          "type": "organization_stmt",
+          "named": true
+        },
+        {
+          "type": "output_stmt",
+          "named": true
+        },
+        {
+          "type": "path_stmt",
+          "named": true
+        },
+        {
+          "type": "pattern_stmt",
+          "named": true
+        },
+        {
+          "type": "position_stmt",
           "named": true
         },
         {
@@ -3676,11 +3880,95 @@
           "named": true
         },
         {
+          "type": "prefix_stmt",
+          "named": true
+        },
+        {
+          "type": "presence_stmt",
+          "named": true
+        },
+        {
+          "type": "range_stmt",
+          "named": true
+        },
+        {
+          "type": "reference_stmt",
+          "named": true
+        },
+        {
+          "type": "refine_stmt",
+          "named": true
+        },
+        {
+          "type": "require_instance_stmt",
+          "named": true
+        },
+        {
+          "type": "revision_date_stmt",
+          "named": true
+        },
+        {
+          "type": "revision_stmt",
+          "named": true
+        },
+        {
+          "type": "rpc_stmt",
+          "named": true
+        },
+        {
+          "type": "status_stmt",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
         {
+          "type": "submodule_stmt",
+          "named": true
+        },
+        {
+          "type": "type_stmt",
+          "named": true
+        },
+        {
+          "type": "typedef_stmt",
+          "named": true
+        },
+        {
+          "type": "unique_stmt",
+          "named": true
+        },
+        {
+          "type": "units_stmt",
+          "named": true
+        },
+        {
           "type": "unknown_stmt",
+          "named": true
+        },
+        {
+          "type": "uses_augment_stmt",
+          "named": true
+        },
+        {
+          "type": "uses_stmt",
+          "named": true
+        },
+        {
+          "type": "value_stmt",
+          "named": true
+        },
+        {
+          "type": "when_stmt",
+          "named": true
+        },
+        {
+          "type": "yang_version_stmt",
+          "named": true
+        },
+        {
+          "type": "yin_element_stmt",
           "named": true
         }
       ]
