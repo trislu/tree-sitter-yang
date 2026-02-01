@@ -1609,7 +1609,7 @@ dependencies = [
 
 [[package]]
 name = "tree-sitter-yang"
-version = "0.1.1-rc.1"
+version = "0.1.1"
 dependencies = [
  "cc",
  "tree-sitter",
