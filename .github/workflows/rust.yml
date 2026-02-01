@@ -37,10 +37,6 @@ jobs:
         if: steps.changes.outputs.any == 'true'
         uses: Swatinem/rust-cache@v2
 
-      - name: Install Tree-sitter CLI
-        if: steps.changes.outputs.any == 'true'
-        run: cargo install tree-sitter-cli --version 0.26.3
-
       - name: Run clippy linter
         if: steps.changes.outputs.any == 'true'
         run: cargo clippy --all-targets --all-features -- -D warnings
