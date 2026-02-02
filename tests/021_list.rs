@@ -144,7 +144,8 @@ module test{
           (identifier))
         arg: (node_identifier
           (identifier)))
-      (config_stmt)
+      (config_stmt
+        arg: (boolean))
       (min_elements_stmt)
       (max_elements_stmt)
       (ordered_by_stmt)

@@ -30,10 +30,7 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    [$._numerical_restrictions, $._decimal64_specification],
     [$.unknown_stmt],
-    [$._key_arg],     // maybe we should force key-arg-str to be quoted
-    [$._unique_arg],  // maybe we should force unique-arg-str to be quoted
     // blame unknown_stmt
     [$.action_stmt],
     [$.anydata_stmt],
@@ -76,7 +73,6 @@ export default grammar({
     [$.max_elements_stmt],
     [$.min_elements_stmt],
     [$.modifier_stmt],
-    [$.module_stmt],
     [$.must_stmt],
     [$.namespace_stmt],
     [$.notification_stmt],
@@ -96,7 +92,6 @@ export default grammar({
     [$.revision_stmt],
     [$.rpc_stmt],
     [$.status_stmt],
-    [$.submodule_stmt],
     [$.typedef_stmt],
     [$.type_stmt],
     [$.unique_stmt],
@@ -339,7 +334,7 @@ export default grammar({
     /** yin-element-arg-str = < a string that matches the rule
                            yin-element-arg >
         yin-element-arg     = true-keyword / false-keyword*/
-    _yin_element_arg_str: $ => ArgStr($._boolean),
+    _yin_element_arg_str: $ => ArgStr($.boolean),
 
     /** status-stmt         = status-keyword sep status-arg-str stmtend
         status-arg-str      = < a string that matches the rule
@@ -699,7 +694,7 @@ export default grammar({
       $.require_instance_stmt, //tree-sitter limitation: optional($.require_instance_stmt) match empty string
     require_instance_stmt: $ => NonBlockStmt('require-instance', $._require_instance_arg_str),
     _require_instance_arg_str: $ => ArgStr($._require_instance_arg),
-    _require_instance_arg: $ => $._boolean,
+    _require_instance_arg: $ => $.boolean,
 
     /** identityref-specification = 1*base-stmt */
     _identityref_specification: $ => repeat1($.base_stmt),
@@ -1537,7 +1532,7 @@ export default grammar({
         config-arg          = true-keyword / false-keyword
     */
     config_stmt: $ => NonBlockStmt('config', $._config_arg_str),
-    _config_arg_str: $ => ArgStr($._boolean),
+    _config_arg_str: $ => ArgStr($.boolean),
 
     /** mandatory-stmt      = mandatory-keyword sep
                          mandatory-arg-str stmtend
@@ -1546,7 +1541,7 @@ export default grammar({
         mandatory-arg       = true-keyword / false-keyword
    */
     mandatory_stmt: $ => NonBlockStmt('mandatory', $._mandatory_arg_str),
-    _mandatory_arg_str: $ => ArgStr($._boolean),
+    _mandatory_arg_str: $ => ArgStr($.boolean),
 
     // presence-stmt       = presence-keyword sep string stmtend
     presence_stmt: $ => NonBlockStmt('presence', $.string),
@@ -1679,7 +1674,7 @@ export default grammar({
 
     string: $ => choice($._concatenated_string, $.identifier),
 
-    _boolean: _ => choice('true', 'false'),
+    boolean: _ => choice('true', 'false'),
   }
 });
 

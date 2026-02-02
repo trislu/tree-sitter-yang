@@ -91,7 +91,8 @@ module tree-sitter {
         arg: (qstring))
       (argument_stmt
         arg: (identifier)
-        (yin_element_stmt))
+        (yin_element_stmt
+          arg: (boolean)))
       (reference_stmt
         arg: (string))
       (status_stmt))))

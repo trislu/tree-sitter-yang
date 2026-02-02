@@ -1230,7 +1230,8 @@ module ietf-interfaces {
             arg: (identifier)
             (base_stmt
               arg: (identifier)))
-          (mandatory_stmt)
+          (mandatory_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1296,8 +1297,10 @@ module ietf-interfaces {
                 arg: (integer_value))
               (description_stmt
                 arg: (qstring))))
-          (config_stmt)
-          (mandatory_stmt)
+          (config_stmt
+            arg: (boolean))
+          (mandatory_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1355,8 +1358,10 @@ module ietf-interfaces {
                 arg: (integer_value))
               (description_stmt
                 arg: (qstring))))
-          (config_stmt)
-          (mandatory_stmt)
+          (config_stmt
+            arg: (boolean))
+          (mandatory_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1367,7 +1372,8 @@ module ietf-interfaces {
             arg: (prefix
               (identifier))
             arg: (identifier))
-          (config_stmt)
+          (config_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1381,8 +1387,10 @@ module ietf-interfaces {
             (range_stmt
               arg: (integer_value)
               arg: (integer_value)))
-          (config_stmt)
-          (mandatory_stmt)
+          (config_stmt
+            arg: (boolean))
+          (mandatory_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1393,7 +1401,8 @@ module ietf-interfaces {
             arg: (prefix
               (identifier))
             arg: (identifier))
-          (config_stmt)
+          (config_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1402,7 +1411,8 @@ module ietf-interfaces {
           arg: (identifier)
           (type_stmt
             arg: (identifier))
-          (config_stmt)
+          (config_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1411,7 +1421,8 @@ module ietf-interfaces {
           arg: (identifier)
           (type_stmt
             arg: (identifier))
-          (config_stmt)
+          (config_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
@@ -1424,14 +1435,16 @@ module ietf-interfaces {
             arg: (identifier))
           (units_stmt
             arg: (string))
-          (config_stmt)
+          (config_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (reference_stmt
             arg: (string)))
         (container_stmt
           arg: (identifier)
-          (config_stmt)
+          (config_stmt
+            arg: (boolean))
           (description_stmt
             arg: (qstring))
           (leaf_stmt
@@ -1440,7 +1453,8 @@ module ietf-interfaces {
               arg: (prefix
                 (identifier))
               arg: (identifier))
-            (mandatory_stmt)
+            (mandatory_stmt
+              arg: (boolean))
             (description_stmt
               arg: (qstring)))
           (leaf_stmt
@@ -1594,7 +1608,8 @@ module ietf-interfaces {
     (comment)
     (container_stmt
       arg: (identifier)
-      (config_stmt)
+      (config_stmt
+        arg: (boolean))
       (status_stmt)
       (description_stmt
         arg: (qstring))
@@ -1621,7 +1636,8 @@ module ietf-interfaces {
             arg: (identifier)
             (base_stmt
               arg: (identifier)))
-          (mandatory_stmt)
+          (mandatory_stmt
+            arg: (boolean))
           (status_stmt)
           (description_stmt
             arg: (qstring))
@@ -1654,7 +1670,8 @@ module ietf-interfaces {
                 arg: (integer_value))
               (description_stmt
                 arg: (qstring))))
-          (mandatory_stmt)
+          (mandatory_stmt
+            arg: (boolean))
           (status_stmt)
           (description_stmt
             arg: (qstring))
@@ -1713,7 +1730,8 @@ module ietf-interfaces {
                 arg: (integer_value))
               (description_stmt
                 arg: (qstring))))
-          (mandatory_stmt)
+          (mandatory_stmt
+            arg: (boolean))
           (status_stmt)
           (description_stmt
             arg: (qstring))
@@ -1739,7 +1757,8 @@ module ietf-interfaces {
             (range_stmt
               arg: (integer_value)
               arg: (integer_value)))
-          (mandatory_stmt)
+          (mandatory_stmt
+            arg: (boolean))
           (status_stmt)
           (description_stmt
             arg: (qstring))
@@ -1798,7 +1817,8 @@ module ietf-interfaces {
               arg: (prefix
                 (identifier))
               arg: (identifier))
-            (mandatory_stmt)
+            (mandatory_stmt
+              arg: (boolean))
             (status_stmt)
             (description_stmt
               arg: (qstring)))
@@ -1944,7 +1964,7 @@ module ietf-interfaces {
             (description_stmt
               arg: (qstring))
             (reference_stmt
-              arg: (string))))))))        
+              arg: (string))))))))
     "#
     );
 }

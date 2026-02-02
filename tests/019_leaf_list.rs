@@ -62,7 +62,8 @@ module test{
         arg: (must_expression))
       (default_stmt
         arg: (integer_value))
-      (config_stmt)
+      (config_stmt
+        arg: (boolean))
       (min_elements_stmt)
       (max_elements_stmt)
       (ordered_by_stmt)

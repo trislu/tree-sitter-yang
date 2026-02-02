@@ -468,6 +468,11 @@
     }
   },
   {
+    "type": "boolean",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "case_stmt",
     "named": true,
     "fields": {
@@ -668,12 +673,8 @@
             "named": false
           },
           {
-            "type": "false",
-            "named": false
-          },
-          {
-            "type": "true",
-            "named": false
+            "type": "boolean",
+            "named": true
           }
         ]
       }
@@ -2168,12 +2169,8 @@
             "named": false
           },
           {
-            "type": "false",
-            "named": false
-          },
-          {
-            "type": "true",
-            "named": false
+            "type": "boolean",
+            "named": true
           }
         ]
       }
@@ -3149,12 +3146,8 @@
             "named": false
           },
           {
-            "type": "false",
-            "named": false
-          },
-          {
-            "type": "true",
-            "named": false
+            "type": "boolean",
+            "named": true
           }
         ]
       }
@@ -4281,12 +4274,8 @@
             "named": false
           },
           {
-            "type": "false",
-            "named": false
-          },
-          {
-            "type": "true",
-            "named": false
+            "type": "boolean",
+            "named": true
           }
         ]
       }

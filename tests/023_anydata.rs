@@ -47,8 +47,10 @@ module test{
         arg: (identifier))
       (must_stmt
         arg: (must_expression))
-      (config_stmt)
-      (mandatory_stmt)
+      (config_stmt
+        arg: (boolean))
+      (mandatory_stmt
+        arg: (boolean))
       (status_stmt)
       (description_stmt
         arg: (qstring))

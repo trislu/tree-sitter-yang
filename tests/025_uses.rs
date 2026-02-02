@@ -82,7 +82,8 @@ module test{
             arg: (string))
           (default_stmt
             arg: (integer_value))
-          (mandatory_stmt)
+          (mandatory_stmt
+            arg: (boolean))
           (min_elements_stmt)
           (max_elements_stmt)
           (description_stmt

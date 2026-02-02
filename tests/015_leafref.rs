@@ -67,7 +67,8 @@ module test{
             (identifier))
           arg: (node_identifier
             (identifier)))
-        (require_instance_stmt)))))
+        (require_instance_stmt
+          arg: (boolean))))))
 "#
     );
 }

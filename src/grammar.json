@@ -3189,7 +3189,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_boolean"
+              "name": "boolean"
             },
             {
               "type": "STRING",
@@ -3206,7 +3206,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_boolean"
+              "name": "boolean"
             },
             {
               "type": "STRING",
@@ -3216,7 +3216,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_boolean"
+          "name": "boolean"
         }
       ]
     },
@@ -7854,7 +7854,7 @@
     },
     "_require_instance_arg": {
       "type": "SYMBOL",
-      "name": "_boolean"
+      "name": "boolean"
     },
     "_identityref_specification": {
       "type": "REPEAT1",
@@ -14235,7 +14235,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_boolean"
+              "name": "boolean"
             },
             {
               "type": "STRING",
@@ -14252,7 +14252,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_boolean"
+              "name": "boolean"
             },
             {
               "type": "STRING",
@@ -14262,7 +14262,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_boolean"
+          "name": "boolean"
         }
       ]
     },
@@ -14472,7 +14472,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_boolean"
+              "name": "boolean"
             },
             {
               "type": "STRING",
@@ -14489,7 +14489,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_boolean"
+              "name": "boolean"
             },
             {
               "type": "STRING",
@@ -14499,7 +14499,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_boolean"
+          "name": "boolean"
         }
       ]
     },
@@ -16065,7 +16065,7 @@
         }
       ]
     },
-    "_boolean": {
+    "boolean": {
       "type": "CHOICE",
       "members": [
         {
@@ -16091,17 +16091,7 @@
   ],
   "conflicts": [
     [
-      "_numerical_restrictions",
-      "_decimal64_specification"
-    ],
-    [
       "unknown_stmt"
-    ],
-    [
-      "_key_arg"
-    ],
-    [
-      "_unique_arg"
     ],
     [
       "action_stmt"
@@ -16227,9 +16217,6 @@
       "modifier_stmt"
     ],
     [
-      "module_stmt"
-    ],
-    [
       "must_stmt"
     ],
     [
@@ -16285,9 +16272,6 @@
     ],
     [
       "status_stmt"
-    ],
-    [
-      "submodule_stmt"
     ],
     [
       "typedef_stmt"
