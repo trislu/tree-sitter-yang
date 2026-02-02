@@ -1,19 +1,22 @@
 fn main() {
-    let tree_sitter_available = std::process::Command::new("tree-sitter")
-        .arg("--version")
-        .status()
-        .is_ok();
+    #[cfg(feature = "dev")]
+    {
+        let tree_sitter_available = std::process::Command::new("tree-sitter")
+            .arg("--version")
+            .status()
+            .is_ok();
 
-    if tree_sitter_available {
-        let output = std::process::Command::new("tree-sitter")
-            .arg("generate")
-            .arg("--abi=14")
-            .output()
-            .expect("Failed to execute tree-sitter build command");
+        if tree_sitter_available {
+            let output = std::process::Command::new("tree-sitter")
+                .arg("generate")
+                .arg("--abi=14")
+                .output()
+                .expect("Failed to execute tree-sitter build command");
 
-        if !output.status.success() {
-            let error_message = String::from_utf8_lossy(&output.stderr);
-            panic!("Tree-sitter build failed: {error_message}");
+            if !output.status.success() {
+                let error_message = String::from_utf8_lossy(&output.stderr);
+                panic!("Tree-sitter build failed: {error_message}");
+            }
         }
     }
 
