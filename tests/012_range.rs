@@ -133,7 +133,7 @@ module test {
     namespace "urn:example:foo";
     typedef my-base-int32-type {
         type int32 {
-            range "1..4 | 10..20";
+            range "1..3.14 | 10..20";
         }
     }
     typedef my-type1 {
@@ -159,7 +159,7 @@ module test {
         arg: (identifier)
         (range_stmt
           arg: (integer_value)
-          arg: (integer_value)
+          arg: (decimal_value)
           arg: (integer_value)
           arg: (integer_value))))
     (typedef_stmt

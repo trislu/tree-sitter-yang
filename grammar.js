@@ -102,6 +102,7 @@ export default grammar({
     [$.when_stmt],
     [$.yang_version_stmt],
     [$.yin_element_stmt],
+    [$._range_boundary, $.decimal_value], // maybe need to set precedences?
   ],
 
   rules: {
@@ -475,7 +476,10 @@ export default grammar({
     _range_arg_str: $ => ArgStr($._range_arg),
     _range_arg: $ => BarSep1($._range_part),
     _range_part: $ => seq($._range_boundary, optional(seq('..', $._range_boundary))),
-    _range_boundary: $ => choice(min_keyword, max_keyword, $.integer_value),
+    _range_boundary: $ => choice(
+      min_keyword, max_keyword,
+      $.integer_value, $.decimal_value
+    ),
 
     /** @todo rfc7950
      * decimal64-specification = ;; these stmts can appear in any order
@@ -1604,8 +1608,16 @@ export default grammar({
     integer_value: $ => seq(optional('-'), $._non_negative_integer_value),
     _non_negative_integer_value: $ => choice('0', $._positive_integer_value),
     _positive_integer_value: $ => seq($._non_zero_digit, repeat($._DIGIT)),
-    _non_zero_digit: _ => /[1-9]/,
-    _DIGIT: _ => /[0-9]/,
+    _non_zero_digit: _ => token(/[1-9]/),
+    _DIGIT: _ => token(/[0-9]/),
+
+    /** zero-integer-value  = 1*DIGIT
+        decimal-value       = integer-value ("." zero-integer-value) */
+    _zero_integer_value: $ => repeat1($._DIGIT),
+    decimal_value: $ => seq(
+      alias($.integer_value, "integer_part"),
+      optional(seq('.', $._zero_integer_value))
+    ),
 
     // Copied from "tree-sitter-javascript":
     // https://github.com/tree-sitter/tree-sitter-javascript/blob/2c5b138ea488259dbf11a34595042eb261965259/grammar.js#L907

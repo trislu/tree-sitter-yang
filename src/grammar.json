@@ -5659,6 +5659,10 @@
         {
           "type": "SYMBOL",
           "name": "integer_value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "decimal_value"
         }
       ]
     },
@@ -15648,12 +15652,60 @@
       ]
     },
     "_non_zero_digit": {
-      "type": "PATTERN",
-      "value": "[1-9]"
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[1-9]"
+      }
     },
     "_DIGIT": {
-      "type": "PATTERN",
-      "value": "[0-9]"
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[0-9]"
+      }
+    },
+    "_zero_integer_value": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_DIGIT"
+      }
+    },
+    "decimal_value": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "integer_value"
+          },
+          "named": false,
+          "value": "integer_part"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "."
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_zero_integer_value"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "comment": {
       "type": "TOKEN",
@@ -16302,6 +16354,10 @@
     ],
     [
       "yin_element_stmt"
+    ],
+    [
+      "_range_boundary",
+      "decimal_value"
     ]
   ],
   "precedences": [],

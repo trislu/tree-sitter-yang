@@ -831,6 +831,11 @@
     }
   },
   {
+    "type": "decimal_value",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "default_stmt",
     "named": true,
     "fields": {
@@ -1736,6 +1741,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "integer_part",
+    "named": false,
+    "fields": {}
   },
   {
     "type": "integer_value",
@@ -2978,6 +2988,10 @@
           {
             "type": "..",
             "named": false
+          },
+          {
+            "type": "decimal_value",
+            "named": true
           },
           {
             "type": "integer_value",
@@ -4329,6 +4343,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
