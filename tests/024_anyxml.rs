@@ -11,9 +11,11 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (anyxml_stmt
-      arg: (identifier))))
+      arg: (anyxml_arg_str
+        (identifier)))))
         "#
     );
 }
@@ -38,24 +40,28 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (anyxml_stmt
-      arg: (identifier)
+      arg: (anyxml_arg_str
+        (identifier))
       (when_stmt
         arg: (string))
       (if_feature_stmt
-        arg: (identifier))
+        arg: (if_feature_arg_str
+          (identifier)))
       (must_stmt
         arg: (must_expression))
       (config_stmt
         arg: (boolean))
       (mandatory_stmt
         arg: (boolean))
-      (status_stmt)
+      (status_stmt
+        arg: (status_arg_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string)))))
+        arg: (reference_arg_str)))))
         "#
     );
 }

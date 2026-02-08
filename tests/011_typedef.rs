@@ -20,23 +20,28 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))
     (prefix_stmt
-      arg: (identifier))
+      arg: (prefix_arg_str
+        (identifier)))
     (namespace_stmt
-      arg: (uri_str))
+      arg: (namespace_arg_str))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (units_stmt
-        arg: (string))
+        arg: (units_arg_str))
       (default_stmt
-        arg: (string))
-      (status_stmt)
+        arg: (default_arg_str))
+      (status_stmt
+        arg: (status_arg_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string)))))
+        arg: (reference_arg_str)))))
 "#
     );
 }

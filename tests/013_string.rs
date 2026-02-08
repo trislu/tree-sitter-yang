@@ -13,11 +13,14 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)))))
+        arg: (type_arg_str
+          (identifier))))))
         "#
     );
 }
@@ -37,12 +40,16 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
-        (length_stmt)))))
+        arg: (type_arg_str
+          (identifier))
+        (length_stmt
+          arg: (length_arg_str))))))
         "#
     );
 
@@ -61,12 +68,16 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (length_stmt
+          arg: (length_arg_str)
           (error_message_stmt
             arg: (string)))))))
         "#
@@ -85,12 +96,16 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
-        (length_stmt)))))
+        arg: (type_arg_str
+          (identifier))
+        (length_stmt
+          arg: (length_arg_str))))))
 "#
     );
 }
@@ -110,13 +125,16 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (pattern_stmt
-          arg: (string))))))
+          arg: (pattern_arg_str))))))
 "#
     );
 
@@ -137,14 +155,18 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (pattern_stmt
-          arg: (string)
-          (modifier_stmt)
+          arg: (pattern_arg_str)
+          (modifier_stmt
+            arg: (modifier_arg_str))
           (error_message_stmt
             arg: (string)))))))
 "#
@@ -164,15 +186,18 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (pattern_stmt
-          arg: (string))
+          arg: (pattern_arg_str))
         (pattern_stmt
-          arg: (string))))))
+          arg: (pattern_arg_str))))))
 "#
     );
 }

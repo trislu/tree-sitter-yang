@@ -11,9 +11,10 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (namespace_stmt
-      arg: (uri_str))))
+      arg: (namespace_arg_str))))
 "#
     );
 }
@@ -29,9 +30,10 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (namespace_stmt
-      arg: (uri_str))))
+      arg: (namespace_arg_str))))
 "#
     );
 }

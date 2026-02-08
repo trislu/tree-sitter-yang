@@ -13,9 +13,11 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (include_stmt
-      arg: (identifier))))
+      arg: (include_arg_str
+        (identifier)))))
 "#
     );
     // the block can also be omitted
@@ -28,9 +30,11 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (include_stmt
-      arg: (identifier))))
+      arg: (include_arg_str
+        (identifier)))))
 "#
     );
 }
@@ -53,15 +57,18 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (include_stmt
-      arg: (identifier)
+      arg: (include_arg_str
+        (identifier))
       (revision_date_stmt
-        arg: (date_str))
+        arg: (revision_date_arg_str
+          (date_str)))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string)))))
+        arg: (reference_arg_str)))))
 "#
     );
 }

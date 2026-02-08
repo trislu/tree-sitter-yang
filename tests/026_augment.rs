@@ -16,17 +16,22 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (augment_stmt
-      arg: (node_identifier
-        (identifier)
-        (identifier))
+      arg: (augment_arg_str
+        (node_identifier
+          (identifier)
+          (identifier)))
       (if_feature_stmt
-        arg: (identifier))
+        arg: (if_feature_arg_str
+          (identifier)))
       (leaf_stmt
-        arg: (identifier)
+        arg: (leaf_arg_str
+          (identifier))
         (type_stmt
-          arg: (identifier))))))
+          arg: (type_arg_str
+            (identifier)))))))
         "#
     );
 }
@@ -52,26 +57,33 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (augment_stmt
-      arg: (node_identifier
-        (identifier)
-        (identifier))
+      arg: (augment_arg_str
+        (node_identifier
+          (identifier)
+          (identifier)))
       (when_stmt
         arg: (string))
       (if_feature_stmt
-        arg: (identifier))
-      (status_stmt)
+        arg: (if_feature_arg_str
+          (identifier)))
+      (status_stmt
+        arg: (status_arg_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string))
+        arg: (reference_arg_str))
       (leaf_stmt
-        arg: (identifier)
+        arg: (leaf_arg_str
+          (identifier))
         (type_stmt
-          arg: (identifier)))
+          arg: (type_arg_str
+            (identifier))))
       (case_stmt
-        arg: (identifier)))))
+        arg: (case_arg_str
+          (identifier))))))
         "#
     );
 }

@@ -23,20 +23,29 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (bit_stmt
-          arg: (identifier)
-          (position_stmt))
+          arg: (bit_arg_str
+            (identifier))
+          (position_stmt
+            arg: (position_arg_str)))
         (bit_stmt
-          arg: (identifier)
-          (position_stmt))
+          arg: (bit_arg_str
+            (identifier))
+          (position_stmt
+            arg: (position_arg_str)))
         (bit_stmt
-          arg: (identifier)
-          (position_stmt))))))
+          arg: (bit_arg_str
+            (identifier))
+          (position_stmt
+            arg: (position_arg_str)))))))
         "#
     );
 }

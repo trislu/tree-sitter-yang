@@ -18,20 +18,26 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)))
+        arg: (type_arg_str
+          (identifier))))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (path_stmt
-          arg: (node_identifier
-            (identifier))
-          arg: (node_identifier
-            (identifier)))))))
+          arg: (path_arg_str
+            (node_identifier
+              (identifier))
+            (node_identifier
+              (identifier))))))))
         "#
     );
 }
@@ -53,22 +59,27 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (path_stmt
-          arg: (node_identifier
-            (identifier))
-          arg: (node_identifier
-            (identifier))
-          arg: (node_identifier
-            (identifier)))
+          arg: (path_arg_str
+            (node_identifier
+              (identifier))
+            (node_identifier
+              (identifier))
+            (node_identifier
+              (identifier))))
         (require_instance_stmt
-          arg: (boolean))))))
+          arg: (require_instance_arg_str
+            (boolean)))))))
 "#
     );
 }

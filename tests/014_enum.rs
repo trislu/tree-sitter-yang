@@ -16,17 +16,22 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (enum_stmt
-          arg: (string
-            (identifier)))
+          arg: (enum_arg_str
+            (string
+              (identifier))))
         (enum_stmt
-          arg: (string
-            (identifier)))))))
+          arg: (enum_arg_str
+            (string
+              (identifier))))))))
         "#
     );
 }
@@ -51,21 +56,28 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (enum_stmt
-          arg: (string
-            (identifier))
+          arg: (enum_arg_str
+            (string
+              (identifier)))
           (value_stmt
-            arg: (integer_value)))
+            arg: (value_arg_str
+              (integer_value))))
         (enum_stmt
-          arg: (string
-            (identifier))
+          arg: (enum_arg_str
+            (string
+              (identifier)))
           (value_stmt
-            arg: (integer_value)))))))
+            arg: (value_arg_str
+              (integer_value))))))))
         "#
     );
 }
@@ -96,32 +108,41 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (enum_stmt
-          arg: (string
-            (identifier))
+          arg: (enum_arg_str
+            (string
+              (identifier)))
           (description_stmt
-            arg: (qstring))
+            arg: (description_arg_str))
           (value_stmt
-            arg: (integer_value)))
+            arg: (value_arg_str
+              (integer_value))))
         (enum_stmt
-          arg: (string
-            (identifier))
+          arg: (enum_arg_str
+            (string
+              (identifier)))
           (description_stmt
-            arg: (qstring))
+            arg: (description_arg_str))
           (value_stmt
-            arg: (integer_value)))
+            arg: (value_arg_str
+              (integer_value))))
         (enum_stmt
-          arg: (string
-            (identifier))
+          arg: (enum_arg_str
+            (string
+              (identifier)))
           (description_stmt
-            arg: (qstring))
+            arg: (description_arg_str))
           (value_stmt
-            arg: (integer_value)))))))
+            arg: (value_arg_str
+              (integer_value))))))))
 "#
     );
 }

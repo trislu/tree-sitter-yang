@@ -18,13 +18,16 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (extension_stmt
-      arg: (identifier)
+      arg: (extension_arg_str
+        (identifier))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (argument_stmt
-        arg: (identifier)))))
+        arg: (argument_arg_str
+          (identifier))))))
 "#
     );
     // the block can be omitted
@@ -37,9 +40,11 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (extension_stmt
-      arg: (identifier))))
+      arg: (extension_arg_str
+        (identifier)))))
 "#
     );
 }
@@ -65,18 +70,23 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (extension_stmt
-      arg: (identifier)
+      arg: (extension_arg_str
+        (identifier))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (argument_stmt
-        arg: (identifier)
+        arg: (argument_arg_str
+          (identifier))
         (yin_element_stmt
-          arg: (boolean)))
+          arg: (yin_element_arg_str
+            (boolean))))
       (reference_stmt
-        arg: (string))
-      (status_stmt))))
+        arg: (reference_arg_str))
+      (status_stmt
+        arg: (status_arg_str)))))
 "#
     );
 }

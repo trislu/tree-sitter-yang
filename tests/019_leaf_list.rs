@@ -13,11 +13,14 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (leaf_list_stmt
-      arg: (identifier)
+      arg: (leaf_list_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)))))
+        arg: (type_arg_str
+          (identifier))))))
         "#
     );
 }
@@ -47,31 +50,36 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (leaf_list_stmt
-      arg: (identifier)
+      arg: (leaf_list_arg_str
+        (identifier))
       (when_stmt
         arg: (string))
       (if_feature_stmt
-        arg: (identifier))
+        arg: (if_feature_arg_str
+          (identifier)))
       (type_stmt
-        arg: (identifier))
+        arg: (type_arg_str
+          (identifier)))
       (units_stmt
-        arg: (string))
+        arg: (units_arg_str))
       (must_stmt
         arg: (must_expression))
       (default_stmt
-        arg: (integer_value))
+        arg: (default_arg_str))
       (config_stmt
         arg: (boolean))
       (min_elements_stmt)
       (max_elements_stmt)
       (ordered_by_stmt)
-      (status_stmt)
+      (status_stmt
+        arg: (status_arg_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string)))))
+        arg: (reference_arg_str)))))
         "#
     );
 }

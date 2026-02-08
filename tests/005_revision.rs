@@ -12,9 +12,11 @@ module rev-test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (revision_stmt
-      arg: (date_str))))
+      arg: (revision_arg_str
+        (date_str)))))
 "#
     );
     // the block can be omitted
@@ -27,9 +29,11 @@ module rev-test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (revision_stmt
-      arg: (date_str))))
+      arg: (revision_arg_str
+        (date_str)))))
 "#
     );
 }
@@ -47,13 +51,17 @@ module rev-test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (revision_stmt
-      arg: (date_str))
+      arg: (revision_arg_str
+        (date_str)))
     (revision_stmt
-      arg: (date_str))
+      arg: (revision_arg_str
+        (date_str)))
     (revision_stmt
-      arg: (date_str))))
+      arg: (revision_arg_str
+        (date_str)))))
 "#
     );
 }
@@ -100,20 +108,23 @@ module rev-test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (revision_stmt
-      arg: (date_str)
+      arg: (revision_arg_str
+        (date_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string
+        arg: (reference_arg_str
           (identifier))))
     (revision_stmt
-      arg: (date_str)
+      arg: (revision_arg_str
+        (date_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string)))))
+        arg: (reference_arg_str)))))
 "#
     );
 }

@@ -11,8 +11,10 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)))
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))))
 "#
     );
     parse_success_as!(
@@ -24,8 +26,10 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)))
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))))
 "#
     );
 }
@@ -41,8 +45,10 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)))
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))))
 "#
     );
     parse_success_as!(
@@ -54,8 +60,10 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)))
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))))
 "#
     );
 }

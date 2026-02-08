@@ -18,19 +18,25 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))
     (prefix_stmt
-      arg: (identifier))
+      arg: (prefix_arg_str
+        (identifier)))
     (namespace_stmt
-      arg: (uri_str))
+      arg: (namespace_arg_str))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (range_stmt
-          arg: (integer_value)
-          arg: (integer_value))))))
+          arg: (range_arg_str
+            (integer_value)
+            (integer_value)))))))
 "#
     );
 }
@@ -53,21 +59,27 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))
     (prefix_stmt
-      arg: (identifier))
+      arg: (prefix_arg_str
+        (identifier)))
     (namespace_stmt
-      arg: (uri_str))
+      arg: (namespace_arg_str))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (range_stmt
-          arg: (integer_value)
-          arg: (integer_value)
-          arg: (integer_value)
-          arg: (integer_value))))))
+          arg: (range_arg_str
+            (integer_value)
+            (integer_value)
+            (integer_value)
+            (integer_value)))))))
 "#
     );
 }
@@ -96,28 +108,37 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))
     (prefix_stmt
-      arg: (identifier))
+      arg: (prefix_arg_str
+        (identifier)))
     (namespace_stmt
-      arg: (uri_str))
+      arg: (namespace_arg_str))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (range_stmt
-          arg: (integer_value)
-          arg: (integer_value)
-          arg: (integer_value)
-          arg: (integer_value))))
+          arg: (range_arg_str
+            (integer_value)
+            (integer_value)
+            (integer_value)
+            (integer_value)))))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (comment)
         (range_stmt
-          arg: (integer_value))
+          arg: (range_arg_str
+            (integer_value)))
         (comment)))))
 "#
     );
@@ -147,28 +168,37 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))
     (prefix_stmt
-      arg: (identifier))
+      arg: (prefix_arg_str
+        (identifier)))
     (namespace_stmt
-      arg: (uri_str))
+      arg: (namespace_arg_str))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (range_stmt
-          arg: (integer_value)
-          arg: (decimal_value)
-          arg: (integer_value)
-          arg: (integer_value))))
+          arg: (range_arg_str
+            (integer_value)
+            (decimal_value)
+            (integer_value)
+            (integer_value)))))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (comment)
         (range_stmt
-          arg: (integer_value))
+          arg: (range_arg_str
+            (integer_value)))
         (comment)))))
 "#
     );
@@ -195,19 +225,25 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))
     (prefix_stmt
-      arg: (identifier))
+      arg: (prefix_arg_str
+        (identifier)))
     (namespace_stmt
-      arg: (uri_str))
+      arg: (namespace_arg_str))
     (typedef_stmt
-      arg: (identifier)
+      arg: (typedef_arg_str
+        (identifier))
       (type_stmt
-        arg: (identifier)
+        arg: (type_arg_str
+          (identifier))
         (range_stmt
-          arg: (integer_value)
-          arg: (integer_value)
+          arg: (range_arg_str
+            (integer_value)
+            (integer_value))
           (error_message_stmt
             arg: (string)))))))
 "#

@@ -12,9 +12,11 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (choice_stmt
-      arg: (identifier))))
+      arg: (choice_arg_str
+        (identifier)))))
         "#
     );
 }
@@ -35,13 +37,17 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (choice_stmt
-      arg: (identifier)
+      arg: (choice_arg_str
+        (identifier))
       (choice_stmt
-        arg: (identifier)
+        arg: (choice_arg_str
+          (identifier))
         (choice_stmt
-          arg: (identifier))))))
+          arg: (choice_arg_str
+            (identifier)))))))
         "#
     );
 }
@@ -80,51 +86,68 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (choice_stmt
-      arg: (identifier)
+      arg: (choice_arg_str
+        (identifier))
       (when_stmt
         arg: (string))
       (if_feature_stmt
-        arg: (identifier))
-      (status_stmt)
+        arg: (if_feature_arg_str
+          (identifier)))
+      (status_stmt
+        arg: (status_arg_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string))
+        arg: (reference_arg_str))
       (leaf_stmt
-        arg: (identifier)
+        arg: (leaf_arg_str
+          (identifier))
         (type_stmt
-          arg: (identifier)))
+          arg: (type_arg_str
+            (identifier))))
       (leaf_list_stmt
-        arg: (identifier)
+        arg: (leaf_list_arg_str
+          (identifier))
         (type_stmt
-          arg: (prefix
-            (identifier))
-          arg: (identifier)))
+          arg: (type_arg_str
+            (prefix
+              (identifier))
+            (identifier))))
       (case_stmt
-        arg: (identifier)
+        arg: (case_arg_str
+          (identifier))
         (when_stmt
           arg: (string))
         (if_feature_stmt
-          arg: (identifier))
-        (status_stmt)
+          arg: (if_feature_arg_str
+            (identifier)))
+        (status_stmt
+          arg: (status_arg_str))
         (description_stmt
-          arg: (qstring))
+          arg: (description_arg_str))
         (reference_stmt
-          arg: (string))
+          arg: (reference_arg_str))
         (container_stmt
-          arg: (identifier))
+          arg: (container_arg_str
+            (identifier)))
         (list_stmt
-          arg: (identifier))
+          arg: (list_arg_str
+            (identifier)))
         (leaf_stmt
-          arg: (identifier)
+          arg: (leaf_arg_str
+            (identifier))
           (type_stmt
-            arg: (identifier)))
+            arg: (type_arg_str
+              (identifier))))
         (leaf_list_stmt
-          arg: (identifier)
+          arg: (leaf_list_arg_str
+            (identifier))
           (type_stmt
-            arg: (identifier)))))))
+            arg: (type_arg_str
+              (identifier))))))))
         "#
     );
 }

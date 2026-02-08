@@ -19,20 +19,25 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (container_stmt
-      arg: (identifier)
+      arg: (container_arg_str
+        (identifier))
       (uses_stmt
-        arg: (identifier)
+        arg: (uses_arg_str
+          (identifier))
         (when_stmt
           arg: (string))
         (if_feature_stmt
-          arg: (identifier))
-        (status_stmt)
+          arg: (if_feature_arg_str
+            (identifier)))
+        (status_stmt
+          arg: (status_arg_str))
         (description_stmt
-          arg: (qstring))
+          arg: (description_arg_str))
         (reference_stmt
-          arg: (string))))))
+          arg: (reference_arg_str))))))
         "#
     );
 }
@@ -62,34 +67,39 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (container_stmt
-      arg: (identifier)
+      arg: (container_arg_str
+        (identifier))
       (uses_stmt
-        arg: (identifier)
+        arg: (uses_arg_str
+          (identifier))
         (refine_stmt
-          arg: (node_identifier
-            (identifier))
-          arg: (node_identifier
-            (identifier))
-          arg: (node_identifier
-            (identifier))
+          arg: (refine_arg_str
+            (node_identifier
+              (identifier))
+            (node_identifier
+              (identifier))
+            (node_identifier
+              (identifier)))
           (if_feature_stmt
-            arg: (identifier))
+            arg: (if_feature_arg_str
+              (identifier)))
           (must_stmt
             arg: (must_expression))
           (presence_stmt
             arg: (string))
           (default_stmt
-            arg: (integer_value))
+            arg: (default_arg_str))
           (mandatory_stmt
             arg: (boolean))
           (min_elements_stmt)
           (max_elements_stmt)
           (description_stmt
-            arg: (qstring))
+            arg: (description_arg_str))
           (reference_stmt
-            arg: (string)))))))
+            arg: (reference_arg_str)))))))
         "#
     );
 }
@@ -124,49 +134,66 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (container_stmt
-      arg: (identifier)
+      arg: (container_arg_str
+        (identifier))
       (uses_stmt
-        arg: (identifier)
+        arg: (uses_arg_str
+          (identifier))
         (uses_augment_stmt
-          arg: (node_identifier
-            (identifier))
-          arg: (node_identifier
-            (identifier))
-          arg: (node_identifier
-            (identifier))
+          arg: (uses_augment_arg_str
+            (node_identifier
+              (identifier))
+            (node_identifier
+              (identifier))
+            (node_identifier
+              (identifier)))
           (when_stmt
             arg: (string))
           (if_feature_stmt
-            arg: (identifier))
-          (status_stmt)
+            arg: (if_feature_arg_str
+              (identifier)))
+          (status_stmt
+            arg: (status_arg_str))
           (description_stmt
-            arg: (qstring))
+            arg: (description_arg_str))
           (reference_stmt
-            arg: (string))
+            arg: (reference_arg_str))
           (container_stmt
-            arg: (identifier))
+            arg: (container_arg_str
+              (identifier)))
           (list_stmt
-            arg: (identifier))
+            arg: (list_arg_str
+              (identifier)))
           (leaf_stmt
-            arg: (identifier)
+            arg: (leaf_arg_str
+              (identifier))
             (type_stmt
-              arg: (identifier)))
+              arg: (type_arg_str
+                (identifier))))
           (leaf_list_stmt
-            arg: (identifier)
+            arg: (leaf_list_arg_str
+              (identifier))
             (type_stmt
-              arg: (identifier)))
+              arg: (type_arg_str
+                (identifier))))
           (choice_stmt
-            arg: (identifier))
+            arg: (choice_arg_str
+              (identifier)))
           (anydata_stmt
-            arg: (identifier))
+            arg: (anydata_arg_str
+              (identifier)))
           (anyxml_stmt
-            arg: (identifier))
+            arg: (anyxml_arg_str
+              (identifier)))
           (uses_stmt
-            arg: (identifier))
+            arg: (uses_arg_str
+              (identifier)))
           (case_stmt
-            arg: (identifier)))))))
+            arg: (case_arg_str
+              (identifier))))))))
         "#
     );
 }

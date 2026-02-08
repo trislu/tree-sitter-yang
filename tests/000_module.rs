@@ -9,7 +9,8 @@ module test {}
         r#"
 (yang
   (module_stmt
-    arg: (identifier)))
+    arg: (module_arg_str
+      (identifier))))
 "#
     );
 }
@@ -23,7 +24,8 @@ module "name-can-be-string" {}
         r#"
 (yang
   (module_stmt
-    arg: (identifier)))
+    arg: (module_arg_str
+      (identifier))))
 "#
     );
 }
@@ -67,35 +69,46 @@ module tree-sitter {
 (yang
   (comment)
   (module_stmt
-    arg: (identifier)
-    (yang_version_stmt)
+    arg: (module_arg_str
+      (identifier))
+    (yang_version_stmt
+      arg: (yang_version_arg_str))
     (prefix_stmt
-      arg: (identifier))
+      arg: (prefix_arg_str
+        (identifier)))
     (namespace_stmt
-      arg: (uri_str))
+      arg: (namespace_arg_str))
     (revision_stmt
-      arg: (date_str))
+      arg: (revision_arg_str
+        (date_str)))
     (import_stmt
-      arg: (identifier)
+      arg: (import_arg_str
+        (identifier))
       (prefix_stmt
-        arg: (identifier))
+        arg: (prefix_arg_str
+          (identifier)))
       (revision_date_stmt
-        arg: (date_str))
+        arg: (revision_date_arg_str
+          (date_str)))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string)))
+        arg: (reference_arg_str)))
     (extension_stmt
-      arg: (identifier)
+      arg: (extension_arg_str
+        (identifier))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (argument_stmt
-        arg: (identifier)
+        arg: (argument_arg_str
+          (identifier))
         (yin_element_stmt
-          arg: (boolean)))
+          arg: (yin_element_arg_str
+            (boolean))))
       (reference_stmt
-        arg: (string))
-      (status_stmt))))
+        arg: (reference_arg_str))
+      (status_stmt
+        arg: (status_arg_str)))))
 "#
     );
 }

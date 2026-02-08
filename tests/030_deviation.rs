@@ -12,12 +12,14 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (deviation_stmt
-      arg: (node_identifier
-        (identifier))
-      arg: (node_identifier
-        (identifier)))))
+      arg: (deviation_arg_str
+        (node_identifier
+          (identifier))
+        (node_identifier
+          (identifier))))))
         "#
     );
 }
@@ -35,15 +37,18 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (deviation_stmt
-      arg: (node_identifier
-        (identifier)
-        (identifier))
-      arg: (node_identifier
-        (identifier)
-        (identifier))
-      (deviate_not_supported_stmt))))
+      arg: (deviation_arg_str
+        (node_identifier
+          (identifier)
+          (identifier))
+        (node_identifier
+          (identifier)
+          (identifier)))
+      (deviate_not_supported_stmt
+        arg: (not_supported_keyword_str)))))
         "#
     );
 }
@@ -63,20 +68,23 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (deviation_stmt
-      arg: (node_identifier
-        (identifier)
-        (identifier))
-      arg: (node_identifier
-        (identifier)
-        (identifier))
-      arg: (node_identifier
-        (identifier)
-        (identifier))
+      arg: (deviation_arg_str
+        (node_identifier
+          (identifier)
+          (identifier))
+        (node_identifier
+          (identifier)
+          (identifier))
+        (node_identifier
+          (identifier)
+          (identifier)))
       (deviate_add_stmt
+        arg: (add_keyword_str)
         (default_stmt
-          arg: (string))
+          arg: (default_arg_str))
         (comment)))))
         "#
     );
@@ -97,15 +105,18 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (deviation_stmt
-      arg: (node_identifier
-        (identifier)
-        (identifier))
-      arg: (node_identifier
-        (identifier)
-        (identifier))
+      arg: (deviation_arg_str
+        (node_identifier
+          (identifier)
+          (identifier))
+        (node_identifier
+          (identifier)
+          (identifier)))
       (deviate_replace_stmt
+        arg: (replace_keyword_str)
         (max_elements_stmt)))))
         "#
     );
@@ -126,12 +137,15 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (deviation_stmt
-      arg: (node_identifier
-        (identifier)
-        (identifier))
+      arg: (deviation_arg_str
+        (node_identifier
+          (identifier)
+          (identifier)))
       (deviate_delete_stmt
+        arg: (delete_keyword_str)
         (must_stmt
           arg: (must_expression))))))
         "#

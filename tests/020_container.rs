@@ -12,9 +12,11 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (container_stmt
-      arg: (identifier))))
+      arg: (container_arg_str
+        (identifier)))))
         "#
     );
 }
@@ -35,13 +37,17 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (container_stmt
-      arg: (identifier)
+      arg: (container_arg_str
+        (identifier))
       (container_stmt
-        arg: (identifier)
+        arg: (container_arg_str
+          (identifier))
         (container_stmt
-          arg: (identifier))))))
+          arg: (container_arg_str
+            (identifier)))))))
         "#
     );
 }
@@ -80,39 +86,52 @@ module test{
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (container_stmt
-      arg: (identifier)
-      (status_stmt)
+      arg: (container_arg_str
+        (identifier))
+      (status_stmt
+        arg: (status_arg_str))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string))
+        arg: (reference_arg_str))
       (typedef_stmt
-        arg: (identifier)
+        arg: (typedef_arg_str
+          (identifier))
         (type_stmt
-          arg: (identifier)))
+          arg: (type_arg_str
+            (identifier))))
       (grouping_stmt
-        arg: (identifier)
-        (status_stmt)
+        arg: (grouping_arg_str
+          (identifier))
+        (status_stmt
+          arg: (status_arg_str))
         (description_stmt
-          arg: (qstring))
+          arg: (description_arg_str))
         (reference_stmt
-          arg: (string))
+          arg: (reference_arg_str))
         (typedef_stmt
-          arg: (identifier)
-          (type_stmt
-            arg: (identifier))))
-      (leaf_stmt
-        arg: (identifier)
-        (type_stmt
-          arg: (identifier)))
-      (leaf_list_stmt
-        arg: (identifier)
-        (type_stmt
-          arg: (prefix
+          arg: (typedef_arg_str
             (identifier))
-          arg: (identifier))))))
+          (type_stmt
+            arg: (type_arg_str
+              (identifier)))))
+      (leaf_stmt
+        arg: (leaf_arg_str
+          (identifier))
+        (type_stmt
+          arg: (type_arg_str
+            (identifier))))
+      (leaf_list_stmt
+        arg: (leaf_list_arg_str
+          (identifier))
+        (type_stmt
+          arg: (type_arg_str
+            (prefix
+              (identifier))
+            (identifier)))))))
         "#
     );
 }

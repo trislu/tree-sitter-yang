@@ -13,11 +13,14 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (import_stmt
-      arg: (identifier)
+      arg: (import_arg_str
+        (identifier))
       (prefix_stmt
-        arg: (identifier)))))
+        arg: (prefix_arg_str
+          (identifier))))))
 "#
     );
 }
@@ -41,17 +44,21 @@ module test {
         r#"
 (yang
   (module_stmt
-    arg: (identifier)
+    arg: (module_arg_str
+      (identifier))
     (import_stmt
-      arg: (identifier)
+      arg: (import_arg_str
+        (identifier))
       (prefix_stmt
-        arg: (identifier))
+        arg: (prefix_arg_str
+          (identifier)))
       (revision_date_stmt
-        arg: (date_str))
+        arg: (revision_date_arg_str
+          (date_str)))
       (description_stmt
-        arg: (qstring))
+        arg: (description_arg_str))
       (reference_stmt
-        arg: (string)))))
+        arg: (reference_arg_str)))))
 "#
     );
 }
