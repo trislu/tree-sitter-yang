@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-yang",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Yang grammar for tree-sitter",
   "type": "module",
   "repository": {

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-yang
-        VERSION "0.1.2"
+        VERSION "0.1.3"
         DESCRIPTION "Yang grammar for tree-sitter"
         HOMEPAGE_URL "https://github.com/trislu/tree-sitter-yang"
         LANGUAGES C)
