@@ -33,15 +33,19 @@ module test {
       arg: (typedef_arg_str
         (identifier))
       (units_stmt
-        arg: (units_arg_str))
+        arg: (units_arg_str
+          (quoted_string)))
       (default_stmt
-        arg: (default_arg_str))
+        arg: (default_arg_str
+          (quoted_string)))
       (status_stmt
         arg: (status_arg_str))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (reference_stmt
-        arg: (reference_arg_str)))))
+        arg: (reference_arg_str
+          (quoted_string))))))
 "#
     );
 }

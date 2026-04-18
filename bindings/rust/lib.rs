@@ -54,6 +54,9 @@ unsafe extern "C" {
     fn tree_sitter_yang() -> *const ();
 }
 
+// extra public mods
+pub mod yang; // expose yang relative concepts
+
 /// The tree-sitter [`LanguageFn`] for this grammar.
 pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_yang) };
 
@@ -65,10 +68,28 @@ pub const NODE_TYPES: &str = include_str!("../../src/node-types.json");
 #[cfg(test)]
 mod tests {
     #[test]
-    fn test_can_load_grammar() {
+    fn test_can_set_language() {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(&super::LANGUAGE.into())
             .expect("Error loading YANG parser");
+    }
+
+    #[test]
+    fn test_can_parse() {
+        let code = r#"
+        module test {
+            yang-version 1.1;
+            prefix ts;
+            namespace "https://tree-sitter.github.io/tree-sitter/";
+            revision 2026-01-31;
+        }
+        "#;
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading YANG parser");
+        let tree = parser.parse(code, None).unwrap();
+        assert!(!tree.root_node().has_error());
     }
 }

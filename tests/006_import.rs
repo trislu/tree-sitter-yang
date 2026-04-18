@@ -56,9 +56,11 @@ module test {
         arg: (revision_date_arg_str
           (date_str)))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (reference_stmt
-        arg: (reference_arg_str)))))
+        arg: (reference_arg_str
+          (quoted_string))))))
 "#
     );
 }

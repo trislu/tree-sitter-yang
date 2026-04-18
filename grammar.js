@@ -1679,13 +1679,13 @@ export default grammar({
 
     _empty_string: _ => choice('""', "''"),
 
-    _quoted_string: $ => choice(
+    quoted_string: $ => choice(
       $._single_quoted_string,
       $._double_quoted_string,
       $._empty_string
     ),
 
-    _concatenated_string: $ => PlusSep1($._quoted_string),
+    _concatenated_string: $ => PlusSep1($.quoted_string),
 
     string: $ => choice($._concatenated_string, $.identifier),
 

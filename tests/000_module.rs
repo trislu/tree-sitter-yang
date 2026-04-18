@@ -91,14 +91,20 @@ module tree-sitter {
         arg: (revision_date_arg_str
           (date_str)))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)
+          (quoted_string)
+          (quoted_string)
+          (quoted_string)))
       (reference_stmt
-        arg: (reference_arg_str)))
+        arg: (reference_arg_str
+          (quoted_string))))
     (extension_stmt
       arg: (extension_arg_str
         (identifier))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (argument_stmt
         arg: (argument_arg_str
           (identifier))
@@ -106,7 +112,8 @@ module tree-sitter {
           arg: (yin_element_arg_str
             (boolean))))
       (reference_stmt
-        arg: (reference_arg_str))
+        arg: (reference_arg_str
+          (quoted_string)))
       (status_stmt
         arg: (status_arg_str)))))
 "#

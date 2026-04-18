@@ -16237,7 +16237,7 @@
         }
       ]
     },
-    "_quoted_string": {
+    "quoted_string": {
       "type": "CHOICE",
       "members": [
         {
@@ -16259,7 +16259,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_quoted_string"
+          "name": "quoted_string"
         },
         {
           "type": "REPEAT",
@@ -16272,7 +16272,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_quoted_string"
+                "name": "quoted_string"
               }
             ]
           }

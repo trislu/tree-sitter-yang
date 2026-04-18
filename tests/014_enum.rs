@@ -121,7 +121,8 @@ module test{
             (string
               (identifier)))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (value_stmt
             arg: (value_arg_str
               (integer_value))))
@@ -130,7 +131,8 @@ module test{
             (string
               (identifier)))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (value_stmt
             arg: (value_arg_str
               (integer_value))))
@@ -139,7 +141,8 @@ module test{
             (string
               (identifier)))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (value_stmt
             arg: (value_arg_str
               (integer_value))))))))

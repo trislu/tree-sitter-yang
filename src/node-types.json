@@ -762,11 +762,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
@@ -929,11 +933,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
@@ -973,7 +981,17 @@
   {
     "type": "description_arg_str",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "quoted_string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "description_stmt",
@@ -2572,11 +2590,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
@@ -2814,11 +2836,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
@@ -2955,11 +2981,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
@@ -3125,6 +3155,11 @@
     }
   },
   {
+    "type": "quoted_string",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "range_arg_str",
     "named": true,
     "fields": {},
@@ -3190,11 +3225,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
@@ -3552,11 +3591,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]
@@ -3835,11 +3878,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]

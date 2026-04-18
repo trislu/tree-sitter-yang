@@ -79,7 +79,8 @@ module test{
         (length_stmt
           arg: (length_arg_str)
           (error_message_stmt
-            arg: (string)))))))
+            arg: (string
+              (quoted_string))))))))
         "#
     );
 
@@ -134,7 +135,8 @@ module test{
         arg: (type_arg_str
           (identifier))
         (pattern_stmt
-          arg: (pattern_arg_str))))))
+          arg: (pattern_arg_str
+            (quoted_string)))))))
 "#
     );
 
@@ -164,11 +166,13 @@ module test{
         arg: (type_arg_str
           (identifier))
         (pattern_stmt
-          arg: (pattern_arg_str)
+          arg: (pattern_arg_str
+            (quoted_string))
           (modifier_stmt
             arg: (modifier_arg_str))
           (error_message_stmt
-            arg: (string)))))))
+            arg: (string
+              (quoted_string))))))))
 "#
     );
 
@@ -195,9 +199,33 @@ module test{
         arg: (type_arg_str
           (identifier))
         (pattern_stmt
-          arg: (pattern_arg_str))
+          arg: (pattern_arg_str
+            (quoted_string)))
         (pattern_stmt
-          arg: (pattern_arg_str))))))
+          arg: (pattern_arg_str
+            (quoted_string)))))))
+"#
+    );
+}
+
+#[test]
+fn test_concatenated_string() {
+    parse_success_as!(
+        r#"
+module test-module {
+    description "foo"
+     + "/test-module";
+}
+    "#,
+        r#"
+(yang
+  (module_stmt
+    arg: (module_arg_str
+      (identifier))
+    (description_stmt
+      arg: (description_arg_str
+        (quoted_string)
+        (quoted_string)))))
 "#
     );
 }

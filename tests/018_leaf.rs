@@ -54,7 +54,8 @@ module test{
       arg: (leaf_arg_str
         (identifier))
       (when_stmt
-        arg: (string))
+        arg: (string
+          (quoted_string)))
       (if_feature_stmt
         arg: (if_feature_arg_str
           (identifier)))
@@ -62,9 +63,11 @@ module test{
         arg: (type_arg_str
           (identifier)))
       (units_stmt
-        arg: (units_arg_str))
+        arg: (units_arg_str
+          (quoted_string)))
       (must_stmt
-        arg: (must_expression))
+        arg: (must_expression
+          (quoted_string)))
       (default_stmt
         arg: (default_arg_str))
       (config_stmt
@@ -74,9 +77,11 @@ module test{
       (status_stmt
         arg: (status_arg_str))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (reference_stmt
-        arg: (reference_arg_str)))))
+        arg: (reference_arg_str
+          (quoted_string))))))
         "#
     );
 }

@@ -28,16 +28,19 @@ module test{
         arg: (uses_arg_str
           (identifier))
         (when_stmt
-          arg: (string))
+          arg: (string
+            (quoted_string)))
         (if_feature_stmt
           arg: (if_feature_arg_str
             (identifier)))
         (status_stmt
           arg: (status_arg_str))
         (description_stmt
-          arg: (description_arg_str))
+          arg: (description_arg_str
+            (quoted_string)))
         (reference_stmt
-          arg: (reference_arg_str))))))
+          arg: (reference_arg_str
+            (quoted_string)))))))
         "#
     );
 }
@@ -87,9 +90,11 @@ module test{
             arg: (if_feature_arg_str
               (identifier)))
           (must_stmt
-            arg: (must_expression))
+            arg: (must_expression
+              (quoted_string)))
           (presence_stmt
-            arg: (string))
+            arg: (string
+              (quoted_string)))
           (default_stmt
             arg: (default_arg_str))
           (mandatory_stmt
@@ -97,9 +102,11 @@ module test{
           (min_elements_stmt)
           (max_elements_stmt)
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))))))
+            arg: (reference_arg_str
+              (quoted_string))))))))
         "#
     );
 }
@@ -151,16 +158,19 @@ module test{
             (node_identifier
               (identifier)))
           (when_stmt
-            arg: (string))
+            arg: (string
+              (quoted_string)))
           (if_feature_stmt
             arg: (if_feature_arg_str
               (identifier)))
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str))
+            arg: (reference_arg_str
+              (quoted_string)))
           (container_stmt
             arg: (container_arg_str
               (identifier)))

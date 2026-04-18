@@ -245,7 +245,8 @@ module test {
             (integer_value)
             (integer_value))
           (error_message_stmt
-            arg: (string)))))))
+            arg: (string
+              (quoted_string))))))))
 "#
     );
 }

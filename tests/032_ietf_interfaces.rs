@@ -1147,25 +1147,32 @@ module ietf-interfaces {
         arg: (prefix_arg_str
           (identifier))))
     (organization_stmt
-      arg: (organization_arg_str))
+      arg: (organization_arg_str
+        (quoted_string)))
     (contact_stmt
-      arg: (contact_arg_str))
+      arg: (contact_arg_str
+        (quoted_string)))
     (description_stmt
-      arg: (description_arg_str))
+      arg: (description_arg_str
+        (quoted_string)))
     (revision_stmt
       arg: (revision_arg_str
         (date_str))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (reference_stmt
-        arg: (reference_arg_str)))
+        arg: (reference_arg_str
+          (quoted_string))))
     (revision_stmt
       arg: (revision_arg_str
         (date_str))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (reference_stmt
-        arg: (reference_arg_str)))
+        arg: (reference_arg_str
+          (quoted_string))))
     (comment)
     (typedef_stmt
       arg: (typedef_arg_str
@@ -1185,37 +1192,44 @@ module ietf-interfaces {
               (identifier)
               (identifier)))))
       (description_stmt
-        arg: (description_arg_str)))
+        arg: (description_arg_str
+          (quoted_string))))
     (comment)
     (identity_stmt
       arg: (identity_arg_str
         (identifier))
       (description_stmt
-        arg: (description_arg_str)))
+        arg: (description_arg_str
+          (quoted_string))))
     (comment)
     (feature_stmt
       arg: (feature_arg_str
         (identifier))
       (description_stmt
-        arg: (description_arg_str)))
+        arg: (description_arg_str
+          (quoted_string))))
     (feature_stmt
       arg: (feature_arg_str
         (identifier))
       (description_stmt
-        arg: (description_arg_str)))
+        arg: (description_arg_str
+          (quoted_string))))
     (feature_stmt
       arg: (feature_arg_str
         (identifier))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (reference_stmt
-        arg: (reference_arg_str)))
+        arg: (reference_arg_str
+          (quoted_string))))
     (comment)
     (container_stmt
       arg: (container_arg_str
         (identifier))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (list_stmt
         arg: (list_arg_str
           (identifier))
@@ -1224,7 +1238,8 @@ module ietf-interfaces {
             (node_identifier
               (identifier))))
         (description_stmt
-          arg: (description_arg_str))
+          arg: (description_arg_str
+            (quoted_string)))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1232,9 +1247,11 @@ module ietf-interfaces {
             arg: (type_arg_str
               (identifier)))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1242,9 +1259,11 @@ module ietf-interfaces {
             arg: (type_arg_str
               (identifier)))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1257,9 +1276,11 @@ module ietf-interfaces {
           (mandatory_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1267,11 +1288,14 @@ module ietf-interfaces {
             arg: (type_arg_str
               (identifier)))
           (default_stmt
-            arg: (default_arg_str))
+            arg: (default_arg_str
+              (quoted_string)))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1289,7 +1313,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1298,11 +1323,14 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str))))
+                arg: (description_arg_str
+                  (quoted_string)))))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1320,7 +1348,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1329,7 +1358,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1338,15 +1368,18 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str))))
+                arg: (description_arg_str
+                  (quoted_string)))))
           (config_stmt
             arg: (boolean))
           (mandatory_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1361,7 +1394,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1370,7 +1404,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1379,7 +1414,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1388,7 +1424,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1397,7 +1434,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1406,7 +1444,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1415,15 +1454,18 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str))))
+                arg: (description_arg_str
+                  (quoted_string)))))
           (config_stmt
             arg: (boolean))
           (mandatory_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1435,9 +1477,11 @@ module ietf-interfaces {
           (config_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1456,9 +1500,11 @@ module ietf-interfaces {
           (mandatory_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1470,9 +1516,11 @@ module ietf-interfaces {
           (config_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_list_stmt
           arg: (leaf_list_arg_str
             (identifier))
@@ -1482,9 +1530,11 @@ module ietf-interfaces {
           (config_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_list_stmt
           arg: (leaf_list_arg_str
             (identifier))
@@ -1494,9 +1544,11 @@ module ietf-interfaces {
           (config_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1506,20 +1558,24 @@ module ietf-interfaces {
                 (identifier))
               (identifier)))
           (units_stmt
-            arg: (units_arg_str))
+            arg: (units_arg_str
+              (quoted_string)))
           (config_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (container_stmt
           arg: (container_arg_str
             (identifier))
           (config_stmt
             arg: (boolean))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1531,7 +1587,8 @@ module ietf-interfaces {
             (mandatory_stmt
               arg: (boolean))
             (description_stmt
-              arg: (description_arg_str)))
+              arg: (description_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1541,9 +1598,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1553,9 +1612,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1565,9 +1626,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1577,9 +1640,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1589,9 +1654,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1601,9 +1668,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1613,9 +1682,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1625,9 +1696,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1637,9 +1710,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1649,9 +1724,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1661,9 +1738,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1673,9 +1752,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1685,9 +1766,11 @@ module ietf-interfaces {
                   (identifier))
                 (identifier)))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str))))))
+              arg: (reference_arg_str
+                (quoted_string)))))))
     (comment)
     (typedef_stmt
       arg: (typedef_arg_str
@@ -1709,7 +1792,8 @@ module ietf-interfaces {
       (status_stmt
         arg: (status_arg_str))
       (description_stmt
-        arg: (description_arg_str)))
+        arg: (description_arg_str
+          (quoted_string))))
     (comment)
     (container_stmt
       arg: (container_arg_str
@@ -1719,7 +1803,8 @@ module ietf-interfaces {
       (status_stmt
         arg: (status_arg_str))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (list_stmt
         arg: (list_arg_str
           (identifier))
@@ -1730,7 +1815,8 @@ module ietf-interfaces {
         (status_stmt
           arg: (status_arg_str))
         (description_stmt
-          arg: (description_arg_str))
+          arg: (description_arg_str
+            (quoted_string)))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1740,9 +1826,11 @@ module ietf-interfaces {
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1757,9 +1845,11 @@ module ietf-interfaces {
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1777,7 +1867,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1786,7 +1877,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1795,15 +1887,18 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str))))
+                arg: (description_arg_str
+                  (quoted_string)))))
           (mandatory_stmt
             arg: (boolean))
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1818,7 +1913,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1827,7 +1923,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1836,7 +1933,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1845,7 +1943,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1854,7 +1953,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1863,7 +1963,8 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str)))
+                arg: (description_arg_str
+                  (quoted_string))))
             (enum_stmt
               arg: (enum_arg_str
                 (string
@@ -1872,15 +1973,18 @@ module ietf-interfaces {
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
-                arg: (description_arg_str))))
+                arg: (description_arg_str
+                  (quoted_string)))))
           (mandatory_stmt
             arg: (boolean))
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1892,9 +1996,11 @@ module ietf-interfaces {
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1913,9 +2019,11 @@ module ietf-interfaces {
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1927,9 +2035,11 @@ module ietf-interfaces {
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_list_stmt
           arg: (leaf_list_arg_str
             (identifier))
@@ -1939,9 +2049,11 @@ module ietf-interfaces {
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_list_stmt
           arg: (leaf_list_arg_str
             (identifier))
@@ -1951,9 +2063,11 @@ module ietf-interfaces {
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (leaf_stmt
           arg: (leaf_arg_str
             (identifier))
@@ -1963,20 +2077,24 @@ module ietf-interfaces {
                 (identifier))
               (identifier)))
           (units_stmt
-            arg: (units_arg_str))
+            arg: (units_arg_str
+              (quoted_string)))
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str)))
+            arg: (reference_arg_str
+              (quoted_string))))
         (container_stmt
           arg: (container_arg_str
             (identifier))
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -1990,7 +2108,8 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str)))
+              arg: (description_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2002,9 +2121,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2016,9 +2137,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2030,9 +2153,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2044,9 +2169,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2058,9 +2185,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2072,9 +2201,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2086,9 +2217,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2100,9 +2233,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2114,9 +2249,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2128,9 +2265,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2142,9 +2281,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2156,9 +2297,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str)))
+              arg: (reference_arg_str
+                (quoted_string))))
           (leaf_stmt
             arg: (leaf_arg_str
               (identifier))
@@ -2170,9 +2313,11 @@ module ietf-interfaces {
             (status_stmt
               arg: (status_arg_str))
             (description_stmt
-              arg: (description_arg_str))
+              arg: (description_arg_str
+                (quoted_string)))
             (reference_stmt
-              arg: (reference_arg_str))))))))
+              arg: (reference_arg_str
+                (quoted_string)))))))))
     "#
     );
 }

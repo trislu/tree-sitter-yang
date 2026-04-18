@@ -78,13 +78,16 @@ module test{
           arg: (if_feature_arg_str
             (identifier)))
         (must_stmt
-          arg: (must_expression))
+          arg: (must_expression
+            (quoted_string)))
         (status_stmt
           arg: (status_arg_str))
         (description_stmt
-          arg: (description_arg_str))
+          arg: (description_arg_str
+            (quoted_string)))
         (reference_stmt
-          arg: (reference_arg_str))
+          arg: (reference_arg_str
+            (quoted_string)))
         (typedef_stmt
           arg: (typedef_arg_str
             (identifier))
@@ -97,9 +100,11 @@ module test{
           (status_stmt
             arg: (status_arg_str))
           (description_stmt
-            arg: (description_arg_str))
+            arg: (description_arg_str
+              (quoted_string)))
           (reference_stmt
-            arg: (reference_arg_str))
+            arg: (reference_arg_str
+              (quoted_string)))
           (typedef_stmt
             arg: (typedef_arg_str
               (identifier))

@@ -76,11 +76,13 @@ module test {
             (identifier))
           (identifier)))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (status_stmt
         arg: (status_arg_str))
       (reference_stmt
-        arg: (reference_arg_str)))))
+        arg: (reference_arg_str
+          (quoted_string))))))
 "#
     );
 }

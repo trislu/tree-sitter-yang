@@ -84,7 +84,8 @@ module test{
       (deviate_add_stmt
         arg: (add_keyword_str)
         (default_stmt
-          arg: (default_arg_str))
+          arg: (default_arg_str
+            (quoted_string)))
         (comment)))))
         "#
     );
@@ -147,7 +148,8 @@ module test{
       (deviate_delete_stmt
         arg: (delete_keyword_str)
         (must_stmt
-          arg: (must_expression))))))
+          arg: (must_expression
+            (quoted_string)))))))
         "#
     );
 }

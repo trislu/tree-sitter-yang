@@ -65,7 +65,8 @@ module test{
       arg: (typedef_arg_str
         (identifier))
       (description_stmt
-        arg: (description_arg_str))
+        arg: (description_arg_str
+          (quoted_string)))
       (type_stmt
         arg: (type_arg_str
           (identifier))
