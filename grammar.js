@@ -9,7 +9,7 @@
 
 const add_keyword = 'add';
 const delete_keyword = 'delete';
-const deviate_keyword = 'deviate'
+const deviate_keyword = 'deviate';
 const min_keyword = 'min';
 const max_keyword = 'max';
 const not_supported_keyword = 'not-supported';

@@ -92,11 +92,11 @@ static inline void lex_emit(TSLexer *l, TSSymbol token) {
     l->result_symbol = token;
 }
 
+/** unused
 static inline bool lex_matchc(TSLexer *l, char c) {
     return !lex_eof(l) && (lex_nextchar(l) == c) && lex_advance(l);
 }
 
-/** unused
 static bool lex_matchs(TSLexer *l, const char *str) {
     for (size_t i = 0; i < strlen(str); i++) {
         if (!lex_matchc(l, str[i])) {
@@ -109,12 +109,14 @@ static bool lex_matchs(TSLexer *l, const char *str) {
 
 static bool is_rfc3986_valid_char(int32_t c) {
     // Unreserved: A-Za-z0-9-._~
-    if (isalnum(c) || c == '-' || c == '.' || c == '_' || c == '~')
+    if (isalnum(c) || c == '-' || c == '.' || c == '_' || c == '~') {
         return true;
+    }
     // Reserved: :/?#[]@!$&'()*+,;=
     char *endpos = strchr(":/?#[]@!$&'()*+,;=", c);
-    if (NULL == endpos || *endpos == '\0')
+    if (NULL == endpos || *endpos == '\0') {
         return false;
+    }
     return true;
 }
 
