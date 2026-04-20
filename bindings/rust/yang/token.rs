@@ -132,7 +132,10 @@ pub enum TokenizeError {
 /// This function initializes a Tree-sitter parser for the YANG language,
 /// parses the source text, and walks the resulting syntax tree to collect
 /// recognized tokens.
-pub fn tokenize(source: &str) -> Result<Vec<Token>, TokenizeError> {
+pub fn tokenize<F>(source: &str, mut func: F) -> Result<Vec<Token>, TokenizeError>
+where
+    F: FnMut(&Token),
+{
     let mut parser = Parser::new();
     let language = LANGUAGE;
     if let Err(e) = parser.set_language(&language.into()) {
@@ -143,8 +146,8 @@ pub fn tokenize(source: &str) -> Result<Vec<Token>, TokenizeError> {
             let mut tokens = Vec::new();
             let mut stack = vec![tree.root_node()];
             while let Some(node) = stack.pop() {
-                //func(&node);
                 if let Ok(token) = Token::try_from(&node) {
+                    func(&token);
                     tokens.push(token);
                 }
                 for i in (0..node.child_count()).rev() {
@@ -312,7 +315,7 @@ mod tests {
 module test-module {
     description "bar";
 }"#;
-        let tokens = tokenize(source).expect("Failed to tokenize source");
+        let tokens = tokenize(source, |_token| {}).expect("Failed to tokenize source");
 
         let expected_tokens = vec![
             TokenKind::Statement(StatementKind::Module),
@@ -337,7 +340,7 @@ module test-module {
 module test-module {
     description "foo" + "bar";
 }"#;
-        let tokens = tokenize(source).expect("Failed to tokenize source");
+        let tokens = tokenize(source, |_token| {}).expect("Failed to tokenize source");
 
         let expected_tokens = vec![
             TokenKind::Statement(StatementKind::Module),
@@ -370,7 +373,7 @@ module test-module {
         }
     }
 }"#;
-        let tokens = tokenize(source).expect("Failed to tokenize source");
+        let tokens = tokenize(source, |_token| {}).expect("Failed to tokenize source");
         assert!(!tokens.is_empty(), "Tokens MUST not be empty");
         // Check that some expected tokens are present and that their range text is correct
         let ranged_text_and_expected_token_vec = vec![
