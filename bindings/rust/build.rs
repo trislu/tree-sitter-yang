@@ -97,7 +97,7 @@ fn main() {
         let yang_rs_path = Path::new("bindings")
             .join("rust")
             .join("yang")
-            .join("statement.rs");
+            .join("statement_generated.rs");
         let mut yang_rs = File::create(yang_rs_path).unwrap();
         yang_rs
             .write_all(yang_scope.to_string().as_bytes())

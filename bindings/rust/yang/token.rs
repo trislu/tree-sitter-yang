@@ -8,7 +8,7 @@ use std::{ops::Range, str::FromStr};
 
 use tree_sitter::{Node, Parser};
 
-use crate::{LANGUAGE, yang::statement::StatementKind};
+use crate::{LANGUAGE, yang::StatementKind};
 
 /// The kind of a lexical token produced from YANG source.
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
