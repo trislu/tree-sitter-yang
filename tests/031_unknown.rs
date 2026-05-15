@@ -17,7 +17,7 @@ module test{
       (prefix
         (identifier))
       (identifier)
-      (string
+      arg: (string
         (quoted_string)))))
         "#
     );

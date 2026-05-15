@@ -6,15 +6,13 @@
 
 use std::{ops::Range, str::FromStr};
 
-use tree_sitter::{Node, Parser};
+use tree_sitter::Node;
 
-use crate::{LANGUAGE, yang::StatementKind};
+use crate::yang::StatementKind;
 
 /// The kind of a lexical token produced from YANG source.
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum TokenKind {
-    /// A statement token representing a YANG statement keyword.
-    Statement(StatementKind),
     /// A keyword token that appears in a statement's keyword position.
     Keyword(StatementKind),
     /// A statement argument token that appears in an argument position.
@@ -50,13 +48,7 @@ impl TryFrom<&Node<'_>> for Token {
 
     fn try_from(node: &Node<'_>) -> Result<Self, Self::Error> {
         let node_kind = node.kind();
-        if node_kind.ends_with("_stmt") {
-            let stmt_kind = StatementKind::from_str(node_kind).map_err(|_| ())?;
-            return Ok(Token {
-                kind: TokenKind::Statement(stmt_kind),
-                range: node.byte_range(),
-            });
-        } else if node_kind.ends_with("_arg_str") {
+        if node_kind.ends_with("_arg_str") {
             let parent = node.parent().ok_or(())?;
             let parent_kind = parent.kind();
             let stmt_kind = StatementKind::from_str(parent_kind).map_err(|_| ())?;
@@ -115,50 +107,6 @@ impl TryFrom<&Node<'_>> for Token {
             }
         }
         Err(())
-    }
-}
-
-/// Errors produced while tokenizing YANG source.
-#[derive(Debug)]
-pub enum TokenizeError {
-    /// The parser could not load the YANG language definition.
-    LanguageError(String),
-    /// The parser failed to build a parse tree from the source text.
-    ParseError(String),
-}
-
-/// Tokenizes YANG source into a flat sequence of `Token` values.
-///
-/// This function initializes a Tree-sitter parser for the YANG language,
-/// parses the source text, and walks the resulting syntax tree to collect
-/// recognized tokens.
-pub fn tokenize<F>(source: &str, mut func: F) -> Result<Vec<Token>, TokenizeError>
-where
-    F: FnMut(&Token),
-{
-    let mut parser = Parser::new();
-    let language = LANGUAGE;
-    if let Err(e) = parser.set_language(&language.into()) {
-        return Err(TokenizeError::LanguageError(e.to_string()));
-    }
-    match parser.parse(source, None) {
-        Some(tree) => {
-            let mut tokens = Vec::new();
-            let mut stack = vec![tree.root_node()];
-            while let Some(node) = stack.pop() {
-                if let Ok(token) = Token::try_from(&node) {
-                    func(&token);
-                    tokens.push(token);
-                }
-                for i in (0..node.child_count()).rev() {
-                    stack.push(node.child(i as u32).unwrap());
-                }
-            }
-            Ok(tokens)
-        }
-        None => Err(TokenizeError::ParseError(
-            "Language is not loaded".to_string(),
-        )),
     }
 }
 
@@ -250,16 +198,6 @@ mod tests {
     }
 
     #[test]
-    fn test_token_kind_statement() {
-        let token = Token {
-            kind: TokenKind::Statement(StatementKind::Module),
-            range: 0..6,
-        };
-        assert_eq!(token.kind, TokenKind::Statement(StatementKind::Module));
-        assert_eq!(token.range, 0..6);
-    }
-
-    #[test]
     fn test_token_kind_keyword() {
         let token = Token {
             kind: TokenKind::Keyword(StatementKind::Module),
@@ -307,230 +245,5 @@ mod tests {
         };
         assert_eq!(token.kind, TokenKind::Boolean);
         assert_eq!(token.range, 5..15);
-    }
-
-    #[test]
-    fn test_tokennize_quoted_string() {
-        let source = r#"
-module test-module {
-    description "bar";
-}"#;
-        let tokens = tokenize(source, |_token| {}).expect("Failed to tokenize source");
-
-        let expected_tokens = vec![
-            TokenKind::Statement(StatementKind::Module),
-            TokenKind::Keyword(StatementKind::Module),
-            TokenKind::Argument(StatementKind::Module),
-            TokenKind::Statement(StatementKind::Description),
-            TokenKind::Keyword(StatementKind::Description),
-            TokenKind::Argument(StatementKind::Description),
-            TokenKind::StringLiteral,
-        ];
-        // Check that the tokens contain the expected kinds in the expected order
-        let mut token_kinds = tokens.iter().map(|token| token.kind.clone());
-        for expected_kind in expected_tokens {
-            let token_kind = token_kinds.next().unwrap();
-            assert_eq!(token_kind, expected_kind);
-        }
-    }
-
-    #[test]
-    fn test_tokennize_concatenated_string() {
-        let source = r#"
-module test-module {
-    description "foo" + "bar";
-}"#;
-        let tokens = tokenize(source, |_token| {}).expect("Failed to tokenize source");
-
-        let expected_tokens = vec![
-            TokenKind::Statement(StatementKind::Module),
-            TokenKind::Keyword(StatementKind::Module),
-            TokenKind::Argument(StatementKind::Module),
-            TokenKind::Statement(StatementKind::Description),
-            TokenKind::Keyword(StatementKind::Description),
-            TokenKind::Argument(StatementKind::Description),
-            TokenKind::StringLiteral,
-            TokenKind::Operator,
-            TokenKind::StringLiteral,
-        ];
-        // Check that the tokens contain the expected kinds in the expected order
-        let mut token_kinds = tokens.iter().map(|token| token.kind.clone());
-        for expected_kind in expected_tokens {
-            let token_kind = token_kinds.next().unwrap();
-            assert_eq!(token_kind, expected_kind);
-        }
-    }
-
-    #[test]
-    fn test_tokenize() {
-        let source = r#"
-module test-module {
-    namespace "http://example.com/test-module";
-    prefix tm;
-    container test-container {
-        leaf test-leaf {
-            type string;
-        }
-    }
-}"#;
-        let tokens = tokenize(source, |_token| {}).expect("Failed to tokenize source");
-        assert!(!tokens.is_empty(), "Tokens MUST not be empty");
-        // Check that some expected tokens are present and that their range text is correct
-        let ranged_text_and_expected_token_vec = vec![
-            (
-                r#"module test-module {
-    namespace "http://example.com/test-module";
-    prefix tm;
-    container test-container {
-        leaf test-leaf {
-            type string;
-        }
-    }
-}"#,
-                Token {
-                    kind: TokenKind::Statement(StatementKind::Module),
-                    range: 1..183,
-                },
-            ),
-            (
-                r#"module"#,
-                Token {
-                    kind: TokenKind::Keyword(StatementKind::Module),
-                    range: 1..7,
-                },
-            ),
-            (
-                r#"test-module"#,
-                Token {
-                    kind: TokenKind::Argument(StatementKind::Module),
-                    range: 8..19,
-                },
-            ),
-            (
-                r#"namespace "http://example.com/test-module";"#,
-                Token {
-                    kind: TokenKind::Statement(StatementKind::Namespace),
-                    range: 26..69,
-                },
-            ),
-            (
-                r#"namespace"#,
-                Token {
-                    kind: TokenKind::Keyword(StatementKind::Namespace),
-                    range: 26..35,
-                },
-            ),
-            (
-                r#""http://example.com/test-module""#,
-                Token {
-                    kind: TokenKind::Argument(StatementKind::Namespace),
-                    range: 36..68,
-                },
-            ),
-            (
-                r#"prefix tm;"#,
-                Token {
-                    kind: TokenKind::Statement(StatementKind::Prefix),
-                    range: 74..84,
-                },
-            ),
-            (
-                r#"prefix"#,
-                Token {
-                    kind: TokenKind::Keyword(StatementKind::Prefix),
-                    range: 74..80,
-                },
-            ),
-            (
-                r#"tm"#,
-                Token {
-                    kind: TokenKind::Argument(StatementKind::Prefix),
-                    range: 81..83,
-                },
-            ),
-            (
-                r#"container test-container {
-        leaf test-leaf {
-            type string;
-        }
-    }
-"#,
-                Token {
-                    kind: TokenKind::Statement(StatementKind::Container),
-                    range: 89..182,
-                },
-            ),
-            (
-                r#"container"#,
-                Token {
-                    kind: TokenKind::Keyword(StatementKind::Container),
-                    range: 89..98,
-                },
-            ),
-            (
-                r#"test-container"#,
-                Token {
-                    kind: TokenKind::Argument(StatementKind::Container),
-                    range: 99..113,
-                },
-            ),
-            (
-                r#"leaf test-leaf {
-            type string;
-        }"#,
-                Token {
-                    kind: TokenKind::Statement(StatementKind::Leaf),
-                    range: 124..175,
-                },
-            ),
-            (
-                r#"leaf"#,
-                Token {
-                    kind: TokenKind::Keyword(StatementKind::Leaf),
-                    range: 124..128,
-                },
-            ),
-            (
-                r#"test-leaf"#,
-                Token {
-                    kind: TokenKind::Argument(StatementKind::Leaf),
-                    range: 129..138,
-                },
-            ),
-            (
-                r#"type string;"#,
-                Token {
-                    kind: TokenKind::Statement(StatementKind::Type),
-                    range: 153..165,
-                },
-            ),
-            (
-                r#"type"#,
-                Token {
-                    kind: TokenKind::Keyword(StatementKind::Type),
-                    range: 153..157,
-                },
-            ),
-            (
-                r#"string"#,
-                Token {
-                    kind: TokenKind::Argument(StatementKind::Type),
-                    range: 158..164,
-                },
-            ),
-        ];
-        for (expected_text, expected_token) in ranged_text_and_expected_token_vec {
-            assert!(
-                tokens.iter().any(|token| token == &expected_token),
-                "Expected token {:?} not found",
-                expected_token
-            );
-            assert_eq!(
-                &source[expected_token.range.clone()],
-                expected_text,
-                "Expected range text for token {:?}",
-                expected_token
-            );
-        }
     }
 }

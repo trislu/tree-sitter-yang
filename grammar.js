@@ -1426,9 +1426,10 @@ export default grammar({
                               "}") stmtsep
      */
     unknown_stmt: $ => seq(
-      alias($._prefix_arg, $.prefix), ':', $.identifier,
-      optional(seq(sep(), $.string)),
-      choice(';',
+      seq(alias($._prefix_arg, $.prefix), ':', $.identifier),
+      optional(field('arg', seq(sep(), $.string))),
+      choice(
+        ';',
         seq('{',
           repeat(seq(choice($.unknown_stmt, $._yang_stmt)))),
         '}'),

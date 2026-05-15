@@ -3921,7 +3921,34 @@
   {
     "type": "unknown_stmt",
     "named": true,
-    "fields": {},
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\t",
+            "named": false
+          },
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": "\r\n",
+            "named": false
+          },
+          {
+            "type": " ",
+            "named": false
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -4176,10 +4203,6 @@
         },
         {
           "type": "status_stmt",
-          "named": true
-        },
-        {
-          "type": "string",
           "named": true
         },
         {

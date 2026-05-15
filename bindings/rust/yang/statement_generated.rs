@@ -36,10 +36,7 @@ pub enum StatementKind {
     DeviateAdd,
     #[strum(to_string = "deviate-delete", serialize = "deviate_delete_stmt")]
     DeviateDelete,
-    #[strum(
-        to_string = "deviate-not-supported",
-        serialize = "deviate_not_supported_stmt"
-    )]
+    #[strum(to_string = "deviate-not-supported", serialize = "deviate_not_supported_stmt")]
     DeviateNotSupported,
     #[strum(to_string = "deviate-replace", serialize = "deviate_replace_stmt")]
     DeviateReplace,
