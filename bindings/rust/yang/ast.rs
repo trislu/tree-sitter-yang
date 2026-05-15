@@ -337,4 +337,87 @@ module test-module {
             assert_eq!(expected_stmt, &statements[id]);
         }
     }
+
+    #[test]
+    fn test_parent_of() {
+        let source = r#"
+module test-module {
+    namespace "http://example.com/test-module";
+    prefix tm;
+    container test-container {
+        leaf test-leaf {
+            type string;
+        }
+    }
+}"#;
+        let ast = parse(source).expect("Failed to parse source");
+        let mut statements = vec![];
+        ast.traverse_statements(|stmt| {
+            statements.push(stmt.clone());
+        });
+
+        let expected_parents = vec![
+            None,
+            Some(Statement {
+                id: 0,
+                keyword: Token {
+                    kind: TokenKind::Keyword(StatementKind::Module),
+                    range: 1..7,
+                },
+                argument: Some(Token {
+                    kind: TokenKind::Argument(StatementKind::Module),
+                    range: 8..19,
+                }),
+            }),
+            Some(Statement {
+                id: 1,
+                keyword: Token {
+                    kind: TokenKind::Keyword(StatementKind::Namespace),
+                    range: 26..35,
+                },
+                argument: Some(Token {
+                    kind: TokenKind::Argument(StatementKind::Namespace),
+                    range: 36..68,
+                }),
+            }),
+            Some(Statement {
+                id: 2,
+                keyword: Token {
+                    kind: TokenKind::Keyword(StatementKind::Prefix),
+                    range: 74..80,
+                },
+                argument: Some(Token {
+                    kind: TokenKind::Argument(StatementKind::Prefix),
+                    range: 81..83,
+                }),
+            }),
+            Some(Statement {
+                id: 3,
+                keyword: Token {
+                    kind: TokenKind::Keyword(StatementKind::Container),
+                    range: 89..98,
+                },
+                argument: Some(Token {
+                    kind: TokenKind::Argument(StatementKind::Container),
+                    range: 99..113,
+                }),
+            }),
+            Some(Statement {
+                id: 4,
+                keyword: Token {
+                    kind: TokenKind::Keyword(StatementKind::Leaf),
+                    range: 124..128,
+                },
+                argument: Some(Token {
+                    kind: TokenKind::Argument(StatementKind::Leaf),
+                    range: 129..138,
+                }),
+            }),
+        ];
+
+        for (id, expected_parent) in expected_parents.iter().enumerate() {
+            let stmt = &statements[id];
+            assert_eq!(expected_parent.clone(), ast.parent_of(stmt).cloned());
+        }
+    }
 }
