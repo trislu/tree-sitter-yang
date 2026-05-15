@@ -232,17 +232,16 @@ module test-module {
                 },
             ),
         ];
-        for (expected_text, expected_token) in ranged_text_and_expected_token_vec {
-            assert!(
-                tokens.iter().any(|token| token == &expected_token),
-                "Expected token {:?} not found",
-                expected_token
-            );
+        for (id, (expected_text, expected_token)) in
+            ranged_text_and_expected_token_vec.iter().enumerate()
+        {
+            let parsed_token = &tokens[id];
+            assert_eq!(expected_token, parsed_token);
             assert_eq!(
-                &source[expected_token.range.clone()],
-                expected_text,
+                &source[parsed_token.range.clone()],
+                *expected_text,
                 "Expected range text for token {:?}",
-                expected_token
+                parsed_token
             );
         }
     }
