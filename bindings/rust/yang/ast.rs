@@ -97,10 +97,8 @@ module test-module {
             TokenKind::StringLiteral,
         ];
         // Check that the tokens contain the expected kinds in the expected order
-        let mut token_kinds = tokens.iter().map(|token| token.kind.clone());
-        for expected_kind in expected_tokens {
-            let token_kind = token_kinds.next().unwrap();
-            assert_eq!(token_kind, expected_kind);
+        for (id, expected_token) in expected_tokens.iter().enumerate() {
+            assert_eq!(&tokens[id].kind, expected_token);
         }
     }
 
@@ -123,10 +121,8 @@ module test-module {
             TokenKind::StringLiteral,
         ];
         // Check that the tokens contain the expected kinds in the expected order
-        let mut token_kinds = tokens.iter().map(|token| token.kind.clone());
-        for expected_kind in expected_tokens {
-            let token_kind = token_kinds.next().unwrap();
-            assert_eq!(token_kind, expected_kind);
+        for (id, expected_token) in expected_tokens.iter().enumerate() {
+            assert_eq!(&tokens[id].kind, expected_token);
         }
     }
 
@@ -146,7 +142,7 @@ module test-module {
         let tokens = ast.token_list();
         assert!(!tokens.is_empty(), "Tokens MUST not be empty");
         // Check that some expected tokens are present and that their range text is correct
-        let ranged_text_and_expected_token_vec = vec![
+        let expected = vec![
             (
                 r#"module"#,
                 Token {
@@ -232,9 +228,7 @@ module test-module {
                 },
             ),
         ];
-        for (id, (expected_text, expected_token)) in
-            ranged_text_and_expected_token_vec.iter().enumerate()
-        {
+        for (id, (expected_text, expected_token)) in expected.iter().enumerate() {
             let parsed_token = &tokens[id];
             assert_eq!(expected_token, parsed_token);
             assert_eq!(
