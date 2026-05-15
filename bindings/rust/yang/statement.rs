@@ -2,7 +2,7 @@ use tree_sitter::Node;
 
 use crate::yang::Token;
 
-#[derive(Clone)]
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Statement {
     pub(crate) id: usize,
     pub keyword: Token,
