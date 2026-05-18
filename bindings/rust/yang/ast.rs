@@ -1,4 +1,3 @@
-use anyhow::Context;
 use easy_tree::Tree;
 use tree_sitter::Parser;
 
@@ -14,6 +13,47 @@ pub struct Ast {
 }
 
 impl Ast {
+    pub fn parse(source: &str) -> Option<Ast> {
+        // make sure the source is valid UTF-8 before parsing, since Tree-sitter requires valid UTF-8 input
+        let _ = str::from_utf8(source.as_bytes()).ok()?;
+        let mut parser = Parser::new();
+        let language = LANGUAGE;
+        // shall not failed since the language is statically linked and valid
+        parser.set_language(&language.into()).ok()?;
+        // shall not failed since the language is valid and the source is valid UTF-8
+        // TODO: parse with old_tree to enable incremental parsing and better performance for large documents
+        let tree = parser.parse(source, None)?;
+        let mut token_list = Vec::new();
+        let mut statement_tree = Tree::new();
+        let mut node_stack = vec![tree.root_node()];
+        let mut stmt_stack: Vec<Option<Statement>> = vec![None];
+        while let Some(node) = node_stack.pop() {
+            if let Ok(token) = Token::try_from(&node) {
+                token_list.push(token);
+            }
+            if let Ok(stmt) = Statement::try_from(&node) {
+                let stmt = Statement {
+                    id: statement_tree.len(),
+                    ..stmt
+                };
+                if let Some(parent_stmt) = stmt_stack.last().unwrap() {
+                    statement_tree.add_child(parent_stmt.id, stmt.clone());
+                } else {
+                    statement_tree.add_node(stmt.clone());
+                }
+                stmt_stack.push(Some(stmt));
+            }
+            for i in (0..node.child_count()).rev() {
+                node_stack.push(node.child(i as u32).unwrap());
+            }
+            stmt_stack.pop();
+        }
+        Some(Ast {
+            token_list,
+            statement_tree,
+        })
+    }
+
     pub fn token_list(&self) -> &[Token] {
         &self.token_list
     }
@@ -35,45 +75,6 @@ impl Ast {
     }
 }
 
-pub fn parse(source: &str) -> anyhow::Result<Ast> {
-    let mut parser = Parser::new();
-    let language = LANGUAGE;
-    parser
-        .set_language(&language.into())
-        .context("Failed to set language")?;
-    let tree = parser
-        .parse(source, None)
-        .context("Failed to parse source")?;
-    let mut token_list = Vec::new();
-    let mut statement_tree = Tree::new();
-    let mut node_stack = vec![tree.root_node()];
-    let mut stmt_stack: Vec<Option<Statement>> = vec![None];
-    while let Some(node) = node_stack.pop() {
-        if let Ok(token) = Token::try_from(&node) {
-            token_list.push(token);
-        }
-        if let Ok(stmt) = Statement::try_from(&node) {
-            let stmt = Statement {
-                id: statement_tree.len(),
-                ..stmt
-            };
-            if let Some(parent_stmt) = stmt_stack.last().unwrap() {
-                statement_tree.add_child(parent_stmt.id, stmt.clone());
-            } else {
-                statement_tree.add_node(stmt.clone());
-            }
-            stmt_stack.push(Some(stmt));
-        }
-        for i in (0..node.child_count()).rev() {
-            node_stack.push(node.child(i as u32).unwrap());
-        }
-    }
-    Ok(Ast {
-        token_list,
-        statement_tree,
-    })
-}
-
 #[cfg(test)]
 mod tests {
     use crate::yang::{StatementKind, TokenKind};
@@ -86,7 +87,7 @@ mod tests {
 module test-module {
     description "bar";
 }"#;
-        let ast = parse(source).expect("Failed to parse source");
+        let ast = Ast::parse(source).expect("Failed to parse source");
         let tokens = ast.token_list();
 
         let expected_tokens = [
@@ -108,7 +109,7 @@ module test-module {
 module test-module {
     description "foo" + "bar";
 }"#;
-        let ast = parse(source).expect("Failed to parse source");
+        let ast = Ast::parse(source).expect("Failed to parse source");
         let tokens = ast.token_list();
 
         let expected_tokens = [
@@ -138,7 +139,7 @@ module test-module {
         }
     }
 }"#;
-        let ast = parse(source).expect("Failed to parse source");
+        let ast = Ast::parse(source).expect("Failed to parse source");
         let tokens = ast.token_list();
         assert!(!tokens.is_empty(), "Tokens MUST not be empty");
         // Check that some expected tokens are present and that their range text is correct
@@ -252,7 +253,7 @@ module test-module {
         }
     }
 }"#;
-        let ast = parse(source).expect("Failed to parse source");
+        let ast = Ast::parse(source).expect("Failed to parse source");
         let mut statements = vec![];
         ast.traverse_statements(|stmt| {
             statements.push(stmt.clone());
@@ -344,7 +345,7 @@ module test-module {
         }
     }
 }"#;
-        let ast = parse(source).expect("Failed to parse source");
+        let ast = Ast::parse(source).expect("Failed to parse source");
         let mut statements = vec![];
         ast.traverse_statements(|stmt| {
             statements.push(stmt.clone());
