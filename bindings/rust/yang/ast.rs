@@ -259,7 +259,7 @@ module test-module {
             statements.push(stmt.clone());
         });
 
-        let expected_statements = vec![
+        let expected_statements = [
             Statement {
                 id: 0,
                 keyword: Token {
@@ -351,7 +351,7 @@ module test-module {
             statements.push(stmt.clone());
         });
 
-        let expected_parents = vec![
+        let expected_parents = [
             None,
             Some(Statement {
                 id: 0,
