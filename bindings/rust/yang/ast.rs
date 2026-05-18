@@ -89,7 +89,7 @@ module test-module {
         let ast = parse(source).expect("Failed to parse source");
         let tokens = ast.token_list();
 
-        let expected_tokens = vec![
+        let expected_tokens = [
             TokenKind::Keyword(StatementKind::Module),
             TokenKind::Argument(StatementKind::Module),
             TokenKind::Keyword(StatementKind::Description),
@@ -111,7 +111,7 @@ module test-module {
         let ast = parse(source).expect("Failed to parse source");
         let tokens = ast.token_list();
 
-        let expected_tokens = vec![
+        let expected_tokens = [
             TokenKind::Keyword(StatementKind::Module),
             TokenKind::Argument(StatementKind::Module),
             TokenKind::Keyword(StatementKind::Description),
@@ -142,7 +142,7 @@ module test-module {
         let tokens = ast.token_list();
         assert!(!tokens.is_empty(), "Tokens MUST not be empty");
         // Check that some expected tokens are present and that their range text is correct
-        let expected = vec![
+        let expected = [
             (
                 r#"module"#,
                 Token {
