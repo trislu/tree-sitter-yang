@@ -25,28 +25,28 @@ impl Ast {
         let tree = parser.parse(source, None)?;
         let mut token_list = Vec::new();
         let mut statement_tree = Tree::new();
-        let mut node_stack = vec![tree.root_node()];
-        let mut stmt_stack: Vec<Option<Statement>> = vec![None];
-        while let Some(node) = node_stack.pop() {
+        let mut parse_stack = vec![(tree.root_node(), None)];
+        while let Some((node, parent)) = parse_stack.pop() {
             if let Ok(token) = Token::try_from(&node) {
                 token_list.push(token);
             }
+            let mut parent = parent;
             if let Ok(stmt) = Statement::try_from(&node) {
-                let stmt = Statement {
-                    id: statement_tree.len(),
-                    ..stmt
-                };
-                if let Some(parent_stmt) = stmt_stack.last().unwrap() {
-                    statement_tree.add_child(parent_stmt.id, stmt.clone());
+                // updating the statement id after adding it to the tree is kind of hacky,
+                // but the id is assigned by the tree and not known beforehand
+                if let Some(parent_id) = parent {
+                    let child_id = statement_tree.add_child(parent_id, stmt.clone());
+                    statement_tree.get_unchecked_mut(child_id).id = child_id;
+                    parent = Some(child_id);
                 } else {
-                    statement_tree.add_node(stmt.clone());
+                    let root_id = statement_tree.add_node(stmt.clone());
+                    statement_tree.get_unchecked_mut(root_id).id = root_id;
+                    parent = Some(root_id);
                 }
-                stmt_stack.push(Some(stmt));
             }
             for i in (0..node.child_count()).rev() {
-                node_stack.push(node.child(i as u32).unwrap());
+                parse_stack.push((node.child(i as u32).unwrap(), parent));
             }
-            stmt_stack.pop();
         }
         Some(Ast {
             token_list,
@@ -354,6 +354,7 @@ module test-module {
         let expected_parents = [
             None,
             Some(Statement {
+                // the parent of the namespace statement is the module statement
                 id: 0,
                 keyword: Token {
                     kind: TokenKind::Keyword(StatementKind::Module),
@@ -365,28 +366,31 @@ module test-module {
                 }),
             }),
             Some(Statement {
-                id: 1,
+                // the parent of the prefix statement is the module statement
+                id: 0,
                 keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Namespace),
-                    range: 26..35,
+                    kind: TokenKind::Keyword(StatementKind::Module),
+                    range: 1..7,
                 },
                 argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Namespace),
-                    range: 36..68,
+                    kind: TokenKind::Argument(StatementKind::Module),
+                    range: 8..19,
                 }),
             }),
             Some(Statement {
-                id: 2,
+                // the parent of the container statement is the module statement
+                id: 0,
                 keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Prefix),
-                    range: 74..80,
+                    kind: TokenKind::Keyword(StatementKind::Module),
+                    range: 1..7,
                 },
                 argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Prefix),
-                    range: 81..83,
+                    kind: TokenKind::Argument(StatementKind::Module),
+                    range: 8..19,
                 }),
             }),
             Some(Statement {
+                // the parent of the leaf statement is the container statement
                 id: 3,
                 keyword: Token {
                     kind: TokenKind::Keyword(StatementKind::Container),
@@ -398,6 +402,7 @@ module test-module {
                 }),
             }),
             Some(Statement {
+                // the parent of the type statement is the leaf statement
                 id: 4,
                 keyword: Token {
                     kind: TokenKind::Keyword(StatementKind::Leaf),
@@ -412,7 +417,13 @@ module test-module {
 
         for (id, expected_parent) in expected_parents.iter().enumerate() {
             let stmt = &statements[id];
-            assert_eq!(expected_parent.clone(), ast.parent_of(stmt).cloned());
+            assert_eq!(
+                expected_parent.clone(),
+                ast.parent_of(stmt).cloned(),
+                "Expected parent {:?} for statement with id {}",
+                expected_parent,
+                stmt.id
+            );
         }
     }
 }
