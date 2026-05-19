@@ -1,12 +1,15 @@
+use std::{ops::Range, str::FromStr};
+
 use tree_sitter::Node;
 
-use crate::yang::Token;
+use crate::yang::StatementKind;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Statement {
     pub(crate) id: usize,
-    pub keyword: Token,
-    pub argument: Option<Token>,
+    pub kind: StatementKind,
+    pub keyword: Range<usize>,
+    pub argument: Option<Range<usize>>,
 }
 
 impl TryFrom<&Node<'_>> for Statement {
@@ -15,13 +18,14 @@ impl TryFrom<&Node<'_>> for Statement {
         let node_kind = node.kind();
         if node_kind.ends_with("_stmt") {
             let keyword_node = node.child(0).ok_or(())?;
+            let kind = StatementKind::from_str(node_kind).map_err(|_| ())?;
             Ok(Statement {
                 id: 0,
-                keyword: Token::try_from(&keyword_node)?,
-                argument: match node.child_by_field_name("arg") {
-                    Some(argument_node) => Token::try_from(&argument_node).ok(),
-                    None => None,
-                },
+                kind,
+                keyword: keyword_node.byte_range(),
+                argument: node
+                    .child_by_field_name("arg")
+                    .map(|argument_node| argument_node.byte_range()),
             })
         } else {
             Err(())

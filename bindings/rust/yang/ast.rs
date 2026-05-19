@@ -262,69 +262,39 @@ module test-module {
         let expected_statements = [
             Statement {
                 id: 0,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Module),
-                    range: 1..7,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Module),
-                    range: 8..19,
-                }),
+                kind: StatementKind::Module,
+                keyword: 1..7,
+                argument: Some(8..19),
             },
             Statement {
                 id: 1,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Namespace),
-                    range: 26..35,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Namespace),
-                    range: 36..68,
-                }),
+                kind: StatementKind::Namespace,
+                keyword: 26..35,
+                argument: Some(36..68),
             },
             Statement {
                 id: 2,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Prefix),
-                    range: 74..80,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Prefix),
-                    range: 81..83,
-                }),
+                kind: StatementKind::Prefix,
+                keyword: 74..80,
+                argument: Some(81..83),
             },
             Statement {
                 id: 3,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Container),
-                    range: 89..98,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Container),
-                    range: 99..113,
-                }),
+                kind: StatementKind::Container,
+                keyword: 89..98,
+                argument: Some(99..113),
             },
             Statement {
                 id: 4,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Leaf),
-                    range: 124..128,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Leaf),
-                    range: 129..138,
-                }),
+                kind: StatementKind::Leaf,
+                keyword: 124..128,
+                argument: Some(129..138),
             },
             Statement {
                 id: 5,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Type),
-                    range: 153..157,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Type),
-                    range: 158..164,
-                }),
+                kind: StatementKind::Type,
+                keyword: 153..157,
+                argument: Some(158..164),
             },
         ];
 
@@ -356,62 +326,37 @@ module test-module {
             Some(Statement {
                 // the parent of the namespace statement is the module statement
                 id: 0,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Module),
-                    range: 1..7,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Module),
-                    range: 8..19,
-                }),
+                kind: StatementKind::Module,
+                keyword: 1..7,
+                argument: Some(8..19),
             }),
             Some(Statement {
                 // the parent of the prefix statement is the module statement
                 id: 0,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Module),
-                    range: 1..7,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Module),
-                    range: 8..19,
-                }),
+                kind: StatementKind::Module,
+                keyword: 1..7,
+                argument: Some(8..19),
             }),
             Some(Statement {
                 // the parent of the container statement is the module statement
                 id: 0,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Module),
-                    range: 1..7,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Module),
-                    range: 8..19,
-                }),
+                kind: StatementKind::Module,
+                keyword: 1..7,
+                argument: Some(8..19),
             }),
             Some(Statement {
                 // the parent of the leaf statement is the container statement
                 id: 3,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Container),
-                    range: 89..98,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Container),
-                    range: 99..113,
-                }),
+                kind: StatementKind::Container,
+                keyword: 89..98,
+                argument: Some(99..113),
             }),
             Some(Statement {
                 // the parent of the type statement is the leaf statement
                 id: 4,
-                keyword: Token {
-                    kind: TokenKind::Keyword(StatementKind::Leaf),
-                    range: 124..128,
-                },
-                argument: Some(Token {
-                    kind: TokenKind::Argument(StatementKind::Leaf),
-                    range: 129..138,
-                }),
+                kind: StatementKind::Leaf,
+                keyword: 124..128,
+                argument: Some(129..138),
             }),
         ];
 
