@@ -58,13 +58,17 @@ impl Ast {
         &self.token_list
     }
 
-    pub fn traverse_statements<F>(&self, mut func: F)
-    where
-        F: FnMut(&Statement),
-    {
-        let mut state = ();
-        self.statement_tree
-            .traverse(|_id, stmt, _state| func(stmt), |_, _, _| {}, &mut state)
+    pub fn traverse<'a, S>(
+        &'a self,
+        mut pre_proc_subtree: impl FnMut(&Statement, &mut S),
+        mut post_proc_subtree: impl FnMut(&Statement, &mut S),
+        state: &mut S,
+    ) {
+        self.statement_tree.traverse(
+            |_id, stmt, _state| pre_proc_subtree(stmt, _state),
+            |_id, stmt, _state| post_proc_subtree(stmt, _state),
+            state,
+        )
     }
 
     pub fn parent_of(&self, stmt: &Statement) -> Option<&Statement> {
@@ -267,10 +271,26 @@ module test-module {
     }
 }"#;
         let ast = Ast::parse(source).expect("Failed to parse source");
-        let mut statements = vec![];
-        ast.traverse_statements(|stmt| {
-            statements.push(stmt.clone());
-        });
+        #[derive(Default)]
+        struct TraverseState {
+            stmt_list: Vec<Statement>,
+            stmt_stack: Vec<Statement>,
+        }
+        let mut state = TraverseState::default();
+        ast.traverse::<TraverseState>(
+            |stmt, state| {
+                state.stmt_list.push(stmt.clone());
+                state.stmt_stack.push(stmt.clone());
+                assert!(
+                    state.stmt_stack.len() <= 4,
+                    "Statement stack depth MUST not exceed 4"
+                );
+            },
+            |_, state| {
+                assert!(state.stmt_stack.pop().is_some());
+            },
+            &mut state,
+        );
 
         let expected_statements = [
             Statement {
@@ -312,7 +332,7 @@ module test-module {
         ];
 
         for (id, expected_stmt) in expected_statements.iter().enumerate() {
-            assert_eq!(expected_stmt, &statements[id]);
+            assert_eq!(expected_stmt, &state.stmt_list[id]);
         }
     }
 
@@ -330,9 +350,13 @@ module test-module {
 }"#;
         let ast = Ast::parse(source).expect("Failed to parse source");
         let mut statements = vec![];
-        ast.traverse_statements(|stmt| {
-            statements.push(stmt.clone());
-        });
+        ast.traverse::<Vec<Statement>>(
+            |stmt, state| {
+                state.push(stmt.clone());
+            },
+            |_, _| {},
+            &mut statements,
+        );
 
         let expected_parents = [
             None,
@@ -398,26 +422,30 @@ module test-module {
     }
 }"#;
         let ast = Ast::parse(source).expect("Failed to parse source");
-        ast.traverse_statements(|stmt| match stmt.kind {
-            StatementKind::Module => {
-                let namespace = ast.search_children(stmt, StatementKind::Namespace);
-                assert_eq!(namespace.len(), 1);
-                assert_eq!(namespace[0].kind, StatementKind::Namespace);
-                let prefix = ast.search_children(stmt, StatementKind::Prefix);
-                assert_eq!(prefix.len(), 1);
-                assert_eq!(prefix[0].kind, StatementKind::Prefix);
-            }
-            StatementKind::Container => {
-                let children = ast.search_children(stmt, StatementKind::Leaf);
-                assert_eq!(children.len(), 1);
-                assert_eq!(children[0].kind, StatementKind::Leaf);
-            }
-            StatementKind::Leaf => {
-                let children = ast.search_children(stmt, StatementKind::Type);
-                assert_eq!(children.len(), 1);
-                assert_eq!(children[0].kind, StatementKind::Type);
-            }
-            _ => {}
-        });
+        ast.traverse(
+            |stmt, _| match stmt.kind {
+                StatementKind::Module => {
+                    let namespace = ast.search_children(stmt, StatementKind::Namespace);
+                    assert_eq!(namespace.len(), 1);
+                    assert_eq!(namespace[0].kind, StatementKind::Namespace);
+                    let prefix = ast.search_children(stmt, StatementKind::Prefix);
+                    assert_eq!(prefix.len(), 1);
+                    assert_eq!(prefix[0].kind, StatementKind::Prefix);
+                }
+                StatementKind::Container => {
+                    let children = ast.search_children(stmt, StatementKind::Leaf);
+                    assert_eq!(children.len(), 1);
+                    assert_eq!(children[0].kind, StatementKind::Leaf);
+                }
+                StatementKind::Leaf => {
+                    let children = ast.search_children(stmt, StatementKind::Type);
+                    assert_eq!(children.len(), 1);
+                    assert_eq!(children[0].kind, StatementKind::Type);
+                }
+                _ => {}
+            },
+            |_, _| {},
+            &mut (),
+        );
     }
 }
