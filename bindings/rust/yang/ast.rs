@@ -3,7 +3,7 @@ use tree_sitter::Parser;
 
 use crate::{
     LANGUAGE,
-    yang::{Statement, Token},
+    yang::{Statement, StatementKind, Token},
 };
 
 #[derive(Default, Clone)]
@@ -72,6 +72,19 @@ impl Ast {
             Some(parent_id) => self.statement_tree.get(parent_id),
             None => None,
         }
+    }
+
+    pub fn search_children(&self, stmt: &Statement, kind: StatementKind) -> Vec<&Statement> {
+        let mut children = vec![];
+        if let Some(stmt) = self.statement_tree.get(stmt.id) {
+            for child_id in self.statement_tree.children(stmt.id) {
+                let child_stmt = self.statement_tree.get_unchecked(*child_id);
+                if child_stmt.kind == kind {
+                    children.push(child_stmt);
+                }
+            }
+        }
+        children
     }
 }
 
@@ -370,5 +383,41 @@ module test-module {
                 stmt.id
             );
         }
+    }
+
+    #[test]
+    fn test_search_children() {
+        let source = r#"
+module test-module {
+    namespace "http://example.com/test-module";
+    prefix tm;
+    container test-container {
+        leaf test-leaf {
+            type string;
+        }
+    }
+}"#;
+        let ast = Ast::parse(source).expect("Failed to parse source");
+        ast.traverse_statements(|stmt| match stmt.kind {
+            StatementKind::Module => {
+                let namespace = ast.search_children(stmt, StatementKind::Namespace);
+                assert_eq!(namespace.len(), 1);
+                assert_eq!(namespace[0].kind, StatementKind::Namespace);
+                let prefix = ast.search_children(stmt, StatementKind::Prefix);
+                assert_eq!(prefix.len(), 1);
+                assert_eq!(prefix[0].kind, StatementKind::Prefix);
+            }
+            StatementKind::Container => {
+                let children = ast.search_children(stmt, StatementKind::Leaf);
+                assert_eq!(children.len(), 1);
+                assert_eq!(children[0].kind, StatementKind::Leaf);
+            }
+            StatementKind::Leaf => {
+                let children = ast.search_children(stmt, StatementKind::Type);
+                assert_eq!(children.len(), 1);
+                assert_eq!(children[0].kind, StatementKind::Type);
+            }
+            _ => {}
+        });
     }
 }
