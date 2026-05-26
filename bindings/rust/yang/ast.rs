@@ -58,8 +58,8 @@ impl Ast {
         &self.token_list
     }
 
-    pub fn traverse<'a, S>(
-        &'a self,
+    pub fn traverse<S>(
+        &self,
         mut pre_proc_subtree: impl FnMut(&Statement, &mut S),
         mut post_proc_subtree: impl FnMut(&Statement, &mut S),
         state: &mut S,
