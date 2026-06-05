@@ -99,7 +99,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_tokennize_quoted_string() {
+    fn test_tokenize_quoted_string() {
         let source = r#"
 module test-module {
     description "bar";
@@ -121,7 +121,7 @@ module test-module {
     }
 
     #[test]
-    fn test_tokennize_concatenated_string() {
+    fn test_tokenize_concatenated_string() {
         let source = r#"
 module test-module {
     description "foo" + "bar";
