@@ -4,12 +4,40 @@ use tree_sitter::Node;
 
 use crate::yang::StatementKind;
 
+/// A parsed YANG statement with its keyword and argument positions.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Statement {
     pub(crate) id: usize,
+    /// The kind of statement (e.g., `description`, `type`, `leaf`).
     pub kind: StatementKind,
+    /// The byte range of the statement's keyword token.
     pub keyword: Range<usize>,
+    /// The byte range of the statement's argument value, with surrounding
+    /// quote characters stripped for quoted string arguments.
+    ///
+    /// For example, for `description "hello";` this range points to `hello`
+    /// (without the surrounding quotes). For unquoted arguments like
+    /// `type uint32`, it points to `uint32` as-is.
     pub argument: Option<Range<usize>>,
+}
+
+impl Statement {
+    /// Returns the argument text with surrounding quotes stripped.
+    ///
+    /// This is a convenience wrapper around [`Self::argument`] that slices
+    /// into the source text.
+    ///
+    /// # Examples
+    ///
+    /// ```ignore
+    /// let text = stmt.argument_text(source);
+    /// // For `description "hello";`  → Some("hello")
+    /// // For `type uint32;`          → Some("uint32")
+    /// // For statements with no arg  → None
+    /// ```
+    pub fn argument_text<'a>(&self, source: &'a str) -> Option<&'a str> {
+        self.argument.clone().map(|range| &source[range])
+    }
 }
 
 impl TryFrom<&Node<'_>> for Statement {
@@ -25,7 +53,22 @@ impl TryFrom<&Node<'_>> for Statement {
                 keyword: keyword_node.byte_range(),
                 argument: node
                     .child_by_field_name("arg")
-                    .map(|argument_node| argument_node.byte_range()),
+                    .map(|argument_node| {
+                        let mut range = argument_node.byte_range();
+                        // Strip surrounding quotes when the argument is a
+                        // single quoted_string (e.g. `description "hello"`).
+                        // Concatenated strings with multiple quoted parts
+                        // are left unchanged.
+                        if let Some(first_child) = argument_node.child(0) {
+                            if first_child.kind() == "quoted_string"
+                                && argument_node.child_count() == 1
+                            {
+                                range.start += 1;
+                                range.end -= 1;
+                            }
+                        }
+                        range
+                    }),
             })
         } else {
             Err(())
