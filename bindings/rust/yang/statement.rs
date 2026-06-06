@@ -51,24 +51,21 @@ impl TryFrom<&Node<'_>> for Statement {
                 id: 0,
                 kind,
                 keyword: keyword_node.byte_range(),
-                argument: node
-                    .child_by_field_name("arg")
-                    .map(|argument_node| {
-                        let mut range = argument_node.byte_range();
-                        // Strip surrounding quotes when the argument is a
-                        // single quoted_string (e.g. `description "hello"`).
-                        // Concatenated strings with multiple quoted parts
-                        // are left unchanged.
-                        if let Some(first_child) = argument_node.child(0) {
-                            if first_child.kind() == "quoted_string"
-                                && argument_node.child_count() == 1
-                            {
-                                range.start += 1;
-                                range.end -= 1;
-                            }
-                        }
-                        range
-                    }),
+                argument: node.child_by_field_name("arg").map(|argument_node| {
+                    let mut range = argument_node.byte_range();
+                    // Strip surrounding quotes when the argument is a
+                    // single quoted_string (e.g. `description "hello"`).
+                    // Concatenated strings with multiple quoted parts
+                    // are left unchanged.
+                    if let Some(first_child) = argument_node.child(0)
+                        && first_child.kind() == "quoted_string"
+                        && argument_node.child_count() == 1
+                    {
+                        range.start += 1;
+                        range.end -= 1;
+                    }
+                    range
+                }),
             })
         } else {
             Err(())
