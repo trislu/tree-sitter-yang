@@ -36,7 +36,9 @@ fn test_submodule() {
         r#"
 submodule "sub-me-do" {
     yang-version 1.1;
-    belongs-to me-too;
+    belongs-to me-too {
+        prefix mt;
+    }
 }
     "#,
         r#"
@@ -48,7 +50,10 @@ submodule "sub-me-do" {
       arg: (yang_version_arg_str))
     (belongs_to_stmt
       arg: (belongs_to_arg_str
-        (identifier)))))
+        (identifier))
+      (prefix_stmt
+        arg: (prefix_arg_str
+          (identifier))))))
 "#
     );
 }

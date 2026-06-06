@@ -450,8 +450,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "prefix_stmt",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true

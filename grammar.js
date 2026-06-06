@@ -7,13 +7,13 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const add_keyword = 'add';
-const delete_keyword = 'delete';
-const deviate_keyword = 'deviate';
-const min_keyword = 'min';
-const max_keyword = 'max';
-const not_supported_keyword = 'not-supported';
-const replace_keyword = 'replace';
+const add_keyword = 'add'
+const delete_keyword = 'delete'
+const deviate_keyword = 'deviate'
+const min_keyword = 'min'
+const max_keyword = 'max'
+const not_supported_keyword = 'not-supported'
+const replace_keyword = 'replace'
 
 export default grammar({
   name: "yang",
@@ -179,7 +179,10 @@ export default grammar({
                          "{" stmtsep
                              prefix-stmt stmtsep
                          "}" */
-    belongs_to_stmt: $ => NonBlockStmt('belongs-to', alias($._identifier_arg_str, $.belongs_to_arg_str)),
+    belongs_to_stmt: $ => Statement('belongs-to', alias($._identifier_arg_str, $.belongs_to_arg_str),
+      Block($.prefix_stmt),
+      false,
+    ),
 
     /** yang-version-stmt   = yang-version-keyword sep yang-version-arg-str
                          optsep stmtend */
@@ -189,8 +192,8 @@ export default grammar({
       /**
        * @todo find a rule to report better error message for invalid version values
        * @file 003_yang_version.rs */
-      const versions = /[1]|[1][\.][1]/;
-      return token(versions);
+      const versions = /[1]|[1][\.][1]/
+      return token(versions)
     },
 
     /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
@@ -278,8 +281,8 @@ export default grammar({
     /** revision-date       =  date-arg-str*/
     _date_arg_str: $ => ArgStr($.date_str),
     date_str: _ => {
-      const date_regex = /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/;
-      return token(date_regex);
+      const date_regex = /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
+      return token(date_regex)
     },
 
     /** body-stmts          = *(extension-stmt /
@@ -502,10 +505,10 @@ export default grammar({
       const fraction_digits = choice(
         /[0-9]/,        // 0-9
         /1[0-8]/        // 10-18
-      );
+      )
       // or just let parser users handle the semantic value check?
       // const fraction_digits = /[0-9]{1,2}/;
-      return token(fraction_digits);
+      return token(fraction_digits)
     },
 
     /** string-restrictions = ;; these stmts can appear in any order
@@ -1647,9 +1650,9 @@ export default grammar({
     _identifier_arg_str: $ => ArgStr($._identifier_arg),
     _identifier_arg: $ => $.identifier,
     identifier: _ => {
-      const alpha_underscore = /[a-zA-Z_]/;
-      const alphanumeric = /[a-zA-Z0-9-_.]/;
-      return token(seq(alpha_underscore, repeat(alphanumeric)));
+      const alpha_underscore = /[a-zA-Z_]/
+      const alphanumeric = /[a-zA-Z0-9-_.]/
+      return token(seq(alpha_underscore, repeat(alphanumeric)))
     },
 
     /**
@@ -1692,34 +1695,34 @@ export default grammar({
 
     boolean: _ => choice('true', 'false'),
   }
-});
+})
 
 function LF() {
-  return token('\n');
+  return token('\n')
 }
 
 function CRLF() {
-  return token('\r\n');
+  return token('\r\n')
 }
 
 function SP() {
-  return token(' ');
+  return token(' ')
 }
 
 function HTAP() {
-  return token('\t');
+  return token('\t')
 }
 
 function WSP() {
-  return choice(SP(), HTAP());
+  return choice(SP(), HTAP())
 }
 
 function line_break() {
-  return choice(CRLF(), LF());
+  return choice(CRLF(), LF())
 }
 
 function sep() {
-  return repeat1(choice(line_break(), WSP()));
+  return repeat1(choice(line_break(), WSP()))
 }
 
 /**
@@ -1728,7 +1731,7 @@ function sep() {
  * @returns {RepeatRule}
  */
 function stmtsep() {
-  return repeat(choice(WSP(), line_break(), sym('unknown_stmt')));
+  return repeat(choice(WSP(), line_break(), sym('unknown_stmt')))
 }
 
 /**
@@ -1739,7 +1742,7 @@ function stmtsep() {
  * @returns {SeqRule}
  */
 function BarSep1(rule) {
-  return seq(rule, repeat(seq('|', rule)));
+  return seq(rule, repeat(seq('|', rule)))
 }
 
 /**
@@ -1750,7 +1753,7 @@ function BarSep1(rule) {
  * @returns {SeqRule}
  */
 function PlusSep1(rule) {
-  return seq(rule, repeat(seq('+', rule)));
+  return seq(rule, repeat(seq('+', rule)))
 }
 
 /**
@@ -1760,7 +1763,7 @@ function PlusSep1(rule) {
  * @returns {Rule}
  */
 function SingleQuoted(rule) {
-  return seq("'", rule, "'");
+  return seq("'", rule, "'")
 }
 
 /**
@@ -1770,7 +1773,7 @@ function SingleQuoted(rule) {
  * @returns {Rule}
  */
 function DoubleQuoted(rule) {
-  return seq('"', rule, '"');
+  return seq('"', rule, '"')
 }
 
 /**
@@ -1784,7 +1787,7 @@ function ArgStr(rule) {
     SingleQuoted(rule),
     DoubleQuoted(rule),
     rule,
-  );
+  )
 }
 
 /**
@@ -1796,7 +1799,7 @@ function ArgStr(rule) {
 function Block(rule) {
   return seq(
     '{', stmtsep(), rule,
-    '}');
+    '}')
 }
 
 /**
@@ -1809,7 +1812,7 @@ function OptionalBlock(rule) {
   return choice(
     ';',
     Block(rule)
-  );
+  )
 }
 
 /**
@@ -1820,7 +1823,7 @@ function OptionalBlock(rule) {
  * @returns {Rule} YANG statement
  */
 function NonArgStmt(keyword, block) {
-  return seq(keyword, block, stmtsep());
+  return seq(keyword, block, stmtsep())
 }
 
 /**
@@ -1838,7 +1841,7 @@ function NonBlockStmt(keyword, argument) {
       seq(';', stmtsep()),
       seq('{', stmtsep(), '}', stmtsep())
     ),
-  );
+  )
 }
 
 /**
@@ -1852,15 +1855,15 @@ function NonBlockStmt(keyword, argument) {
  */
 function Statement(keyword, argument, block, tail_stmtsep = true) {
   if (!argument) {
-    return NonArgStmt(keyword, block);
+    return NonArgStmt(keyword, block)
   }
   if (!block) {
-    return NonBlockStmt(keyword, argument);
+    return NonBlockStmt(keyword, argument)
   }
   if (tail_stmtsep) {
-    return seq(keyword, field('arg', argument), block, stmtsep());
+    return seq(keyword, field('arg', argument), block, stmtsep())
   }
   else {
-    return seq(keyword, field('arg', argument), block);
+    return seq(keyword, field('arg', argument), block)
   }
 }
