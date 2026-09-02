@@ -11,6 +11,7 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (unknown_stmt

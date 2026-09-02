@@ -1131,56 +1131,74 @@ module ietf-interfaces {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))
     (prefix_stmt
+      (prefix_keyword)
       arg: (prefix_arg_str
         (identifier)))
     (import_stmt
+      (import_keyword)
       arg: (import_arg_str
         (identifier))
       (prefix_stmt
+        (prefix_keyword)
         arg: (prefix_arg_str
           (identifier))))
     (organization_stmt
+      (organization_keyword)
       arg: (organization_arg_str
         (quoted_string)))
     (contact_stmt
+      (contact_keyword)
       arg: (contact_arg_str
         (quoted_string)))
     (description_stmt
+      (description_keyword)
       arg: (description_arg_str
         (quoted_string)))
     (revision_stmt
+      (revision_keyword)
       arg: (revision_arg_str
         (date_str))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (reference_stmt
+        (reference_keyword)
         arg: (reference_arg_str
           (quoted_string))))
     (revision_stmt
+      (revision_keyword)
       arg: (revision_arg_str
         (date_str))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (reference_stmt
+        (reference_keyword)
         arg: (reference_arg_str
           (quoted_string))))
     (comment)
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (path_stmt
+          (path_keyword)
           arg: (path_arg_str
             (node_identifier
               (identifier)
@@ -1192,593 +1210,777 @@ module ietf-interfaces {
               (identifier)
               (identifier)))))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string))))
     (comment)
     (identity_stmt
+      (identity_keyword)
       arg: (identity_arg_str
         (identifier))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string))))
     (comment)
     (feature_stmt
+      (feature_keyword)
       arg: (feature_arg_str
         (identifier))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string))))
     (feature_stmt
+      (feature_keyword)
       arg: (feature_arg_str
         (identifier))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string))))
     (feature_stmt
+      (feature_keyword)
       arg: (feature_arg_str
         (identifier))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (reference_stmt
+        (reference_keyword)
         arg: (reference_arg_str
           (quoted_string))))
     (comment)
     (container_stmt
+      (container_keyword)
       arg: (container_arg_str
         (identifier))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (list_stmt
+        (list_keyword)
         arg: (list_arg_str
           (identifier))
         (key_stmt
+          (key_keyword)
           arg: (key_arg_str
             (node_identifier
               (identifier))))
         (description_stmt
+          (description_keyword)
           arg: (description_arg_str
             (quoted_string)))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (base_stmt
+              (base_keyword)
               arg: (base_arg_str
                 (identifier))))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (default_stmt
+            (default_keyword)
             arg: (default_arg_str
               (quoted_string)))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (if_feature_stmt
+            (if_feature_keyword)
             arg: (if_feature_arg_str
               (identifier)))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string)))))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (if_feature_stmt
+            (if_feature_keyword)
             arg: (if_feature_arg_str
               (identifier)))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string)))))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string)))))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (prefix
                 (identifier))
               (identifier)))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (if_feature_stmt
+            (if_feature_keyword)
             arg: (if_feature_arg_str
               (identifier)))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (range_stmt
+              (range_keyword)
               arg: (range_arg_str
                 (integer_value)
                 (integer_value))))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (prefix
                 (identifier))
               (identifier)))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_list_stmt
+          (leaf_list_keyword)
           arg: (leaf_list_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_list_stmt
+          (leaf_list_keyword)
           arg: (leaf_list_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (prefix
                 (identifier))
               (identifier)))
           (units_stmt
+            (units_keyword)
             arg: (units_arg_str
               (quoted_string)))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (container_stmt
+          (container_keyword)
           arg: (container_arg_str
             (identifier))
           (config_stmt
+            (config_keyword)
             arg: (boolean))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (mandatory_stmt
+              (mandatory_keyword)
               arg: (boolean))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string)))))))
     (comment)
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (path_stmt
+          (path_keyword)
           arg: (path_arg_str
             (node_identifier
               (identifier)
@@ -1790,532 +1992,704 @@ module ietf-interfaces {
               (identifier)
               (identifier)))))
       (status_stmt
+        (status_keyword)
         arg: (status_arg_str))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string))))
     (comment)
     (container_stmt
+      (container_keyword)
       arg: (container_arg_str
         (identifier))
       (config_stmt
+        (config_keyword)
         arg: (boolean))
       (status_stmt
+        (status_keyword)
         arg: (status_arg_str))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (list_stmt
+        (list_keyword)
         arg: (list_arg_str
           (identifier))
         (key_stmt
+          (key_keyword)
           arg: (key_arg_str
             (node_identifier
               (identifier))))
         (status_stmt
+          (status_keyword)
           arg: (status_arg_str))
         (description_stmt
+          (description_keyword)
           arg: (description_arg_str
             (quoted_string)))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (base_stmt
+              (base_keyword)
               arg: (base_arg_str
                 (identifier))))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (if_feature_stmt
+            (if_feature_keyword)
             arg: (if_feature_arg_str
               (identifier)))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string)))))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string))))
             (enum_stmt
+              (enum_keyword)
               arg: (enum_arg_str
                 (string
                   (identifier)))
               (value_stmt
+                (value_keyword)
                 arg: (value_arg_str
                   (integer_value)))
               (description_stmt
+                (description_keyword)
                 arg: (description_arg_str
                   (quoted_string)))))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (prefix
                 (identifier))
               (identifier)))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (if_feature_stmt
+            (if_feature_keyword)
             arg: (if_feature_arg_str
               (identifier)))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))
             (range_stmt
+              (range_keyword)
               arg: (range_arg_str
                 (integer_value)
                 (integer_value))))
           (mandatory_stmt
+            (mandatory_keyword)
             arg: (boolean))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (prefix
                 (identifier))
               (identifier)))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_list_stmt
+          (leaf_list_keyword)
           arg: (leaf_list_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_list_stmt
+          (leaf_list_keyword)
           arg: (leaf_list_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (prefix
                 (identifier))
               (identifier)))
           (units_stmt
+            (units_keyword)
             arg: (units_arg_str
               (quoted_string)))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (reference_stmt
+            (reference_keyword)
             arg: (reference_arg_str
               (quoted_string))))
         (container_stmt
+          (container_keyword)
           arg: (container_arg_str
             (identifier))
           (status_stmt
+            (status_keyword)
             arg: (status_arg_str))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (mandatory_stmt
+              (mandatory_keyword)
               arg: (boolean))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string))))
           (leaf_stmt
+            (leaf_keyword)
             arg: (leaf_arg_str
               (identifier))
             (type_stmt
+              (type_keyword)
               arg: (type_arg_str
                 (prefix
                   (identifier))
                 (identifier)))
             (status_stmt
+              (status_keyword)
               arg: (status_arg_str))
             (description_stmt
+              (description_keyword)
               arg: (description_arg_str
                 (quoted_string)))
             (reference_stmt
+              (reference_keyword)
               arg: (reference_arg_str
                 (quoted_string)))))))))
     "#

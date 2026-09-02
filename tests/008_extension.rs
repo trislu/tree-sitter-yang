@@ -18,15 +18,19 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (extension_stmt
+      (extension_keyword)
       arg: (extension_arg_str
         (identifier))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (argument_stmt
+        (argument_keyword)
         arg: (argument_arg_str
           (identifier))))))
 "#
@@ -41,9 +45,11 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (extension_stmt
+      (extension_keyword)
       arg: (extension_arg_str
         (identifier)))))
 "#
@@ -71,24 +77,31 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (extension_stmt
+      (extension_keyword)
       arg: (extension_arg_str
         (identifier))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (argument_stmt
+        (argument_keyword)
         arg: (argument_arg_str
           (identifier))
         (yin_element_stmt
+          (yin_element_keyword)
           arg: (yin_element_arg_str
             (boolean))))
       (reference_stmt
+        (reference_keyword)
         arg: (reference_arg_str
           (quoted_string)))
       (status_stmt
+        (status_keyword)
         arg: (status_arg_str)))))
 "#
     );

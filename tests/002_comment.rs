@@ -14,6 +14,7 @@ module test {
 (yang
   (comment)
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (comment))
@@ -36,6 +37,7 @@ module /*2*/  test /*3*/ {
 (yang
   (comment)
   (module_stmt
+    (module_keyword)
     (comment)
     arg: (module_arg_str
       (identifier))

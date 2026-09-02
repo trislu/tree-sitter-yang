@@ -19,23 +19,30 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (grouping_stmt
+      (grouping_keyword)
       arg: (grouping_arg_str
         (identifier))
       (status_stmt
+        (status_keyword)
         arg: (status_arg_str))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (reference_stmt
+        (reference_keyword)
         arg: (reference_arg_str
           (quoted_string)))
       (typedef_stmt
+        (typedef_keyword)
         arg: (typedef_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier)))))))
         "#
@@ -70,40 +77,53 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (grouping_stmt
+      (grouping_keyword)
       arg: (grouping_arg_str
         (identifier))
       (status_stmt
+        (status_keyword)
         arg: (status_arg_str))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (reference_stmt
+        (reference_keyword)
         arg: (reference_arg_str
           (quoted_string)))
       (typedef_stmt
+        (typedef_keyword)
         arg: (typedef_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier))))
       (grouping_stmt
+        (grouping_keyword)
         arg: (grouping_arg_str
           (identifier))
         (status_stmt
+          (status_keyword)
           arg: (status_arg_str))
         (description_stmt
+          (description_keyword)
           arg: (description_arg_str
             (quoted_string)))
         (reference_stmt
+          (reference_keyword)
           arg: (reference_arg_str
             (quoted_string)))
         (typedef_stmt
+          (typedef_keyword)
           arg: (typedef_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))))))))
         "#

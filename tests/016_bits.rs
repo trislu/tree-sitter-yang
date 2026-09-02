@@ -23,28 +23,37 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (bit_stmt
+          (bit_keyword)
           arg: (bit_arg_str
             (identifier))
           (position_stmt
+            (position_keyword)
             arg: (position_arg_str)))
         (bit_stmt
+          (bit_keyword)
           arg: (bit_arg_str
             (identifier))
           (position_stmt
+            (position_keyword)
             arg: (position_arg_str)))
         (bit_stmt
+          (bit_keyword)
           arg: (bit_arg_str
             (identifier))
           (position_stmt
+            (position_keyword)
             arg: (position_arg_str)))))))
         "#
     );

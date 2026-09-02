@@ -15,25 +15,32 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (list_stmt
+      (list_keyword)
       arg: (list_arg_str
         (identifier))
       (key_stmt
+        (key_keyword)
         arg: (key_arg_str
           (node_identifier
             (identifier))))
       (leaf_stmt
+        (leaf_keyword)
         arg: (leaf_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier))))
       (leaf_stmt
+        (leaf_keyword)
         arg: (leaf_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier)))))))
         "#
@@ -60,44 +67,57 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (list_stmt
+      (list_keyword)
       arg: (list_arg_str
         (identifier))
       (key_stmt
+        (key_keyword)
         arg: (key_arg_str
           (node_identifier
             (identifier))))
       (leaf_stmt
+        (leaf_keyword)
         arg: (leaf_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier))))
       (leaf_stmt
+        (leaf_keyword)
         arg: (leaf_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier))))
       (list_stmt
+        (list_keyword)
         arg: (list_arg_str
           (identifier))
         (key_stmt
+          (key_keyword)
           arg: (key_arg_str
             (node_identifier
               (identifier))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))))))))
         "#
@@ -145,87 +165,116 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (list_stmt
+      (list_keyword)
       arg: (list_arg_str
         (identifier))
       (when_stmt
+        (when_keyword)
         arg: (string
           (quoted_string)))
       (if_feature_stmt
+        (if_feature_keyword)
         arg: (if_feature_arg_str
           (identifier)))
       (must_stmt
+        (must_keyword)
         arg: (must_expression
           (quoted_string)))
       (key_stmt
+        (key_keyword)
         arg: (key_arg_str
           (node_identifier
             (identifier))
           (node_identifier
             (identifier))))
       (unique_stmt
+        (unique_keyword)
         arg: (unique_arg_str
           (node_identifier
             (identifier))
           (node_identifier
             (identifier))))
       (config_stmt
+        (config_keyword)
         arg: (boolean))
-      (min_elements_stmt)
-      (max_elements_stmt)
-      (ordered_by_stmt)
+      (min_elements_stmt
+        (min_elements_keyword))
+      (max_elements_stmt
+        (max_elements_keyword))
+      (ordered_by_stmt
+        (ordered_by_keyword))
       (status_stmt
+        (status_keyword)
         arg: (status_arg_str))
       (description_stmt
+        (description_keyword)
         arg: (description_arg_str
           (quoted_string)))
       (reference_stmt
+        (reference_keyword)
         arg: (reference_arg_str
           (quoted_string)))
       (leaf_stmt
+        (leaf_keyword)
         arg: (leaf_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier))))
       (leaf_stmt
+        (leaf_keyword)
         arg: (leaf_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier))))
       (container_stmt
+        (container_keyword)
         arg: (container_arg_str
           (identifier))
         (leaf_stmt
+          (leaf_keyword)
           arg: (leaf_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier)))))
       (typedef_stmt
+        (typedef_keyword)
         arg: (typedef_arg_str
           (identifier))
         (type_stmt
+          (type_keyword)
           arg: (type_arg_str
             (identifier))))
       (grouping_stmt
+        (grouping_keyword)
         arg: (grouping_arg_str
           (identifier))
         (status_stmt
+          (status_keyword)
           arg: (status_arg_str))
         (description_stmt
+          (description_keyword)
           arg: (description_arg_str
             (quoted_string)))
         (reference_stmt
+          (reference_keyword)
           arg: (reference_arg_str
             (quoted_string)))
         (typedef_stmt
+          (typedef_keyword)
           arg: (typedef_arg_str
             (identifier))
           (type_stmt
+            (type_keyword)
             arg: (type_arg_str
               (identifier))))))))
         "#

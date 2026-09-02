@@ -11,9 +11,11 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))))
 "#
     );
@@ -30,9 +32,11 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))))
 "#
     );

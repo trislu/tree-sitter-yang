@@ -18,22 +18,29 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))
     (prefix_stmt
+      (prefix_keyword)
       arg: (prefix_arg_str
         (identifier)))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (range_stmt
+          (range_keyword)
           arg: (range_arg_str
             (integer_value)
             (integer_value)))))))
@@ -59,22 +66,29 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))
     (prefix_stmt
+      (prefix_keyword)
       arg: (prefix_arg_str
         (identifier)))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (range_stmt
+          (range_keyword)
           arg: (range_arg_str
             (integer_value)
             (integer_value)
@@ -108,35 +122,45 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))
     (prefix_stmt
+      (prefix_keyword)
       arg: (prefix_arg_str
         (identifier)))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (range_stmt
+          (range_keyword)
           arg: (range_arg_str
             (integer_value)
             (integer_value)
             (integer_value)
             (integer_value)))))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (comment)
         (range_stmt
+          (range_keyword)
           arg: (range_arg_str
             (integer_value)))
         (comment)))))
@@ -168,35 +192,45 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))
     (prefix_stmt
+      (prefix_keyword)
       arg: (prefix_arg_str
         (identifier)))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (range_stmt
+          (range_keyword)
           arg: (range_arg_str
             (integer_value)
             (decimal_value)
             (integer_value)
             (integer_value)))))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (comment)
         (range_stmt
+          (range_keyword)
           arg: (range_arg_str
             (integer_value)))
         (comment)))))
@@ -225,26 +259,34 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))
     (prefix_stmt
+      (prefix_keyword)
       arg: (prefix_arg_str
         (identifier)))
     (namespace_stmt
+      (namespace_keyword)
       arg: (namespace_arg_str))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (range_stmt
+          (range_keyword)
           arg: (range_arg_str
             (integer_value)
             (integer_value))
           (error_message_stmt
+            (error_message_keyword)
             arg: (string
               (quoted_string))))))))
 "#

@@ -9,6 +9,7 @@ submodule test {}
         r#"
 (yang
   (submodule_stmt
+    (submodule_keyword)
     arg: (submodule_arg_str
       (identifier))))
 "#
@@ -24,6 +25,7 @@ submodule "name-can-be-string" {}
         r#"
 (yang
   (submodule_stmt
+    (submodule_keyword)
     arg: (submodule_arg_str
       (identifier))))
 "#
@@ -44,14 +46,18 @@ submodule "sub-me-do" {
         r#"
 (yang
   (submodule_stmt
+    (submodule_keyword)
     arg: (submodule_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))
     (belongs_to_stmt
+      (belongs_to_keyword)
       arg: (belongs_to_arg_str
         (identifier))
       (prefix_stmt
+        (prefix_keyword)
         arg: (prefix_arg_str
           (identifier))))))
 "#

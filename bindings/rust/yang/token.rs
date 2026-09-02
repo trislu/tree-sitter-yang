@@ -56,55 +56,49 @@ impl TryFrom<&Node<'_>> for Token {
                 kind: TokenKind::Argument(stmt_kind),
                 range: node.byte_range(),
             });
-        } else if let Some(parent) = node.parent() {
-            // Check for keyword nodes that are the first child of a statement node
-            if parent.kind().ends_with("_stmt")
-                && parent
-                    .child(0)
-                    .map(|child| child.id() == node.id())
-                    .unwrap_or(false)
-            {
-                let stmt_kind = StatementKind::from_str(parent.kind()).map_err(|_| ())?;
-                return Ok(Token {
-                    kind: TokenKind::Keyword(stmt_kind),
-                    range: node.byte_range(),
-                });
-            }
-            // Check for comment nodes
-            if node_kind == "comment" {
-                return Ok(Token {
-                    kind: TokenKind::Comment,
-                    range: node.byte_range(),
-                });
-            }
-            // Check for operator nodes (this is a placeholder; adjust as needed)
-            if matches!(node_kind, "+" | "|" | "..") {
-                return Ok(Token {
-                    kind: TokenKind::Operator,
-                    range: node.byte_range(),
-                });
-            }
-            // Check for boolean literals
-            if matches!(node_kind, "true" | "false") {
-                return Ok(Token {
-                    kind: TokenKind::Boolean,
-                    range: node.byte_range(),
-                });
-            }
-            // Check for number literals (this is a placeholder; adjust as needed)
-            if matches!(node_kind, "integer_value" | "decimal_value") {
-                return Ok(Token {
-                    kind: TokenKind::Number,
-                    range: node.byte_range(),
-                });
-            }
-            // Check for string literals (this is a placeholder; adjust as needed)
-            if matches!(node_kind, "quoted_string") {
-                return Ok(Token {
-                    kind: TokenKind::StringLiteral,
-                    range: node.byte_range(),
-                });
-            }
+        } else if node_kind.ends_with("_keyword") {
+            let parent = node.parent().ok_or(())?;
+            let parent_kind = parent.kind();
+            let stmt_kind = StatementKind::from_str(parent_kind).map_err(|_| ())?;
+            return Ok(Token {
+                kind: TokenKind::Keyword(stmt_kind),
+                range: node.byte_range(),
+            });
+        }
+        // Check for comment nodes
+        if node_kind == "comment" {
+            return Ok(Token {
+                kind: TokenKind::Comment,
+                range: node.byte_range(),
+            });
+        }
+        // Check for operator nodes (this is a placeholder; adjust as needed)
+        if matches!(node_kind, "+" | "|" | "..") {
+            return Ok(Token {
+                kind: TokenKind::Operator,
+                range: node.byte_range(),
+            });
+        }
+        // Check for boolean literals
+        if matches!(node_kind, "true" | "false") {
+            return Ok(Token {
+                kind: TokenKind::Boolean,
+                range: node.byte_range(),
+            });
+        }
+        // Check for number literals (this is a placeholder; adjust as needed)
+        if matches!(node_kind, "integer_value" | "decimal_value") {
+            return Ok(Token {
+                kind: TokenKind::Number,
+                range: node.byte_range(),
+            });
+        }
+        // Check for string literals (this is a placeholder; adjust as needed)
+        if matches!(node_kind, "quoted_string") {
+            return Ok(Token {
+                kind: TokenKind::StringLiteral,
+                range: node.byte_range(),
+            });
         }
         Err(())
     }

@@ -31,8 +31,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "action_keyword",
+          "named": true
+        },
         {
           "type": "description_stmt",
           "named": true
@@ -73,7 +77,7 @@
     }
   },
   {
-    "type": "add_keyword_str",
+    "type": "add_arg_str",
     "named": true,
     "fields": {}
   },
@@ -109,8 +113,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "anydata_keyword",
+          "named": true
+        },
         {
           "type": "config_stmt",
           "named": true
@@ -182,8 +190,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "anyxml_keyword",
+          "named": true
+        },
         {
           "type": "config_stmt",
           "named": true
@@ -255,8 +267,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "argument_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -300,7 +316,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "action_stmt",
@@ -312,6 +328,10 @@
         },
         {
           "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "augment_keyword",
           "named": true
         },
         {
@@ -409,8 +429,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "base_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -452,6 +476,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "belongs_to_keyword",
+          "named": true
+        },
         {
           "type": "prefix_stmt",
           "named": true
@@ -495,8 +523,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "bit_keyword",
+          "named": true
+        },
         {
           "type": "description_stmt",
           "named": true
@@ -561,7 +593,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "anydata_stmt",
@@ -569,6 +601,10 @@
         },
         {
           "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "case_keyword",
           "named": true
         },
         {
@@ -654,7 +690,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "anydata_stmt",
@@ -666,6 +702,10 @@
         },
         {
           "type": "case_stmt",
+          "named": true
+        },
+        {
+          "type": "choice_keyword",
           "named": true
         },
         {
@@ -752,8 +792,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "config_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -797,8 +841,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "contact_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -838,7 +886,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "action_stmt",
@@ -858,6 +906,10 @@
         },
         {
           "type": "config_stmt",
+          "named": true
+        },
+        {
+          "type": "container_keyword",
           "named": true
         },
         {
@@ -968,8 +1020,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "default_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -978,7 +1034,7 @@
     }
   },
   {
-    "type": "delete_keyword_str",
+    "type": "delete_arg_str",
     "named": true,
     "fields": {}
   },
@@ -1014,8 +1070,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "description_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -1032,7 +1092,7 @@
         "required": true,
         "types": [
           {
-            "type": "add_keyword_str",
+            "type": "add_arg_str",
             "named": true
           }
         ]
@@ -1040,7 +1100,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "config_stmt",
@@ -1048,6 +1108,10 @@
         },
         {
           "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_keyword",
           "named": true
         },
         {
@@ -1090,7 +1154,7 @@
         "required": true,
         "types": [
           {
-            "type": "delete_keyword_str",
+            "type": "delete_arg_str",
             "named": true
           }
         ]
@@ -1098,10 +1162,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_keyword",
           "named": true
         },
         {
@@ -1132,7 +1200,7 @@
         "required": true,
         "types": [
           {
-            "type": "not_supported_keyword_str",
+            "type": "not_supported_arg_str",
             "named": true
           }
         ]
@@ -1140,8 +1208,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "deviate_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -1158,7 +1230,7 @@
         "required": true,
         "types": [
           {
-            "type": "replace_keyword_str",
+            "type": "replace_arg_str",
             "named": true
           }
         ]
@@ -1166,7 +1238,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "config_stmt",
@@ -1174,6 +1246,10 @@
         },
         {
           "type": "default_stmt",
+          "named": true
+        },
+        {
+          "type": "deviate_keyword",
           "named": true
         },
         {
@@ -1235,7 +1311,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -1255,6 +1331,10 @@
         },
         {
           "type": "deviate_replace_stmt",
+          "named": true
+        },
+        {
+          "type": "deviation_keyword",
           "named": true
         },
         {
@@ -1300,10 +1380,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "enum_keyword",
           "named": true
         },
         {
@@ -1346,8 +1430,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "error_app_tag_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -1372,8 +1460,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "error_message_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -1413,7 +1505,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "argument_stmt",
@@ -1421,6 +1513,10 @@
         },
         {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "extension_keyword",
           "named": true
         },
         {
@@ -1470,10 +1566,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "feature_keyword",
           "named": true
         },
         {
@@ -1517,8 +1617,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "fraction_digits_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -1558,7 +1662,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "action_stmt",
@@ -1582,6 +1686,10 @@
         },
         {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "grouping_keyword",
           "named": true
         },
         {
@@ -1659,7 +1767,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "base_stmt",
@@ -1667,6 +1775,10 @@
         },
         {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "identity_keyword",
           "named": true
         },
         {
@@ -1720,8 +1832,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "if_feature_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -1761,10 +1877,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "import_keyword",
           "named": true
         },
         {
@@ -1818,10 +1938,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "include_keyword",
           "named": true
         },
         {
@@ -1845,7 +1969,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "anydata_stmt",
@@ -1865,6 +1989,10 @@
         },
         {
           "type": "grouping_stmt",
+          "named": true
+        },
+        {
+          "type": "input_keyword",
           "named": true
         },
         {
@@ -1940,8 +2068,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "key_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -1996,7 +2128,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "config_stmt",
@@ -2012,6 +2144,10 @@
         },
         {
           "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_list_keyword",
           "named": true
         },
         {
@@ -2074,7 +2210,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "config_stmt",
@@ -2090,6 +2226,10 @@
         },
         {
           "type": "if_feature_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_keyword",
           "named": true
         },
         {
@@ -2149,7 +2289,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -2161,6 +2301,10 @@
         },
         {
           "type": "error_message_stmt",
+          "named": true
+        },
+        {
+          "type": "length_keyword",
           "named": true
         },
         {
@@ -2206,7 +2350,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "action_stmt",
@@ -2254,6 +2398,10 @@
         },
         {
           "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "list_keyword",
           "named": true
         },
         {
@@ -2336,8 +2484,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "mandatory_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -2366,8 +2518,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "max_elements_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -2400,8 +2556,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "min_elements_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -2431,8 +2591,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "modifier_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -2472,7 +2636,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "anydata_stmt",
@@ -2540,6 +2704,10 @@
         },
         {
           "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "module_keyword",
           "named": true
         },
         {
@@ -2625,7 +2793,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -2637,6 +2805,10 @@
         },
         {
           "type": "error_message_stmt",
+          "named": true
+        },
+        {
+          "type": "must_keyword",
           "named": true
         },
         {
@@ -2667,8 +2839,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "namespace_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -2692,7 +2868,7 @@
     }
   },
   {
-    "type": "not_supported_keyword_str",
+    "type": "not_supported_arg_str",
     "named": true,
     "fields": {}
   },
@@ -2728,7 +2904,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "anydata_stmt",
@@ -2772,6 +2948,10 @@
         },
         {
           "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "notification_keyword",
           "named": true
         },
         {
@@ -2826,8 +3006,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "ordered_by_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -2871,8 +3055,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "organization_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -2886,7 +3074,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "anydata_stmt",
@@ -2922,6 +3110,10 @@
         },
         {
           "type": "must_stmt",
+          "named": true
+        },
+        {
+          "type": "output_keyword",
           "named": true
         },
         {
@@ -2971,8 +3163,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "path_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3016,7 +3212,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -3032,6 +3228,10 @@
         },
         {
           "type": "modifier_stmt",
+          "named": true
+        },
+        {
+          "type": "pattern_keyword",
           "named": true
         },
         {
@@ -3067,8 +3267,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "position_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3123,8 +3327,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "prefix_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3149,8 +3357,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "presence_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3199,7 +3411,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -3211,6 +3423,10 @@
         },
         {
           "type": "error_message_stmt",
+          "named": true
+        },
+        {
+          "type": "range_keyword",
           "named": true
         },
         {
@@ -3260,8 +3476,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "reference_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3301,7 +3521,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "config_stmt",
@@ -3344,6 +3564,10 @@
           "named": true
         },
         {
+          "type": "refine_keyword",
+          "named": true
+        },
+        {
           "type": "unknown_stmt",
           "named": true
         }
@@ -3351,7 +3575,7 @@
     }
   },
   {
-    "type": "replace_keyword_str",
+    "type": "replace_arg_str",
     "named": true,
     "fields": {}
   },
@@ -3387,8 +3611,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "require_instance_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3443,8 +3671,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "revision_date_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3469,7 +3701,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -3477,6 +3709,10 @@
         },
         {
           "type": "reference_stmt",
+          "named": true
+        },
+        {
+          "type": "revision_keyword",
           "named": true
         },
         {
@@ -3518,7 +3754,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -3542,6 +3778,10 @@
         },
         {
           "type": "reference_stmt",
+          "named": true
+        },
+        {
+          "type": "rpc_keyword",
           "named": true
         },
         {
@@ -3581,8 +3821,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "status_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3641,7 +3885,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "belongs_to_stmt",
@@ -3673,6 +3917,10 @@
         },
         {
           "type": "revision_stmt",
+          "named": true
+        },
+        {
+          "type": "submodule_keyword",
           "named": true
         },
         {
@@ -3722,7 +3970,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "base_stmt",
@@ -3758,6 +4006,10 @@
         },
         {
           "type": "require_instance_stmt",
+          "named": true
+        },
+        {
+          "type": "type_keyword",
           "named": true
         },
         {
@@ -3803,7 +4055,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "default_stmt",
@@ -3823,6 +4075,10 @@
         },
         {
           "type": "type_stmt",
+          "named": true
+        },
+        {
+          "type": "typedef_keyword",
           "named": true
         },
         {
@@ -3868,8 +4124,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "unique_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -3913,8 +4173,12 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "units_keyword",
+          "named": true
+        },
         {
           "type": "unknown_stmt",
           "named": true
@@ -4311,7 +4575,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "action_stmt",
@@ -4323,6 +4587,10 @@
         },
         {
           "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "augment_keyword",
           "named": true
         },
         {
@@ -4401,7 +4669,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -4429,6 +4697,10 @@
         },
         {
           "type": "uses_augment_stmt",
+          "named": true
+        },
+        {
+          "type": "uses_keyword",
           "named": true
         },
         {
@@ -4470,10 +4742,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "unknown_stmt",
+          "named": true
+        },
+        {
+          "type": "value_keyword",
           "named": true
         }
       ]
@@ -4496,7 +4772,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "description_stmt",
@@ -4508,6 +4784,10 @@
         },
         {
           "type": "unknown_stmt",
+          "named": true
+        },
+        {
+          "type": "when_keyword",
           "named": true
         }
       ]
@@ -4555,10 +4835,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "unknown_stmt",
+          "named": true
+        },
+        {
+          "type": "yang_version_keyword",
           "named": true
         }
       ]
@@ -4596,10 +4880,14 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "unknown_stmt",
+          "named": true
+        },
+        {
+          "type": "yin_element_keyword",
           "named": true
         }
       ]
@@ -4686,48 +4974,48 @@
     "named": false
   },
   {
-    "type": "action",
-    "named": false
+    "type": "action_keyword",
+    "named": true
   },
   {
     "type": "add",
     "named": false
   },
   {
-    "type": "anydata",
-    "named": false
+    "type": "anydata_keyword",
+    "named": true
   },
   {
-    "type": "anyxml",
-    "named": false
+    "type": "anyxml_keyword",
+    "named": true
   },
   {
-    "type": "argument",
-    "named": false
+    "type": "argument_keyword",
+    "named": true
   },
   {
-    "type": "augment",
-    "named": false
+    "type": "augment_keyword",
+    "named": true
   },
   {
-    "type": "base",
-    "named": false
+    "type": "base_keyword",
+    "named": true
   },
   {
-    "type": "belongs-to",
-    "named": false
+    "type": "belongs_to_keyword",
+    "named": true
   },
   {
-    "type": "bit",
-    "named": false
+    "type": "bit_keyword",
+    "named": true
   },
   {
-    "type": "case",
-    "named": false
+    "type": "case_keyword",
+    "named": true
   },
   {
-    "type": "choice",
-    "named": false
+    "type": "choice_keyword",
+    "named": true
   },
   {
     "type": "comment",
@@ -4735,16 +5023,16 @@
     "extra": true
   },
   {
-    "type": "config",
-    "named": false
+    "type": "config_keyword",
+    "named": true
   },
   {
-    "type": "contact",
-    "named": false
+    "type": "contact_keyword",
+    "named": true
   },
   {
-    "type": "container",
-    "named": false
+    "type": "container_keyword",
+    "named": true
   },
   {
     "type": "current",
@@ -4759,8 +5047,8 @@
     "named": true
   },
   {
-    "type": "default",
-    "named": false
+    "type": "default_keyword",
+    "named": true
   },
   {
     "type": "delete",
@@ -4771,135 +5059,135 @@
     "named": false
   },
   {
-    "type": "description",
-    "named": false
+    "type": "description_keyword",
+    "named": true
   },
   {
-    "type": "deviate",
-    "named": false
+    "type": "deviate_keyword",
+    "named": true
   },
   {
-    "type": "deviation",
-    "named": false
+    "type": "deviation_keyword",
+    "named": true
   },
   {
-    "type": "enum",
-    "named": false
+    "type": "enum_keyword",
+    "named": true
   },
   {
-    "type": "error-app-tag",
-    "named": false
+    "type": "error_app_tag_keyword",
+    "named": true
   },
   {
-    "type": "error-message",
-    "named": false
+    "type": "error_message_keyword",
+    "named": true
   },
   {
-    "type": "extension",
-    "named": false
+    "type": "extension_keyword",
+    "named": true
   },
   {
     "type": "false",
     "named": false
   },
   {
-    "type": "feature",
-    "named": false
+    "type": "feature_keyword",
+    "named": true
   },
   {
-    "type": "fraction-digits",
-    "named": false
+    "type": "fraction_digits_keyword",
+    "named": true
   },
   {
-    "type": "grouping",
-    "named": false
+    "type": "grouping_keyword",
+    "named": true
   },
   {
     "type": "identifier",
     "named": true
   },
   {
-    "type": "identity",
-    "named": false
+    "type": "identity_keyword",
+    "named": true
   },
   {
-    "type": "if-feature",
-    "named": false
+    "type": "if_feature_keyword",
+    "named": true
   },
   {
-    "type": "import",
-    "named": false
+    "type": "import_keyword",
+    "named": true
   },
   {
-    "type": "include",
-    "named": false
+    "type": "include_keyword",
+    "named": true
   },
   {
-    "type": "input",
-    "named": false
+    "type": "input_keyword",
+    "named": true
   },
   {
     "type": "invert-match",
     "named": false
   },
   {
-    "type": "key",
-    "named": false
+    "type": "key_keyword",
+    "named": true
   },
   {
-    "type": "leaf",
-    "named": false
+    "type": "leaf_keyword",
+    "named": true
   },
   {
-    "type": "leaf-list",
-    "named": false
+    "type": "leaf_list_keyword",
+    "named": true
   },
   {
-    "type": "length",
-    "named": false
+    "type": "length_keyword",
+    "named": true
   },
   {
-    "type": "list",
-    "named": false
+    "type": "list_keyword",
+    "named": true
   },
   {
-    "type": "mandatory",
-    "named": false
+    "type": "mandatory_keyword",
+    "named": true
   },
   {
     "type": "max",
     "named": false
   },
   {
-    "type": "max-elements",
-    "named": false
+    "type": "max_elements_keyword",
+    "named": true
   },
   {
     "type": "min",
     "named": false
   },
   {
-    "type": "min-elements",
-    "named": false
+    "type": "min_elements_keyword",
+    "named": true
   },
   {
-    "type": "modifier",
-    "named": false
+    "type": "modifier_keyword",
+    "named": true
   },
   {
-    "type": "module",
-    "named": false
+    "type": "module_keyword",
+    "named": true
   },
   {
-    "type": "must",
-    "named": false
-  },
-  {
-    "type": "namespace",
-    "named": false
+    "type": "must_keyword",
+    "named": true
   },
   {
     "type": "namespace_arg_str",
+    "named": true
+  },
+  {
+    "type": "namespace_keyword",
     "named": true
   },
   {
@@ -4907,84 +5195,84 @@
     "named": false
   },
   {
-    "type": "notification",
-    "named": false
+    "type": "notification_keyword",
+    "named": true
   },
   {
     "type": "obsolete",
     "named": false
   },
   {
-    "type": "ordered-by",
-    "named": false
+    "type": "ordered_by_keyword",
+    "named": true
   },
   {
-    "type": "organization",
-    "named": false
+    "type": "organization_keyword",
+    "named": true
   },
   {
-    "type": "output",
-    "named": false
+    "type": "output_keyword",
+    "named": true
   },
   {
-    "type": "path",
-    "named": false
+    "type": "path_keyword",
+    "named": true
   },
   {
-    "type": "pattern",
-    "named": false
+    "type": "pattern_keyword",
+    "named": true
   },
   {
-    "type": "position",
-    "named": false
+    "type": "position_keyword",
+    "named": true
   },
   {
-    "type": "prefix",
-    "named": false
+    "type": "prefix_keyword",
+    "named": true
   },
   {
-    "type": "presence",
-    "named": false
+    "type": "presence_keyword",
+    "named": true
   },
   {
-    "type": "range",
-    "named": false
+    "type": "range_keyword",
+    "named": true
   },
   {
-    "type": "reference",
-    "named": false
+    "type": "reference_keyword",
+    "named": true
   },
   {
-    "type": "refine",
-    "named": false
+    "type": "refine_keyword",
+    "named": true
   },
   {
     "type": "replace",
     "named": false
   },
   {
-    "type": "require-instance",
-    "named": false
+    "type": "require_instance_keyword",
+    "named": true
   },
   {
-    "type": "revision",
-    "named": false
+    "type": "revision_date_keyword",
+    "named": true
   },
   {
-    "type": "revision-date",
-    "named": false
+    "type": "revision_keyword",
+    "named": true
   },
   {
-    "type": "rpc",
-    "named": false
+    "type": "rpc_keyword",
+    "named": true
   },
   {
-    "type": "status",
-    "named": false
+    "type": "status_keyword",
+    "named": true
   },
   {
-    "type": "submodule",
-    "named": false
+    "type": "submodule_keyword",
+    "named": true
   },
   {
     "type": "system",
@@ -4995,44 +5283,44 @@
     "named": false
   },
   {
-    "type": "type",
-    "named": false
+    "type": "type_keyword",
+    "named": true
   },
   {
-    "type": "typedef",
-    "named": false
+    "type": "typedef_keyword",
+    "named": true
   },
   {
-    "type": "unique",
-    "named": false
+    "type": "unique_keyword",
+    "named": true
   },
   {
-    "type": "units",
-    "named": false
+    "type": "units_keyword",
+    "named": true
   },
   {
     "type": "user",
     "named": false
   },
   {
-    "type": "uses",
-    "named": false
+    "type": "uses_keyword",
+    "named": true
   },
   {
-    "type": "value",
-    "named": false
+    "type": "value_keyword",
+    "named": true
   },
   {
-    "type": "when",
-    "named": false
+    "type": "when_keyword",
+    "named": true
   },
   {
-    "type": "yang-version",
-    "named": false
+    "type": "yang_version_keyword",
+    "named": true
   },
   {
-    "type": "yin-element",
-    "named": false
+    "type": "yin_element_keyword",
+    "named": true
   },
   {
     "type": "{",

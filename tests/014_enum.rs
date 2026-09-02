@@ -16,19 +16,24 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (enum_stmt
+          (enum_keyword)
           arg: (enum_arg_str
             (string
               (identifier))))
         (enum_stmt
+          (enum_keyword)
           arg: (enum_arg_str
             (string
               (identifier))))))))
@@ -56,26 +61,33 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (enum_stmt
+          (enum_keyword)
           arg: (enum_arg_str
             (string
               (identifier)))
           (value_stmt
+            (value_keyword)
             arg: (value_arg_str
               (integer_value))))
         (enum_stmt
+          (enum_keyword)
           arg: (enum_arg_str
             (string
               (identifier)))
           (value_stmt
+            (value_keyword)
             arg: (value_arg_str
               (integer_value))))))))
         "#
@@ -108,42 +120,54 @@ module test{
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (typedef_stmt
+      (typedef_keyword)
       arg: (typedef_arg_str
         (identifier))
       (type_stmt
+        (type_keyword)
         arg: (type_arg_str
           (identifier))
         (enum_stmt
+          (enum_keyword)
           arg: (enum_arg_str
             (string
               (identifier)))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (value_stmt
+            (value_keyword)
             arg: (value_arg_str
               (integer_value))))
         (enum_stmt
+          (enum_keyword)
           arg: (enum_arg_str
             (string
               (identifier)))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (value_stmt
+            (value_keyword)
             arg: (value_arg_str
               (integer_value))))
         (enum_stmt
+          (enum_keyword)
           arg: (enum_arg_str
             (string
               (identifier)))
           (description_stmt
+            (description_keyword)
             arg: (description_arg_str
               (quoted_string)))
           (value_stmt
+            (value_keyword)
             arg: (value_arg_str
               (integer_value))))))))
 "#

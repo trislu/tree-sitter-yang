@@ -11,9 +11,11 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))))
 "#
     );
@@ -26,9 +28,11 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))))
 "#
     );
@@ -45,9 +49,11 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))))
 "#
     );
@@ -60,9 +66,11 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (module_arg_str
       (identifier))
     (yang_version_stmt
+      (yang_version_keyword)
       arg: (yang_version_arg_str))))
 "#
     );
@@ -81,6 +89,7 @@ module test {
         r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (identifier)
     (ERROR
       (UNEXPECTED '0'))))
@@ -94,6 +103,7 @@ module test {
             r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (identifier)
     (ERROR
       (UNEXPECTED ';'))))
@@ -112,6 +122,7 @@ fn test_range_a_to_z_upper() {
             r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (identifier)
     (ERROR
       (UNEXPECTED '{}'))))
@@ -131,6 +142,7 @@ fn test_range_a_to_z_lower() {
             r#"
 (yang
   (module_stmt
+    (module_keyword)
     arg: (identifier)
     (ERROR
       (UNEXPECTED '{}'))))
