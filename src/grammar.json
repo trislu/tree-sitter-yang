@@ -451,6 +451,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "revision_stmt"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_body_stmt"
                   }
                 ]
               }

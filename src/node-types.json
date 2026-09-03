@@ -3888,7 +3888,23 @@
       "required": true,
       "types": [
         {
+          "type": "anydata_stmt",
+          "named": true
+        },
+        {
+          "type": "anyxml_stmt",
+          "named": true
+        },
+        {
+          "type": "augment_stmt",
+          "named": true
+        },
+        {
           "type": "belongs_to_stmt",
+          "named": true
+        },
+        {
+          "type": "choice_stmt",
           "named": true
         },
         {
@@ -3896,7 +3912,31 @@
           "named": true
         },
         {
+          "type": "container_stmt",
+          "named": true
+        },
+        {
           "type": "description_stmt",
+          "named": true
+        },
+        {
+          "type": "deviation_stmt",
+          "named": true
+        },
+        {
+          "type": "extension_stmt",
+          "named": true
+        },
+        {
+          "type": "feature_stmt",
+          "named": true
+        },
+        {
+          "type": "grouping_stmt",
+          "named": true
+        },
+        {
+          "type": "identity_stmt",
           "named": true
         },
         {
@@ -3905,6 +3945,22 @@
         },
         {
           "type": "include_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_list_stmt",
+          "named": true
+        },
+        {
+          "type": "leaf_stmt",
+          "named": true
+        },
+        {
+          "type": "list_stmt",
+          "named": true
+        },
+        {
+          "type": "notification_stmt",
           "named": true
         },
         {
@@ -3920,11 +3976,23 @@
           "named": true
         },
         {
+          "type": "rpc_stmt",
+          "named": true
+        },
+        {
           "type": "submodule_keyword",
           "named": true
         },
         {
+          "type": "typedef_stmt",
+          "named": true
+        },
+        {
           "type": "unknown_stmt",
+          "named": true
+        },
+        {
+          "type": "uses_stmt",
           "named": true
         },
         {
