@@ -17,91 +17,9 @@ fn main() {
                 let error_message = String::from_utf8_lossy(&output.stderr);
                 panic!("Tree-sitter build failed: {error_message}");
             }
+        } else {
+            panic!("Tree-sitter is not available. Please install it to build the parser.");
         }
-
-        use codegen::Scope;
-        use convert_case::{Case, Casing};
-        use serde::{
-            Deserialize, Serialize,
-            de::{DeserializeOwned, Error},
-        };
-        use std::{
-            fs::{File, read_to_string},
-            io::Write,
-            path::Path,
-        };
-
-        #[derive(Serialize, Deserialize)]
-        struct NodeType {
-            #[serde(alias = "type")]
-            type_name: String,
-            named: bool,
-        }
-
-        // rust codegen
-        fn read_to_json<T>(path: &Path) -> Result<T, impl Error>
-        where
-            T: DeserializeOwned,
-        {
-            let json_str =
-                read_to_string(path).unwrap_or_else(|_| panic!("Failed to read file: {:?}", path));
-            serde_json::from_str::<T>(&json_str)
-        }
-
-        let nodetype_json_path = Path::new("src/node-types.json");
-        println!(
-            "cargo:rerun-if-changed={}",
-            nodetype_json_path.to_str().unwrap()
-        );
-        let nodetype_json: Result<Vec<NodeType>, _> = read_to_json(nodetype_json_path);
-
-        let mut yang_scope = Scope::new();
-        yang_scope.import("strum_macros", "Display");
-        yang_scope.import("strum_macros", "EnumCount");
-        yang_scope.import("strum_macros", "EnumIter");
-        yang_scope.import("strum_macros", "EnumString");
-
-        // enum for statement kind
-        let enum_rule = yang_scope
-            .new_enum("StatementKind")
-            .vis("pub")
-            .derive("Clone")
-            .derive("Copy")
-            .derive("Debug")
-            .derive("Display")
-            .derive("EnumCount")
-            .derive("EnumIter")
-            .derive("EnumString")
-            .derive("Eq")
-            .derive("Hash")
-            .derive("PartialEq");
-
-        for node_type in nodetype_json.unwrap() {
-            if !node_type.type_name.ends_with("_stmt") {
-                // only generate enum variants for statement nodes,
-                // which are the ones we care about for the public API.
-                // The other nodes are mostly internal and not useful to expose.
-                continue;
-            }
-            let name = node_type.type_name;
-            let name_without_stmt = name.replace("_stmt", "");
-            enum_rule
-                .new_variant(name_without_stmt.to_case(Case::Pascal))
-                .annotation(format!(
-                    r#"#[strum(to_string = "{}", serialize = "{}")]"#,
-                    name_without_stmt.replace("_", "-"),
-                    name
-                ));
-        }
-        // code gen for yang.rs
-        let yang_rs_path = Path::new("bindings")
-            .join("rust")
-            .join("yang")
-            .join("statement_generated.rs");
-        let mut yang_rs = File::create(yang_rs_path).unwrap();
-        yang_rs
-            .write_all(yang_scope.to_string().as_bytes())
-            .unwrap();
     }
 
     let src_dir = std::path::Path::new("src");

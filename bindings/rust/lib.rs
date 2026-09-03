@@ -54,9 +54,6 @@ unsafe extern "C" {
     fn tree_sitter_yang() -> *const ();
 }
 
-// extra public mods
-pub mod yang; // expose yang relative concepts
-
 /// The tree-sitter [`LanguageFn`] for this grammar.
 pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_yang) };
 
