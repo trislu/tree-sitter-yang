@@ -17,8 +17,6 @@ fn main() {
                 let error_message = String::from_utf8_lossy(&output.stderr);
                 panic!("Tree-sitter build failed: {error_message}");
             }
-        } else {
-            panic!("Tree-sitter is not available. Please install it to build the parser.");
         }
     }
 
