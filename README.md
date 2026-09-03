@@ -1,7 +1,8 @@
 # tree-sitter-yang
 
 [![Rust CI](https://github.com/trislu/tree-sitter-yang/actions/workflows/rust.yml/badge.svg)](https://github.com/trislu/tree-sitter-yang/actions/workflows/rust.yml)
-[![Cargo Publish](https://github.com/trislu/tree-sitter-yang/actions/workflows/publish.yml/badge.svg)](https://github.com/trislu/tree-sitter-yang/actions/workflows/publish.yml)
+[![Cargo Publish](https://github.com/trislu/tree-sitter-yang/actions/workflows/cargo-publish.yml/badge.svg)](https://github.com/trislu/tree-sitter-yang/actions/workflows/cargo-publish.yml)
+[![GitHub Release](https://github.com/trislu/tree-sitter-yang/actions/workflows/github-release.yml/badge.svg)](https://github.com/trislu/tree-sitter-yang/actions/workflows/github-release.yml)
 [![Latest Version](https://img.shields.io/crates/v/tree-sitter-yang.svg)](https://crates.io/crates/tree-sitter-yang)
 [![License](https://img.shields.io/crates/l/tree-sitter-yang.svg)](LICENSE)
 
