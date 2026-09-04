@@ -24,12 +24,6 @@ export default grammar({
     $.comment,
   ],
 
-  // Define tokens that the external scanner will handle
-  // The order here must match the enum in scanner.c
-  externals: $ => [
-    $._rfc3986_uri,    // 0: for namespace-stmt
-  ],
-
   conflicts: $ => [
     [$.unknown_stmt],
     // blame unknown_stmt
@@ -38,6 +32,8 @@ export default grammar({
     [$.anyxml_stmt],
     [$.argument_stmt],
     [$.augment_stmt],
+    // augment-stmt and uses-augment-stmt share the 'augment' keyword.
+    [$.augment_arg_str, $.uses_augment_arg_str],
     [$.base_stmt],
     [$.belongs_to_stmt],
     [$.bit_stmt],
@@ -200,8 +196,17 @@ export default grammar({
       return token(versions)
     },
 
-    /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend */
-    namespace_stmt: $ => NonBlockStmt(alias('namespace', $.namespace_keyword), alias(choice($._rfc3986_uri, $.identifier), $.namespace_arg_str)),
+    /** namespace-stmt      = namespace-keyword sep uri-str optsep stmtend
+     * Argument: a quoted string (possibly '+' concatenated) or a bare URI;
+     * URI semantics are handled by the grammar's consumers. */
+    namespace_stmt: $ => NonBlockStmt(alias('namespace', $.namespace_keyword), $.namespace_arg_str),
+    namespace_arg_str: $ => choice(
+      seq($._uri_quoted, repeat(seq('+', $.quoted_string))),
+      $._uri_str,
+    ),
+    _uri_quoted: $ => choice($._uri_dq, $._uri_sq),
+    _uri_dq: _ => token(seq('"', /[^"]*/, '"')),
+    _uri_sq: _ => token(seq("'", /[^']*/, "'")),
 
     /** linkage-stmts       = ;; these stmts can appear in any order
                          *import-stmt
@@ -262,8 +267,7 @@ export default grammar({
     /** description-stmt    = description-keyword sep string optsep
                          stmtend*/
     /**
-     * @note forcing the argument of description statement to be a quoted-string
-     * @todo let external scanners handle this specific case.
+     * @note the description argument is a quoted-string.
      */
     description_stmt: $ => NonBlockStmt(alias('description', $.description_keyword), alias($._concatenated_string, $.description_arg_str)),
 
@@ -375,7 +379,7 @@ export default grammar({
         $.description_stmt,
         $.reference_stmt)))),
 
-    if_feature_stmt: $ => NonBlockStmt(alias('if-feature', $.if_feature_keyword), alias($._identifier_ref_arg_str, $.if_feature_arg_str)),
+    if_feature_stmt: $ => NonBlockStmt(alias('if-feature', $.if_feature_keyword), alias(choice($._concatenated_string, $._identifier_ref_arg), $.if_feature_arg_str)),
 
     /** identity-stmt       = identity-keyword sep identifier-arg-str optsep
                          (";" /
@@ -390,6 +394,7 @@ export default grammar({
                          optsep stmtend */
     identity_stmt: $ => Statement(alias('identity', $.identity_keyword), alias($._identifier_arg_str, $.identity_arg_str),
       OptionalBlock(repeat(choice(
+        $.if_feature_stmt,
         $.base_stmt,
         $.status_stmt,
         $.description_stmt,
@@ -418,11 +423,16 @@ export default grammar({
         $.reference_stmt
       )))),
 
-    /** default-stmt        = default-keyword sep string stmtend*/
-    default_stmt: $ => NonBlockStmt(alias('default', $.default_keyword), alias(choice($.string, ArgStr($.integer_value)), $.default_arg_str)),
+    /** default-stmt        = default-keyword sep string stmtend
+        The argument holds a value valid for the node's type (RFC 7950 §7.6.4).
+        A `decimal64` default may be a bare decimal such as `-3.25`
+        (§9.3.4: decimal64-value = ["-"] integer-value ["." zero-integer-value]),
+        so the numeric alternative is `decimal_value` (it also covers bare
+        integers). */
+    default_stmt: $ => NonBlockStmt(alias('default', $.default_keyword), alias(choice($.string, $._slash_word, ArgStr($.decimal_value)), $.default_arg_str)),
 
     /** units-stmt          = units-keyword sep string optsep stmtend*/
-    units_stmt: $ => NonBlockStmt(alias('units', $.units_keyword), alias($.string, $.units_arg_str)),
+    units_stmt: $ => NonBlockStmt(alias('units', $.units_keyword), alias(choice($.string, $._slash_word), $.units_arg_str)),
 
     /** type-stmt           = type-keyword sep identifier-ref-arg-str optsep
                          (";" /
@@ -430,7 +440,11 @@ export default grammar({
                               type-body-stmts
                           "}")*/
     type_stmt: $ => Statement(alias('type', $.type_keyword), alias($._identifier_ref_arg_str, $.type_arg_str),
-      OptionalBlock($._type_body_stmts)),
+      OptionalBlock(seq(
+        repeat($.unknown_stmt),
+        optional($._type_body_stmts),
+        repeat($.unknown_stmt),
+      ))),
 
     /** type-body-stmts     = numerical-restrictions /
                          decimal64-specification /
@@ -604,7 +618,7 @@ export default grammar({
         $.reference_stmt
       )))
     ),
-    enum_arg_str: $ => $.string,
+    enum_arg_str: $ => choice($.string, $._digit_start_word),
     /** value-stmt          = value-keyword sep integer-value-str stmtend
         integer-value-str   = < a string that matches the rule >
                               < integer-value >*/
@@ -648,7 +662,7 @@ export default grammar({
     ),
 
     path_stmt: $ => NonBlockStmt(alias('path', $.path_keyword), $.path_arg_str),
-    path_arg_str: $ => ArgStr($._path_arg),
+    path_arg_str: $ => QuotedOr($, $._path_arg),
     _path_arg: $ => choice($._absolute_path, $._relative_path),
 
     _absolute_path: $ => repeat1(seq(
@@ -1098,7 +1112,7 @@ export default grammar({
                                   *uses-augment-stmt
                               "}") stmtsep
     */
-    uses_stmt: $ => Statement(alias('uses', $.uses_keyword), alias($._identifier_ref_arg_str, $.uses_arg_str),
+    uses_stmt: $ => Statement(alias('uses', $.uses_keyword), alias(choice($._concatenated_string, $._identifier_ref_arg), $.uses_arg_str),
       OptionalBlock(repeat(choice(
         $.when_stmt,
         $.if_feature_stmt,
@@ -1142,7 +1156,7 @@ export default grammar({
         $.reference_stmt,
       )))
     ),
-    refine_arg_str: $ => ArgStr($._refine_arg),
+    refine_arg_str: $ => QuotedOr($, $._refine_arg),
     _refine_arg: $ => $._descendant_schema_nodeid,
 
     /** uses-augment-stmt   = augment-keyword sep uses-augment-arg-str optsep
@@ -1173,7 +1187,7 @@ export default grammar({
         $.notification_stmt,
       )))
     ),
-    uses_augment_arg_str: $ => ArgStr($._uses_augment_arg),
+    uses_augment_arg_str: $ => prec.dynamic(0, QuotedOr($, $._descendant_schema_nodeid)),
     _uses_augment_arg: $ => $._descendant_schema_nodeid,
 
     /** augment-stmt        = augment-keyword sep augment-arg-str optsep
@@ -1206,7 +1220,7 @@ export default grammar({
         $.notification_stmt,
       )))
     ),
-    augment_arg_str: $ => ArgStr($._augment_arg),
+    augment_arg_str: $ => prec.dynamic(1, QuotedOr($, $._absolute_schema_nodeid)),
     _augment_arg: $ => $._absolute_schema_nodeid,
 
     /** rpc-stmt            = rpc-keyword sep identifier-arg-str optsep
@@ -1342,7 +1356,7 @@ export default grammar({
         $.deviate_delete_stmt,
       )))
     ),
-    deviation_arg_str: $ => ArgStr($._deviation_arg),
+    deviation_arg_str: $ => QuotedOr($, $._absolute_schema_nodeid),
     _deviation_arg: $ => $._absolute_schema_nodeid,
 
     /** deviate-not-supported-stmt =
@@ -1431,17 +1445,26 @@ export default grammar({
                               "{" optsep
                                   *((yang-stmt / unknown-statement) optsep)
                               "}") stmtsep
+      The `{ ... }` body is parsed as an opaque, brace-balanced region (see
+      `_brace_balanced`).
      */
     unknown_stmt: $ => seq(
       seq(alias($._prefix_arg, $.prefix), ':', $.identifier),
-      optional(field('arg', seq(sep(), $.string))),
+      optional(field('arg', choice($.string, $._slash_word, $._digit_start_word, $.integer_value))),
       choice(
         ';',
-        seq('{',
-          repeat(seq(choice($.unknown_stmt, $._yang_stmt)))),
-        '}'),
+        $._brace_balanced,
+      ),
       stmtsep(),
     ),
+
+    /** Matches a balanced `{ ... }` region without interpreting its content. */
+    _brace_balanced: $ => seq(
+      '{',
+      repeat(choice($._brace_balanced, $._no_braces)),
+      '}',
+    ),
+    _no_braces: _ => token(/[^{}]+/),
 
     _yang_stmt: $ => choice(
       $.action_stmt,
@@ -1524,7 +1547,12 @@ export default grammar({
                          [absolute-schema-nodeid]
     */
     _absolute_schema_nodeid: $ => repeat1(seq("/", $.node_identifier)),
-    _descendant_schema_nodeid: $ => seq($.node_identifier, $._absolute_schema_nodeid),
+    // RFC 7950: descendant-schema-nodeid = node-identifier
+    //                                 [absolute-schema-nodeid]  (suffix optional)
+    _descendant_schema_nodeid: $ => seq(
+      $.node_identifier,
+      optional($._absolute_schema_nodeid),
+    ),
 
     /** when-stmt           = when-keyword sep string optsep
                              (";" /
@@ -1651,6 +1679,11 @@ export default grammar({
         ':')),
       $.identifier),
 
+    // Bare (unquoted) word starting with a digit (e.g. an enum name).
+    _digit_start_word: _ => token(/[0-9][0-9A-Za-z\-_.]*/),
+    // Bare (unquoted) word containing '/' (e.g. units like Mb/s).
+    _slash_word: _ => token(/[^"';\s{}]*\/[^"';\s{}]*/),
+
     _identifier_arg_str: $ => ArgStr($._identifier_arg),
     _identifier_arg: $ => $.identifier,
     identifier: _ => {
@@ -1661,23 +1694,20 @@ export default grammar({
 
     /**
      * @see {@link https://www.rfc-editor.org/rfc/rfc7950#section-6.1.3 Quoting}
-     * @todo let external scanner handle all the quoting scenarios
      */
-    // unescaped string that can be single quoted
-    _unescaped_string1: _ => token.immediate(prec(1, /[^'\\]+/)),
-    // unescaped string that can be single quoted
+    // YANG single-quoted strings (RFC 7950 §6.1.3) perform no escape
+    // processing, so a backslash is an ordinary character inside them.
+    _unescaped_string1: _ => token.immediate(prec(1, /[^']+/)),
+    // unescaped text inside double quotes (a backslash starts an escape)
     _unescaped_string2: _ => token.immediate(prec(1, /[^"\\]+/)),
-    // escaped string
+    // escape sequence (double-quoted strings only: \n \t \" \\)
     _escape_sequence: _ => token.immediate(seq(
       '\\',
       choice('n', 't', '"', '\\')
     )),
 
     _single_quoted_string: $ => SingleQuoted(
-      repeat1(choice(
-        $._unescaped_string1,
-        $._escape_sequence,
-      ))),
+      repeat1($._unescaped_string1)),
 
     _double_quoted_string: $ => DoubleQuoted(
       repeat1(choice(
@@ -1694,6 +1724,10 @@ export default grammar({
     ),
 
     _concatenated_string: $ => PlusSep1($.quoted_string),
+
+    // Bare (unquoted) URI argument for namespace-stmt, lexed up to the
+    // statement terminator (':' and other URI characters are allowed).
+    _uri_str: _ => token(/[^"';\s{}]+/),
 
     string: $ => choice($._concatenated_string, $.identifier),
 
@@ -1792,6 +1826,20 @@ function ArgStr(rule) {
     DoubleQuoted(rule),
     rule,
   )
+}
+
+/**
+ * An argument whose value is "a string that matches <content>".
+ *
+ * Quoted arguments (single or '+' concatenated pieces) are kept as opaque
+ * strings; only unquoted (bare) arguments are parsed as structured <content>.
+ *
+ * @param {object} $ grammar rule proxy
+ * @param {Rule} content
+ * @returns {Rule}
+ */
+function QuotedOr($, content) {
+  return choice($._concatenated_string, content)
 }
 
 /**

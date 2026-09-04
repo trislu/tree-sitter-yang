@@ -92,12 +92,7 @@ module test{
         (refine_stmt
           (refine_keyword)
           arg: (refine_arg_str
-            (node_identifier
-              (identifier))
-            (node_identifier
-              (identifier))
-            (node_identifier
-              (identifier)))
+            (quoted_string))
           (if_feature_stmt
             (if_feature_keyword)
             arg: (if_feature_arg_str
@@ -176,12 +171,7 @@ module test{
         (uses_augment_stmt
           (augment_keyword)
           arg: (uses_augment_arg_str
-            (node_identifier
-              (identifier))
-            (node_identifier
-              (identifier))
-            (node_identifier
-              (identifier)))
+            (quoted_string))
           (when_stmt
             (when_keyword)
             arg: (string

@@ -40,10 +40,7 @@ module test{
         (path_stmt
           (path_keyword)
           arg: (path_arg_str
-            (node_identifier
-              (identifier))
-            (node_identifier
-              (identifier))))))))
+            (quoted_string)))))))
         "#
     );
 }
@@ -83,12 +80,7 @@ module test{
         (path_stmt
           (path_keyword)
           arg: (path_arg_str
-            (node_identifier
-              (identifier))
-            (node_identifier
-              (identifier))
-            (node_identifier
-              (identifier))))
+            (quoted_string)))
         (require_instance_stmt
           (require_instance_keyword)
           arg: (require_instance_arg_str

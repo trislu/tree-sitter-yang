@@ -22,9 +22,7 @@ module test{
     (augment_stmt
       (augment_keyword)
       arg: (augment_arg_str
-        (node_identifier
-          (identifier)
-          (identifier)))
+        (quoted_string))
       (if_feature_stmt
         (if_feature_keyword)
         arg: (if_feature_arg_str
@@ -68,9 +66,7 @@ module test{
     (augment_stmt
       (augment_keyword)
       arg: (augment_arg_str
-        (node_identifier
-          (identifier)
-          (identifier)))
+        (quoted_string))
       (when_stmt
         (when_keyword)
         arg: (string

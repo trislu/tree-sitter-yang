@@ -1200,15 +1200,7 @@ module ietf-interfaces {
         (path_stmt
           (path_keyword)
           arg: (path_arg_str
-            (node_identifier
-              (identifier)
-              (identifier))
-            (node_identifier
-              (identifier)
-              (identifier))
-            (node_identifier
-              (identifier)
-              (identifier)))))
+            (quoted_string))))
       (description_stmt
         (description_keyword)
         arg: (description_arg_str
@@ -1982,15 +1974,7 @@ module ietf-interfaces {
         (path_stmt
           (path_keyword)
           arg: (path_arg_str
-            (node_identifier
-              (identifier)
-              (identifier))
-            (node_identifier
-              (identifier)
-              (identifier))
-            (node_identifier
-              (identifier)
-              (identifier)))))
+            (quoted_string))))
       (status_stmt
         (status_keyword)
         arg: (status_arg_str))
