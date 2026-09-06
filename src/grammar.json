@@ -89,10 +89,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -102,6 +98,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "_module_header"
@@ -222,10 +222,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -242,51 +238,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -335,10 +288,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -423,10 +372,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -436,6 +381,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "_submodule_header"
@@ -554,10 +503,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -646,10 +591,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -666,51 +607,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -759,10 +657,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -895,10 +789,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -915,51 +805,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -1008,10 +855,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -1196,10 +1039,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -1209,6 +1048,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "prefix_stmt"
@@ -1276,10 +1119,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -1363,10 +1202,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -1383,51 +1218,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -1476,10 +1268,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -1571,10 +1359,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -1584,6 +1368,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "revision_date_stmt"
@@ -1649,10 +1437,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -1766,10 +1550,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -1786,51 +1566,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -1879,10 +1616,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -1979,10 +1712,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -1999,51 +1728,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -2092,10 +1778,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -2192,10 +1874,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -2212,51 +1890,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -2305,10 +1940,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -2405,10 +2036,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -2425,51 +2052,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -2518,10 +2102,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -2613,10 +2193,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -2626,6 +2202,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "description_stmt"
@@ -2687,10 +2267,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -2873,10 +2449,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -2886,6 +2458,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "argument_stmt"
@@ -2955,10 +2531,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -3046,23 +2618,38 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
                 },
                 {
-                  "type": "CHOICE",
+                  "type": "SEQ",
                   "members": [
                     {
-                      "type": "SYMBOL",
-                      "name": "yin_element_stmt"
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      }
                     },
                     {
-                      "type": "BLANK"
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "yin_element_stmt"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      }
                     }
                   ]
                 },
@@ -3116,10 +2703,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -3198,10 +2781,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -3218,51 +2797,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -3311,10 +2847,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -3440,10 +2972,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -3460,51 +2988,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -3553,10 +3038,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -3730,10 +3211,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -3743,6 +3220,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "if_feature_stmt"
@@ -3812,10 +3293,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -3908,10 +3385,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -3928,51 +3401,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -4021,10 +3451,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -4116,10 +3542,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -4129,6 +3551,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "if_feature_stmt"
@@ -4202,10 +3628,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -4289,10 +3711,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -4309,51 +3727,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -4402,10 +3777,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -4490,10 +3861,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -4503,6 +3870,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "type_stmt"
@@ -4578,10 +3949,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -4721,10 +4088,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -4741,51 +4104,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -4834,10 +4154,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -4938,10 +4254,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -4958,51 +4270,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -5051,10 +4320,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -5155,10 +4420,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -5244,10 +4505,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -5375,10 +4632,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -5388,6 +4641,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "error_message_stmt"
@@ -5457,10 +4714,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -5539,10 +4792,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -5559,51 +4808,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -5652,10 +4858,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -5738,10 +4940,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -5758,51 +4956,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -5851,10 +5006,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -6095,10 +5246,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -6115,51 +5262,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -6208,10 +5312,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -6401,10 +5501,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -6414,6 +5510,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "error_message_stmt"
@@ -6483,10 +5583,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -6689,10 +5785,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -6702,6 +5794,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "modifier_stmt"
@@ -6775,10 +5871,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -6857,10 +5949,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -6877,51 +5965,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -6970,10 +6015,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -7114,10 +6155,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -7127,6 +6164,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "if_feature_stmt"
@@ -7200,10 +6241,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -7299,10 +6336,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -7319,51 +6352,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -7412,10 +6402,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -7580,10 +6566,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -7600,51 +6582,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -7693,10 +6632,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8032,10 +6967,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8052,51 +6983,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -8145,10 +7033,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8301,10 +7185,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8314,6 +7194,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "if_feature_stmt"
@@ -8387,10 +7271,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -8469,10 +7349,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8489,51 +7365,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -8582,10 +7415,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8731,10 +7560,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8744,6 +7569,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "status_stmt"
@@ -8829,10 +7658,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -8957,10 +7782,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -8970,6 +7791,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "when_stmt"
@@ -9075,10 +7900,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -9159,10 +7980,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -9172,6 +7989,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "when_stmt"
@@ -9267,10 +8088,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -9351,10 +8168,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -9364,6 +8177,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "when_stmt"
@@ -9467,10 +8284,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -9551,10 +8364,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -9564,6 +8373,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "when_stmt"
@@ -9683,10 +8496,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -9765,10 +8574,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -9785,51 +8590,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -9878,10 +8640,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -10032,10 +8790,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -10052,51 +8806,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -10145,10 +8856,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -10332,10 +9039,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -10345,6 +9048,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "when_stmt"
@@ -10438,10 +9145,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -10562,10 +9265,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -10575,6 +9274,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "when_stmt"
@@ -10652,10 +9355,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -10743,10 +9442,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -10756,6 +9451,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "when_stmt"
@@ -10841,10 +9540,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -10932,10 +9627,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -10945,6 +9636,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "when_stmt"
@@ -11030,10 +9725,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -11130,10 +9821,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -11143,6 +9830,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "when_stmt"
@@ -11224,10 +9915,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -11303,10 +9990,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -11316,6 +9999,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "if_feature_stmt"
@@ -11407,10 +10094,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -11503,10 +10186,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -11516,6 +10195,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "when_stmt"
@@ -11603,10 +10286,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -11703,10 +10382,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -11716,6 +10391,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "when_stmt"
@@ -11803,10 +10482,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -11915,10 +10590,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -11928,6 +10599,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "if_feature_stmt"
@@ -12013,10 +10688,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -12104,10 +10775,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -12117,6 +10784,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "if_feature_stmt"
@@ -12202,10 +10873,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -12273,10 +10940,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -12286,6 +10949,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "must_stmt"
@@ -12353,10 +11020,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -12424,10 +11087,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -12437,6 +11096,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "must_stmt"
@@ -12504,10 +11167,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -12595,10 +11254,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -12608,6 +11263,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "if_feature_stmt"
@@ -12693,10 +11352,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -12772,10 +11427,6 @@
                         }
                       }
                     ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "unknown_stmt"
                   }
                 ]
               }
@@ -12785,6 +11436,10 @@
               "content": {
                 "type": "CHOICE",
                 "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
+                  },
                   {
                     "type": "SYMBOL",
                     "name": "description_stmt"
@@ -12860,10 +11515,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -12959,10 +11610,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -12979,51 +11626,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -13072,10 +11676,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -13214,10 +11814,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -13227,6 +11823,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "units_stmt"
@@ -13312,10 +11912,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -13450,10 +12046,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -13463,6 +12055,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "units_stmt"
@@ -13532,10 +12128,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -13670,10 +12262,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -13683,6 +12271,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "type_stmt"
@@ -13764,10 +12356,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -13943,10 +12531,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -14395,10 +12979,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -14408,6 +12988,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "description_stmt"
@@ -14469,10 +13053,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -14551,10 +13131,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -14571,51 +13147,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -14664,10 +13197,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -14793,10 +13322,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -14813,51 +13338,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -14906,10 +13388,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15035,10 +13513,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15055,51 +13529,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -15148,10 +13579,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15234,10 +13661,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15254,51 +13677,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -15347,10 +13727,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15498,10 +13874,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15511,6 +13883,10 @@
                   "content": {
                     "type": "CHOICE",
                     "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "unknown_stmt"
+                      },
                       {
                         "type": "SYMBOL",
                         "name": "error_message_stmt"
@@ -15580,10 +13956,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "unknown_stmt"
               }
             ]
           }
@@ -15662,10 +14034,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15682,51 +14050,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -15775,10 +14100,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15908,10 +14229,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }
@@ -15928,51 +14245,8 @@
                 {
                   "type": "REPEAT",
                   "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": " "
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\t"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\r\n"
-                            }
-                          },
-                          {
-                            "type": "TOKEN",
-                            "content": {
-                              "type": "STRING",
-                              "value": "\n"
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "unknown_stmt"
                   }
                 },
                 {
@@ -16021,10 +14295,6 @@
                             }
                           }
                         ]
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "unknown_stmt"
                       }
                     ]
                   }

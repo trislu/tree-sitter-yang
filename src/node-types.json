@@ -487,10 +487,6 @@
         {
           "type": "prefix_stmt",
           "named": true
-        },
-        {
-          "type": "unknown_stmt",
-          "named": true
         }
       ]
     }
@@ -815,7 +811,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "identifier",
@@ -1048,7 +1044,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "quoted_string",
@@ -3060,7 +3056,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "identifier",
@@ -3485,7 +3481,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "identifier",
@@ -4051,7 +4047,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "identifier",
@@ -4326,10 +4322,6 @@
         },
         {
           "type": "prefix",
-          "named": true
-        },
-        {
-          "type": "unknown_stmt",
           "named": true
         }
       ]

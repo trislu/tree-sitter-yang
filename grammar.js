@@ -124,6 +124,7 @@ export default grammar({
       alias($._identifier_arg_str, $.module_arg_str),
       Block(
         repeat(choice(
+          $.unknown_stmt,
           $._module_header,
           $._linkage_stmt,
           $._meta_stmt,
@@ -159,6 +160,7 @@ export default grammar({
       Block(
         repeat(
           choice(
+            $.unknown_stmt,
             $._submodule_header,
             $._linkage_stmt,
             $._meta_stmt,
@@ -223,6 +225,7 @@ export default grammar({
                          "}" stmtsep */
     import_stmt: $ => Statement(alias('import', $.import_keyword), alias($._identifier_arg_str, $.import_arg_str), Block(repeat(
       choice(
+        $.unknown_stmt,
         $.prefix_stmt,
         $.revision_date_stmt,
         $.description_stmt,
@@ -241,6 +244,7 @@ export default grammar({
                           "}") stmtsep */
     include_stmt: $ => Statement(alias('include', $.include_keyword), alias($._identifier_arg_str, $.include_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.revision_date_stmt,
         $.description_stmt,
         $.reference_stmt)))),
@@ -283,6 +287,7 @@ export default grammar({
                           "}")*/
     revision_stmt: $ => Statement(alias('revision', $.revision_keyword), alias($._date_arg_str, $.revision_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.description_stmt,
         $.reference_stmt)))
     ),
@@ -327,6 +332,7 @@ export default grammar({
                           "}") stmtsep*/
     extension_stmt: $ => Statement(alias('extension', $.extension_keyword), alias($._identifier_arg_str, $.extension_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.argument_stmt,
         $.status_stmt,
         $.description_stmt,
@@ -339,7 +345,10 @@ export default grammar({
                               [yin-element-stmt stmtsep]
                           "}")*/
     argument_stmt: $ => Statement(alias('argument', $.argument_keyword), alias($._identifier_arg_str, $.argument_arg_str),
-      OptionalBlock(optional($.yin_element_stmt))),
+      OptionalBlock(seq(
+        repeat($.unknown_stmt),
+        optional($.yin_element_stmt),
+        repeat($.unknown_stmt)))),
 
     /** yin-element-stmt    = yin-element-keyword sep yin-element-arg-str
                          stmtend*/
@@ -374,6 +383,7 @@ export default grammar({
                          optsep stmtend*/
     feature_stmt: $ => Statement(alias('feature', $.feature_keyword), alias($._identifier_arg_str, $.feature_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.status_stmt,
         $.description_stmt,
@@ -394,6 +404,7 @@ export default grammar({
                          optsep stmtend */
     identity_stmt: $ => Statement(alias('identity', $.identity_keyword), alias($._identifier_arg_str, $.identity_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.base_stmt,
         $.status_stmt,
@@ -415,6 +426,7 @@ export default grammar({
                           "}" stmtsep */
     typedef_stmt: $ => Statement(alias('typedef', $.typedef_keyword), alias($._identifier_arg_str, $.typedef_arg_str),
       Block(repeat(choice(
+        $.unknown_stmt,
         $.type_stmt,
         $.units_stmt,
         $.default_stmt,
@@ -481,6 +493,7 @@ export default grammar({
                            "}")*/
     range_stmt: $ => Statement(alias('range', $.range_keyword), $.range_arg_str,
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.error_message_stmt,
         $.error_app_tag_stmt,
         $.description_stmt,
@@ -557,6 +570,7 @@ export default grammar({
                               non-negative-integer-value */
     length_stmt: $ => Statement(alias('length', $.length_keyword), $.length_arg_str,
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.error_message_stmt,
         $.error_app_tag_stmt,
         $.description_stmt,
@@ -581,6 +595,7 @@ export default grammar({
     */
     pattern_stmt: $ => Statement(alias('pattern', $.pattern_keyword), alias($.string, $.pattern_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.modifier_stmt, // rfc7950 only
         $.error_message_stmt,
         $.error_app_tag_stmt,
@@ -611,6 +626,7 @@ export default grammar({
     _enum_specification: $ => repeat1($.enum_stmt),
     enum_stmt: $ => Statement(alias('enum', $.enum_keyword), $.enum_arg_str,
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.value_stmt,
         $.status_stmt,
@@ -749,6 +765,7 @@ export default grammar({
     bit_stmt: $ => Statement(
       alias('bit', $.bit_keyword), alias($._identifier_arg_str, $.bit_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.position_stmt,
         $.status_stmt,
@@ -777,6 +794,7 @@ export default grammar({
                           "}") stmtsep */
     grouping_stmt: $ => Statement(alias('grouping', $.grouping_keyword), alias($._identifier_arg_str, $.grouping_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.status_stmt,
         $.description_stmt,
         $.reference_stmt,
@@ -826,6 +844,7 @@ export default grammar({
                           "}") stmtsep */
     container_stmt: $ => Statement(alias('container', $.container_keyword), alias($._identifier_arg_str, $.container_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.must_stmt,
@@ -859,6 +878,7 @@ export default grammar({
                               "}" stmtsep */
     leaf_stmt: $ => Statement(alias('leaf', $.leaf_keyword), alias($._identifier_arg_str, $.leaf_arg_str),
       Block(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.type_stmt,
@@ -893,6 +913,7 @@ export default grammar({
     */
     leaf_list_stmt: $ => Statement(alias('leaf-list', $.leaf_list_keyword), alias($._identifier_arg_str, $.leaf_list_arg_str),
       Block(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.type_stmt,
@@ -932,6 +953,7 @@ export default grammar({
     */
     list_stmt: $ => Statement(alias('list', $.list_keyword), alias($._identifier_arg_str, $.list_arg_str),
       Block(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.must_stmt,
@@ -994,6 +1016,7 @@ export default grammar({
                               "}") stmtsep */
     choice_stmt: $ => Statement(alias('choice', $.choice_keyword), alias($._identifier_arg_str, $.choice_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.default_stmt,
@@ -1038,6 +1061,7 @@ export default grammar({
                               "}") stmtsep */
     case_stmt: $ => Statement(alias('case', $.case_keyword), alias($._identifier_arg_str, $.case_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
@@ -1062,6 +1086,7 @@ export default grammar({
                               "}") stmtsep */
     anydata_stmt: $ => Statement(alias('anydata', $.anydata_keyword), alias($._identifier_arg_str, $.anydata_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.must_stmt,
@@ -1088,6 +1113,7 @@ export default grammar({
                             "}") stmtsep */
     anyxml_stmt: $ => Statement(alias('anyxml', $.anyxml_keyword), alias($._identifier_arg_str, $.anyxml_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.must_stmt,
@@ -1114,6 +1140,7 @@ export default grammar({
     */
     uses_stmt: $ => Statement(alias('uses', $.uses_keyword), alias(choice($._concatenated_string, $._identifier_ref_arg), $.uses_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
@@ -1144,6 +1171,7 @@ export default grammar({
     */
     refine_stmt: $ => Statement(alias('refine', $.refine_keyword), $.refine_arg_str,
       Block(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.must_stmt,
         $.presence_stmt,
@@ -1176,6 +1204,7 @@ export default grammar({
    */
     uses_augment_stmt: $ => Statement(alias('augment', $.augment_keyword), $.uses_augment_arg_str,
       Block(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
@@ -1209,6 +1238,7 @@ export default grammar({
     */
     augment_stmt: $ => Statement(alias('augment', $.augment_keyword), $.augment_arg_str,
       Block(repeat(choice(
+        $.unknown_stmt,
         $.when_stmt,
         $.if_feature_stmt,
         $.status_stmt,
@@ -1238,6 +1268,7 @@ export default grammar({
 
     rpc_stmt: $ => Statement(alias('rpc', $.rpc_keyword), alias($._identifier_arg_str, $.rpc_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.status_stmt,
         $.description_stmt,
@@ -1264,6 +1295,7 @@ export default grammar({
     */
     action_stmt: $ => Statement(alias('action', $.action_keyword), alias($._identifier_arg_str, $.action_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.status_stmt,
         $.description_stmt,
@@ -1291,6 +1323,7 @@ export default grammar({
                             "}" stmtsep */
     input_stmt: $ => NonArgStmt(alias('input', $.input_keyword),
       Block(repeat(choice(
+        $.unknown_stmt,
         $.must_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
@@ -1299,6 +1332,7 @@ export default grammar({
     ),
     output_stmt: $ => NonArgStmt(alias('output', $.output_keyword),
       Block(repeat(choice(
+        $.unknown_stmt,
         $.must_stmt,
         $.typedef_stmt,
         $.grouping_stmt,
@@ -1321,6 +1355,7 @@ export default grammar({
                               "}") stmtsep */
     notification_stmt: $ => Statement(alias('notification', $.notification_keyword), alias($._identifier_arg_str, $.notification_arg_str),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.if_feature_stmt,
         $.must_stmt,
         $.status_stmt,
@@ -1348,6 +1383,7 @@ export default grammar({
         deviation-arg       = absolute-schema-nodeid */
     deviation_stmt: $ => Statement(alias('deviation', $.deviation_keyword), $.deviation_arg_str,
       Block(repeat(choice(
+        $.unknown_stmt,
         $.description_stmt,
         $.reference_stmt,
         $.deviate_not_supported_stmt,
@@ -1381,6 +1417,7 @@ export default grammar({
                                 "}") stmtsep */
     deviate_add_stmt: $ => Statement(alias('deviate', $.deviate_keyword), $.add_arg_str,
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.units_stmt,
         $.must_stmt,
         $.unique_stmt,
@@ -1405,6 +1442,7 @@ export default grammar({
    */
     deviate_delete_stmt: $ => Statement(alias('deviate', $.deviate_keyword), $.delete_arg_str,
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.units_stmt,
         $.must_stmt,
         $.unique_stmt,
@@ -1427,6 +1465,7 @@ export default grammar({
                                 "}") stmtsep */
     deviate_replace_stmt: $ => Statement(alias('deviate', $.deviate_keyword), $.replace_arg_str,
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.type_stmt,
         $.units_stmt,
         $.default_stmt,
@@ -1563,6 +1602,7 @@ export default grammar({
                               "}") stmtsep */
     when_stmt: $ => Statement(alias('when', $.when_keyword), $.string,
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.description_stmt,
         $.reference_stmt,
       )))
@@ -1611,6 +1651,7 @@ export default grammar({
     */
     must_stmt: $ => Statement(alias('must', $.must_keyword), alias($.string, $.must_expression),
       OptionalBlock(repeat(choice(
+        $.unknown_stmt,
         $.error_message_stmt,
         $.error_app_tag_stmt,
         $.description_stmt,
@@ -1782,7 +1823,7 @@ function sep() {
  * @returns {RepeatRule}
  */
 function stmtsep() {
-  return repeat(choice(WSP(), line_break(), sym('unknown_stmt')))
+  return repeat(choice(WSP(), line_break()))
 }
 
 /**
@@ -1904,7 +1945,7 @@ function NonBlockStmt(keyword, argument) {
     field('arg', argument),
     choice(
       seq(';', stmtsep()),
-      seq('{', stmtsep(), '}', stmtsep())
+      seq('{', repeat(sym('unknown_stmt')), '}', stmtsep())
     ),
   )
 }
