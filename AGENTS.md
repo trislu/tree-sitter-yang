@@ -71,5 +71,6 @@ Follow the `parser-regen` skill (canonical copy:
 
 - Keep grammar fixes minimal and RFC 7950-faithful; check the RFC grammar
   before declaring a construct invalid (cross-check with `pyang` when unsure).
-- Keep `cargo fmt` / `clippy` clean.
+- Keep `cargo fmt` clean and run clippy STRICTLY:
+  `cargo +stable clippy --all-targets --all-features -- -D warnings`.
 - Sync README / CHANGELOG / tree-sitter.json metadata on behavior changes.
