@@ -56,7 +56,14 @@ Follow the `parser-regen` skill (canonical copy:
   `044_type_error_localization.rs`, `045_text_argument_tolerance.rs`,
   `046_recovery_localization.rs` — bad `type`/text arguments and a single
   unexpected token at a list end no longer collapse the whole module.
-- Whole-corpus parse-errors (~100 after the working-tree fixes, mostly
+- **`047_key_unique_concat.rs` (committed locally, not released)**: `key` /
+  `unique` arguments are opaque quoted strings, so RFC 7950 string
+  concatenation (`key "a " + "b"`, `unique "… " + "…"`) and trailing
+  whitespace inside the quotes parse (pyang accepts both). This cleared
+  whole-module collapses that were cascading not-a-yang-document and
+  unresolved-import/grouping/augment noise into every importer of the
+  affected draft modules.
+- Whole-corpus parse-errors (~60 after the working-tree fixes, mostly
   `experimental/ietf-extracted-YANG-modules`) are the remaining grammar gaps;
   see the `issue-hunter` skill in `yrepo` for the audit workflow.
 
