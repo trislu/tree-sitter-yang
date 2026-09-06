@@ -33,6 +33,15 @@ tree-sitter-yang = { git = "https://github.com/trislu/tree-sitter-yang" }
 
 Tree-sitter supports bindings for Node.js, Python, C, and more. See the [Tree-sitter Language Bindings](https://tree-sitter.github.io/tree-sitter/bindings) docs for setup instructions.
 
+### Syntax highlighting
+
+This repository ships `queries/highlights.scm` with standard YANG highlight
+captures (keywords, comments, strings, dates, booleans, module/prefix names,
+type/grouping/identity references, and data-node/definition names). Editors
+that read queries from the grammar repository — Zed, Neovim
+(`nvim-treesitter`), the `tree-sitter highlight`/`query` CLI — pick it up
+automatically.
+
 ## Usage (Rust Example)
 
 ```rust

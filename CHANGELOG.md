@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- `queries/highlights.scm`: standard syntax-highlight captures for YANG
+  (keywords, comments, strings, dates, booleans, module/prefix names,
+  type/grouping/identity references, data-node and definition names). Zed,
+  Neovim/nvim-treesitter and the tree-sitter CLI read this file straight from
+  the grammar repo. Regression-guarded by `049_highlights_query.rs`, which
+  compiles the query file and asserts every headline capture class fires.
+
 ## [0.3.0] - 2026-09-05
 
 ### Added

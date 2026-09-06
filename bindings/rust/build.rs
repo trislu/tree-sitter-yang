@@ -9,7 +9,7 @@ fn main() {
         if tree_sitter_available {
             let output = std::process::Command::new("tree-sitter")
                 .arg("generate")
-                .arg("--abi=14")
+                .arg("--abi=15")
                 .output()
                 .expect("Failed to execute tree-sitter build command");
 
