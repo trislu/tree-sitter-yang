@@ -42,8 +42,8 @@ module m {
       (key_stmt
         (key_keyword)
         arg: (key_arg_str
-          (node_identifier
-            (identifier))))
+          (string
+            (quoted_string))))
       (max_elements_stmt
         (max_elements_keyword))
       (leaf_stmt
@@ -92,7 +92,7 @@ module m {
       (key_stmt
         (key_keyword)
         arg: (key_arg_str
-          (node_identifier
+          (string
             (identifier))))
       (max_elements_stmt
         (max_elements_keyword))

@@ -980,7 +980,13 @@ export default grammar({
         key-arg             = node-identifier *(sep node-identifier)
     */
     key_stmt: $ => NonBlockStmt(alias('key', $.key_keyword), $.key_arg_str),
-    key_arg_str: $ => ArgStr($._key_arg),
+    // Structured key-arg (trailing whitespace inside the quoted content is
+    // tolerated), plus a '+' concatenated trailing piece (RFC 7950 string
+    // concatenation; real extracted modules write `key "a " + "b"`).
+    // RFC 7950: key-arg-str is a quoted string; the argument is kept opaque
+    // (string concatenation `key "a " + "b"` and trailing whitespace inside
+    // the quotes are therefore fine — real extracted modules write both).
+    key_arg_str: $ => $.string,
     _key_arg: $ => seq($.node_identifier, repeat(seq($._sep, $.node_identifier))),
 
     /** unique-stmt         = unique-keyword sep unique-arg-str stmtend
@@ -990,7 +996,7 @@ export default grammar({
                               *(sep descendant-schema-nodeid)
     */
     unique_stmt: $ => NonBlockStmt(alias('unique', $.unique_keyword), $.unique_arg_str),
-    unique_arg_str: $ => ArgStr($._unique_arg),
+    unique_arg_str: $ => $.string,
     _unique_arg: $ => seq($._descendant_schema_nodeid, repeat(seq($._sep, $._descendant_schema_nodeid))),
 
     _sep: _ => repeat1(choice(

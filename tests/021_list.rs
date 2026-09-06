@@ -25,8 +25,8 @@ module test{
       (key_stmt
         (key_keyword)
         arg: (key_arg_str
-          (node_identifier
-            (identifier))))
+          (string
+            (quoted_string))))
       (leaf_stmt
         (leaf_keyword)
         arg: (leaf_arg_str
@@ -77,7 +77,7 @@ module test{
       (key_stmt
         (key_keyword)
         arg: (key_arg_str
-          (node_identifier
+          (string
             (identifier))))
       (leaf_stmt
         (leaf_keyword)
@@ -102,7 +102,7 @@ module test{
         (key_stmt
           (key_keyword)
           arg: (key_arg_str
-            (node_identifier
+            (string
               (identifier))))
         (leaf_stmt
           (leaf_keyword)
@@ -187,17 +187,13 @@ module test{
       (key_stmt
         (key_keyword)
         arg: (key_arg_str
-          (node_identifier
-            (identifier))
-          (node_identifier
-            (identifier))))
+          (string
+            (quoted_string))))
       (unique_stmt
         (unique_keyword)
         arg: (unique_arg_str
-          (node_identifier
-            (identifier))
-          (node_identifier
-            (identifier))))
+          (string
+            (quoted_string))))
       (config_stmt
         (config_keyword)
         arg: (boolean))

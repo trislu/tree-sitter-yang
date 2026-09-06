@@ -1259,8 +1259,8 @@ module ietf-interfaces {
         (key_stmt
           (key_keyword)
           arg: (key_arg_str
-            (node_identifier
-              (identifier))))
+            (string
+              (quoted_string))))
         (description_stmt
           (description_keyword)
           arg: (description_arg_str
@@ -2004,8 +2004,8 @@ module ietf-interfaces {
         (key_stmt
           (key_keyword)
           arg: (key_arg_str
-            (node_identifier
-              (identifier))))
+            (string
+              (quoted_string))))
         (status_stmt
           (status_keyword)
           arg: (status_arg_str))
