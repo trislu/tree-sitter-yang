@@ -7906,24 +7906,24 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 0:
       if (eof) ADVANCE(487);
       ADVANCE_MAP(
-        '\t', 1427,
-        '\n', 1427,
+        '\t', 1426,
+        '\n', 1426,
         '\r', 1127,
-        ' ', 1427,
+        ' ', 1426,
         '"', 1129,
         '\'', 504,
-        '+', 1428,
-        '-', 1428,
+        '+', 1427,
+        '-', 1427,
         '.', 1149,
         '/', 1132,
-        '0', 1428,
+        '0', 1427,
         '1', 1150,
-        ':', 1428,
-        ';', 1428,
-        '=', 1428,
-        '[', 1428,
-        '\\', 1426,
-        ']', 1428,
+        ':', 1427,
+        ';', 1427,
+        '=', 1427,
+        '[', 1427,
+        '\\', 1427,
+        ']', 1427,
         'a', 1186,
         'b', 1154,
         'c', 1155,
@@ -7945,14 +7945,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         'v', 1161,
         'w', 1258,
         'y', 1178,
-        '{', 1428,
-        '|', 1428,
-        '}', 1428,
-        0x0b, 1427,
-        '\f', 1427,
+        '{', 1427,
+        '|', 1427,
+        '}', 1427,
+        0x0b, 1426,
+        '\f', 1426,
       );
-      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(1428);
-      if (lookahead != 0) ADVANCE(1428);
+      if (('2' <= lookahead && lookahead <= '9')) ADVANCE(1427);
+      if (lookahead != 0) ADVANCE(1427);
       END_STATE();
     case 1:
       ADVANCE_MAP(
@@ -8926,7 +8926,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '\'') ADVANCE(504);
       if (lookahead == '/') ADVANCE(686);
       if (lookahead == '-' ||
-          lookahead == '.') ADVANCE(485);
+          lookahead == '.') ADVANCE(484);
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') ADVANCE(583);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(681);
@@ -9008,29 +9008,29 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       );
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') ADVANCE(583);
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(482);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(481);
       END_STATE();
     case 54:
       if (lookahead == '"') ADVANCE(505);
-      if (lookahead == '-') ADVANCE(1434);
-      if (lookahead == '/') ADVANCE(1430);
-      if (lookahead == '0') ADVANCE(1434);
-      if (lookahead == '\\') ADVANCE(477);
+      if (lookahead == '-') ADVANCE(1433);
+      if (lookahead == '/') ADVANCE(1429);
+      if (lookahead == '0') ADVANCE(1433);
+      if (lookahead == '\\') ADVANCE(485);
       if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(1433);
-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(1434);
-      if (lookahead != 0) ADVANCE(1434);
+          lookahead == ' ') ADVANCE(1432);
+      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(1433);
+      if (lookahead != 0) ADVANCE(1433);
       END_STATE();
     case 55:
       if (lookahead == '"') ADVANCE(56);
       if (lookahead == '\'') ADVANCE(58);
-      if (lookahead == '/') ADVANCE(1438);
+      if (lookahead == '/') ADVANCE(1437);
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') ADVANCE(583);
       if (lookahead != 0 &&
           lookahead != ';' &&
           lookahead != '{' &&
-          lookahead != '}') ADVANCE(1441);
+          lookahead != '}') ADVANCE(1440);
       END_STATE();
     case 56:
       if (lookahead == '"') ADVANCE(512);
@@ -9038,13 +9038,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 57:
       if (lookahead == '\'') ADVANCE(503);
-      if (lookahead == '-') ADVANCE(1428);
+      if (lookahead == '-') ADVANCE(1427);
       if (lookahead == '/') ADVANCE(1132);
-      if (lookahead == '0') ADVANCE(1428);
+      if (lookahead == '0') ADVANCE(1427);
       if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(1427);
-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(1428);
-      if (lookahead != 0) ADVANCE(1428);
+          lookahead == ' ') ADVANCE(1426);
+      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(1427);
+      if (lookahead != 0) ADVANCE(1427);
       END_STATE();
     case 58:
       if (lookahead == '\'') ADVANCE(513);
@@ -9101,10 +9101,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '-') ADVANCE(434);
       END_STATE();
     case 74:
-      if (lookahead == '-') ADVANCE(480);
+      if (lookahead == '-') ADVANCE(479);
       END_STATE();
     case 75:
-      if (lookahead == '-') ADVANCE(484);
+      if (lookahead == '-') ADVANCE(483);
       END_STATE();
     case 76:
       if (lookahead == '-') ADVANCE(219);
@@ -9468,10 +9468,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'e') ADVANCE(608);
       END_STATE();
     case 160:
-      if (lookahead == 'e') ADVANCE(1442);
+      if (lookahead == 'e') ADVANCE(1441);
       END_STATE();
     case 161:
-      if (lookahead == 'e') ADVANCE(1443);
+      if (lookahead == 'e') ADVANCE(1442);
       END_STATE();
     case 162:
       if (lookahead == 'e') ADVANCE(575);
@@ -10443,39 +10443,33 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'z') ADVANCE(120);
       END_STATE();
     case 477:
-      if (lookahead == '"' ||
-          lookahead == '\\' ||
-          lookahead == 'n' ||
-          lookahead == 't') ADVANCE(1435);
-      END_STATE();
-    case 478:
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(530);
       END_STATE();
+    case 478:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(480);
+      END_STATE();
     case 479:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(481);
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(477);
       END_STATE();
     case 480:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(478);
-      END_STATE();
-    case 481:
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(75);
       END_STATE();
-    case 482:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(479);
+    case 481:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(478);
       END_STATE();
-    case 483:
+    case 482:
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(74);
       END_STATE();
-    case 484:
-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(483);
+    case 483:
+      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(482);
       END_STATE();
-    case 485:
+    case 484:
       if (lookahead == '-' ||
           lookahead == '.' ||
           ('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(485);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(484);
       if (lookahead != 0 &&
           (lookahead < '\t' || '\r' < lookahead) &&
           lookahead != ' ' &&
@@ -10484,6 +10478,9 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != ';' &&
           (lookahead < 'a' || '{' < lookahead) &&
           lookahead != '}') ADVANCE(690);
+      END_STATE();
+    case 485:
+      if (lookahead != 0) ADVANCE(1434);
       END_STATE();
     case 486:
       if (eof) ADVANCE(487);
@@ -10608,14 +10605,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 504:
       ACCEPT_TOKEN(anon_sym_SQUOTE);
-      if (lookahead == '\'') ADVANCE(1437);
+      if (lookahead == '\'') ADVANCE(1436);
       END_STATE();
     case 505:
       ACCEPT_TOKEN(anon_sym_DQUOTE);
       END_STATE();
     case 506:
       ACCEPT_TOKEN(anon_sym_DQUOTE);
-      if (lookahead == '"') ADVANCE(1436);
+      if (lookahead == '"') ADVANCE(1435);
       END_STATE();
     case 507:
       ACCEPT_TOKEN(sym__yang_version_val);
@@ -11687,7 +11684,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\'' &&
           lookahead != ';' &&
           lookahead != '{' &&
-          lookahead != '}') ADVANCE(1441);
+          lookahead != '}') ADVANCE(1440);
       END_STATE();
     case 679:
       ACCEPT_TOKEN(sym_comment);
@@ -16278,48 +16275,48 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 1127:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == '\n') ADVANCE(1427);
+      if (lookahead == '\n') ADVANCE(1426);
       if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(1427);
+          lookahead == ' ') ADVANCE(1426);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1128:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == '\n') ADVANCE(1428);
+      if (lookahead == '\n') ADVANCE(1427);
       if (lookahead != 0 &&
           lookahead != '\'') ADVANCE(1128);
       END_STATE();
     case 1129:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == '"') ADVANCE(1428);
+      if (lookahead == '"') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1130:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '(') ADVANCE(1131);
       if (lookahead != 0 &&
           lookahead != '\'' &&
-          lookahead != '(') ADVANCE(1428);
+          lookahead != '(') ADVANCE(1427);
       END_STATE();
     case 1131:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == ')') ADVANCE(1428);
+      if (lookahead == ')') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1132:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '*') ADVANCE(1134);
       if (lookahead == '/') ADVANCE(1128);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1133:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '*') ADVANCE(1133);
-      if (lookahead == '/') ADVANCE(1428);
+      if (lookahead == '/') ADVANCE(1427);
       if (lookahead != 0 &&
           lookahead != '\'') ADVANCE(1134);
       END_STATE();
@@ -16333,117 +16330,117 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1245);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1136:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1421);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1137:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1171);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1138:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1181);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1139:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1297);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1140:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1204);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1141:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1380);
       if (lookahead == 'i') ADVANCE(1247);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1142:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1288);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1143:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1231);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1144:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1271);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1145:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1396);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1146:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1399);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1147:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1206);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1148:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '-') ADVANCE(1239);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1149:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == '.') ADVANCE(1428);
+      if (lookahead == '.') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1150:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == '.') ADVANCE(1151);
-      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(1428);
+      if (('0' <= lookahead && lookahead <= '8')) ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1151:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == '1') ADVANCE(1428);
+      if (lookahead == '1') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1152:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'a') ADVANCE(1428);
+      if (lookahead == 'a') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1153:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1383);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1154:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16451,7 +16448,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'e') ADVANCE(1284);
       if (lookahead == 'i') ADVANCE(1382);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1155:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16460,7 +16457,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'o') ADVANCE(1302);
       if (lookahead == 'u') ADVANCE(1354);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1156:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16469,20 +16466,20 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'o') ADVANCE(1196);
       if (lookahead == 'u') ADVANCE(1370);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1157:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1295);
       if (lookahead == 'o') ADVANCE(1384);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1158:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1188);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1159:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16490,20 +16487,20 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'e') ADVANCE(1168);
       if (lookahead == 'r') ADVANCE(1163);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1160:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1241);
       if (lookahead == 'n') ADVANCE(1251);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1161:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1283);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1162:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16511,25 +16508,25 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'e') ADVANCE(1240);
       if (lookahead == 'p') ADVANCE(1185);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1163:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1194);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1164:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1250);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1165:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1191);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1166:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16537,99 +16534,99 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'o') ADVANCE(1371);
       if (lookahead == 'r') ADVANCE(1212);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1167:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1417);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1168:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1394);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1169:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1248);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1170:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1314);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1171:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1340);
       if (lookahead == 'm') ADVANCE(1230);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1172:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1391);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1173:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1393);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1174:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1307);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1175:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1389);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1176:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1406);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1177:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1395);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1178:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1308);
       if (lookahead == 'i') ADVANCE(1322);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1179:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1398);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1180:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'a') ADVANCE(1402);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1181:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'b') ADVANCE(1423);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1182:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16637,26 +16634,26 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'r') ADVANCE(1200);
       if (lookahead == 'u') ADVANCE(1390);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1183:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'b') ADVANCE(1293);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1184:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'b') ADVANCE(1332);
       if (lookahead == 'i') ADVANCE(1347);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1185:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'c') ADVANCE(1428);
+      if (lookahead == 'c') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1186:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16666,20 +16663,20 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'r') ADVANCE(1253);
       if (lookahead == 'u') ADVANCE(1254);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1187:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'c') ADVANCE(1257);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1188:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'c') ADVANCE(1382);
       if (lookahead == 'i') ADVANCE(1321);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1189:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16687,49 +16684,49 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'p') ADVANCE(1408);
       if (lookahead == 'v') ADVANCE(1223);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1190:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'c') ADVANCE(1359);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1191:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'c') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1192:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'c') ADVANCE(1153);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1193:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'c') ADVANCE(1180);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1194:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'c') ADVANCE(1403);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1195:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'd') ADVANCE(1428);
+      if (lookahead == 'd') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1196:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1263);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1197:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -16738,264 +16735,264 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'm') ADVANCE(1343);
       if (lookahead == 'n') ADVANCE(1189);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1198:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1199:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1138);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1200:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1235);
       if (lookahead == 'g') ADVANCE(1170);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1201:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1413);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1202:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1209);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1203:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1173);
       if (lookahead == 'x') ADVANCE(1294);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1204:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1269);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1205:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1176);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1206:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'd') ADVANCE(1172);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1207:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'e') ADVANCE(1428);
+      if (lookahead == 'e') ADVANCE(1427);
       if (lookahead == 'i') ADVANCE(1327);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1208:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'e') ADVANCE(1428);
+      if (lookahead == 'e') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1209:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1195);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1210:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1242);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1211:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1160);
       if (lookahead == 'i') ADVANCE(1370);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1212:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1244);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1213:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1348);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1214:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1168);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1215:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1423);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1216:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1292);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1217:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1317);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1218:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1299);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1219:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1193);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1220:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1199);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1221:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1373);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1222:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1320);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1223:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1361);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1224:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1356);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1225:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1391);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1226:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1303);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1227:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1144);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1228:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1315);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1229:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1349);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1230:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1378);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1231:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1289);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1232:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1307);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1233:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1365);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1234:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1296);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1235:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1362);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1236:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1316);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1237:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1367);
       if (lookahead == 'i') ADVANCE(1309);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1238:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1298);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1239:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'e') ADVANCE(1291);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1240:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -17004,13 +17001,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'q') ADVANCE(1415);
       if (lookahead == 'v') ADVANCE(1270);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1241:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'f') ADVANCE(1142);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1242:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -17020,353 +17017,353 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 's') ADVANCE(1190);
       if (lookahead == 'v') ADVANCE(1275);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1243:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'f') ADVANCE(1267);
       if (lookahead == 't') ADVANCE(1158);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1244:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'f') ADVANCE(1260);
       if (lookahead == 's') ADVANCE(1232);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1245:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'f') ADVANCE(1214);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1246:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'f') ADVANCE(1276);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1247:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'f') ADVANCE(1266);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1248:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'g') ADVANCE(1428);
+      if (lookahead == 'g') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1249:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'g') ADVANCE(1136);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1250:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'g') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1251:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'g') ADVANCE(1387);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1252:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'g') ADVANCE(1375);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1253:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'g') ADVANCE(1419);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1254:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'g') ADVANCE(1296);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1255:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'g') ADVANCE(1273);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1256:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'h') ADVANCE(1428);
+      if (lookahead == 'h') ADVANCE(1427);
       if (lookahead == 't') ADVANCE(1224);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1257:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'h') ADVANCE(1428);
+      if (lookahead == 'h') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1258:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'h') ADVANCE(1218);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1259:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1383);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1260:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1422);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1261:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1425);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1262:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1370);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1263:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1246);
       if (lookahead == 'u') ADVANCE(1285);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1264:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1191);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1265:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1337);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1266:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1192);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1267:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1248);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1268:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1333);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1269:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1255);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1270:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1381);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1271:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1319);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1272:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1388);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1273:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1397);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1274:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1327);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1275:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1175);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1276:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1229);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1277:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1311);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1278:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1363);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1279:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'i') ADVANCE(1335);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1280:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'l') ADVANCE(1428);
+      if (lookahead == 'l') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1281:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1374);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1282:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1382);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1283:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1412);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1284:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1336);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1285:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1286:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1225);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1287:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1410);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1288:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1262);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1289:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1238);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1290:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1165);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1291:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'l') ADVANCE(1234);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1292:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'm') ADVANCE(1428);
+      if (lookahead == 'm') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1293:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'm') ADVANCE(1326);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1294:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'm') ADVANCE(1280);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1295:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'm') ADVANCE(1221);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1296:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'm') ADVANCE(1226);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1297:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'm') ADVANCE(1177);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1298:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'm') ADVANCE(1236);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1299:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'n') ADVANCE(1428);
+      if (lookahead == 'n') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1300:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -17374,648 +17371,648 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'r') ADVANCE(1355);
       if (lookahead == 'x') ADVANCE(1405);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1301:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1184);
       if (lookahead == 's') ADVANCE(1213);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1302:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1243);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1303:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1382);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1304:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1143);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1305:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1205);
       if (lookahead == 'x') ADVANCE(1143);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1306:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1250);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1307:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1191);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1308:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1249);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1309:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1310:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1252);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1311:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1248);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1312:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1140);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1313:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1147);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1314:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1261);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1315:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1386);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1316:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1397);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1317:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1400);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1318:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1202);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1319:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1379);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1320:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1369);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1321:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1229);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1322:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'n') ADVANCE(1148);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1323:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'o') ADVANCE(1428);
+      if (lookahead == 'o') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1324:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1264);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1325:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1411);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1326:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1201);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1327:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1299);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1328:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1357);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1329:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1350);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1330:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1286);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1331:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1351);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1332:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1418);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1333:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1312);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1334:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1364);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1335:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1313);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1336:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'o') ADVANCE(1310);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1337:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1383);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1338:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1408);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1339:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1340:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1344);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1341:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1277);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1342:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1165);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1343:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1329);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1344:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1146);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1345:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1334);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1346:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'p') ADVANCE(1345);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1347:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'q') ADVANCE(1412);
       if (lookahead == 't') ADVANCE(1368);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1348:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'r') ADVANCE(1428);
-      if (lookahead == 's') ADVANCE(1428);
+      if (lookahead == 'r') ADVANCE(1427);
+      if (lookahead == 's') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1349:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'r') ADVANCE(1428);
+      if (lookahead == 'r') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1350:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1382);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1351:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1423);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1352:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1325);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1353:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1412);
       if (lookahead == 'y') ADVANCE(1339);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1354:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1366);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1355:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1328);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1356:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1299);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1357:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1137);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1358:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1359:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1265);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1360:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1219);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1361:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1392);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1362:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1220);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1363:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1227);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1364:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1402);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1365:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1369);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1366:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1228);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1367:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'r') ADVANCE(1232);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1368:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 's') ADVANCE(1428);
+      if (lookahead == 's') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1369:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1274);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1370:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1382);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1371:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1259);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1372:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1330);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1373:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1342);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1374:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1375:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1145);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1376:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1401);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1377:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1164);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1378:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1377);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1379:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1404);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1380:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1414);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1381:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 's') ADVANCE(1279);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1382:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 't') ADVANCE(1428);
+      if (lookahead == 't') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1383:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1274);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1384:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1141);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1385:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1256);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1386:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1130);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1387:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1257);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1388:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1423);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1389:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1207);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1390:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1338);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1391:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1392:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1139);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1393:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1152);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1394:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1420);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1395:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1187);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1396:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1323);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1397:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1368);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1398:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1416);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1399:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1169);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1400:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1272);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1401:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1216);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1402:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1209);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1403:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1268);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1404:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1174);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1405:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1222);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1406:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 't') ADVANCE(1331);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1407:
       ACCEPT_TOKEN(sym__unescaped_string1);
@@ -18023,193 +18020,184 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'u') ADVANCE(1183);
       if (lookahead == 'y') ADVANCE(1376);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1408:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1382);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1409:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1292);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1410:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1198);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1411:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1341);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1412:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1208);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1413:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1285);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1414:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1346);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1415:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1278);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1416:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1368);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1417:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1282);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1418:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1318);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1419:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1296);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1420:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'u') ADVANCE(1358);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1421:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'v') ADVANCE(1233);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1422:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'x') ADVANCE(1428);
+      if (lookahead == 'x') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1423:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == 'y') ADVANCE(1428);
+      if (lookahead == 'y') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1424:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'y') ADVANCE(1203);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1425:
       ACCEPT_TOKEN(sym__unescaped_string1);
       if (lookahead == 'z') ADVANCE(1153);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1426:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (lookahead == '"' ||
-          lookahead == '\\' ||
-          lookahead == 'n' ||
-          lookahead == 't') ADVANCE(1428);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(1426);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1427:
       ACCEPT_TOKEN(sym__unescaped_string1);
-      if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(1427);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '\'') ADVANCE(1427);
       END_STATE();
     case 1428:
-      ACCEPT_TOKEN(sym__unescaped_string1);
+      ACCEPT_TOKEN(sym__unescaped_string2);
+      if (lookahead == '\n') ADVANCE(1433);
       if (lookahead != 0 &&
-          lookahead != '\'') ADVANCE(1428);
+          lookahead != '"' &&
+          lookahead != '\\') ADVANCE(1428);
       END_STATE();
     case 1429:
       ACCEPT_TOKEN(sym__unescaped_string2);
-      if (lookahead == '\n') ADVANCE(1434);
+      if (lookahead == '*') ADVANCE(1431);
+      if (lookahead == '/') ADVANCE(1428);
       if (lookahead != 0 &&
           lookahead != '"' &&
-          lookahead != '\\') ADVANCE(1429);
+          lookahead != '\\') ADVANCE(1433);
       END_STATE();
     case 1430:
       ACCEPT_TOKEN(sym__unescaped_string2);
-      if (lookahead == '*') ADVANCE(1432);
-      if (lookahead == '/') ADVANCE(1429);
+      if (lookahead == '*') ADVANCE(1430);
+      if (lookahead == '/') ADVANCE(1433);
       if (lookahead != 0 &&
           lookahead != '"' &&
-          lookahead != '\\') ADVANCE(1434);
+          lookahead != '\\') ADVANCE(1431);
       END_STATE();
     case 1431:
       ACCEPT_TOKEN(sym__unescaped_string2);
-      if (lookahead == '*') ADVANCE(1431);
-      if (lookahead == '/') ADVANCE(1434);
+      if (lookahead == '*') ADVANCE(1430);
       if (lookahead != 0 &&
           lookahead != '"' &&
-          lookahead != '\\') ADVANCE(1432);
+          lookahead != '\\') ADVANCE(1431);
       END_STATE();
     case 1432:
       ACCEPT_TOKEN(sym__unescaped_string2);
-      if (lookahead == '*') ADVANCE(1431);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(1432);
       if (lookahead != 0 &&
           lookahead != '"' &&
-          lookahead != '\\') ADVANCE(1432);
+          lookahead != '\\') ADVANCE(1433);
       END_STATE();
     case 1433:
       ACCEPT_TOKEN(sym__unescaped_string2);
-      if (('\t' <= lookahead && lookahead <= '\r') ||
-          lookahead == ' ') ADVANCE(1433);
       if (lookahead != 0 &&
           lookahead != '"' &&
-          lookahead != '\\') ADVANCE(1434);
+          lookahead != '\\') ADVANCE(1433);
       END_STATE();
     case 1434:
-      ACCEPT_TOKEN(sym__unescaped_string2);
-      if (lookahead != 0 &&
-          lookahead != '"' &&
-          lookahead != '\\') ADVANCE(1434);
-      END_STATE();
-    case 1435:
       ACCEPT_TOKEN(sym__escape_sequence);
       END_STATE();
-    case 1436:
+    case 1435:
       ACCEPT_TOKEN(anon_sym_DQUOTE_DQUOTE);
       END_STATE();
-    case 1437:
+    case 1436:
       ACCEPT_TOKEN(anon_sym_SQUOTE_SQUOTE);
       END_STATE();
-    case 1438:
+    case 1437:
       ACCEPT_TOKEN(sym__uri_str);
-      if (lookahead == '*') ADVANCE(1440);
+      if (lookahead == '*') ADVANCE(1439);
       if (lookahead == '/') ADVANCE(676);
       if (lookahead != 0 &&
           (lookahead < '\t' || '\r' < lookahead) &&
@@ -18218,11 +18206,11 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\'' &&
           lookahead != ';' &&
           lookahead != '{' &&
-          lookahead != '}') ADVANCE(1441);
+          lookahead != '}') ADVANCE(1440);
       END_STATE();
-    case 1439:
+    case 1438:
       ACCEPT_TOKEN(sym__uri_str);
-      if (lookahead == '*') ADVANCE(1439);
+      if (lookahead == '*') ADVANCE(1438);
       if (lookahead == '/') ADVANCE(678);
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ' ||
@@ -18231,11 +18219,11 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == ';' ||
           lookahead == '{' ||
           lookahead == '}') ADVANCE(63);
-      if (lookahead != 0) ADVANCE(1440);
+      if (lookahead != 0) ADVANCE(1439);
       END_STATE();
-    case 1440:
+    case 1439:
       ACCEPT_TOKEN(sym__uri_str);
-      if (lookahead == '*') ADVANCE(1439);
+      if (lookahead == '*') ADVANCE(1438);
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ' ||
           lookahead == '"' ||
@@ -18243,9 +18231,9 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == ';' ||
           lookahead == '{' ||
           lookahead == '}') ADVANCE(63);
-      if (lookahead != 0) ADVANCE(1440);
+      if (lookahead != 0) ADVANCE(1439);
       END_STATE();
-    case 1441:
+    case 1440:
       ACCEPT_TOKEN(sym__uri_str);
       if (lookahead != 0 &&
           (lookahead < '\t' || '\r' < lookahead) &&
@@ -18254,12 +18242,12 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\'' &&
           lookahead != ';' &&
           lookahead != '{' &&
-          lookahead != '}') ADVANCE(1441);
+          lookahead != '}') ADVANCE(1440);
       END_STATE();
-    case 1442:
+    case 1441:
       ACCEPT_TOKEN(anon_sym_true);
       END_STATE();
-    case 1443:
+    case 1442:
       ACCEPT_TOKEN(anon_sym_false);
       END_STATE();
     default:

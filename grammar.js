@@ -1708,11 +1708,11 @@ export default grammar({
     _unescaped_string1: _ => token.immediate(prec(1, /[^']+/)),
     // unescaped text inside double quotes (a backslash starts an escape)
     _unescaped_string2: _ => token.immediate(prec(1, /[^"\\]+/)),
-    // escape sequence (double-quoted strings only: \n \t \" \\)
-    _escape_sequence: _ => token.immediate(seq(
-      '\\',
-      choice('n', 't', '"', '\\')
-    )),
+    // escape sequence inside double-quoted strings. RFC 7950 defines \n \t
+    // \" \\; real modules also carry other escapes (e.g. `\*`, `\S`, `\.`
+    // inside `pattern`), which pyang tolerates (it only warns) — keep them
+    // parseable and let semantic layers judge strictness.
+    _escape_sequence: _ => token.immediate(/\\[\s\S]/),
 
     _single_quoted_string: $ => SingleQuoted(
       repeat1($._unescaped_string1)),
