@@ -618,7 +618,7 @@ export default grammar({
         $.reference_stmt
       )))
     ),
-    enum_arg_str: $ => choice($.string, $._digit_start_word),
+    enum_arg_str: $ => choice($.string, $._digit_start_word, $._enum_name_word),
     /** value-stmt          = value-keyword sep integer-value-str stmtend
         integer-value-str   = < a string that matches the rule >
                               < integer-value >*/
@@ -1686,6 +1686,9 @@ export default grammar({
     // Any other bare (unquoted) word argument for unknown/vendor extension
     // statements (RFC 7950 unquoted-string), e.g. `units m^-X`.
     _bare_word: _ => token(/[^"';\s{}]+/),
+    // Bare enum names with a character outside the identifier set (RFC 7950:
+    // an enum name is a `string`), e.g. `enum n+1;`.
+    _enum_name_word: _ => token(/[^"';\s{}]*[^A-Za-z0-9_.\s"';{}-][^"';\s{}]*/),
 
     _identifier_arg_str: $ => ArgStr($._identifier_arg),
     _identifier_arg: $ => $.identifier,

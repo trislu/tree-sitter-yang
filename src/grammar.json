@@ -7171,6 +7171,10 @@
         {
           "type": "SYMBOL",
           "name": "_digit_start_word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_enum_name_word"
         }
       ]
     },
@@ -16326,6 +16330,13 @@
       "content": {
         "type": "PATTERN",
         "value": "[^\"';\\s{}]+"
+      }
+    },
+    "_enum_name_word": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\"';\\s{}]*[^A-Za-z0-9_.\\s\"';{}-][^\"';\\s{}]*"
       }
     },
     "_identifier_arg_str": {
