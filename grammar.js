@@ -432,7 +432,7 @@ export default grammar({
     default_stmt: $ => NonBlockStmt(alias('default', $.default_keyword), alias(choice($.string, $._slash_word, ArgStr($.decimal_value)), $.default_arg_str)),
 
     /** units-stmt          = units-keyword sep string optsep stmtend*/
-    units_stmt: $ => NonBlockStmt(alias('units', $.units_keyword), alias(choice($.string, $._slash_word), $.units_arg_str)),
+    units_stmt: $ => NonBlockStmt(alias('units', $.units_keyword), alias(choice($.string, $._slash_word, $._bare_word), $.units_arg_str)),
 
     /** type-stmt           = type-keyword sep identifier-ref-arg-str optsep
                          (";" /
