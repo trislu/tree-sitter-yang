@@ -13818,6 +13818,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "integer_value"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_bare_word"
                   }
                 ]
               }
@@ -16311,6 +16315,13 @@
       "content": {
         "type": "PATTERN",
         "value": "[^\"';\\s{}]*\\/[^\"';\\s{}]*"
+      }
+    },
+    "_bare_word": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\"';\\s{}]+"
       }
     },
     "_identifier_arg_str": {

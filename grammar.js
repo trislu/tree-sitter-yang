@@ -1450,7 +1450,7 @@ export default grammar({
      */
     unknown_stmt: $ => seq(
       seq(alias($._prefix_arg, $.prefix), ':', $.identifier),
-      optional(field('arg', choice($.string, $._slash_word, $._digit_start_word, $.integer_value))),
+      optional(field('arg', choice($.string, $._slash_word, $._digit_start_word, $.integer_value, $._bare_word))),
       choice(
         ';',
         $._brace_balanced,
@@ -1683,6 +1683,9 @@ export default grammar({
     _digit_start_word: _ => token(/[0-9][0-9A-Za-z\-_.]*/),
     // Bare (unquoted) word containing '/' (e.g. units like Mb/s).
     _slash_word: _ => token(/[^"';\s{}]*\/[^"';\s{}]*/),
+    // Any other bare (unquoted) word argument for unknown/vendor extension
+    // statements (RFC 7950 unquoted-string), e.g. `units m^-X`.
+    _bare_word: _ => token(/[^"';\s{}]+/),
 
     _identifier_arg_str: $ => ArgStr($._identifier_arg),
     _identifier_arg: $ => $.identifier,
