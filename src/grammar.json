@@ -5047,8 +5047,17 @@
           "content": {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "_identifier_ref_arg_str"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_identifier_ref_arg_str"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_type_junk_word"
+                }
+              ]
             },
             "named": true,
             "value": "type_arg_str"
@@ -16334,6 +16343,13 @@
       "content": {
         "type": "PATTERN",
         "value": "[^\"';\\s{}]*[^A-Za-z0-9_.\\s\"';{}-][^\"';\\s{}]*"
+      }
+    },
+    "_type_junk_word": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\"';\\s{}]*[^A-Za-z0-9_.\\s\"';{}:-][^\"';\\s{}]*"
       }
     },
     "_identifier_arg_str": {

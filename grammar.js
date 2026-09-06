@@ -439,7 +439,7 @@ export default grammar({
                           "{" stmtsep
                               type-body-stmts
                           "}")*/
-    type_stmt: $ => Statement(alias('type', $.type_keyword), alias($._identifier_ref_arg_str, $.type_arg_str),
+    type_stmt: $ => Statement(alias('type', $.type_keyword), alias(choice($._identifier_ref_arg_str, $._type_junk_word), $.type_arg_str),
       OptionalBlock(seq(
         repeat($.unknown_stmt),
         optional($._type_body_stmts),
@@ -1691,6 +1691,11 @@ export default grammar({
     // quotes, `;`, whitespace and braces, so the token never competes with
     // `identifier`, `_slash_word` or `_digit_start_word` on ordinary names.
     _bare_word: _ => token(/[^"';\s{}]*[^A-Za-z0-9_.\s"';{}-][^"';\s{}]*/),
+    // Junk-word fallback for the `type` argument only: like `_bare_word` but
+    // the required symbol excludes ':' (and '-'), so a prefixed type such as
+    // `iana:if-type` still parses as prefix + identifier instead of being
+    // swallowed whole; genuine typos/symbols (e.g. `type ^bad`) stay local.
+    _type_junk_word: _ => token(/[^"';\s{}]*[^A-Za-z0-9_.\s"';{}:-][^"';\s{}]*/),
 
     _identifier_arg_str: $ => ArgStr($._identifier_arg),
     _identifier_arg: $ => $.identifier,
