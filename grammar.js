@@ -511,7 +511,7 @@ export default grammar({
         range-boundary      = min-keyword / max-keyword /
                               integer-value / decimal-value
     */
-    range_arg_str: $ => ArgStr($._range_arg),
+    range_arg_str: $ => choice($.string, $._range_arg),
     _range_arg: $ => BarSep1($._range_part),
     _range_part: $ => seq($._range_boundary, optional(seq('..', $._range_boundary))),
     _range_boundary: $ => choice(
@@ -577,7 +577,7 @@ export default grammar({
         $.reference_stmt
       )))),
 
-    length_arg_str: $ => ArgStr($._length_arg),
+    length_arg_str: $ => choice($.string, $._length_arg),
     _length_arg: $ => BarSep1($._length_part),
     _length_part: $ => seq($._length_boundary, optional(seq('..', $._length_boundary))),
     _length_boundary: $ => choice(min_arg, max_arg, $._non_negative_integer_value),

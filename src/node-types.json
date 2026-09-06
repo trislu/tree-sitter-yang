@@ -2282,7 +2282,17 @@
   {
     "type": "length_arg_str",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "length_stmt",
@@ -3424,6 +3434,10 @@
         },
         {
           "type": "integer_value",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]

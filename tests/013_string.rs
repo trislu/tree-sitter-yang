@@ -88,7 +88,9 @@ module test{
           (identifier))
         (length_stmt
           (length_keyword)
-          arg: (length_arg_str)
+          arg: (length_arg_str
+            (string
+              (identifier)))
           (error_message_stmt
             (error_message_keyword)
             arg: (string

@@ -1600,8 +1600,8 @@ module ietf-interfaces {
             (range_stmt
               (range_keyword)
               arg: (range_arg_str
-                (integer_value)
-                (integer_value))))
+                (string
+                  (quoted_string)))))
           (config_stmt
             (config_keyword)
             arg: (boolean))
@@ -2272,8 +2272,8 @@ module ietf-interfaces {
             (range_stmt
               (range_keyword)
               arg: (range_arg_str
-                (integer_value)
-                (integer_value))))
+                (string
+                  (quoted_string)))))
           (mandatory_stmt
             (mandatory_keyword)
             arg: (boolean))

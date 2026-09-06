@@ -42,8 +42,8 @@ module test {
         (range_stmt
           (range_keyword)
           arg: (range_arg_str
-            (integer_value)
-            (integer_value)))))))
+            (string
+              (quoted_string))))))))
 "#
     );
 }
@@ -90,10 +90,8 @@ module test {
         (range_stmt
           (range_keyword)
           arg: (range_arg_str
-            (integer_value)
-            (integer_value)
-            (integer_value)
-            (integer_value)))))))
+            (string
+              (quoted_string))))))))
 "#
     );
 }
@@ -146,10 +144,8 @@ module test {
         (range_stmt
           (range_keyword)
           arg: (range_arg_str
-            (integer_value)
-            (integer_value)
-            (integer_value)
-            (integer_value)))))
+            (string
+              (quoted_string))))))
     (typedef_stmt
       (typedef_keyword)
       arg: (typedef_arg_str
@@ -162,7 +158,8 @@ module test {
         (range_stmt
           (range_keyword)
           arg: (range_arg_str
-            (integer_value)))
+            (string
+              (quoted_string))))
         (comment)))))
 "#
     );
@@ -216,10 +213,8 @@ module test {
         (range_stmt
           (range_keyword)
           arg: (range_arg_str
-            (integer_value)
-            (decimal_value)
-            (integer_value)
-            (integer_value)))))
+            (string
+              (quoted_string))))))
     (typedef_stmt
       (typedef_keyword)
       arg: (typedef_arg_str
@@ -232,7 +227,8 @@ module test {
         (range_stmt
           (range_keyword)
           arg: (range_arg_str
-            (integer_value)))
+            (string
+              (quoted_string))))
         (comment)))))
 "#
     );
@@ -283,8 +279,8 @@ module test {
         (range_stmt
           (range_keyword)
           arg: (range_arg_str
-            (integer_value)
-            (integer_value))
+            (string
+              (quoted_string)))
           (error_message_stmt
             (error_message_keyword)
             arg: (string
