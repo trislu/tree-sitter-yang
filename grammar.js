@@ -429,7 +429,7 @@ export default grammar({
         (§9.3.4: decimal64-value = ["-"] integer-value ["." zero-integer-value]),
         so the numeric alternative is `decimal_value` (it also covers bare
         integers). */
-    default_stmt: $ => NonBlockStmt(alias('default', $.default_keyword), alias(choice($.string, $._slash_word, ArgStr($.decimal_value)), $.default_arg_str)),
+    default_stmt: $ => NonBlockStmt(alias('default', $.default_keyword), alias(choice($.string, $._slash_word, ArgStr($.decimal_value), $._bare_word), $.default_arg_str)),
 
     /** units-stmt          = units-keyword sep string optsep stmtend*/
     units_stmt: $ => NonBlockStmt(alias('units', $.units_keyword), alias(choice($.string, $._slash_word, $._bare_word), $.units_arg_str)),
@@ -618,7 +618,7 @@ export default grammar({
         $.reference_stmt
       )))
     ),
-    enum_arg_str: $ => choice($.string, $._digit_start_word, $._enum_name_word),
+    enum_arg_str: $ => choice($.string, $._digit_start_word, $._bare_word),
     /** value-stmt          = value-keyword sep integer-value-str stmtend
         integer-value-str   = < a string that matches the rule >
                               < integer-value >*/
@@ -1683,12 +1683,14 @@ export default grammar({
     _digit_start_word: _ => token(/[0-9][0-9A-Za-z\-_.]*/),
     // Bare (unquoted) word containing '/' (e.g. units like Mb/s).
     _slash_word: _ => token(/[^"';\s{}]*\/[^"';\s{}]*/),
-    // Any other bare (unquoted) word argument for unknown/vendor extension
-    // statements (RFC 7950 unquoted-string), e.g. `units m^-X`.
-    _bare_word: _ => token(/[^"';\s{}]+/),
-    // Bare enum names with a character outside the identifier set (RFC 7950:
-    // an enum name is a `string`), e.g. `enum n+1;`.
-    _enum_name_word: _ => token(/[^"';\s{}]*[^A-Za-z0-9_.\s"';{}-][^"';\s{}]*/),
+    // Bare (unquoted) word arguments that contain at least one character
+    // outside the identifier set (letters/digits/_/./-) — RFC 7950
+    // unquoted-string / enum names / identityref or time defaults with `:`,
+    // e.g. `units m^-X`, `enum n+1`, `default 00:00:15.0`,
+    // `default syslogtypes:local7`. The required symbol class also excludes
+    // quotes, `;`, whitespace and braces, so the token never competes with
+    // `identifier`, `_slash_word` or `_digit_start_word` on ordinary names.
+    _bare_word: _ => token(/[^"';\s{}]*[^A-Za-z0-9_.\s"';{}-][^"';\s{}]*/),
 
     _identifier_arg_str: $ => ArgStr($._identifier_arg),
     _identifier_arg: $ => $.identifier,

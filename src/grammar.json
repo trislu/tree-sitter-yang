@@ -4622,6 +4622,10 @@
                       "name": "decimal_value"
                     }
                   ]
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_bare_word"
                 }
               ]
             },
@@ -7174,7 +7178,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_enum_name_word"
+          "name": "_bare_word"
         }
       ]
     },
@@ -16326,13 +16330,6 @@
       }
     },
     "_bare_word": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[^\"';\\s{}]+"
-      }
-    },
-    "_enum_name_word": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
