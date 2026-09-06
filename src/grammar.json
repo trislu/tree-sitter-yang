@@ -16018,8 +16018,17 @@
       ]
     },
     "_max_value_arg": {
-      "type": "SYMBOL",
-      "name": "_positive_integer_value"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "unbounded"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_positive_integer_value"
+        }
+      ]
     },
     "integer_value": {
       "type": "SEQ",

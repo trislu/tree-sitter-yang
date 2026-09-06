@@ -2528,6 +2528,10 @@
           {
             "type": "'",
             "named": false
+          },
+          {
+            "type": "unbounded",
+            "named": false
           }
         ]
       }
@@ -5100,6 +5104,10 @@
   {
     "type": "typedef_keyword",
     "named": true
+  },
+  {
+    "type": "unbounded",
+    "named": false
   },
   {
     "type": "unique_keyword",

@@ -1635,7 +1635,7 @@ export default grammar({
     _min_value_arg: $ => $._non_negative_integer_value,
     max_elements_stmt: $ => NonBlockStmt(alias('max-elements', $.max_elements_keyword), $._maxvalue_arg_str),
     _maxvalue_arg_str: $ => ArgStr($._max_value_arg),
-    _max_value_arg: $ => $._positive_integer_value,
+    _max_value_arg: $ => choice('unbounded', $._positive_integer_value),
 
     /** integer-value       = ("-" non-negative-integer-value)  /
                           non-negative-integer-value
