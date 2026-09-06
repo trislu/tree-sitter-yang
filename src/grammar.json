@@ -1698,8 +1698,17 @@
           "content": {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "string"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "string"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_bare_word"
+                }
+              ]
             },
             "named": true,
             "value": "organization_arg_str"
@@ -1902,8 +1911,17 @@
           "content": {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "string"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "string"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_bare_word"
+                }
+              ]
             },
             "named": true,
             "value": "contact_arg_str"
@@ -2106,8 +2124,17 @@
           "content": {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "_concatenated_string"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_concatenated_string"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_bare_word"
+                }
+              ]
             },
             "named": true,
             "value": "description_arg_str"
@@ -2310,8 +2337,17 @@
           "content": {
             "type": "ALIAS",
             "content": {
-              "type": "SYMBOL",
-              "name": "string"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "string"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_bare_word"
+                }
+              ]
             },
             "named": true,
             "value": "reference_arg_str"

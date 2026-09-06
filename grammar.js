@@ -259,20 +259,20 @@ export default grammar({
 
     /** organization-stmt   = organization-keyword sep string
                          optsep stmtend*/
-    organization_stmt: $ => NonBlockStmt(alias('organization', $.organization_keyword), alias($.string, $.organization_arg_str)),
+    organization_stmt: $ => NonBlockStmt(alias('organization', $.organization_keyword), alias(choice($.string, $._bare_word), $.organization_arg_str)),
 
     /** contact-stmt        = contact-keyword sep string optsep stmtend*/
-    contact_stmt: $ => NonBlockStmt(alias('contact', $.contact_keyword), alias($.string, $.contact_arg_str)),
+    contact_stmt: $ => NonBlockStmt(alias('contact', $.contact_keyword), alias(choice($.string, $._bare_word), $.contact_arg_str)),
 
     /** description-stmt    = description-keyword sep string optsep
                          stmtend*/
     /**
      * @note the description argument is a quoted-string.
      */
-    description_stmt: $ => NonBlockStmt(alias('description', $.description_keyword), alias($._concatenated_string, $.description_arg_str)),
+    description_stmt: $ => NonBlockStmt(alias('description', $.description_keyword), alias(choice($._concatenated_string, $._bare_word), $.description_arg_str)),
 
     /** reference-stmt      = reference-keyword sep string optsep stmtend*/
-    reference_stmt: $ => NonBlockStmt(alias('reference', $.reference_keyword), alias($.string, $.reference_arg_str)),
+    reference_stmt: $ => NonBlockStmt(alias('reference', $.reference_keyword), alias(choice($.string, $._bare_word), $.reference_arg_str)),
 
     /** revision-stmts      = *(revision-stmt stmtsep)*/
     /** revision-stmt       = revision-keyword sep revision-date optsep
