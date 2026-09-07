@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-07
+
 ### Added
 
 - `queries/highlights.scm`: standard syntax-highlight captures for YANG
@@ -15,6 +17,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Neovim/nvim-treesitter and the tree-sitter CLI read this file straight from
   the grammar repo. Regression-guarded by `049_highlights_query.rs`, which
   compiles the query file and asserts every headline capture class fires.
+- Regression tests covering the grammar fixes below: `038_max_elements.rs`,
+  `039_vendor_symbol_arg.rs`, `040_units_symbol_arg.rs`,
+  `041_enum_bare_symbol_name.rs`, `042_default_symbol_arg.rs`,
+  `043_escape_sequences.rs`, `044_type_error_localization.rs`,
+  `045_text_argument_tolerance.rs`, `046_recovery_localization.rs`,
+  `047_key_unique_concat.rs`, and `048_range_length_concat.rs`.
+- `max-elements-stmt` accepts the keyword `unbounded`, producing a named
+  `unbounded` node (RFC 7950 §7.7.4).
+
+### Changed
+
+- Unknown/vendor extension statements, and the `units`, `enum`, and `default`
+  statements, accept bare (unquoted) arguments containing symbols, e.g.
+  `m^-X`, `meter^2.second-1`, `n+1`, `00:00:15.0`, and `syslogtypes:local7`.
+- Double-quoted strings accept arbitrary backslash escapes (`\*`, `\S`, `\.`,
+  …) in addition to the RFC 7950 §6.1.3 set (`\n`, `\t`, `\"`, `\\`);
+  real-world modules use more, and pyang tolerates them with a warning.
+- `key`, `unique`, `range`, and `length` arguments are treated as opaque quoted
+  strings (RFC 7950), so `+` concatenation (e.g. `key "a " + "b"` or
+  `range "… | " + "…"`) and trailing whitespace inside the quotes now parse.
+- Bad `type`/text arguments and an unexpected token at a list end are now
+  localized errors: the parser recovers deterministically instead of collapsing
+  the rest of the module into `ERROR`.
+- Regenerated `src/grammar.json`, `src/node-types.json`, and `src/parser.c`
+  (`unbounded` and additional `string` children appear in the node types).
+
+### Fixed
+
+- Valid documents no longer collapse into a single `ERROR` node: `max-elements
+  unbounded`, symbol-bearing bare arguments to unknown statements, `units`,
+  `enum` names, and `default`, arbitrary backslash escapes in double-quoted
+  strings, and concatenated `key`/`unique`/`range`/`length` arguments. Together
+  these clear the IEEE 1906.1 modules, ietf-coms-core, ietf-routing-types,
+  ietf-igmp-mld, iana-* registry modules, ietf-netconf-time, ietf-syslog,
+  ietf-netconf-acm, ietf-ipfix-psamp, draft ietf-isis, and other
+  MIB/registry-derived transcripts from whole-corpus parse errors.
 
 ## [0.3.0] - 2026-09-05
 
@@ -101,5 +139,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   statements, matching the RFC grammar. Previously, valid submodules containing
   data-definition statements failed to parse.
 
+[0.4.0]: https://github.com/trislu/tree-sitter-yang/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/trislu/tree-sitter-yang/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/trislu/tree-sitter-yang/compare/v0.1.3...v0.2.0
