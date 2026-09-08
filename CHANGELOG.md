@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-09-08
+
+### Fixed
+
+- **`type string { … }` no longer collapses the whole module when a vendor
+  extension statement sits between `pattern`/`length` members** (e.g. OpenConfig's
+  `openconfig-yang-types.yang`, which writes `pattern`, `oc-ext:posix-pattern`,
+  then `length`). `_string_restrictions` now accepts `length`/`pattern`/unknown
+  statements in any order and count, matching this grammar's existing tolerance
+  for RFC 7950 multiplicity constraints (RFC 7950 permits an unknown statement
+  as a substatement of anything; rejecting e.g. duplicate `length` is a semantic
+  validator's job). Two harmless GLR ambiguities declared in `conflicts` — both
+  interpretations produce identical flat child lists. Regression-guarded by
+  `050_string_restrictions_extension.rs`. Parse output for previously valid
+  modules is unchanged.
+
 ## [0.4.0] - 2026-09-07
 
 ### Added
