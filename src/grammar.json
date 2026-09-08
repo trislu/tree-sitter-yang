@@ -5352,48 +5352,24 @@
       }
     },
     "_string_restrictions": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "length_stmt"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "pattern_stmt"
-              }
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "pattern_stmt"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "length_stmt"
-            }
-          ]
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "length_stmt"
+          },
+          {
             "type": "SYMBOL",
             "name": "pattern_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "unknown_stmt"
           }
-        }
-      ]
+        ]
+      }
     },
     "length_stmt": {
       "type": "SEQ",
@@ -14950,6 +14926,13 @@
     ],
     [
       "status_stmt"
+    ],
+    [
+      "_type_body_stmts"
+    ],
+    [
+      "type_stmt",
+      "_type_body_stmts"
     ],
     [
       "typedef_stmt"

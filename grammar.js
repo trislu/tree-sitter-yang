@@ -89,6 +89,13 @@ export default grammar({
     [$.revision_stmt],
     [$.rpc_stmt],
     [$.status_stmt],
+    // unknown_stmt now living inside _string_restrictions (see the fix there) overlaps with
+    // type_stmt's own leading/trailing unknown_stmt repeats and with _type_body_stmts's own
+    // extent - both produce the same flat child list either way, so it's safe to GLR-resolve
+    // like unknown_stmt itself is resolved elsewhere in this list. Both tuples were required;
+    // the generator reports them one at a time as each is added.
+    [$._type_body_stmts],
+    [$.type_stmt, $._type_body_stmts],
     [$.typedef_stmt],
     [$.type_stmt],
     [$.unique_stmt],
@@ -544,12 +551,26 @@ export default grammar({
 
     /** string-restrictions = ;; these stmts can appear in any order
                          [length-stmt stmtsep]
-                         *(pattern-stmt stmtsep) */
-    _string_restrictions: $ => choice(
-      seq($.length_stmt, repeat($.pattern_stmt)),
-      seq(repeat1($.pattern_stmt), $.length_stmt),
-      repeat1($.pattern_stmt)
-    ),
+                         *(pattern-stmt stmtsep)
+        An unknown-stmt (vendor extension) is allowed between any two of
+        these, not just before/after the whole group - RFC 7950 permits an
+        unknown-statement as a substatement of any statement, and a real
+        module commonly attaches one to each pattern-stmt (e.g. a
+        `posix-pattern` extension paired with `pattern`) followed by a
+        length-stmt.
+        Deliberately more permissive than the ABNF above (which allows at
+        most one length-stmt, and only before or after the pattern-stmts):
+        an ordering-constrained grammar here is ambiguous wherever an
+        unknown-stmt can appear between statements (its own leading token
+        isn't enough lookahead to know whether the group is ending), and
+        that ambiguity resolved to the wrong branch at runtime rather than
+        actually exploring both - collapsing the whole module instead of
+        just flagging the `type` block. Accepting any order/count of
+        length/pattern/unknown here (matching this grammar's existing
+        tolerance for other RFC multiplicity constraints) is unambiguous
+        and still builds a usable CST; a semantic validator, not this
+        grammar, is the right place to reject e.g. two length-stmts. */
+    _string_restrictions: $ => repeat1(choice($.length_stmt, $.pattern_stmt, $.unknown_stmt)),
 
     /** length-stmt         = length-keyword sep length-arg-str optsep
                          (";" /
